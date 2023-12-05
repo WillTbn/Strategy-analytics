@@ -1,0 +1,134 @@
+// app global css in SCSS form
+@font-face {
+  font-family: instokWeb;
+  src: url(./IstokWeb-Regular.ttf);
+}
+@font-face {
+  font-family: Lato;
+  src: url(./Lato-Regular.ttf);
+}
+body {
+  overflow-x: hidden;
+  font-family: instokWeb;
+  // background: linear-gradient(
+  //   -225deg,
+  //   #231557 0%,
+  //   #44107a 29%,
+  //   #ff1361 67%,
+  //   #fff800 100%
+  // );
+  // background: linear-gradient(
+  //     217deg,
+  //     rgba(255, 0, 0, 0.7),
+  //     rgba(255, 0, 0, 0) 70%
+  //   ),
+  //   linear-gradient(127deg, rgba(55, 200, 200, 0.8), rgba(55, 200, 200, 0) 70%),
+  //   linear-gradient(336deg, rgba(0, 0, 255, 0.9), rgba(0, 0, 255, 0) 70%);
+
+  background: radial-gradient(
+      ellipse at left 10%,
+      #4694d1,
+      #1a1e2d 35%,
+      #4694d1
+    ),
+    radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+}
+.bg-all {
+  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
+  //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+  background: linear-gradient(
+    45deg,
+    #1a1e2d 0%,
+    #1b1f2e 7%,
+    #13476d 23%,
+    #11517c 28%,
+    #10517e 30%,
+    #124e78 33%,
+    #1a1e2d 53%,
+    #1a1e2d 84%,
+    #4e1723 100%
+  );
+}
+.bg-simulator {
+  background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
+    radial-gradient(ellipse at top, #1a1e2d, transparent),
+    radial-gradient(ellipse at bottom, #1a1e2d, transparent),
+    radial-gradient(circle at 10%, #4694d1, transparent);
+}
+.bg-simulator-draw {
+  background: radial-gradient(
+      circle at top right,
+      #1a1e2d,
+      #1a1e2d 90%,
+      #ff4242
+    ),
+    radial-gradient(circle at 100%, #ff4242, #1a1e2d, #ff4242);
+
+  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
+  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
+  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
+  //   radial-gradient(circle at 10%, #4694d1, transparent);
+}
+.bg-draw {
+  background: radial-gradient(
+      circle at top right,
+      #1a1e2d,
+      #1a1e2d 90%,
+      #4694d1
+    ),
+    radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+}
+.btn-bg {
+  background-color: rgba(217, 217, 217, 0.3);
+}
+.text-h7 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34.55px;
+}
+.text-700 {
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+}
+.lato {
+  font-family: Lato;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 43.2px;
+}
+
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+  color: white !important;
+  margin-left: 0.5rem !important;
+}
+.input-standard {
+  background-color: #d9d9d94d;
+}
+
+/* Manipulando DOM com JS */
+.js-center {
+  opacity: 0;
+  transform: translate3d(0, 100px, 0);
+  transition: 2s;
+}
+.js-center-2 {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: 2s;
+}
+.js-right {
+  transform: translate3d(400px, 0, 0);
+  transition: 2s;
+}
+.js-left {
+  transform: translate3d(-500px, 0, 0);
+  transition: 2s;
+}
+.js-ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
