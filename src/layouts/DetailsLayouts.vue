@@ -87,9 +87,6 @@ export default defineComponent({
 });
 </script>
 <style>
-.transparant-bg {
-  background: transparent !important;
-}
 .q-tab-panel {
   padding: 0 !important;
 }

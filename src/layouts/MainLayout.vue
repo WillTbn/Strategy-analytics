@@ -4,7 +4,11 @@
     <!-- <navbar-tabs /> -->
     <navbar-header />
     <q-page-container padding>
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" :key="route.path"></component>
+        </transition>
+      </router-view>
     </q-page-container>
   </q-layout>
 </template>
@@ -31,6 +35,7 @@ export default defineComponent({
     });
     return {
       layout,
+      route,
     };
   },
 });

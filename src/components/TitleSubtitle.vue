@@ -3,8 +3,8 @@
     <span class="text-subtitle2" :class="{ 'text-up': upText }">{{
       textTop
     }}</span>
-    <span class="text-subtitle2 text-negative text-weight-bolder">{{
-      textTopRed
+    <span class="text-subtitle2 text-weight-bolder" :class="textClass">{{
+      textTopPersonal
     }}</span>
     <p class="text-h3 text-weight-bolder">{{ textTitle }}</p>
     <span class="text-body2">{{ textDescription }}</span
@@ -20,7 +20,8 @@ export default defineComponent({
   props: {
     parentClass: { type: String },
     textTop: { type: String },
-    textTopRed: { type: String },
+    textTopPersonal: { type: String },
+    textClass: { type: String },
     textTitle: { type: String },
     textDescription: { type: String },
     textDescription2: { type: String },

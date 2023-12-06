@@ -28,6 +28,11 @@ const routes = [
         name: "quemsomos",
         component: () => import("pages/WhoWeAre.vue"),
       },
+      {
+        path: "nossaequipe",
+        name: "nossaequipe",
+        component: () => import("pages/OurTeamPage.vue"),
+      },
     ],
   },
   {
