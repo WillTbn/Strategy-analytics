@@ -1,0 +1,89 @@
+<template>
+  <div class="ReachLayout row justify-center q-ma-xl">
+    <div class="col-8 q-my-xl">
+      <q-img src="img/map-global.png"> </q-img>
+    </div>
+    <div class="col-12 q-my-xl">
+      <p class="title-reach">Alcance global com experiência local</p>
+      <p class="text-reach">
+        Estamos comprometidos com a transparência em nossas atividades de gestão
+        de investimentos. É importante para nós que os nossos clientes
+        compreendam como o trabalho que realizamos em seu nome se alinha com os
+        seus interesses económicos.
+      </p>
+    </div>
+    <div class="col-3" v-for="button in reachButton" :key="button">
+      <button-primary :textLabel="button.text"></button-primary>
+    </div>
+    <div class="col-9 q-my-xl q-py-xl">
+      <q-list>
+        <q-item v-for="item in reachList" :key="item">
+          <q-item-section>
+            <q-item-label class="text-list q-my-lg">{{
+              item.text
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </div>
+  </div>
+</template>
+
+<script>
+import { defineComponent } from "vue";
+import ButtonPrimary from "../components/ButtonPrimary.vue";
+export default defineComponent({
+  name: "ReachLayout",
+  components: { ButtonPrimary },
+  setup() {
+    const reachButton = [
+      { text: "Políticas de administração", action: "" },
+      { text: "Relatórios de administração", action: "" },
+      { text: "Boletins de votação", action: "" },
+    ];
+    const reachList = [
+      { text: "Princípios", action: "" },
+      { text: "Diretrizes de votação", action: "" },
+      {
+        text: "Resumo das políticas de administração de Investimentos",
+        action: "",
+      },
+    ];
+    return { reachButton, reachList };
+  },
+  // Outras configurações do componente aqui
+});
+</script>
+
+<style scoped>
+.title-reach {
+  width: 877px;
+  height: 47px;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 50px */
+}
+.text-reach {
+  width: 770px;
+  height: 94px;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 102.945%; /* 23.677px */
+}
+.text-list {
+  width: 525px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 32px */
+}
+</style>

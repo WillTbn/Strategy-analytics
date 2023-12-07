@@ -33,6 +33,11 @@ const routes = [
         name: "nossaequipe",
         component: () => import("pages/OurTeamPage.vue"),
       },
+      {
+        path: "investimentos",
+        name: "investimentos",
+        component: () => import("pages/ManagementPage.vue"),
+      },
     ],
   },
   {

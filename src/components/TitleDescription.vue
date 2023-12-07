@@ -1,6 +1,6 @@
 <template>
-  <div class="text-white">
-    <span class="text-h4 text-weight-bold">{{ title }}</span
+  <div class="text-white control">
+    <span class="text-title">{{ title }}</span
     ><br />
     <span>{{ description }}</span
     ><br />
@@ -19,3 +19,17 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.control {
+  width: 1002px;
+  height: 194px;
+  flex-shrink: 0;
+}
+.text-title {
+  color: #fff;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 54px */
+}
+</style>

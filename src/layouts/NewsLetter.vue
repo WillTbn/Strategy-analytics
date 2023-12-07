@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-center">
-    <div class="col-12 col-lg-10 q-mx-xl q-px-xl">
+    <div class="col-12 q-px-xl">
       <title-description
         class="q-px-xl"
         title="Inscreva-se para receber as
