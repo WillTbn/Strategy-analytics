@@ -12,12 +12,16 @@
           <p class="text-method">BRL {{ price }}</p>
         </div>
         <div class="col-4">
-          <p class="text-weight-thin">Retorno</p>
-          <p class="text-method">BRL {{ price }}</p>
+          <p class="text-weight-thin">Retorno ano corrente</p>
+          <p class="text-method">
+            <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ current }}
+          </p>
         </div>
         <div class="col-4">
-          <p class="text-weight-thin">Preço unitário</p>
-          <p class="text-method">BRL {{ price }}</p>
+          <p class="text-weight-thin">Distribuições</p>
+          <p class="text-method">
+            <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ distri }}
+          </p>
         </div>
       </q-card-actions>
     </q-card>
@@ -59,12 +63,5 @@ export default defineComponent({
 
 .btn-white {
   border-bottom: solid 5px #f1f3fb;
-}
-.text-method {
-  color: #fff;
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 102.945%;
 }
 </style>

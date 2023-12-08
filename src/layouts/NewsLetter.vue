@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center">
+  <div class="row justify-center text-white">
     <div class="col-12 q-px-xl">
       <title-description
         class="q-px-xl"

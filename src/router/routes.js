@@ -43,6 +43,21 @@ const routes = [
         name: "quadrivium",
         component: () => import("pages/QuadriviumPage.vue"),
       },
+      {
+        path: "rendavariavel",
+        name: "rendavariavel",
+        component: () => import("pages/VariableincomePage.vue"),
+      },
+      {
+        path: "rendafixa",
+        name: "rendafixa",
+        component: () => import("pages/SecurityincomePage.vue"),
+      },
+      {
+        path: "rendaflexivel",
+        name: "rendaflexivel",
+        component: () => import("pages/FlexibleincomePage.vue"),
+      },
     ],
   },
   {
