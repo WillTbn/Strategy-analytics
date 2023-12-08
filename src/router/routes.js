@@ -38,6 +38,11 @@ const routes = [
         name: "investimentos",
         component: () => import("pages/ManagementPage.vue"),
       },
+      {
+        path: "quadrivium",
+        name: "quadrivium",
+        component: () => import("pages/QuadriviumPage.vue"),
+      },
     ],
   },
   {
