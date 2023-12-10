@@ -21,7 +21,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .control {
-  width: 1002px;
+  max-width: 1002px;
   height: 194px;
   flex-shrink: 0;
 }
@@ -32,4 +32,17 @@ export default defineComponent({
   font-weight: 700;
   line-height: 100%; /* 54px */
 }
+@media (max-width: 768px) {
+  .text-title {
+    font-size: 28px !important;
+  }
+}
+/* @media (max-width: 768px){
+    footer {
+        padding-top: 15rem;
+    }
+    .finaly{
+        padding-top:5rem;
+    }
+} */
 </style>

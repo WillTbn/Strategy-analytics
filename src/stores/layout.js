@@ -5,7 +5,12 @@ export const useLayoutStore = defineStore("layout", {
     className: "",
     bgDrawer: "",
     screenWidth: "",
+    menuHeader: "",
   }),
   getters: {},
-  actions: {},
+  actions: {
+    statusMenu(payload) {
+      this.menuHeader = payload;
+    },
+  },
 });

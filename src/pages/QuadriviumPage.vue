@@ -1,8 +1,8 @@
 <template>
   <div class="QuadriviumPage q-py-lg">
     <article-primary topText="Estratégia de Investimento" title="Quadrivium">
-      <div class="row justify-center text-left q-my-xl">
-        <div class="col-8">
+      <div class="row justify-center text-left q-my-xl q-px-lg">
+        <div class="col-md-8 col-sm-11">
           <p class="paragraph" v-for="p in paragraph" :key="p">
             {{ p.content }}
           </p>

@@ -12,7 +12,7 @@
       <card-method
         v-for="opt in options"
         :key="opt"
-        class="col-8 q-my-lg"
+        class="col-md-8 col-sm-12 q-my-lg"
         :name="opt.name"
         :title="opt.title"
         :price="opt.price"

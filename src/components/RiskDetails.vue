@@ -1,13 +1,30 @@
 <template>
-  <div class="RiskDetails row text-center justify-center items-center">
-    <q-avatar class="control-img col-2">
+  <div
+    class="RiskDetails row text-center justify-center items-center"
+    :class="borderColor"
+  >
+    <q-avatar class="control-img col-md-2 col-sm-6">
       <img :src="image" />
     </q-avatar>
-    <span class="q-pa-lg col-1 font-typ" :class="colorText">{{ risk }}</span>
-    <span class="q-pa-lg col-1 font-typ text">=</span>
-    <span class="q-pa-lg col-2 font-typ exposure">{{ exposure }}</span>
-    <span class="q-pa-lg col-1 font-typ text">=</span>
-    <span class="q-pa-lg col-4 font-typ">{{ chances }}</span>
+    <span
+      class="q-pa-md-lg q-pa-sm-sm col-md-1 col-sm-6 font-typ"
+      :class="colorText"
+      >{{ risk }}</span
+    >
+    <div class="col-12 desktop-hide"></div>
+    <span class="q-pa-md-lg q-pa-sm-sm col-md-1 col-sm-12 font-typ text"
+      >=</span
+    >
+    <span class="q-pa-md-lg q-pa-sm-sm col-md-2 col-sm-6 font-typ exposure">{{
+      exposure
+    }}</span>
+    <span class="q-pa-md-lg q-pa-sm-sm col-md-1 col-sm-12 font-typ text"
+      >=</span
+    >
+    <div class="col-12 desktop-hide"></div>
+    <span class="q-pa-md-lg q-pa-sm-sm col-md-4 col-sm-12 font-typ">{{
+      chances
+    }}</span>
   </div>
 </template>
 
@@ -21,6 +38,7 @@ export default defineComponent({
     exposure: { type: String },
     chances: { type: String },
     colorText: { type: String },
+    borderColor: { type: String },
   },
   setup() {
     return {};
@@ -75,5 +93,24 @@ export default defineComponent({
 }
 .color-green {
   color: #7fe47e;
+}
+
+@media (max-width: 768px) {
+  .control-img {
+    width: 45.436px;
+    height: 36.16px;
+  }
+  .RiskDetails {
+    margin: 0.5rem;
+  }
+  .red-border {
+    border: solid #ec5252;
+  }
+  .yellow-border {
+    border: solid #f5e556;
+  }
+  .green-border {
+    border: solid #7fe47e;
+  }
 }
 </style>

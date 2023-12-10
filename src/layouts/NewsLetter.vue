@@ -2,7 +2,7 @@
   <div class="row justify-center text-white">
     <div class="col-12 q-px-xl">
       <title-description
-        class="q-px-xl"
+        class="q-px-md-xl"
         title="Inscreva-se para receber as
           Perspectivas da Strategy Analytics"
       ></title-description>

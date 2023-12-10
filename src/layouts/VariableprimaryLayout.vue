@@ -1,5 +1,5 @@
 <template>
-  <div class="VariableprimaryLayout justify-around q-ma-lg q-pa-lg row">
+  <div class="VariableprimaryLayout justify-md-around q-ma-lg q-pa-lg row">
     <div class="col-11 q-my-lg">
       <p>{{ title }}</p>
       <q-avatar
@@ -13,17 +13,17 @@
       </q-avatar>
     </div>
 
-    <div class="col-3 q-my-lg">
+    <div class="col-md-3 col-sm-12 q-my-lg">
       <p class="">Preço unitário</p>
       <p class="text-method">BRL {{ price }}</p>
     </div>
-    <div class="col-3 q-my-lg">
+    <div class="col-md-3 col-sm-12 q-my-lg">
       <p class="">Variação da previdência</p>
       <p class="text-method">
         <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ current }}
       </p>
     </div>
-    <div class="col-3 q-my-lg">
+    <div class="col-md-3 col-sm-12 q-my-lg">
       <p class="">Rendimento total do Fundo</p>
       <p class="text-method">
         Anualizado:

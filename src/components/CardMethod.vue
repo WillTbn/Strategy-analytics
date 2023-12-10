@@ -7,17 +7,17 @@
       </q-card-section>
 
       <q-card-actions class="row justify-between">
-        <div class="col-4">
+        <div class="col-md-4 col-md-12">
           <p class="text-weight-thin">Preço unitário</p>
           <p class="text-method">BRL {{ price }}</p>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 col-md-12">
           <p class="text-weight-thin">Retorno ano corrente</p>
           <p class="text-method">
             <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ current }}
           </p>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 col-md-12">
           <p class="text-weight-thin">Distribuições</p>
           <p class="text-method">
             <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ distri }}

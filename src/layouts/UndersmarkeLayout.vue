@@ -1,7 +1,7 @@
 <template>
   <div class="UndersmarkeLayout q-my-lg text-white">
     <div class="row justify-center text-center q-py-lg">
-      <div class="col-8">
+      <div class="col-md-8 col-sm-12">
         <title-secondary
           text="Entenda um pouco mais sobre nossa metodologia "
         />

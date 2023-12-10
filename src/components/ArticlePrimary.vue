@@ -35,5 +35,12 @@ export default defineComponent({
   font-weight: 700;
   line-height: 100%; /* 175px */
 }
-/* Estilos específicos do componente aqui */
+@media (max-width: 768px) {
+  .top {
+    font-size: 12.5px;
+  }
+  .title {
+    font-size: 58px !important;
+  }
+}
 </style>

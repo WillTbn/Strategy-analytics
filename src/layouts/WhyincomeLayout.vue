@@ -1,10 +1,10 @@
 <template>
-  <div class="WhyincomeLayout q-ma-lg q-pa-lg">
+  <div class="WhyincomeLayout q-ma-lg q-pt-lg q-pb-lg">
     <div class="row justify-center text-center q-py-lg">
-      <div class="col-8">
+      <div class="col-md-8 col-sm-12">
         <title-secondary :text="title" />
       </div>
-      <div class="col-8">
+      <div class="col-md-8 col-sm-12">
         <slot />
       </div>
     </div>

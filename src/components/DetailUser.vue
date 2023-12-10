@@ -1,12 +1,12 @@
 <template>
-  <q-card class="transparant-bg q-px-lg" flat>
-    <q-card-section horizontal class="flex flex-center">
-      <q-card-section class="">
+  <div class="transparant-bg q-px-lg" flat>
+    <div class="row justify-center items-center">
+      <div class="col-md-3 col-sm-12">
         <q-avatar size="16rem">
           <img :src="image" :srcset="image" />
         </q-avatar>
-      </q-card-section>
-      <q-card-section class="q-py-xl">
+      </div>
+      <div class="col-md-6 col-sm-12 q-py-xl">
         <div class="text-h4 text-weight-bold">{{ title }}</div>
         <span class="text-subtitle2">{{ office }}</span>
         <div
@@ -15,9 +15,9 @@
         >
           {{ description }}
         </div>
-      </q-card-section>
-    </q-card-section>
-  </q-card>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -32,7 +32,7 @@ export default defineComponent({
   },
 });
 </script>
-<style>
+<style scoped>
 .text-r4 {
   font-size: 8vw;
 }

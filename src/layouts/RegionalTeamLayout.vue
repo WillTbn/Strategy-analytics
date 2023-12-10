@@ -2,7 +2,7 @@
   <detail-user
     v-for="item in primaryUsers"
     :key="item"
-    class="col-12 q-px-xl"
+    class="q-px-xl"
     :title="item.name"
     :description="item.history"
     :image="item.avatar"
@@ -11,7 +11,7 @@
   <detail-user-secondary
     v-for="item in secondaryUsers"
     :key="item"
-    class="col-6 q-px-xl"
+    class="col-md-6 col-sm-12"
     :title="item.name"
     :description="item.history"
     :image="item.avatar"

@@ -1,6 +1,6 @@
 <template>
   <div class="ProfitabilityLayout">
-    <div class="row justify-center text-center q-py-lg q-my-xl">
+    <div class="row justify-md-center text-center q-py-lg q-my-xl">
       <div class="col-8">
         <title-secondary text="Rentabilidade" />
       </div>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row justify-center q-mb-xl">
-    <div class="col-6">
+    <div class="col-md-6 col-sm-8">
       <p class="text-h8">
         O desempenho passado não é indicação do desempenho futuro e não deve ser
         o único fator em consideração ao selecionar um produto.

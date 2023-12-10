@@ -1,11 +1,11 @@
 <template>
   <div class="row ustify-center text-center q-gutter-lg q-mt-xl">
-    <div class="col-4">
+    <div class="col-md-4 col-sm-6">
       <p class="text-h5 text-weight-bolder">Quem somos?</p>
     </div>
   </div>
   <div class="row justify-center text-center q-gutter-lg border-blue">
-    <div class="col-3" v-for="product in products" :key="product">
+    <div class="col-md-3 col-sm-6" v-for="product in products" :key="product">
       <services-gestao
         :title="product.title"
         :imgService="product.image"

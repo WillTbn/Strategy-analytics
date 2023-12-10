@@ -1,12 +1,12 @@
 <template>
   <div class="row ustify-center text-center q-gutter-lg q-mt-xl">
-    <div class="col-4">
+    <div class="col-md-4 col-sm-6">
       <p class="text-h5 text-weight-bolder">Nossa Contribuição?</p>
     </div>
   </div>
   <div class="row justify-center text-center q-gutter-lg">
     <div
-      class="col-3"
+      class="col-md-3 col-sm-6"
       v-for="contribution in contributions"
       :key="contribution"
     >

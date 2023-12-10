@@ -3,61 +3,334 @@
     <q-tabs
       v-model="tab"
       dense
-      class="text-white justify-between items-center q-ma-sm q-px-xl desktop-only touch-hide"
-      indicator-color="dark"
+      class="text-white justify-between items-center desktop-only touch-hide border-b"
+      indicator-color="transparent"
       align="justify"
     >
       <div class="col-12 col-md-8">
         <div class="list-control">
-          <logo-complet class="q-mx-lg" />
+          <logo-complet class="q-mx-lg q-px-xl q-my-sm" />
           <!-- narrow-indicator -->
-          <q-tab name="mails" label="Mails" class="" />
-          <q-tab name="alarms" label="Alarms" class="" />
-          <q-tab name="movies" label="Movies" class="" />
+          <q-tab
+            name="produtos"
+            label="Produtos"
+            content-class="text-weight-bolder"
+            no-caps
+          />
+          <q-tab
+            name="alarms"
+            label="Quem somos"
+            content-class="text-weight-bolder"
+            no-caps
+          />
+          <q-tab
+            name="movies"
+            label="Estratégias"
+            content-class="text-weight-bolder"
+            no-caps
+            :ripple="false"
+          />
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-2 q-mx-lg q-px-xl q-py-sm">
         <insert-person />
       </div>
     </q-tabs>
 
-    <q-separator color="blue" size="3px" />
+    <!-- <q-separator color="blue" size="3px" /> -->
 
-    <q-tab-panels class="navbar-tabs" v-model="tab" animated>
-      <q-tab-panel name="mails">
-        <div class="text-h6">Mails</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    <q-tab-panels
+      class="navbar-tabs-panels"
+      v-model="tab"
+      animated
+      draggable="false"
+      transition-prev="slide-down"
+      transition-next="slide-up"
+      transition-duration="500"
+    >
+      <q-tab-panel name="produtos">
+        <q-item
+          v-for="productsLink in listProducts"
+          :key="productsLink"
+          :to="productsLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+          class="row justify-center link-strategy"
+        >
+          <q-item-section
+            class="text-white"
+            lines="2"
+            avatar
+            :class="productsLink.className"
+          >
+            {{ productsLink.content }}
+          </q-item-section>
+        </q-item>
       </q-tab-panel>
 
       <q-tab-panel name="alarms">
-        <div class="text-h6">Alarms</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-item
+          v-for="whoLink in listWho"
+          :key="whoLink"
+          :to="whoLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+          class="row justify-center link-strategy"
+        >
+          <q-item-section
+            class="text-white"
+            lines="2"
+            avatar
+            :class="whoLink.className"
+          >
+            {{ whoLink.content }}
+          </q-item-section>
+        </q-item>
       </q-tab-panel>
 
       <q-tab-panel name="movies">
-        <div class="text-h6">Movies</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-item
+          v-for="strategyLink in listStrategy"
+          :key="strategyLink"
+          :to="strategyLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+          class="row justify-center link-strategy"
+        >
+          <q-item-section
+            class="text-white"
+            lines="2"
+            avatar
+            :class="strategyLink.className"
+          >
+            {{ strategyLink.content }}
+          </q-item-section>
+        </q-item>
       </q-tab-panel>
     </q-tab-panels>
+    <!-- mobile -->
+    <div class="row justify-between q-mt-lg touch-only">
+      <LogoComplet col="col-4 q-ml-xl" />
+
+      <div class="col-1 q-mr-sm">
+        <q-btn
+          dense
+          flat
+          round
+          icon="menu"
+          @click="toggleRightDrawer"
+          class="zindex-control"
+        />
+      </div>
+    </div>
   </q-header>
+  <q-drawer
+    v-model="rightDrawerOpen"
+    side="right"
+    overlay
+    behavior="mobile"
+    elevated
+    class="text-white"
+    :class="classBg.bgDrawer"
+  >
+    <div class="row justify-end">
+      <div class="col-2 q-mt-lg" @click="toggleRightDrawer">
+        <q-icon name="close" size="lg" />
+      </div>
+    </div>
+    <!--
+    <q-list padding class="control-qList">
+      <q-item-label header>List Header</q-item-label>
+      <q-item
+        v-for="item in list"
+        :key="item.name"
+        :to="item.route"
+        exact
+        dense
+        clickable
+        manual-focus
+      >
+        <q-item>
+          {{ item.name }}
+        </q-item>
+          <q-item-section lines="6" no-wrap avatar>
+        {{ item.name }}
+      </q-item-section>
+    </q-item>
+  </q-list>
+-->
+    <q-list padding class="control-qList">
+      <!-- <q-item-label header>Produtos</q-item-label> -->
+      <q-item
+        v-for="(productsLink, i) in listProducts"
+        :key="productsLink"
+        :to="productsLink.route"
+        exact
+        dense
+        clickable
+        manual-focus
+      >
+        <q-item-label header v-if="i > 0">{{
+          productsLink.content
+        }}</q-item-label>
+        <q-item-section v-else>
+          {{ productsLink.content }}
+        </q-item-section>
+      </q-item>
+      <!-- <q-item-label header>Quem somos</q-item-label> -->
+      <q-item
+        v-for="(whoLink, i) in listWho"
+        :key="whoLink"
+        :to="whoLink.route"
+        exact
+        dense
+        clickable
+        manual-focus
+      >
+        <q-item-label header v-if="i > 0">{{ whoLink.content }}</q-item-label>
+        <q-item-section v-else>
+          {{ whoLink.content }}
+        </q-item-section>
+      </q-item>
+      <!-- <q-item-label header>Strategias</q-item-label> -->
+      <q-item
+        v-for="(strategyLink, i) in listStrategy"
+        :key="strategyLink"
+        :to="strategyLink.route"
+        exact
+        dense
+        clickable
+        manual-focus
+      >
+        <q-item-label header v-if="i > 0">{{
+          strategyLink.content
+        }}</q-item-label>
+        <q-item-section v-else>
+          {{ strategyLink.content }}
+        </q-item-section>
+      </q-item>
+    </q-list>
+
+    <div class="row justify-center">
+      <div class="col-6">
+        <insert-person />
+      </div>
+    </div>
+  </q-drawer>
 </template>
 
 <script>
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, computed } from "vue";
 import LogoComplet from "./LogoComplet.vue";
 import InsertPerson from "./InsertPerson.vue";
+import { useLayoutStore } from "../stores/layout";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "NavbarTabs",
   components: { LogoComplet, InsertPerson },
   setup() {
+    const layout = useLayoutStore();
+    const { menuHeader } = storeToRefs(layout);
+    const rightDrawerOpen = ref(false);
+    const listProducts = [
+      { content: "Encontrar produtos", className: "text-weight-bold col-3" },
+      {
+        content: "Expansão de patrimonio",
+        className: "col-3 text-h6",
+        route: "/rendavariavel",
+      },
+      {
+        content: "Fundo de aposentadoria",
+        className: "col-3 text-h6",
+        route: "/rendafixa",
+      },
+      {
+        content: "Fundo de liquidez elevada",
+        className: "col-3 text-h6",
+        route: "/rendaflexivel",
+      },
+    ];
+    const listWho = [
+      {
+        content: "Sobre a Strategy Analytics",
+        className: "text-weight-bold col-3",
+      },
+      { content: "Quem somos", className: "col-3 text-h6", route: "quemsomos" },
+      {
+        content: "Nossa equipe",
+        className: "col-3 text-h6",
+        route: "nossaequipe",
+      },
+      {
+        content: "Gestão de investimento",
+        className: "col-3 text-h6",
+        route: "investimentos",
+      },
+    ];
+    const listStrategy = [
+      { content: "Estratégias", className: "text-weight-bold col-3" },
+      {
+        content: "Quadarivium",
+        className: "col-3 text-h6",
+        route: "quadrivium",
+      },
+      { content: "Sit dolar", className: "col-3 text-h6", route: "/" },
+      { content: "Amet Behav", className: "col-3 text-h6", route: "/" },
+    ];
+
+    const list = [
+      {
+        name: "Produtos",
+        id: "gestão",
+        route: "/",
+      },
+      {
+        name: "Quem somos",
+        id: "Assinantes",
+        route: "/quemsomos",
+      },
+      {
+        name: "Estratégias",
+        id: "Simulador",
+        route: "/simulator",
+      },
+    ];
     return {
-      tab: ref(""),
+      rightDrawerOpen,
+      toggleRightDrawer() {
+        rightDrawerOpen.value = !rightDrawerOpen.value;
+      },
+      list,
+      classBg: useLayoutStore(),
+      listProducts,
+      listWho,
+      listStrategy,
+      menuHeader,
+      tab: ref(menuHeader),
     };
   },
 });
 </script>
 <style>
+.border-b {
+  border-bottom: solid 3px #4694d1;
+}
+.navbar-tabs-panels {
+  /* border-bottom: 2px solid var(--BLUE, #0085ff); */
+  background: linear-gradient(
+    91deg,
+    rgba(0, 11, 49, 0.8) 0%,
+    rgba(0, 11, 49, 0.6) 100%
+  );
+  backdrop-filter: blur(7.5px);
+}
 .navbar-tabs {
   background: #ffffff26 !important;
 }

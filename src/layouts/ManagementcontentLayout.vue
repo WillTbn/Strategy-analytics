@@ -1,6 +1,10 @@
 <template>
-  <div class="row justify-center q-ma-xl">
-    <div class="col-5 q-ml-xl q-my-xl" v-for="list in listItems" :key="list">
+  <div class="row justify-md-center q-ma-xl">
+    <div
+      class="col-md-5 col-sm-12 q-ml-md-xl q-my-xl"
+      v-for="list in listItems"
+      :key="list"
+    >
       <p class="text-h4 text-weight-bolder">{{ list.title }}</p>
       <p class="text-weight-bold q-mx-sm">{{ list.one }}</p>
       <p class="text-weight-bold q-mx-sm">{{ list.two }}</p>
@@ -8,12 +12,12 @@
     </div>
   </div>
   <div class="row justify-center items-center q-ma-xl q-py-xl">
-    <div class="col-6">
+    <div class="col-md-6 col-sm-12">
       <p class="text-h4 text-weight-bolder">
         Agregar valor financeiro na vida dos nossos clientes a longo prazo
       </p>
     </div>
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12">
       <p class="text-h8">
         A Gestão de Investimentos é essencial na Strategy Analytics para cumprir
         com a nossa responsabilidade de promover os interesses econômicos de
@@ -33,7 +37,7 @@ import { defineComponent } from "vue";
 import ReachLayout from "./ReachLayout.vue";
 export default defineComponent({
   name: "ManagementcontentLayout",
-  components: {ReachLayout},
+  components: { ReachLayout },
 
   setup() {
     const listItems = [

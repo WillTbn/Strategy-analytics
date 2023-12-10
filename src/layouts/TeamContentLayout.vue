@@ -1,6 +1,6 @@
 <template>
   <div class="row text-left q-py-xl">
-    <div class="col-6 q-ma-xl">
+    <div class="col-md-6 col-sm-10 q-ma-xl">
       <p class="text-h4 text-weight-bolder">Strategy Analytics</p>
       <span>
         Nosso objetivo é claro e direto: ajudar um número cada vez maior de
@@ -15,7 +15,7 @@
     v-model="tab"
     dense
     no-caps
-    class="text-white q-px-xl q-mx-lg"
+    class="text-white"
     active-color="text-white"
     active-bg-color="dark"
     align="left"
@@ -31,10 +31,10 @@
     transition-prev="jump-up"
     transition-next="jump-down"
   >
-    <q-tab-panel name="teamlocal" class="detailsContent row">
+    <q-tab-panel name="teamlocal" class="detailsContent">
       <local-team-layout></local-team-layout>
     </q-tab-panel>
-    <q-tab-panel name="teamregional" class="detailsContent row">
+    <q-tab-panel name="teamregional" class="detailsContent">
       <regional-team-layout></regional-team-layout>
     </q-tab-panel>
     <!-- <q-tab-panel name="0" class="detailsContent" bg-color="dark">

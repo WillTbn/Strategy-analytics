@@ -1,12 +1,12 @@
 <template>
-  <div class="ReadingsLayout q-py-lg q-my-xl">
-    <div class="row justify-center text-center q-py-lg q-my-xl">
-      <div class="col-8">
+  <div class="ReadingsLayout q-py-lg q-ma-xl">
+    <div class="row justify-md-center text-center q-py-lg q-my-xl">
+      <div class="col-md-8 col-sm-8">
         <title-secondary text="Literatura" />
       </div>
     </div>
-    <div class="row justify-center q-pa-lg q-ma-xl">
-      <div class="col-6" v-for="list in lists" :key="list">
+    <div class="row justify-md-center q-py-lg q-my-xl">
+      <div class="col-md-6 col-sm-12" v-for="list in lists" :key="list">
         <q-chip class="bg-transparent text-white" square size="1.3rem">
           <q-avatar>
             <img src="img/leitura.png" />

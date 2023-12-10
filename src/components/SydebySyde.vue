@@ -3,7 +3,7 @@
     class="SydebySyde row justify-center items-center q-ma-xl q-py-xl"
     :class="{ reverse: reverse }"
   >
-    <div class="col-6 text-center">
+    <div class="col-md-6 col-sm-12 text-center">
       <p class="text-title">
         {{ title }}
         <br />
@@ -12,7 +12,7 @@
         }}</span>
       </p>
     </div>
-    <div class="col-6 q-px-xl">
+    <div class="col-md-6 col-sm-12 q-px-md-xl q-px-sm-sm">
       <p class="text-h8 text-subtitle1">
         {{ text }}
       </p>

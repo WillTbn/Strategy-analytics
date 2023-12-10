@@ -34,6 +34,6 @@ export default defineComponent({
 </script>
 <style>
 .text-r4 {
-  font-size: 1vw;
+  font-size: 1.4vw;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="MarketriskLayout q-my-lg">
     <div class="row justify-center text-center q-py-lg">
-      <div class="col-8">
+      <div class="col-md-8 col-sm-10">
         <title-secondary
           text="Pense na abordagem como um barômetro de risco do mercado"
         />
@@ -15,6 +15,7 @@
       :image="list.image"
       :exposure="list.exposure"
       :chances="list.chances"
+      :borderColor="list.border"
     />
   </div>
   <div class="row justify-center text-center q-py-lg q-my-lg text-white">
@@ -72,6 +73,7 @@ export default defineComponent({
         image: "img/risco-alto.png",
         exposure: "Exposição não recomendada",
         chances: "Baixas chances de retornos no médio prazo",
+        border: "red-border",
       },
       {
         color: "color-yellow",
@@ -79,6 +81,7 @@ export default defineComponent({
         image: "img/risco-medio.png",
         exposure: "Exposição não recomendada",
         chances: "Baixas chances de retornos no médio prazo",
+        border: "yellow-border",
       },
       {
         color: "color-green",
@@ -86,6 +89,7 @@ export default defineComponent({
         image: "img/risco-baixo.png",
         exposure: "Exposição não recomendada",
         chances: "Baixas chances de retornos no médio prazo",
+        border: "green-border",
       },
     ];
     return { lists };
