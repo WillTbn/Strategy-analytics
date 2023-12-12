@@ -1,20 +1,33 @@
 <template>
+  <!-- <div class="radial-shadow-prev"></div> -->
+  <!-- ref="{snSlide}"
+  :effect="'coverflow'"
+  :grabCursor="true"
+  :centeredSlides="true"
+  :slidesPerView="3"
+  :spaceBetween="30"
+  :coverflowEffect="{
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
+  }"
+  :navigation="true"
+  :modules="modules" -->
   <swiper
-    :effect="'coverflow'"
-    :grabCursor="true"
-    :centeredSlides="true"
+    ref="{swiperRef}"
     :slidesPerView="3"
-    :coverflowEffect="{
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
+    :centeredSlides="true"
+    :spaceBetween="0"
+    :pagination="{
+      type: 'fraction',
     }"
-    :pagination="true"
-    :modules="modules"
-    class="mySwiper q-my-xl"
     :navigation="true"
+    :modules="modules"
+    :virtual="true"
+    :initialSlide="slide"
+    class="mySwiper q-mb-xl"
   >
     <swiper-slide v-for="(author, i) in authors" :key="i">
       <author-carousel
@@ -24,6 +37,7 @@
       />
     </swiper-slide>
   </swiper>
+  <!-- <div class="radial-shadow-next"></div> -->
 </template>
 <script>
 // Import Swiper Vue.js components
@@ -34,10 +48,11 @@ import AuthorCarousel from "./AuthorCarousel.vue";
 import "swiper/css";
 
 import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Navigation, Virtual } from "swiper/modules";
+import { ref } from "vue";
 
 export default {
   components: {
@@ -46,6 +61,7 @@ export default {
     AuthorCarousel,
   },
   setup() {
+    const slide = ref(1);
     const authors = [
       {
         id: 1,
@@ -67,8 +83,9 @@ export default {
       },
     ];
     return {
+      slide,
       authors,
-      modules: [EffectCoverflow, Pagination],
+      modules: [EffectCoverflow, Navigation, Virtual],
     };
   },
 };
@@ -76,8 +93,8 @@ export default {
 <style>
 .swiper {
   width: 100%;
-  padding-top: 50px;
   padding-bottom: 50px;
+  z-index: 12;
 }
 
 .swiper-slide {
@@ -90,5 +107,79 @@ export default {
 .swiper-slide img {
   display: block;
   width: 100%;
+}
+.swiper-wrapper {
+  z-index: 8;
+}
+.swiper-button-prev {
+  color: #fff;
+  z-index: 11;
+}
+.swiper-button-next {
+  color: #fff;
+  z-index: 11;
+}
+/* .swiper-slide-prev::before {
+  content: "";
+  width: 395px;
+  height: 395px;
+
+  left: -50px;
+  position: absolute;
+  margin-top: 0px;
+  z-index: 11;
+  border-radius: 1695px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 0, 0, 0.36) 0%,
+    rgba(255, 0, 0, 0) 100%
+  );
+} */
+/* .swiper-slide-next::after {
+  content: "";
+  width: 395px;
+  height: 395px;
+
+  position: absolute;
+  z-index: 11;
+  margin-top: 0px;
+  border-radius: 1695px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 163, 255, 0.42) 0%,
+    rgba(0, 163, 255, 0) 100%
+  );
+} */
+
+.radial-shadow-prev {
+  width: 395px;
+  height: 395px;
+
+  left: -50px;
+  position: absolute;
+  margin-top: 120px;
+  z-index: 2;
+  border-radius: 1695px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 0, 0, 0.36) 0%,
+    rgba(255, 0, 0, 0) 100%
+  );
+}
+.radial-shadow-next {
+  width: 395px;
+  height: 395px;
+
+  right: -50px;
+
+  position: absolute;
+  z-index: 2;
+  margin-top: 120px;
+  border-radius: 1695px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 163, 255, 0.42) 0%,
+    rgba(0, 163, 255, 0) 100%
+  );
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="col-2">
+  <div class="control-author">
     <!-- <div class=""> -->
-    <q-avatar size="100px" font-size="52px" color="teal" text-color="white">
+    <q-avatar size="200px" font-size="52px" color="teal" text-color="white">
       <img :src="image" :alt="author" :srcset="image" />
     </q-avatar>
     <br />
@@ -23,3 +23,10 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+@media (max-width: 768px) {
+  .control-author {
+    width: 320px;
+  }
+}
+</style>

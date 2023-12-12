@@ -282,7 +282,7 @@ export default defineComponent({
         route: "quadrivium",
       },
       { content: "Login", className: "col-3 text-h6", route: "/login" },
-      { content: "Amet Behav", className: "col-3 text-h6", route: "/" },
+      { content: "Simulado", className: "col-3 text-h6", route: "/simulator" },
     ];
 
     const list = [

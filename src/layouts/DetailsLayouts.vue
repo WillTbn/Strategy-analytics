@@ -10,7 +10,7 @@
     v-model="tab"
     dense
     no-caps
-    class="text-white q-px-xl q-mx-lg"
+    class="text-white"
     active-color="text-white"
     active-bg-color="dark"
     align="left"

@@ -31,14 +31,14 @@
 
       <div class="flex-break col-12"></div>
 
-      <div class="col-12 col-lg-3 col-sm-12">
+      <div class="col-12 col-lg-3 col-sm-12 text-white">
         <span>categoria de investidor: *</span>
 
         <q-select
           v-model="newsletter.category"
           transition-show="flip-up"
           transition-hide="flip-down"
-          input-class="white"
+          input-class="text-white"
           bg-color="secondary"
           dense
           outlined
