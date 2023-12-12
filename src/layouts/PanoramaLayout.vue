@@ -3,7 +3,7 @@
     classAdd="justify-center text-left q-pa-lg q-my-xl"
     image="img/default-img.png"
   >
-    <div class="col-6">
+    <div class="col-md-6 col-sm-10">
       <title-subtitle
         parentClass="q-pr-xl"
         textTitle="Panorama Strategy - Trabalhe com nossa tecnologia."
@@ -25,7 +25,7 @@
     classAdd="justify-around text-right q-pa-lg q-my-xl reverse"
     image="img/default-img.png"
   >
-    <div class="col-6">
+    <div class="col-md-6 col-sm-10">
       <title-subtitle
         textTitle="Panorama Strategy - Trabalhe com nossa tecnologia."
         textDescription="Como os investimentos podem ajudar cada vez mais pessoas?"

@@ -1,48 +1,81 @@
 <template>
   <div class="ProfitabilyTable">
-    <!-- <div class="q-pa-md">
-      <q-table
-        square
-        title="Rentabilidade"
-        class="bg-transparent text-white"
-        :rows="rows"
-        :columns="columns"
-        row-key="name"
-      />
-    </div> -->
-    <title-secondary text="Rentabilidade" />
-    <div class="row q-ma-lg">
-      <div class="row">
-        <div class="col-12">
-          <p class="text-h5" style="width: 271px">Rentabilidade</p>
-        </div>
-        <div class="text-header col-2 self-center">
-          <p class="bg-primary">Anual</p>
-        </div>
-        <div class="q-pl-sm text-header col-2 self-start">Média Anual</div>
-        <div class="q-pl-sm text-header col-3">Acumulado</div>
-        <div class="q-pl-sm text-header col-3">Ano calendário</div>
+    <div class="row">
+      <div class="col-12">
+        <p class="text-h5" style="width: 271px">Rentabilidade</p>
       </div>
     </div>
-    <div class="row border-table q-pa-lg" v-for="row in rows" :key="row">
-      <div class="col-3 q-pr-xl self-center">{{ row.name }}</div>
+    <!-- <div class="row"> -->
+
+    <!-- </div> -->
+    <!-- <div class="row q-mt-xl q-pt-xl">
+      <div class="text-header col-2 self-center">
+        <p class="bg-primary">Anual</p>
+      </div>
+      <div class="q-pl-sm text-header col-3 self-start">Média Anual</div>
+      <div class="q-pl-sm text-header-b col-2">Acumulado</div>
+      <div class="q-pl-sm text-header col-3">Ano calendário</div>
+    </div> -->
+    <!-- </div> -->
+    <div
+      class="row q-py-lg q-my-lg"
+      v-for="(row, i) in rows"
+      :key="row[i]"
+      :class="{ 'border-table': i != 0 }"
+    >
+      <div
+        class="text-control col-md-4 col-xs-2 q-pr-md-xl self-center"
+        :class="{ 'text-header': i == 0 }"
+      >
+        <span :class="{ 'control-span': i !== 0 }">
+          {{ row.name }}
+        </span>
+      </div>
       <q-separator inset color="orange" />
-      <div class="col-2 self-center">{{ row.acumulado }}</div>
+      <div
+        class="text-control col-md-2 col-xs-2 self-center"
+        :class="{ 'text-header': i == 0 }"
+      >
+        <span :class="{ 'control-span': i !== 0 }">
+          {{ row.acumulado }}
+        </span>
+      </div>
       <q-separator inset />
-      <div class="col-2 self-center">{{ row.ano }}</div>
+      <div
+        class="text-control col-md-2 col-xs-2 self-center"
+        :class="{ 'text-header': i == 0 }"
+      >
+        <span :class="{ 'control-span': i !== 0 }">
+          {{ row.ano }}
+        </span>
+      </div>
       <q-separator inset />
-      <div class="col-2 self-center">{{ row.calendario }}</div>
+      <div
+        class="text-control col-md-2 col-xs-2 self-center"
+        :class="{ 'text-header': i == 0 }"
+      >
+        <span :class="{ 'control-span': i !== 0 }">
+          {{ row.calendario }}
+        </span>
+      </div>
     </div>
   </div>
+  <!-- <q-table
+      title="Treats"
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      class="touch-only"
+    /> -->
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import TitleSecondary from "./TitleSecondary.vue";
+// import TitleSecondary from "./TitleSecondary.vue";
 
 export default defineComponent({
   name: "ProfitabilyTable",
-  components: { TitleSecondary },
+  components: {},
   setup() {
     const columns = [
       {
@@ -66,6 +99,12 @@ export default defineComponent({
     ];
 
     const rows = [
+      {
+        name: "Anual Média Anual",
+        acumulado: "Acumulado",
+        ano: "Ano",
+        calendario: "Calendário",
+      },
       {
         name: "",
         acumulado: "30/11/2021 Até 30/11/2022",
@@ -94,13 +133,36 @@ export default defineComponent({
 <style scoped>
 /* Estilos específicos do componente aqui */
 .text-header {
-  font-size: 12px;
+  font-size: 15px;
+
+  font-weight: 400;
+  line-height: 102.945%; /* 46.325px */
+}
+.text-header-b {
+  font-size: 22px;
   font-style: normal;
-  text-align: center;
+  text-align: start;
   font-weight: 400;
   line-height: 102.945%; /* 46.325px */
 }
 .border-table {
   border-bottom: solid 2px #fffffa12;
+}
+.control {
+  width: 503px;
+  height: 51px;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .text-header {
+    font-size: 6px !important;
+  }
+  .text-control {
+    font-size: 5px;
+  }
+  .control-span {
+    display: block;
+    width: 70px;
+  }
 }
 </style>

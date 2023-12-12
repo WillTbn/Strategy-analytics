@@ -1,15 +1,15 @@
 <template>
   <div class="ProfitabilityLayout">
-    <div class="row justify-md-center text-center q-py-lg q-my-xl">
-      <div class="col-8">
+    <div class="row justify-center text-center q-py-lg q-my-xl">
+      <div class="col-md-8 col-xs-12">
         <title-secondary text="Rentabilidade" />
       </div>
     </div>
-    <div class="row justify-around q-py-lg q-ma-xl">
-      <div class="col-md-6 col-12">
+    <div class="row justify-around q-py-lg contol-ma">
+      <div class="col-md-6 col-xs-12">
         <profitabily-chart />
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-6 col-xs-12">
         <profitabily-table />
       </div>
     </div>
@@ -42,4 +42,12 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+.contol-ma {
+  margin: 48px 48px;
+}
+@media (max-width: 768px) {
+  .contol-ma {
+    margin: 8px 8px;
+  }
+}
 </style>

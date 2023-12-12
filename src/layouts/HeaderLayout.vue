@@ -12,7 +12,7 @@
       /> -->
     <slot />
     <!-- </div> -->
-    <div class="col-6 col-sm-12 col-md-6 q-mt-xl q-px-xl">
+    <div class="col-sm-12 col-md-6 q-mt-xl q-px-xl">
       <!-- <div
         :class="{ 'q-mt-xl q-pt-xl': heightScreen }"
         style="max-width: 653px"
@@ -73,6 +73,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .border-header {
+  margin-top: 2rem;
   border-bottom: solid 4px #ff0000;
 }
 .control-pa {

@@ -2,6 +2,7 @@
   <q-header class="nav-bar" elevated>
     <div
       class="row justify-between items-center q-ma-sm q-px-xl desktop-only touch-hide"
+      style="margin: 0.7rem"
     >
       <div class="col-12 col-md-8">
         <div class="list-control">
@@ -10,7 +11,6 @@
             class="link-strategy"
             v-for="item in list"
             :key="item.name"
-            @click.prevent="menuActive(item.id)"
             exact
             dense
             clickable
@@ -99,9 +99,7 @@ export default defineComponent({
   components: { LogoComplet, InsertPerson },
   setup() {
     const rightDrawerOpen = ref(false);
-    const menuActive = (item) => {
-      console.log(item);
-    };
+
     const list = [
       {
         name: "Produtos",
@@ -166,6 +164,9 @@ export default defineComponent({
 .nav-bar {
   background: #ffffff26 !important;
   border-bottom: solid 4px #4694d1;
+}
+.control-tabs {
+  margin: 1.2rem;
 }
 .btn-control:hover {
   transition: all 1.3s;

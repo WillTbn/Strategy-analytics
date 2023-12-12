@@ -4,13 +4,13 @@
       v-model="tab"
       dense
       class="text-white justify-between items-center desktop-only touch-hide border-b"
-      indicator-color="transparent"
       align="justify"
     >
+      <!-- indicator-color="white" -->
+      <!-- narrow-indicator -->
       <div class="col-12 col-md-8">
         <div class="list-control">
           <logo-complet class="q-mx-lg q-px-xl q-my-sm" />
-          <!-- narrow-indicator -->
           <q-tab
             name="produtos"
             label="Produtos"
@@ -36,8 +36,7 @@
         <insert-person />
       </div>
     </q-tabs>
-
-    <!-- <q-separator color="blue" size="3px" /> -->
+    <!-- <q-separator color="transparent" size="3px" /> -->
 
     <q-tab-panels
       class="navbar-tabs-panels"
@@ -48,6 +47,7 @@
       transition-next="slide-up"
       transition-duration="500"
     >
+      <div class="indicator">testesteste</div>
       <q-tab-panel name="produtos">
         <q-item
           v-for="productsLink in listProducts"
@@ -281,7 +281,7 @@ export default defineComponent({
         className: "col-3 text-h6",
         route: "quadrivium",
       },
-      { content: "Sit dolar", className: "col-3 text-h6", route: "/" },
+      { content: "Login", className: "col-3 text-h6", route: "/login" },
       { content: "Amet Behav", className: "col-3 text-h6", route: "/" },
     ];
 
@@ -319,6 +319,17 @@ export default defineComponent({
 });
 </script>
 <style>
+.indicator {
+  position: fixed;
+  width: 20px;
+  height: 100px;
+  background: linear-gradient(
+    91deg,
+    rgba(0, 11, 49, 0.8) 0%,
+    rgba(0, 11, 49, 0.6) 100%
+  );
+  backdrop-filter: blur(7.5px);
+}
 .border-b {
   border-bottom: solid 3px #4694d1;
 }

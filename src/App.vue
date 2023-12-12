@@ -1,7 +1,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
-      <component :is="Component" :key="route.path" />
+      <component :is="Component" :key="route.name" />
     </transition>
   </router-view>
 </template>
@@ -24,13 +24,11 @@ export default defineComponent({
 <style>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1s ease;
-  transform: 1s;
+  transition: opacity 2s;
 }
 
-.fade-enter-from,
+.fade-enter,
 .fade-leave-to {
   opacity: 0;
-  /* transform: translateX(-30%); */
 }
 </style>

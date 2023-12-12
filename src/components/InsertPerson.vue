@@ -20,7 +20,10 @@
           dense
           mask="###.###.###-##"
         />
-        <span @click.prevent="regis.status = false" class="text-danger">
+        <span
+          @click.prevent="regis.status = false"
+          class="text-danger control-btn"
+        >
           sair</span
         >
       </span>
@@ -42,3 +45,11 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.control-span-form {
+  margin: -2.3rem;
+}
+.control-btn {
+  cursor: pointer;
+}
+</style>

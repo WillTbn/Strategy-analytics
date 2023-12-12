@@ -1,9 +1,9 @@
 <template>
   <div class="row" :class="classAdd">
-    <div class="col-6">
+    <div class="col-sm-12 col-md-6">
       <slot />
     </div>
-    <div class="col-6">
+    <div class="col-sm-12 col-md-6">
       <q-img :src="image" :ratio="16 / 9" />
     </div>
   </div>

@@ -17,7 +17,11 @@
         </template>
       </q-input>
     </div>
-    <div class="col-5 q-pa-xl" v-for="item in options" :key="item.id">
+    <div
+      class="col-md-5 col-sm-12 q-pa-xl"
+      v-for="item in options"
+      :key="item.id"
+    >
       <q-card
         class="my-card q-px-lg q-pt-lg"
         square

@@ -6,18 +6,18 @@
         <div class="text-title">{{ title }}</div>
       </q-card-section>
 
-      <q-card-actions class="row justify-between">
-        <div class="col-md-4 col-md-12">
+      <q-card-actions class="row control-content">
+        <div class="col-md-4 col-sm-6">
           <p class="text-weight-thin">Preço unitário</p>
           <p class="text-method">BRL {{ price }}</p>
         </div>
-        <div class="col-md-4 col-md-12">
+        <div class="control-margin col-md-4 col-sm-6">
           <p class="text-weight-thin">Retorno ano corrente</p>
           <p class="text-method">
             <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ current }}
           </p>
         </div>
-        <div class="col-md-4 col-md-12">
+        <div class="col-md-4 col-sm-6">
           <p class="text-weight-thin">Distribuições</p>
           <p class="text-method">
             <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ distri }}
@@ -63,5 +63,17 @@ export default defineComponent({
 
 .btn-white {
   border-bottom: solid 5px #f1f3fb;
+}
+.control-content {
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .control-content {
+    justify-content: center;
+  }
+  .control-margin {
+    margin-left: 2rem;
+  }
 }
 </style>
