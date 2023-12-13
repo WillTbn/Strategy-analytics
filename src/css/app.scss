@@ -23,29 +23,10 @@ body {
   overflow-x: hidden;
   font-family: instokWeb;
   letter-spacing: 1px;
-  // background: linear-gradient(
-  //   -225deg,
-  //   #231557 0%,
-  //   #44107a 29%,
-  //   #ff1361 67%,
-  //   #fff800 100%
-  // );
-  // background: linear-gradient(
-  //     217deg,
-  //     rgba(255, 0, 0, 0.7),
-  //     rgba(255, 0, 0, 0) 70%
-  //   ),
-  //   linear-gradient(127deg, rgba(55, 200, 200, 0.8), rgba(55, 200, 200, 0) 70%),
-  //   linear-gradient(336deg, rgba(0, 0, 255, 0.9), rgba(0, 0, 255, 0) 70%);
-
-  // background: radial-gradient(
-  //     ellipse at left 10%,
-  //     #4694d1,
-  //     #1a1e2d 35%,
-  //     #4694d1
-  //   ),
+}
+.bg-all {
+  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
   //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-
   background: linear-gradient(
     294deg,
     #1a1e2d 0%,
@@ -58,21 +39,17 @@ body {
     #1a1e2d 84%,
     #4e1723 100%
   );
-}
-.bg-all {
-  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
-  //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-  background: linear-gradient(
-    45deg,
-    #4e1723 0% #1a1e2d 23%,
-    #1a1e2d 7%,
-    #124e78 28%,
-    #10517e 30%,
-    #11517c 33%,
-    #1b1f2e 53%,
-    #13476d 84%,
-    #1a1e2d 100%
-  );
+  // background: linear-gradient(
+  //   45deg,
+  //   #4e1723 0% #1a1e2d 23%,
+  //   #1a1e2d 7%,
+  //   #124e78 28%,
+  //   #10517e 30%,
+  //   #11517c 33%,
+  //   #1b1f2e 53%,
+  //   #13476d 84%,
+  //   #1a1e2d 100%
+  // );
 }
 .bg-simulator {
   background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
@@ -80,6 +57,7 @@ body {
     radial-gradient(ellipse at bottom, #1a1e2d, transparent),
     radial-gradient(circle at 10%, #4694d1, transparent);
 }
+
 .bg-simulator-draw {
   background: radial-gradient(
       circle at top right,
