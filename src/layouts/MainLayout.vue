@@ -1,6 +1,10 @@
 <template>
   <!-- <q-layout view="hHh lpR fFf" :class="layout.className"> -->
-  <q-layout view="hHr lpR fFr" :class="layout.className">
+  <q-layout
+    view="hHr lpR fFr"
+    class="bg-all"
+    :class="{ 'bg-simulator': route.name == 'simulator' }"
+  >
     <navbar-tabs />
     <!-- <navbar-header /> -->
     <!-- <navbar-menu /> -->
@@ -39,10 +43,15 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      route.name == "home"
-        ? ((layout.className = "bg-all"), (layout.bgDrawer = "bg-draw"))
-        : ((layout.className = "bg-simulator"),
-          (layout.bgDrawer = "bg-simulator-draw"));
+      route.name == "simulator"
+        ? ((layout.className = "bg-simulator"),
+          (layout.bgDrawer = "bg-simulator-draw"))
+        : ((layout.className = "bg-all"), (layout.bgDrawer = "bg-draw"));
+
+      // route.name == "home"
+      //   ? ((layout.className = "bg-all"), (layout.bgDrawer = "bg-draw"))
+      //   : ((layout.className = "bg-simulator"),
+      //     (layout.bgDrawer = "bg-simulator-draw"));
     });
     return {
       onScroll,

@@ -39,23 +39,23 @@ body {
     #1a1e2d 84%,
     #4e1723 100%
   );
-  // background: linear-gradient(
-  //   45deg,
-  //   #4e1723 0% #1a1e2d 23%,
-  //   #1a1e2d 7%,
-  //   #124e78 28%,
-  //   #10517e 30%,
-  //   #11517c 33%,
-  //   #1b1f2e 53%,
-  //   #13476d 84%,
-  //   #1a1e2d 100%
-  // );
 }
 .bg-simulator {
-  background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-    radial-gradient(ellipse at top, #1a1e2d, transparent),
-    radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-    radial-gradient(circle at 10%, #4694d1, transparent);
+  background: linear-gradient(
+    45deg,
+    #124e78 0%,
+    #124e78 5%,
+    #1a1e2d 28%,
+    #1a1e2d 30%,
+    #1a1e2d 33%,
+    #1a1e2d 53%,
+    #4e1723 94%,
+    #4e1723 100%
+  );
+  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
+  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
+  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
+  //   radial-gradient(circle at 10%, #4694d1, transparent);
 }
 
 .bg-simulator-draw {

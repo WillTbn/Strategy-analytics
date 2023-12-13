@@ -58,8 +58,10 @@
           </div>
         </div>
         <div class="row justify-end text-white text-end">
-          <div class="col-md-5" style="margin-left;: 5rem">
-            <span class="text-secondary text-hover">Esqueci minha senha</span>
+          <div class="col-md-5">
+            <span class="text-secondary text-hover" style="margin-left: 5rem"
+              >Esqueci minha senha</span
+            >
           </div>
         </div>
         <div class="row justify-center text-white text-center text-bolder">
