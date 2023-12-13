@@ -44,21 +44,21 @@ export default defineComponent({
         image: "img/consolidada.png",
         description:
           "Entregando o serviço que mais se adapta ao interesse de todos perfil de investimento.",
-        js: "left",
+        js: "js-left",
       },
       {
         title: "Produtos",
         image: "img/produtos.png",
         description:
           "Entregando o serviço que mais se adapta ao interesse de todos perfil de investimento.",
-        js: "center",
+        js: "js-center",
       },
       {
         title: "Produtos",
         image: "img/produtos-2.png",
         description:
           "A Strategy Analytics tem se comprometido a investir e atender clientes em toda a região",
-        js: "right",
+        js: "js-right",
       },
     ];
 

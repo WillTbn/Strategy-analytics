@@ -5,6 +5,8 @@
       dense
       class="text-white justify-between items-center desktop-only touch-hide border-b"
       align="justify"
+      narrow-indicator
+      shrink
     >
       <!-- indicator-color="white" -->
       <!-- narrow-indicator -->
@@ -47,7 +49,7 @@
       transition-next="slide-up"
       transition-duration="500"
     >
-      <div class="indicator">testesteste</div>
+      <!-- <div class="indicator">testesteste</div> -->
       <q-tab-panel name="produtos">
         <q-item
           v-for="productsLink in listProducts"
@@ -57,7 +59,7 @@
           dense
           clickable
           manual-focus
-          class="row justify-center link-strategy"
+          class="row product"
         >
           <q-item-section
             class="text-white"
@@ -79,7 +81,7 @@
           dense
           clickable
           manual-focus
-          class="row justify-center link-strategy"
+          class="row justify-center"
         >
           <q-item-section
             class="text-white"
@@ -101,7 +103,7 @@
           dense
           clickable
           manual-focus
-          class="row justify-center link-strategy"
+          class="row justify-center strategy"
         >
           <q-item-section
             class="text-white"
@@ -115,7 +117,7 @@
       </q-tab-panel>
     </q-tab-panels>
     <!-- mobile -->
-    <div class="row justify-between q-mt-lg touch-only">
+    <div class="row justify-between q-mt-lg touch-only border-b">
       <LogoComplet col="col-4 q-ml-xl" />
 
       <div class="col-1 q-mr-sm">
@@ -144,27 +146,7 @@
         <q-icon name="close" size="lg" />
       </div>
     </div>
-    <!--
-    <q-list padding class="control-qList">
-      <q-item-label header>List Header</q-item-label>
-      <q-item
-        v-for="item in list"
-        :key="item.name"
-        :to="item.route"
-        exact
-        dense
-        clickable
-        manual-focus
-      >
-        <q-item>
-          {{ item.name }}
-        </q-item>
-          <q-item-section lines="6" no-wrap avatar>
-        {{ item.name }}
-      </q-item-section>
-    </q-item>
-  </q-list>
--->
+
     <q-list padding class="control-qList">
       <!-- <q-item-label header>Produtos</q-item-label> -->
       <q-item
@@ -176,7 +158,7 @@
         clickable
         manual-focus
       >
-        <q-item-label header v-if="i > 0">{{
+        <q-item-label header v-if="i > 0" class="text-white">{{
           productsLink.content
         }}</q-item-label>
         <q-item-section v-else>
@@ -193,7 +175,9 @@
         clickable
         manual-focus
       >
-        <q-item-label header v-if="i > 0">{{ whoLink.content }}</q-item-label>
+        <q-item-label header v-if="i > 0" class="text-white">{{
+          whoLink.content
+        }}</q-item-label>
         <q-item-section v-else>
           {{ whoLink.content }}
         </q-item-section>
@@ -208,7 +192,7 @@
         clickable
         manual-focus
       >
-        <q-item-label header v-if="i > 0">{{
+        <q-item-label header v-if="i > 0" class="text-white">{{
           strategyLink.content
         }}</q-item-label>
         <q-item-section v-else>
@@ -240,49 +224,64 @@ export default defineComponent({
     const { menuHeader } = storeToRefs(layout);
     const rightDrawerOpen = ref(false);
     const listProducts = [
-      { content: "Encontrar produtos", className: "text-weight-bold col-3" },
+      {
+        content: "Encontrar produtos",
+        className: "text-weight-bold col-12 desc",
+      },
       {
         content: "Expansão de patrimonio",
-        className: "col-3 text-h6",
+        className: "col-12 text-h6 link-strategy",
         route: "/rendavariavel",
       },
       {
         content: "Fundo de aposentadoria",
-        className: "col-3 text-h6",
+        className: "col-12 text-h6 link-strategy",
         route: "/rendafixa",
       },
       {
         content: "Fundo de liquidez elevada",
-        className: "col-3 text-h6",
+        className: "col-12 text-h6 link-strategy",
         route: "/rendaflexivel",
       },
     ];
     const listWho = [
       {
         content: "Sobre a Strategy Analytics",
-        className: "text-weight-bold col-3",
+        className: "text-weight-bold desc col-3",
       },
-      { content: "Quem somos", className: "col-3 text-h6", route: "quemsomos" },
+      {
+        content: "Quem somos",
+        className: "col-3 text-h6 link-strategy",
+        route: "quemsomos",
+      },
       {
         content: "Nossa equipe",
-        className: "col-3 text-h6",
+        className: "col-3 text-h6 link-strategy",
         route: "nossaequipe",
       },
       {
         content: "Gestão de investimento",
-        className: "col-3 text-h6",
+        className: "col-3 text-h6 link-strategy",
         route: "investimentos",
       },
     ];
     const listStrategy = [
-      { content: "Estratégias", className: "text-weight-bold col-3" },
+      { content: "Estratégias", className: "text-weight-bold desc col-3" },
       {
         content: "Quadarivium",
-        className: "col-3 text-h6",
+        className: "col-3 text-h6 link-strategy",
         route: "quadrivium",
       },
-      { content: "Login", className: "col-3 text-h6", route: "/login" },
-      { content: "Simulado", className: "col-3 text-h6", route: "/simulator" },
+      {
+        content: "Login",
+        className: "col-3 text-h6 link-strategy",
+        route: "/login",
+      },
+      {
+        content: "Simulado",
+        className: "col-3 text-h6 link-strategy",
+        route: "/simulator",
+      },
     ];
 
     const list = [
@@ -319,6 +318,41 @@ export default defineComponent({
 });
 </script>
 <style>
+.product {
+  padding-left: 20rem;
+}
+.strategy {
+  padding-left: 25rem;
+}
+
+.link-strategy::after {
+  content: "";
+  width: 0rem;
+  height: 0px;
+  /* scale: 0.9; */
+  /* transition: height 3s cubic-bezier(1, 0.02, 1, 1.31); */
+  transition-property: width, height;
+  transition-duration: 1s;
+  background: #fff;
+}
+.link-strategy:hover::after {
+  content: "";
+  width: 12rem;
+  height: 2px;
+  background: #fff;
+  scale: 1;
+  /* text-decoration: underline; */
+  /* border-bottom: solid 3px #4694d1; */
+}
+/* .desc::before {
+  content: "";
+  width: 12rem;
+  height: 10px;
+  background: #fff;
+  position: fixed;
+  margin-top: -4.2rem;
+  z-index: 200;
+} */
 .indicator {
   position: fixed;
   width: 20px;
@@ -331,14 +365,16 @@ export default defineComponent({
   backdrop-filter: blur(7.5px);
 }
 .border-b {
+  z-index: 1;
+  position: relative;
   border-bottom: solid 3px #4694d1;
 }
 .navbar-tabs-panels {
   /* border-bottom: 2px solid var(--BLUE, #0085ff); */
   background: linear-gradient(
     91deg,
-    rgba(0, 11, 49, 0.8) 0%,
-    rgba(0, 11, 49, 0.6) 100%
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%
   );
   backdrop-filter: blur(7.5px);
 }

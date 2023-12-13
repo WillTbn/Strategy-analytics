@@ -7,6 +7,7 @@
     </div>
   </div>
   <q-tabs
+    contentClass="borderless"
     v-model="tab"
     dense
     no-caps

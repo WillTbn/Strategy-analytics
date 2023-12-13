@@ -1,31 +1,36 @@
 <template>
   <transition name="fade" mode="out-in">
     <span :key="regis.status">
-      <q-btn
+      <!-- <q-btn
         padding="xs lg"
         label="Cadastre-se"
         class="btn-control"
         v-if="!regis.status"
         no-caps
         @click.prevent="regis.status = true"
-      ></q-btn>
-      <span style="position: absolute" class="control-span-form" v-else>
+      ></q-btn> -->
+      <span style="position: absolute" class="control-span-form">
         <q-input
-          borderless
+          label-color="text-white"
           v-model="user.person"
           label="Insira seu CPF"
-          autofocus
           standout
-          square
           dense
+          color="white"
           mask="###.###.###-##"
-        />
-        <span
+        >
+          <template v-slot:append>
+            <q-avatar>
+              <q-icon name="lock" size="1.5rem" />
+            </q-avatar>
+          </template>
+        </q-input>
+        <!-- <span
           @click.prevent="regis.status = false"
           class="text-danger control-btn"
         >
           sair</span
-        >
+        > -->
       </span>
     </span>
   </transition>
@@ -47,7 +52,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .control-span-form {
-  margin: -2.3rem;
+  margin: -1.3rem;
 }
 .control-btn {
   cursor: pointer;

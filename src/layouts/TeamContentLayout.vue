@@ -12,6 +12,7 @@
     </div>
   </div>
   <q-tabs
+    contentClass="borderless"
     v-model="tab"
     dense
     no-caps
@@ -20,6 +21,7 @@
     active-bg-color="dark"
     align="left"
     indicator-color="transparent"
+    right-icon="arrow_right"
   >
     <q-tab name="teamlocal" label="Nossa equipe local" />
     <q-tab name="teamregional" label="Nossa equipe regional" />

@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div class="text-white q-my-lg" v-for="list in lists" :key="list">
+  <div class="text-white control-risk-py" v-for="list in lists" :key="list">
     <risk-details
       :colorText="list.color"
       :risk="list.risk"
@@ -18,13 +18,13 @@
       :borderColor="list.border"
     />
   </div>
-  <div class="row justify-center text-center q-py-lg q-my-lg text-white">
+  <div class="row justify-center text-center q-py-lg text-white control-py">
     <div class="col-9">
       <title-secondary
         text="Quanto menor o risco, maior é a probabilidade de se obter retornos"
       />
     </div>
-    <div class="col-10 text-left q-my-lg q-py-lg">
+    <div class="col-10 text-left q-my-lg q-py-lg text-body2">
       <p>
         Na dinâmica do mercado de valores, os períodos caracterizados por baixos
         riscos representam oportunidades cruciais que exigem identificação e
@@ -53,7 +53,7 @@
       </p>
     </div>
   </div>
-  <undersmarke-Layout></undersmarke-Layout>
+  <undersmarke-Layout class="control-py" />
 </template>
 
 <script>
@@ -100,10 +100,12 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
-p {
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 102.945%; /* 32.943px */
+.control-risk-py {
+  padding: 5rem;
+}
+@media (max-width: 768px) {
+  .control-risk-py {
+    padding-inline: 0 !important;
+  }
 }
 </style>

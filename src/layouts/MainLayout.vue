@@ -4,7 +4,7 @@
     <navbar-tabs />
     <!-- <navbar-header /> -->
     <!-- <navbar-menu /> -->
-    <q-page-container padding @click.prevent="clickBody()">
+    <q-page-container padding @click.prevent="clickBody()" v-scroll="onScroll">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.path"></component>
@@ -29,11 +29,15 @@ export default defineComponent({
     // NavbarMenu,
   },
   setup() {
+    function onScroll() {
+      clickBody();
+    }
     const layout = useLayoutStore();
     const route = useRoute();
     const clickBody = () => {
       layout.statusMenu("");
     };
+
     onMounted(() => {
       route.name == "home"
         ? ((layout.className = "bg-all"), (layout.bgDrawer = "bg-draw"))
@@ -41,6 +45,7 @@ export default defineComponent({
           (layout.bgDrawer = "bg-simulator-draw"));
     });
     return {
+      onScroll,
       clickBody,
       layout,
       route,
@@ -51,7 +56,7 @@ export default defineComponent({
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2s;
+  transition: opacity 1s;
 }
 
 .fade-enter,
