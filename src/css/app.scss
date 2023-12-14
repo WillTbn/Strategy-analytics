@@ -7,6 +7,10 @@
   font-family: Lato;
   src: url(./Lato-Regular.ttf);
 }
+@font-face {
+  font-family: inter;
+  src: url(./Inter-Regular.ttf);
+}
 .transparant-bg {
   background: transparent !important;
 }
@@ -99,6 +103,10 @@ body {
   font-weight: 300;
   font-size: 36px;
   line-height: 43.2px;
+}
+.f-inter {
+  font-family: Inter;
+  font-style: normal;
 }
 
 .q-field__native,

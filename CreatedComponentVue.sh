@@ -21,11 +21,14 @@ else
   # lay="src/layouts"
   # pag="src/pages"
 
-  echo "|---------------------------------------|"
-  echo "|  →  0 - components (src/components)   |"
-  echo "|  →  1 - layouts (src/layouts)         |"
-  echo "|  →  2 - pages (src/pages)             |"
-  echo "|---------------------------------------|"
+  echo "|--------------------------------------------------------------|"
+  echo "|       →  0 - components (src/components)                     |"
+  echo "|       →  1 - layouts (src/layouts)                           |"
+  echo "|       →  2 - pages (src/pages)                               |"
+  echo "|       →  3 - sistema components (src/system/components)      |"
+  echo "|       →  4 - sistema layouts (src/system/layouts)            |"
+  echo "|       →  5 - sistema pages (src/system/pages)                |"
+  echo "|--------------------------------------------------------------|"
   echo "Digite qual:"
   read a_input
   while [ -n  "$a_input" ]
@@ -34,6 +37,9 @@ else
           0) diretorio="src/components/";;
           1) diretorio="src/layouts/";;
           2) diretorio="src/pages/";;
+          3) diretorio="src/system/components/";;
+          4) diretorio="src/system/layouts/";;
+          5) diretorio="src/system/pages/";;
           *) opc="EXCEPTION";
           echo "Não temos suporte para ${a_input}  ${opc}";;
       esac

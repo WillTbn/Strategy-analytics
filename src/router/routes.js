@@ -63,7 +63,23 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../system/layouts/LoginPage.vue"),
+    component: () => import("../system/pages/LoginPage.vue"),
+  },
+  {
+    path: "/system/",
+    component: () => import("../system/layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        name: "dashboard",
+        component: () => import("../system/pages/DashboardPage.vue"),
+      },
+      {
+        path: "config",
+        name: "config",
+        component: () => import("../system/pages/ConfigPage.vue"),
+      },
+    ],
   },
 
   // Always leave this as last one,

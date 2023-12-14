@@ -6,7 +6,6 @@
       class="text-white justify-between items-center desktop-only touch-hide border-b"
       align="justify"
       narrow-indicator
-      shrink
     >
       <!-- indicator-color="white" -->
       <!-- narrow-indicator -->
@@ -116,6 +115,7 @@
         </q-item>
       </q-tab-panel>
     </q-tab-panels>
+
     <!-- mobile -->
     <div class="row justify-between q-mt-lg touch-only border-b">
       <LogoComplet col="col-4 q-ml-xl" />
