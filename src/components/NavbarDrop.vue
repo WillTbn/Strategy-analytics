@@ -85,34 +85,102 @@
             </li>
           </ul>
         </li>
-
-        <!-- <li class="c-dropdown__item" @mouseover="activeMenu(1)">
-          <span class="c-dropdown__item-title" :class="{ active: tab == 1 }"
-            >Melhores animes</span
-          >
-
-          <ul class="c-dropdown__submenu">
-            <li class="c-dropdown__submenu-item">
-              <a href="#" class="c-dropdown__submenu-link"
-                >Shingeki no Kyojin</a
-              >
-            </li>
-
-            <li class="c-dropdown__submenu-item">
-              <a href="#" class="c-dropdown__submenu-link">Bleach</a>
-            </li>
-
-            <li class="c-dropdown__submenu-item">
-              <a href="#" class="c-dropdown__submenu-link">Saint Seiya</a>
-            </li>
-          </ul>
-        </li> -->
       </ul>
 
       <div class="col-2 q-mx-lg q-px-xl q-py-sm">
         <insert-person />
       </div>
+      <!-- mobile -->
     </div>
+    <div class="row justify-between q-mt-lg touch-only border-b">
+      <LogoComplet col="col-4 q-ml-xl" />
+
+      <div class="col-1 q-mr-sm">
+        <q-btn
+          dense
+          flat
+          round
+          icon="menu"
+          @click="toggleRightDrawer"
+          class="zindex-control"
+        />
+      </div>
+    </div>
+    <q-drawer
+      v-model="rightDrawerOpen"
+      side="right"
+      overlay
+      behavior="mobile"
+      elevated
+      class="text-white"
+      :class="classBg.bgDrawer"
+    >
+      <div class="row justify-end">
+        <div class="col-2 q-mt-lg" @click="toggleRightDrawer">
+          <q-icon name="close" size="lg" />
+        </div>
+      </div>
+
+      <q-list padding class="control-qList">
+        <!-- <q-item-label header>Produtos</q-item-label> -->
+        <q-item
+          v-for="(productsLink, i) in listProducts"
+          :key="productsLink"
+          :to="productsLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+        >
+          <q-item-label header v-if="i > 0" class="text-white">{{
+            productsLink.content
+          }}</q-item-label>
+          <q-item-section v-else>
+            {{ productsLink.content }}
+          </q-item-section>
+        </q-item>
+        <!-- <q-item-label header>Quem somos</q-item-label> -->
+        <q-item
+          v-for="(whoLink, i) in listWho"
+          :key="whoLink"
+          :to="whoLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+        >
+          <q-item-label header v-if="i > 0" class="text-white">{{
+            whoLink.content
+          }}</q-item-label>
+          <q-item-section v-else>
+            {{ whoLink.content }}
+          </q-item-section>
+        </q-item>
+        <!-- <q-item-label header>Strategias</q-item-label> -->
+        <q-item
+          v-for="(strategyLink, i) in listStrategy"
+          :key="strategyLink"
+          :to="strategyLink.route"
+          exact
+          dense
+          clickable
+          manual-focus
+        >
+          <q-item-label header v-if="i > 0" class="text-white">{{
+            strategyLink.content
+          }}</q-item-label>
+          <q-item-section v-else>
+            {{ strategyLink.content }}
+          </q-item-section>
+        </q-item>
+      </q-list>
+
+      <div class="row justify-center">
+        <div class="col-6">
+          <insert-person />
+        </div>
+      </div>
+    </q-drawer>
   </q-header>
 </template>
 
@@ -131,6 +199,7 @@ export default defineComponent({
     const layout = useLayoutStore();
     const { menuHeader } = storeToRefs(layout);
     const tab = ref(menuHeader);
+    const rightDrawerOpen = ref(false);
     const startMenu = (index) => {
       tab.value = index;
       statusDrop.value = true;
@@ -225,6 +294,11 @@ export default defineComponent({
       listWho,
       listStrategy,
       tab,
+      classBg: useLayoutStore(),
+      rightDrawerOpen,
+      toggleRightDrawer() {
+        rightDrawerOpen.value = !rightDrawerOpen.value;
+      },
     };
   },
   // Outras configurações do componente aqui
