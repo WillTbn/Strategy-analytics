@@ -8,9 +8,11 @@
       :src="imgService"
       :srcset="imgService"
       :alt="title"
-      width="15rem"
-      height="18em"
       class="q-mb-lg"
+      width="16rem"
+      height="20em"
+      :ratio="4 / 3"
+      fit="scale-down"
     />
     <br />
     <span class="text-h5 q-my-lg text-weight-bold"> {{ title }} </span>

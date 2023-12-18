@@ -5,18 +5,40 @@
         <p class="text-h5" style="width: 271px">Rentabilidade</p>
       </div>
     </div>
-    <!-- <div class="row"> -->
+    <q-tabs v-model="tab" class="text-white bg-dark" align="start">
+      <q-tab no-caps name="annual" label="Anual" />
+      <q-separator dark vertical />
+      <q-tab no-caps name="media" label="Média Anual" />
+      <q-separator dark vertical />
+      <q-tab no-caps name="accrued" label="Acumulado" />
+      <q-separator dark vertical />
+      <q-tab no-caps name="calendar" label="Calendário" />
+    </q-tabs>
+    <q-tab-panels
+      v-model="tab"
+      animated
+      class="shadow-2 rounded-borders bg-transparent"
+    >
+      <q-tab-panel name="annual">
+        <tableannual-layout></tableannual-layout>
+      </q-tab-panel>
 
-    <!-- </div> -->
-    <!-- <div class="row q-mt-xl q-pt-xl">
-      <div class="text-header col-2 self-center">
-        <p class="bg-primary">Anual</p>
-      </div>
-      <div class="q-pl-sm text-header col-3 self-start">Média Anual</div>
-      <div class="q-pl-sm text-header-b col-2">Acumulado</div>
-      <div class="q-pl-sm text-header col-3">Ano calendário</div>
-    </div> -->
-    <!-- </div> -->
+      <q-tab-panel name="media">
+        <div class="text-h6">Alarms</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+
+      <q-tab-panel name="accrued">
+        <div class="text-h6">Movies</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+      <q-tab-panel name="calendar">
+        <div class="text-h6">Movies</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+    </q-tab-panels>
+
+    <!--
     <div
       class="row q-py-lg q-my-lg"
       v-for="(row, i) in rows"
@@ -59,72 +81,21 @@
         </span>
       </div>
     </div>
-  </div>
-  <!-- <q-table
-      title="Treats"
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      class="touch-only"
-    /> -->
+  --></div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import TableannualLayout from "../layouts/TableannualLayout.vue";
 // import TitleSecondary from "./TitleSecondary.vue";
 
 export default defineComponent({
   name: "ProfitabilyTable",
-  components: {},
+  components: { TableannualLayout },
   setup() {
-    const columns = [
-      {
-        name: "name",
-        required: true,
-        label: "Anual Media",
-        align: "left",
-        field: (row) => row.name,
-        format: (val) => `${val}`,
-        sortable: true,
-      },
-      {
-        name: "acumulado",
-        align: "center",
-        label: "Acumulado",
-        field: "acumulado",
-        sortable: true,
-      },
-      { name: "ano", label: "Ano", field: "ano", sortable: true },
-      { name: "calendario", label: "Calendário", field: "calendario" },
-    ];
+    const tab = ref("annual");
 
-    const rows = [
-      {
-        name: "Anual Média Anual",
-        acumulado: "Acumulado",
-        ano: "Ano",
-        calendario: "Calendário",
-      },
-      {
-        name: "",
-        acumulado: "30/11/2021 Até 30/11/2022",
-        ano: "30/11/2021 Até 30/11/2022",
-        calendario: "30/11/2022 Até 30/11/2023",
-      },
-      {
-        name: "Retorno total (%) a 30 de set 2023",
-        acumulado: "56,30",
-        ano: "34,23",
-        calendario: "38,43",
-      },
-      {
-        name: "Índice de referência (%) a 30 set 2023",
-        acumulado: "57,29",
-        ano: "35,43",
-        calendario: "39,29",
-      },
-    ];
-    return { columns, rows };
+    return { tab };
   },
   // Outras configurações do componente aqui
 });
