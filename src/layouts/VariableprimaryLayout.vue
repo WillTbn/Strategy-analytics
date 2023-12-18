@@ -1,6 +1,6 @@
 <template>
-  <div class="VariableprimaryLayout justify-md-around q-ma-lg q-pa-lg row">
-    <div class="col-11 q-my-lg">
+  <div class="VariableprimaryLayout justify-center q-ma-lg q-pa-lg row">
+    <div class="col-9 q-my-lg">
       <p>{{ title }}</p>
       <q-avatar
         square
@@ -12,7 +12,7 @@
         {{ sigla }}
       </q-avatar>
     </div>
-
+    <div class="flex-break col-12"></div>
     <div class="col-md-3 col-sm-12 q-my-lg">
       <p class="">Preço unitário</p>
       <p class="text-method">BRL {{ price }}</p>
@@ -30,7 +30,8 @@
         <q-icon name="fa-solid fa-chevron-up" color="green" /> {{ distri }}
       </p>
     </div>
-    <div class="col-11 q-my-lg">
+    <div class="flex-break col-12"></div>
+    <div class="col-9 q-my-lg">
       <p class="">De acordo com o prospecto atual</p>
       <p class="text-method">Taxa de adm. {{ taxa }}</p>
     </div>

@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@egjs/vue3-flicking": "^4.11.1",
+    "@popperjs/core": "^2.11.8",
     "@quasar/extras": "^1.16.4",
     "axios": "^1.2.1",
+    "bootstrap": "^5.3.2",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
     "swiper": "^11.0.5",

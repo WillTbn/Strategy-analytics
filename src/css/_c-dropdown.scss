@@ -1,0 +1,80 @@
+@import "./quasar.variables.scss";
+$component-name: "c-dropdown";
+$color-white: #fff;
+
+.#{$component-name} {
+  display: flex;
+  // justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  // border-bottom: solid 3px;
+  //   transition: all 333ms ease-out;
+  // c-dropdown__item-title
+
+  &__item {
+    color: $color-white;
+    margin: 0 10;
+    position: relative;
+
+    // &:has(.active) {
+    &:hover {
+      // border-bottom: solid 3px;
+      // transition: all 555ms ease-in;
+      .#{$component-name}__submenu {
+        opacity: 1;
+        transform: rotateX(0) translateX(-50%);
+        transition-timing-function: ease-out;
+      }
+    }
+
+    &-title {
+      display: inline-flex;
+      pointer-events: none;
+    }
+  }
+
+  &__link {
+    color: $color-white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__submenu {
+    background: $dark;
+    /* border-radius: 16px; */
+    list-style: none;
+    margin: 0;
+    opacity: 0.25;
+    padding: 2rem;
+    position: fixed;
+    // top: calc(100% + 25px);
+    top: 70px;
+    transform-origin: top center;
+    transform: translateX(-50%) rotateX(-90deg);
+    transition: all 1s 550ms ease-in;
+    width: 100%;
+    left: 50%;
+
+    // arrow
+
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &-link {
+      color: $color-white;
+      display: inline-block;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

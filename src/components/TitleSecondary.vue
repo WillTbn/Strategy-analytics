@@ -1,5 +1,5 @@
 <template>
-  <div class="TitleSecondary">
+  <div class="heiding">
     {{ text }}
   </div>
 </template>

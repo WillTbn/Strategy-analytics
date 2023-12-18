@@ -16,7 +16,7 @@
   </div>
   <div class="row justify-center q-mb-xl">
     <div class="col-md-6 col-sm-8">
-      <p class="text-h8">
+      <p class="text-h16">
         O desempenho passado não é indicação do desempenho futuro e não deve ser
         o único fator em consideração ao selecionar um produto.
       </p>

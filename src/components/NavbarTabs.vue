@@ -329,8 +329,6 @@ export default defineComponent({
   content: "";
   width: 0rem;
   height: 0px;
-  /* scale: 0.9; */
-  /* transition: height 3s cubic-bezier(1, 0.02, 1, 1.31); */
   transition-property: width, height;
   transition-duration: 1s;
   background: #fff;
@@ -341,18 +339,7 @@ export default defineComponent({
   height: 2px;
   background: #fff;
   scale: 1;
-  /* text-decoration: underline; */
-  /* border-bottom: solid 3px #4694d1; */
 }
-/* .desc::before {
-  content: "";
-  width: 12rem;
-  height: 10px;
-  background: #fff;
-  position: fixed;
-  margin-top: -4.2rem;
-  z-index: 200;
-} */
 .indicator {
   position: fixed;
   width: 20px;
@@ -370,7 +357,6 @@ export default defineComponent({
   border-bottom: solid 3px #4694d1;
 }
 .navbar-tabs-panels {
-  /* border-bottom: 2px solid var(--BLUE, #0085ff); */
   background: linear-gradient(
     91deg,
     rgba(0, 0, 0, 0.8) 0%,

@@ -5,10 +5,11 @@
     class="bg-all"
     :class="{ 'bg-simulator': route.name == 'simulator' }"
   >
-    <navbar-tabs />
+    <!-- <navbar-tabs /> -->
     <!-- <navbar-header /> -->
     <!-- <navbar-menu /> -->
-    <q-page-container padding @click.prevent="clickBody()" v-scroll="onScroll">
+    <navbar-drop />
+    <q-page-container padding>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.path"></component>
@@ -22,15 +23,17 @@
 import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 // import NavbarHeader from "../components/NavbarHeader.vue";
-import NavbarTabs from "../components/NavbarTabs.vue";
+// import NavbarTabs from "../components/NavbarTabs.vue";
 
 import { useLayoutStore } from "../stores/layout";
+import NavbarDrop from "../components/NavbarDrop.vue";
 // import NavbarMenu from "../components/NavbarMenu.vue";
 export default defineComponent({
   components: {
     // NavbarHeader,
-    NavbarTabs,
     // NavbarMenu,
+    // NavbarTabs,
+    NavbarDrop,
   },
   setup() {
     function onScroll() {
@@ -39,7 +42,7 @@ export default defineComponent({
     const layout = useLayoutStore();
     const route = useRoute();
     const clickBody = () => {
-      layout.statusMenu("");
+      layout.removeMenu("");
     };
 
     onMounted(() => {

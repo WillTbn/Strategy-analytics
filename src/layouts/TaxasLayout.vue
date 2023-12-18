@@ -1,11 +1,16 @@
 <template>
   <div class="TaxasLayout q-ma-xl">
-    <div class="row q-py-lg q-mt-xl q-mb-xl">
-      <div class="col-md-8 col-sm-12">
+    <div class="row q-py-lg text-center">
+      <div class="col-md-12 col-sm-12">
         <title-secondary text="Taxas" />
       </div>
-      <div class="col-md-8 col-sm-12 q-pt-xl">
-        <p>Taxa de administração 0,40%</p>
+    </div>
+    <div class="row justify-center q-mb-xl q-mb-xl text-center">
+      <div class="col-md-4 col-sm-4 q-pt-xl">
+        <p class="text-16">Taxa de administração</p>
+      </div>
+      <div class="col-md-4 col-sm-4 q-pt-xl">
+        <p class="text-16">0,40%</p>
       </div>
     </div>
   </div>

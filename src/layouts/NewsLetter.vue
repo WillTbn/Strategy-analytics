@@ -29,7 +29,15 @@
         />
       </div>
 
-      <div class="flex-break col-12"></div>
+      <div class="col-12 col-lg-3 col-sm-12">
+        <span>Email: *</span>
+        <q-input
+          outlined
+          v-model="newsletter.email"
+          bg-color="secondary"
+          dense
+        />
+      </div>
 
       <div class="col-12 col-lg-3 col-sm-12 text-white">
         <span>categoria de investidor: *</span>
@@ -138,6 +146,7 @@ export default defineComponent({
       office: "",
       state: "",
       country: "",
+      email: "",
     });
     const optionsOffice = ["Google", "Facebook", "Twitter", "Apple", "Oracle"];
     const optionsCountry = ["Brasil", "Argentina", "Inglaterra", "USA"];

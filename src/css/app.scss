@@ -1,4 +1,5 @@
 // app global css in SCSS form
+@import "_c-dropdown.scss";
 @font-face {
   font-family: instokWeb;
   src: url(./IstokWeb-Regular.ttf);
@@ -22,6 +23,18 @@
   font-weight: 400;
   line-height: 102.945%;
   flex-shrink: 0;
+}
+.text-16 {
+  font-size: 16px;
+  line-height: 24px;
+}
+.text-header {
+  font-size: 40px;
+  line-height: 48px;
+  max-width: 740px;
+}
+.heiding {
+  font: 32px/40px instokWeb, Arial, sans-serif;
 }
 body {
   overflow-x: hidden;
