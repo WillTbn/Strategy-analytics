@@ -25,6 +25,13 @@
     <news-letter />
     <!-- <subscribers-layout /> -->
     <!-- <div class="empty" style="min-height: 12000px"></div> -->
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn fab icon="keyboard_arrow_up" color="secondary" />
+    </q-page-scroller>
   </q-page>
 </template>
 
