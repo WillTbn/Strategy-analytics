@@ -11,8 +11,8 @@
       <p class="text-h6 text-weight-bolder q-pt-xl">Quem somos</p>
     </div>
   </div>
+  <!-- contentClass="borderless" -->
   <q-tabs
-    contentClass="borderless"
     v-model="tab"
     dense
     no-caps
@@ -20,11 +20,17 @@
     active-color="text-white"
     active-bg-color="dark"
     align="left"
-    indicator-color="transparent"
-    right-icon="arrow_right"
+    inline-label
   >
-    <q-tab name="teamlocal" label="Nossa equipe local" />
-    <q-tab name="teamregional" label="Nossa equipe regional" />
+    <!-- :breakpoint="breakp" -->
+    <q-tab name="teamlocal" icon="chevron_right" label="Nossa equipe local" />
+    <q-tab
+      name="teamregional"
+      label="Nossa equipe regional"
+      icon="chevron_right"
+      stretch
+      flat
+    />
   </q-tabs>
   <q-tab-panels
     v-model="tab"
@@ -39,12 +45,6 @@
     <q-tab-panel name="teamregional" class="detailsContent">
       <regional-team-layout></regional-team-layout>
     </q-tab-panel>
-    <!-- <q-tab-panel name="0" class="detailsContent" bg-color="dark">
-      {{ tabsDetails[0][0].name }}
-    </q-tab-panel> -->
-    <!-- <q-tab-panel :name="tab" class="detailsContent" bg-color="dark">
-      {{ tabsDetails[tab][0].name }}
-    </q-tab-panel> -->
   </q-tab-panels>
 </template>
 <script>
@@ -122,6 +122,7 @@ export default defineComponent({
       tab: ref("teamlocal"),
       teamLocal,
       teamRegional,
+      breakp: ref(1500),
     };
   },
 });

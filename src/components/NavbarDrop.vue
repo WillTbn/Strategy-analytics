@@ -25,7 +25,7 @@
                 v-for="(productsLink, i) in listProducts"
                 :key="i"
                 class="c-dropdown__submenu-item col-12 items-center"
-                style="padding-left: 29.4rem"
+                :class="productsLink.className"
               >
                 <div class="" v-if="productsLink.route">
                   <router-link
@@ -50,7 +50,7 @@
                 v-for="(list, i) in listWho"
                 :key="i"
                 class="c-dropdown__submenu-item col-12 items-center"
-                style="padding-left: 39.4rem"
+                :class="list.className"
               >
                 <div class="" v-if="list.route">
                   <router-link
@@ -64,26 +64,28 @@
               </li>
             </ul>
           </q-slide-transition>
-          <ul class="c-dropdown__submenu row justify-center" v-show="tab === 2">
-            <li
-              v-for="(strategyLink, i) in listStrategy"
-              :key="i"
-              class="c-dropdown__submenu-item col-12 items-center"
-              style="padding-left: 51rem"
-            >
-              <div class="" v-if="strategyLink.route">
-                <router-link
-                  :to="strategyLink.route"
-                  class="c-dropdown__submenu-link"
-                >
+          <q-slide-transition>
+            <ul class="c-dropdown__submenu row" v-show="tab === 2">
+              <li
+                v-for="(strategyLink, i) in listStrategy"
+                :key="i"
+                class="c-dropdown__submenu-item col-12"
+                :class="strategyLink.className"
+              >
+                <div class="" v-if="strategyLink.route">
+                  <router-link
+                    :to="strategyLink.route"
+                    class="c-dropdown__submenu-link"
+                  >
+                    {{ strategyLink.content }}
+                  </router-link>
+                </div>
+                <p v-else class="text-weight-bolder">
                   {{ strategyLink.content }}
-                </router-link>
-              </div>
-              <p v-else class="text-weight-bolder">
-                {{ strategyLink.content }}
-              </p>
-            </li>
-          </ul>
+                </p>
+              </li>
+            </ul>
+          </q-slide-transition>
         </li>
       </ul>
 
@@ -227,60 +229,63 @@ export default defineComponent({
     const listProducts = [
       {
         content: "Encontrar produtos",
-        className: "text-weight-bold col-12 desc",
+        className: "text-weight-bold col-12 desc products",
       },
       {
         content: "Expansão de patrimonio",
-        className: "col-12 text-h6 link-strategy",
+        className: "products",
         route: "/rendavariavel",
       },
       {
         content: "Fundo de aposentadoria",
-        className: "col-12 text-h6 link-strategy",
+        className: "products",
         route: "/rendafixa",
       },
       {
         content: "Fundo de liquidez elevada",
-        className: "col-12 text-h6 link-strategy",
+        className: "products",
         route: "/rendaflexivel",
       },
     ];
     const listWho = [
       {
         content: "Sobre a Strategy Analytics",
-        className: "text-weight-bold desc col-3",
+        className: "text-weight-bold desc col-3 listwho",
       },
       {
         content: "Quem somos",
-        className: "col-3 text-h6 link-strategy",
+        className: "listwho",
         route: "quemsomos",
       },
       {
         content: "Nossa equipe",
-        className: "col-3 text-h6 link-strategy",
+        className: "listwho",
         route: "nossaequipe",
       },
       {
         content: "Gestão de investimento",
-        className: "col-3 text-h6 link-strategy",
+        className: "listwho",
         route: "investimentos",
       },
     ];
     const listStrategy = [
-      { content: "Estratégias", className: "text-weight-bold desc col-3" },
+      {
+        content: "Estratégias",
+        className: "text-weight-bold desc col-3 strategy",
+      },
       {
         content: "Quadarivium",
-        className: "col-3 text-h6 link-strategy",
+        className: "strategy",
         route: "quadrivium",
       },
       {
         content: "Login",
-        className: "col-3 text-h6 link-strategy",
+        className: "strategy",
         route: "/login",
       },
       {
         content: "Simulado",
-        className: "col-3 text-h6 link-strategy",
+        className: "strategy",
         route: "/simulator",
       },
     ];
@@ -357,14 +362,46 @@ export default defineComponent({
   transition-duration: 555ms;
   background: #fff;
 }
-.link-strategy:hover::after {
+.link-strategy:not(:first-child):hover::after {
   content: "";
-  width: 60%;
+  margin-left: 1rem;
+  width: 30%;
   height: 3px;
   background: #fff;
   scale: 1;
 
   /* text-decoration: underline; */
   /* border-bottom: solid 3px #4694d1; */
+}
+.link-strategy:where(:first-child):hover::after {
+  content: "";
+  margin-left: 0.5rem;
+  width: 30%;
+  height: 3px;
+  background: #fff;
+  scale: 1;
+
+  /* text-decoration: underline; */
+  /* border-bottom: solid 3px #4694d1; */
+}
+.products {
+  padding-left: 36%;
+}
+.listwho {
+  padding-left: 45%;
+}
+.strategy {
+  padding-left: 56%;
+}
+@media (max-width: 1520px) {
+  .products {
+    padding-left: 34%;
+  }
+  .listwho {
+    padding-left: 46%;
+  }
+  .strategy {
+    padding-left: 60%;
+  }
 }
 </style>

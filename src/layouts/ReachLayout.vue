@@ -3,7 +3,7 @@
     <div class="col-md-8 col-sm-12 q-my-xl">
       <q-img :ratio="4 / 3" src="img/map-global.png" fit="scale-down" />
     </div>
-    <div class="col-8 q-my-xl self-center">
+    <div class="col-lg-9 col-sm-10 q-my-xl text-left">
       <p class="title-reach">Alcance global com experiência local</p>
       <p class="text-reach">
         Estamos comprometidos com a transparência em nossas atividades de gestão
@@ -14,22 +14,18 @@
     </div>
     <div class="col-12"></div>
     <div
-      class="col-md-3 col-sm-12 q-my-lg"
+      class="col-md-3 col-sm-10 q-my-lg"
       v-for="button in reachButton"
       :key="button"
     >
       <button-primary :textLabel="button.text"></button-primary>
     </div>
-    <div class="col-9 q-my-xl q-py-xl">
-      <q-list>
-        <q-item v-for="item in reachList" :key="item">
-          <q-item-section>
-            <q-item-label class="text-list q-my-lg">{{
-              item.text
-            }}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+    <div class="col-lg-9 col-sm-10 q-my-xl q-py-xl">
+      <ul>
+        <li v-for="item in reachList" :key="item" class="text-list">
+          {{ item.text }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -72,7 +68,6 @@ export default defineComponent({
   line-height: 100%; /* 50px */
 }
 .text-reach {
-  width: 770px;
   height: 94px;
   flex-shrink: 0;
   color: #fff;
@@ -80,6 +75,10 @@ export default defineComponent({
   font-style: normal;
   font-weight: 400;
   line-height: 102.945%; /* 23.677px */
+}
+ul {
+  list-style: none;
+  padding: 10px 0;
 }
 .text-list {
   width: 525px;
@@ -89,6 +88,7 @@ export default defineComponent({
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
+  padding: 40px 0;
   line-height: 100%; /* 32px */
 }
 

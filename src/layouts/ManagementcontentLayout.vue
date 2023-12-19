@@ -1,7 +1,7 @@
 <template>
-  <div class="row justify-md-center q-ma-xl">
+  <div class="row justify-center q-ma-xl">
     <div
-      class="col-md-5 col-sm-12 q-ml-md-xl q-my-xl"
+      class="col-md-5 col-sm-12 q-ml-md-xl control-py"
       v-for="list in listItems"
       :key="list"
     >

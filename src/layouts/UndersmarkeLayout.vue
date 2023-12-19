@@ -1,6 +1,6 @@
 <template>
-  <div class="UndersmarkeLayout q-my-lg text-white">
-    <div class="row justify-center text-center q-py-lg">
+  <div class="UndersmarkeLayout text-white">
+    <div class="row justify-center text-center q-pb-lg">
       <div class="col-md-8 col-sm-12">
         <title-secondary
           text="Entenda um pouco mais sobre nossa metodologia "

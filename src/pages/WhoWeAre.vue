@@ -1,7 +1,7 @@
 <template>
   <q-page class="text-white control-bg items-center">
     <header-layout class="main" :reverse="false">
-      <div class="col-md-5 col-sm-4 q-ml-lg text-left">
+      <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Quem somos"
           textClass="text-negative"

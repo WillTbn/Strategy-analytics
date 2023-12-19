@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center border-blue">
+  <div class="row justify-center border-blue control-py">
     <div class="col-lg-10 col-12">
       <title-subtitle
         class="q-mx-xl"

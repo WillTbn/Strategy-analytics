@@ -22,21 +22,27 @@
     :classAdd="are.className"
   >
     <div class="col-2 col-md-3">
-      <span class="text-h6 text-weight-bolder">{{ are.title }}</span
+      <title-subtitle
+        :textTitle="are.title"
+        :textDescription="are.description"
+      />
+
+      <!-- <span class="text-h6 text-weight-bolder">{{ are.title }}</span
       ><br />
-      <span class="text-subtitle2">{{ are.description }}</span>
+      <span class="text-subtitle2">{{ are.description }}</span> -->
     </div>
   </text-image>
   <!-- </div> -->
 </template>
 <script>
+import TitleSubtitle from "../components/TitleSubtitle.vue";
 import { defineComponent, ref } from "vue";
 import ServicesGestao from "../components/ServicesGestao.vue";
 import TextImage from "../components/TextImage.vue";
 
 export default defineComponent({
   name: "WhoweareLayout",
-  components: { ServicesGestao, TextImage },
+  components: { ServicesGestao, TextImage, TitleSubtitle },
   setup() {
     const products = [
       {

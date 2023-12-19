@@ -32,16 +32,12 @@ export default defineComponent({
         title: "Gerenciamento de Risco",
         img: "img/gerenciamento.png",
         description: "Diversificação e consolidação de patrimônio.",
-        animate: "animate__animated",
-        slide: "animate__slideInLeft",
         jscontrol: "js-left",
       },
       {
         title: "Diluição de Custos",
         img: "img/diluicao-custo.png",
         description: "Taxas de administração e de performance mínimas.",
-        animate: "animate__animated",
-        slide: "animate__slideInUp",
         jscontrol: "js-center",
       },
       {
@@ -49,8 +45,6 @@ export default defineComponent({
         img: "img/gestao.png",
         description:
           "Profissionais entregando rentabilidades acima do mercado, focando sempre em menos risco e mais retorno.",
-        animate: "animate__animated",
-        slide: "animate__slideInRight",
         jscontrol: "js-right",
       },
     ];

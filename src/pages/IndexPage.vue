@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white" style="min-height: 2160px" padding>
-    <header-layout class="main" :reverse="false">
+    <header-layout class="main control-mb" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
           textTop="perspectivas para 2° metade do ano de 2023"
@@ -20,7 +20,7 @@
         />
       </div>
     </header-layout>
-    <weoffer-layout class="q-mt-xl" />
+    <weoffer-layout />
     <panorama-layout />
     <news-letter />
     <!-- <subscribers-layout /> -->

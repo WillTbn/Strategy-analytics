@@ -11,7 +11,7 @@
     </article-primary>
 
     <marketrisk-layout />
-    <methodology-layout />
+    <methodology-layout class="text-white" />
   </div>
 </template>
 

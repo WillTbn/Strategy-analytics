@@ -137,20 +137,22 @@ body {
 .js-center {
   opacity: 0;
   transform: translate3d(0, 100px, 0);
-  transition: 2s;
+  transition: 555ms;
 }
 .js-center-2 {
   opacity: 0;
   transform: translate3d(0, 20px, 0);
-  transition: 2s;
+  transition: 555ms;
 }
 .js-right {
+  opacity: 0;
   transform: translate3d(400px, 0, 0);
-  transition: 2s;
+  transition: 555ms;
 }
 .js-left {
+  opacity: 0;
   transform: translate3d(-500px, 0, 0);
-  transition: 2s;
+  transition: 555ms;
 }
 .js-ativo {
   opacity: 1;
@@ -168,7 +170,13 @@ ellipsis {
   color: #fff;
 }
 .control-py {
-  padding-block: 8rem;
+  padding-block: 6rem;
+}
+.control-mb {
+  margin-bottom: 4rem;
+}
+.control-mt {
+  margin-top: 4rem;
 }
 .borderless {
   border: solid 1px #ffffffa1;

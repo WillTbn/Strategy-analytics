@@ -5,8 +5,8 @@
         <title-secondary text="Literatura" />
       </div>
     </div>
-    <div class="row justify-md-center q-py-lg q-my-xl">
-      <div class="col-md-6 col-sm-12" v-for="list in lists" :key="list">
+    <div class="row justify-center control-py">
+      <div class="col-md-5 col-sm-12" v-for="list in lists" :key="list">
         <q-chip class="bg-transparent text-white control-font" square>
           <!-- <q-avatar>
             <img src="img/leitura.png" />

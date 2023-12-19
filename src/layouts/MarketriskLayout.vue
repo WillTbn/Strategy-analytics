@@ -1,6 +1,6 @@
 <template>
   <div class="MarketriskLayout q-my-lg">
-    <div class="row justify-center text-center q-py-lg">
+    <div class="row justify-center text-center text-white q-py-lg">
       <div class="col-md-8 col-sm-10">
         <title-secondary
           text="Pense na abordagem como um barômetro de risco do mercado"
