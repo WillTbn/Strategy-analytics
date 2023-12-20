@@ -5,7 +5,7 @@
         <title-secondary text="Literatura" />
       </div>
     </div>
-    <div class="row justify-center control-py">
+    <div class="row control-py">
       <div class="col-md-5 col-sm-12" v-for="list in lists" :key="list">
         <q-chip class="bg-transparent text-white control-font" square>
           <!-- <q-avatar>
@@ -86,7 +86,8 @@ export default defineComponent({
 }
 @media (max-width: 768px) {
   .control-font {
-    font-size: 12px;
+    padding-block: 1rem;
+    font-size: 0.65rem;
   }
 }
 </style>

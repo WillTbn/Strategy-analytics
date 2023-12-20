@@ -3,6 +3,7 @@
     <!-- Seu conteúdo HTML aqui -->
     <variableprimary-layout
       title="Renda variável"
+      primaryTitle="Expansão de Patrimônio"
       sigla="APF30"
       price="300.000"
       current=" +1,41 (+1,78%)"
@@ -25,6 +26,13 @@
     <taxas-layout />
     <readings-layout />
     <news-letter />
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn fab icon="keyboard_arrow_up" color="secondary" />
+    </q-page-scroller>
   </div>
 </template>
 

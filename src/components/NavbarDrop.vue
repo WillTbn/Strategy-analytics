@@ -137,7 +137,7 @@
           <q-item-label header v-if="i > 0" class="text-white">{{
             productsLink.content
           }}</q-item-label>
-          <q-item-section v-else>
+          <q-item-section class="text-weight-bolder" v-else>
             {{ productsLink.content }}
           </q-item-section>
         </q-item>
@@ -154,7 +154,7 @@
           <q-item-label header v-if="i > 0" class="text-white">{{
             whoLink.content
           }}</q-item-label>
-          <q-item-section v-else>
+          <q-item-section class="text-weight-bolder" v-else>
             {{ whoLink.content }}
           </q-item-section>
         </q-item>
@@ -171,14 +171,14 @@
           <q-item-label header v-if="i > 0" class="text-white">{{
             strategyLink.content
           }}</q-item-label>
-          <q-item-section v-else>
+          <q-item-section class="text-weight-bolder" v-else>
             {{ strategyLink.content }}
           </q-item-section>
         </q-item>
       </q-list>
 
-      <div class="row justify-center">
-        <div class="col-6">
+      <div class="row justify-center q-mt-lg">
+        <div class="col-7">
           <insert-person />
         </div>
       </div>

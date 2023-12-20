@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div class="row justify-center q-mb-xl">
+  <div class="row justify-center q-mb-xl padding-i-mobile">
     <div class="col-md-6 col-sm-8">
       <p class="text-h16">
         O desempenho passado não é indicação do desempenho futuro e não deve ser

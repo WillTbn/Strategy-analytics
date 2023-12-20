@@ -1,18 +1,14 @@
 <template>
-  <!-- <q-layout view="hHh lpR fFf" :class="layout.className"> -->
   <q-layout
     view="hHr lpR fFr"
     class="bg-all"
     :class="{ 'bg-simulator': route.name == 'simulator' }"
   >
-    <!-- <navbar-tabs /> -->
-    <!-- <navbar-header /> -->
-    <!-- <navbar-menu /> -->
     <navbar-drop />
     <q-page-container padding>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
-          <component :is="Component" :key="route.path"></component>
+          <component :is="Component" :key="route.name"></component>
         </transition>
       </router-view>
     </q-page-container>
@@ -22,17 +18,11 @@
 <script>
 import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-// import NavbarHeader from "../components/NavbarHeader.vue";
-// import NavbarTabs from "../components/NavbarTabs.vue";
 
 import { useLayoutStore } from "../stores/layout";
 import NavbarDrop from "../components/NavbarDrop.vue";
-// import NavbarMenu from "../components/NavbarMenu.vue";
 export default defineComponent({
   components: {
-    // NavbarHeader,
-    // NavbarMenu,
-    // NavbarTabs,
     NavbarDrop,
   },
   setup() {

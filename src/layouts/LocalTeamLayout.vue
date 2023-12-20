@@ -8,17 +8,16 @@
     :image="item.avatar"
     :office="item.office"
   />
-  <div class="row">
-    <detail-user-secondary
-      v-for="item in secondaryUsers"
-      :key="item"
-      class="col-md-6 col-sm-12"
-      :title="item.name"
-      :description="item.history"
-      :image="item.avatar"
-      :office="item.office"
-    />
-  </div>
+
+  <detail-user-secondary
+    v-for="item in secondaryUsers"
+    :key="item"
+    class="col-md-6 col-sm-12"
+    :title="item.name"
+    :description="item.history"
+    :image="item.avatar"
+    :office="item.office"
+  />
 </template>
 <script>
 import { defineComponent } from "vue";

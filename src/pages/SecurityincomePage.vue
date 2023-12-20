@@ -3,6 +3,8 @@
     <!-- Seu conteúdo HTML aqui -->
     <variableprimary-layout
       title="Renda fixa"
+      primaryTitle="Previdência Futura"
+      secondTitle="Fundo de índice"
       sigla="PRF1"
       price="1.000.000"
       current=" +1,41 (+1,78%)"

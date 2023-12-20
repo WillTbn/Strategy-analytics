@@ -1,11 +1,13 @@
 <template>
-  <div class="ReachLayout row justify-center q-my-xl">
+  <div class="ReachLayout row justify-center q-my-xl padding-i-mobile">
     <div class="col-md-8 col-sm-12 q-my-xl">
       <q-img :ratio="4 / 3" src="img/map-global.png" fit="scale-down" />
     </div>
-    <div class="col-lg-9 col-sm-10 q-my-xl text-left">
-      <p class="title-reach">Alcance global com experiência local</p>
-      <p class="text-reach">
+    <div class="col-lg-9 col-sm-10 q-my-xl text-control">
+      <p class="title-reach padding-i-mobile">
+        Alcance global com experiência local
+      </p>
+      <p class="text-reach padding-i-mobile">
         Estamos comprometidos com a transparência em nossas atividades de gestão
         de investimentos. É importante para nós que os nossos clientes
         compreendam como o trabalho que realizamos em seu nome se alinha com os
@@ -58,7 +60,6 @@ export default defineComponent({
 
 <style scoped>
 .title-reach {
-  width: 877px;
   height: 47px;
   flex-shrink: 0;
   color: #fff;
@@ -81,7 +82,6 @@ ul {
   padding: 10px 0;
 }
 .text-list {
-  width: 525px;
   height: 27px;
   flex-shrink: 0;
   color: #fff;
@@ -99,8 +99,6 @@ ul {
   }
   .text-reach {
     font-size: 18px !important;
-    height: 194px;
-    width: 270px;
   }
   .text-list {
     font-size: 16px !important;

@@ -1,5 +1,7 @@
 <template>
-  <div class="row ustify-center text-center q-gutter-lg q-mt-xl">
+  <div
+    class="row ustify-center text-center q-gutter-lg q-mt-xl padding-i-mobile"
+  >
     <div class="col-md-4 col-sm-6">
       <p class="text-h5 text-weight-bolder">Quem somos?</p>
     </div>

@@ -12,6 +12,13 @@
 
     <marketrisk-layout />
     <methodology-layout class="text-white" />
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn fab icon="keyboard_arrow_up" color="secondary" />
+    </q-page-scroller>
   </div>
 </template>
 

@@ -45,6 +45,7 @@
         padding="none"
         label="Veja os ETFS disponíveis"
         icon="fa-solid fa-chevron-right"
+        :to="item.route"
       />
     </div>
   </div>
@@ -61,33 +62,40 @@ export default defineComponent({
     const text = ref("");
     const options = [
       {
-        title: "Planos de aplicação Patrimonial",
-        subTitle: "Investimento no exterior",
+        title: "Expansão Patrimonial",
+        subTitle: "Investimento",
         description:
-          "Os ETFs são fundos de investimentos em índice com cotas negociadas na bolsa de valores. Oferecem diversificação de ativos a acesso a diferentes mercados.",
+          "Nossos programas de expansão patrimonial são idealizados para investidores que buscam crescimento substancial do capital ao longo de um curto período. Nosso enfoque está na construção de uma carteira sólida que vise grandes lucros ao término do ciclo de investimento.",
         etfs: "",
         colorBorder: "border-blue",
+        route: "rendavariavel",
       },
       {
-        title: "Fundo de renda para Aposentadoria",
-        subTitle: "",
-        description: "",
+        title: "Previdência Futura",
+        subTitle: "Aposentadoria",
+        description:
+          "Projetos para clientes com capital já consolidado que desejam rendimentos regulares e seguros, nossos planos de aposentadoria enfatizam cartazes robustas que geram retornos mensais consistentes.",
         etfs: "",
         colorBorder: "border-red",
+        route: "rendafixa",
       },
       {
-        title: "Fundo de Liquidez Elevada",
-        subTitle: "",
-        description: "",
+        title: "Liquidez Elevada",
+        subTitle: "Poupança",
+        description:
+          "Para aqueles que priorizam a segurança e a flexibilidade, a nossa opção de Liquidez Elevada oferece um refúgio sem riscos com alta liquidez, oferecendo rendimentos estáveis e superiores aos encontrados no mercado convencional.",
         etfs: "",
         colorBorder: "border-yellow",
+        route: "rendaflexivel",
       },
       {
-        title: "",
-        subTitle: "",
-        description: "",
+        title: "Blockchain",
+        subTitle: "Altenativos",
+        description:
+          "Destinado a explorar as fronteiras emergentes do mundo financeiro digital. Este fundo se concentra em uma seleção criteriosa de criptmoedas, tokens não fungíveis(NFTs), e outros ativos digitais, oferecendo aos investidores uma oportunidade única de participar do crescimento dinâmico dos mercados digitais.",
         etfs: "",
         colorBorder: "border-white",
+        route: "perspective",
       },
     ];
     return { text, options };
@@ -103,7 +111,7 @@ export default defineComponent({
 }
 .my-card {
   background-color: rgba(217, 217, 217, 0.3);
-  height: 310px;
+  min-height: 280px;
   border-radius: 16px !important;
   border: 0px, 0px, 6px, 0px !important;
 }

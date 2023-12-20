@@ -113,7 +113,7 @@
       <div class="row justify-center text-right">
         <div class="col-lg-6 col-sm-10">
           <span
-            >Inscrevendo-se você concorda com nossa
+            >Inscrevendo-se você concorda com nossa <br />
             <b> Politica de privacidade </b></span
           >
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="text-white" style="min-height: 2160px" padding>
+  <q-page class="text-white" style="min-height: 2160px">
     <header-layout class="main control-mb" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
@@ -9,7 +9,7 @@
         Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
         />
         <q-btn
-          color="negative"
+          color="primary"
           class="q-mt-sm"
           dense
           no-caps

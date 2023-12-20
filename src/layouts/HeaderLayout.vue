@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row text-white justify-center items-center content-center text-center border-header"
+    class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile"
     :class="{ reverse: reverse }"
   >
     <!-- <div class="col-md-5 col-sm-4 q-ml-lg text-left">
@@ -24,7 +24,6 @@
   </div>
 </template>
 <script>
-import { useQuasar } from "quasar";
 import { defineComponent, ref, computed } from "vue";
 
 // import ButtonHeader from "../components/ButtonHeader.vue";TitleSubtitle
@@ -41,14 +40,7 @@ export default defineComponent({
     const statusMember = ref(false);
     const statusInves = ref(false);
     const durationTransition = ref(300);
-    const $q = useQuasar();
-    const heightScreen = computed(() => {
-      return (
-        $q.screen.width <= 1024 &&
-        $q.platform.is.platform != "mac" &&
-        $q.platform.is.platform != "ipad"
-      );
-    });
+
     const activeMenber = (el) => {
       const colorButton = document.getElementById("colorButton");
       statusMember.value = !statusMember.value;
@@ -66,16 +58,11 @@ export default defineComponent({
       activeMenber,
       statusMember,
       statusInves,
-      heightScreen,
     };
   },
 });
 </script>
 <style scoped>
-.border-header {
-  margin-top: 2rem;
-  border-bottom: solid 4px #ff0000;
-}
 .control-pa {
   padding: 5px !important;
   min-height: 2rem;

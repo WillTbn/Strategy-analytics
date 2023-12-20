@@ -181,3 +181,23 @@ ellipsis {
 .borderless {
   border: solid 1px #ffffffa1;
 }
+
+.container-p-i {
+  padding-inline: 1.5rem;
+}
+.text-control {
+  text-align: left;
+}
+.border-header {
+  margin-top: 2rem;
+  /* border-bottom: solid 4px #ff0000; */
+  border-bottom: solid 4px $primary;
+}
+@media (max-width: 768px) {
+  .padding-i-mobile {
+    padding-inline: 0.5rem;
+  }
+  .text-control {
+    text-align: center;
+  }
+}

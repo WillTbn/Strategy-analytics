@@ -1,7 +1,7 @@
 <template>
   <q-page class="text-white control-bg items-center">
     <header-layout class="main" :reverse="false">
-      <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
+      <div class="col-md-5 col-sm-8 q-ml-lg-lg text-control">
         <title-subtitle
           textTopPersonal="Nossa liderança"
           textClass="text-primary"
@@ -13,7 +13,13 @@
     <team-content-layout></team-content-layout>
     <network-layout></network-layout>
     <news-letter />
-  </q-page>
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn fab icon="keyboard_arrow_up" color="secondary" />
+    </q-page-scroller></q-page>
 </template>
 <script>
 import { defineComponent, ref } from "vue";

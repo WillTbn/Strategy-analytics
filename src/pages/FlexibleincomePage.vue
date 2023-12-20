@@ -3,6 +3,8 @@
     <!-- Seu conteúdo HTML aqui -->
     <variableprimary-layout
       title="Renda flexível"
+      primaryTitle="Liquidez Elevada"
+      secondTitle="Fundo de índice"
       sigla="LIL100"
       price="10.000"
       current=" +1,41 (+1,78%)"
