@@ -9,7 +9,7 @@
         Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
         />
         <q-btn
-          color="primary"
+          color="dark"
           class="q-mt-sm"
           dense
           no-caps

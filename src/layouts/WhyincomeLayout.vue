@@ -1,5 +1,5 @@
 <template>
-  <div class="WhyincomeLayout q-ma-lg q-pt-lg q-pb-lg">
+  <div class="WhyincomeLayout q-ma-lg q-pt-lg q-pb-lg control-mb">
     <div class="row justify-center text-center q-py-lg">
       <div class="col-md-8 col-sm-12">
         <title-secondary :text="title" />

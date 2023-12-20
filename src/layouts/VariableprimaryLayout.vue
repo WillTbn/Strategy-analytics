@@ -1,5 +1,7 @@
 <template>
-  <div class="VariableprimaryLayout q-ma-lg q-pa-lg row margin-i-desktop">
+  <div
+    class="VariableprimaryLayout q-ma-lg q-pa-lg row margin-i-desktop control-mb"
+  >
     <div class="col-md-1 col-sm-4 q-my-lg">
       <span>{{ title }}</span> <br />
       <q-avatar
@@ -13,9 +15,7 @@
       </q-avatar>
     </div>
     <div class="col-lg-4 col-sm-12 self-center margin-text">
-      <span class="font-control">
-        {{ primaryTitle }} </span
-      ><br />
+      <span class="font-control"> {{ primaryTitle }} </span><br />
       <span class="font-control">
         {{ secondTitle }}
       </span>

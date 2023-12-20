@@ -1,14 +1,16 @@
 <template>
-  <div class="row justify-center q-ma-xl">
+  <div class="row control-j-center items-center">
     <div
-      class="col-md-5 col-sm-12 q-ml-md-xl control-py"
+      class="col-md-4 col-sm-12 control-py self-center"
       v-for="list in listItems"
       :key="list"
     >
-      <p class="text-h4 text-weight-bolder">{{ list.title }}</p>
-      <p class="text-weight-bold q-mx-sm">{{ list.one }}</p>
-      <p class="text-weight-bold q-mx-sm">{{ list.two }}</p>
-      <p class="text-weight-bold q-mx-sm">{{ list.three }}</p>
+      <div class="container">
+        <p class="text-h4 text-weight-bolder">{{ list.title }}</p>
+        <p class="text-weight-bold q-mx-sm">{{ list.one }}</p>
+        <p class="text-weight-bold q-mx-sm">{{ list.two }}</p>
+        <p class="text-weight-bold q-mx-sm">{{ list.three }}</p>
+      </div>
     </div>
   </div>
   <div class="row justify-center items-center q-ma-xl q-py-xl">
@@ -58,3 +60,10 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.container {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+}
+</style>

@@ -111,14 +111,7 @@
         </div>
       </div>
       <div class="row justify-center text-right">
-        <div class="col-lg-6 col-sm-10">
-          <span
-            >Inscrevendo-se você concorda com nossa <br />
-            <b> Politica de privacidade </b></span
-          >
-        </div>
-        <div class="col-12 freak"></div>
-        <div class="col-lg-6 col-sm-10">
+        <div class="col-lg-10 col-sm-10">
           <q-btn
             padding="xs xl"
             label="Inscrever-se"
@@ -128,6 +121,10 @@
             type="submit"
             size="lg"
           ></q-btn>
+        </div>
+        <div class="col-12 freak"></div>
+        <div class="col-lg-10 col-sm-10 q-mt-sm">
+          <span>Politica de privacidade </span>
         </div>
       </div>
     </q-form>

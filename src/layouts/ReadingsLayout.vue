@@ -5,7 +5,7 @@
         <title-secondary text="Literatura" />
       </div>
     </div>
-    <div class="row control-py">
+    <div class="row control-j-center control-py">
       <div class="col-md-5 col-sm-12" v-for="list in lists" :key="list">
         <q-chip class="bg-transparent text-white control-font" square>
           <!-- <q-avatar>

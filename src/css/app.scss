@@ -193,9 +193,15 @@ ellipsis {
   /* border-bottom: solid 4px #ff0000; */
   border-bottom: solid 4px $primary;
 }
+.control-j-center {
+  justify-content: center;
+}
 @media (max-width: 768px) {
   .padding-i-mobile {
     padding-inline: 0.5rem;
+  }
+  .control-j-center {
+    justify-content: left;
   }
   .text-control {
     text-align: center;

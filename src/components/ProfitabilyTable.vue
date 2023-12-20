@@ -5,7 +5,7 @@
         <p class="text-h5" style="width: 271px">Rentabilidade</p>
       </div>
     </div>
-    <q-tabs v-model="tab" class="text-white bg-dark" align="start">
+    <!-- <q-tabs v-model="tab" class="text-white bg-dark" align="start">
       <q-tab no-caps name="annual" label="Anual" />
       <q-separator dark vertical />
       <q-tab no-caps name="media" label="Média Anual" />
@@ -13,7 +13,21 @@
       <q-tab no-caps name="accrued" label="Acumulado" />
       <q-separator dark vertical />
       <q-tab no-caps name="calendar" label="Calendário" />
-    </q-tabs>
+    </q-tabs> -->
+    <div>
+      <q-btn-toggle
+        v-model="tab"
+        toggle-color="primary"
+        no-caps
+        spread
+        :options="[
+          { label: 'Anual', value: 'annual' },
+          { label: 'Média Anual', value: 'media' },
+          { label: 'Acumulado', value: 'accrued' },
+          { label: 'Calendário', value: 'calendar' },
+        ]"
+      />
+    </div>
     <q-tab-panels
       v-model="tab"
       animated
@@ -24,74 +38,37 @@
       </q-tab-panel>
 
       <q-tab-panel name="media">
-        <div class="text-h6">Alarms</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <tablemedia-layout />
       </q-tab-panel>
 
       <q-tab-panel name="accrued">
-        <div class="text-h6">Movies</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <tableaccrued-layout />
       </q-tab-panel>
       <q-tab-panel name="calendar">
-        <div class="text-h6">Movies</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <tablecalendar-layout />
       </q-tab-panel>
     </q-tab-panels>
-
-    <!--
-    <div
-      class="row q-py-lg q-my-lg"
-      v-for="(row, i) in rows"
-      :key="row[i]"
-      :class="{ 'border-table': i != 0 }"
-    >
-      <div
-        class="text-control col-md-4 col-xs-2 q-pr-md-xl self-center"
-        :class="{ 'text-header': i == 0 }"
-      >
-        <span :class="{ 'control-span': i !== 0 }">
-          {{ row.name }}
-        </span>
-      </div>
-      <q-separator inset color="orange" />
-      <div
-        class="text-control col-md-2 col-xs-2 self-center"
-        :class="{ 'text-header': i == 0 }"
-      >
-        <span :class="{ 'control-span': i !== 0 }">
-          {{ row.acumulado }}
-        </span>
-      </div>
-      <q-separator inset />
-      <div
-        class="text-control col-md-2 col-xs-2 self-center"
-        :class="{ 'text-header': i == 0 }"
-      >
-        <span :class="{ 'control-span': i !== 0 }">
-          {{ row.ano }}
-        </span>
-      </div>
-      <q-separator inset />
-      <div
-        class="text-control col-md-2 col-xs-2 self-center"
-        :class="{ 'text-header': i == 0 }"
-      >
-        <span :class="{ 'control-span': i !== 0 }">
-          {{ row.calendario }}
-        </span>
-      </div>
-    </div>
-  --></div>
+  </div>
 </template>
 
 <script>
+import TableaccruedLayout from "../layouts/TableaccruedLayout.vue";
 import { defineComponent, ref } from "vue";
 import TableannualLayout from "../layouts/TableannualLayout.vue";
+import TablemediaLayout from "../layouts/TablemediaLayout.vue";
+import TablecalendarLayout from "../layouts/TablecalendarLayout.vue";
+TablecalendarLayout;
+
 // import TitleSecondary from "./TitleSecondary.vue";
 
 export default defineComponent({
   name: "ProfitabilyTable",
-  components: { TableannualLayout },
+  components: {
+    TableannualLayout,
+    TablemediaLayout,
+    TableaccruedLayout,
+    TablecalendarLayout,
+  },
   setup() {
     const tab = ref("annual");
 
