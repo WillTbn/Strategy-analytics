@@ -9,65 +9,96 @@
       mini-to-overlay
       :width="200"
       :mini-width="80"
-      :breakpoint="500"
       elevated
-      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
+      class="control-drawer"
+      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-white'"
     >
-      <div class="bg-transparent">
-        <q-avatar size="56px" class="q-mb-sm">
-          <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-        </q-avatar>
+      <div class="bg-transparent q-mt-lg row justify-center text-center">
+        <div class="col-12">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+          </q-avatar>
+        </div>
+        <div class="col-12">
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="img:icons/iconeconfiguraes.svg" />
+            </q-item-section>
+
+            <q-item-section> configuração </q-item-section>
+          </q-item>
+        </div>
       </div>
-      <!-- <div class="fit control-area"> -->
-      <q-scroll-area
-        class="fit control-area"
-        :horizontal-thumb-style="{ opacity: 0 }"
+
+      <q-list class="q-mt-xl q-pt-xl q-mx-sm q-px-sm">
+        <q-item
+          active-class="bg-primary rounded"
+          clickable
+          exact
+          v-ripple
+          :to="{ name: 'dashboard' }"
+        >
+          <q-item-section avatar>
+            <q-icon name="img:icons/icon-home-icon.svg" />
+          </q-item-section>
+
+          <q-item-section> Inicio </q-item-section>
+        </q-item>
+
+        <q-item
+          clickable
+          active-class="bg-primary rounded"
+          v-ripple
+          exact
+          :to="{ name: 'calendar' }"
+        >
+          <q-item-section avatar>
+            <q-icon name="img:icons/icon-performance.svg" />
+          </q-item-section>
+
+          <q-item-section> Performance </q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="img:icons/icon-calendar.svg" />
+          </q-item-section>
+
+          <q-item-section> Calendário </q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="img:icons/icon-alternate-file.svg" />
+          </q-item-section>
+
+          <q-item-section> Relatório </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="img:icons/icon-money-withdrawal.svg" />
+          </q-item-section>
+
+          <q-item-section> Emprestimos </q-item-section>
+        </q-item>
+      </q-list>
+      <div
+        class="bg-transparent q-mt-xl q-pt-xl row justify-center text-center"
       >
-        <q-list>
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="inbox" />
+        <div class="col-12">
+          <!-- <q-item>
+            <q-item-section avatar class="q-mb-sm">
+              <q-icon name="img:icons/logo.svg" />
             </q-item-section>
-
-            <q-item-section> Inbox </q-item-section>
-          </q-item>
-
-          <q-item active clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="star" />
-            </q-item-section>
-
-            <q-item-section> Star </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="send" />
-            </q-item-section>
-
-            <q-item-section> Send </q-item-section>
-          </q-item>
-
-          <q-separator />
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="drafts" />
-            </q-item-section>
-
-            <q-item-section> Drafts </q-item-section>
-          </q-item>
-        </q-list>
-      </q-scroll-area>
-      <!-- <q-img
-        class="absolute-top"
-        src="https://cdn.quasar.dev/img/material.png"
-        style="height: 150px"
-      > -->
-
-      <!-- </q-img> -->
+          </q-item> -->
+          <q-avatar size="36px" class="q-mb-sm">
+            <img src="icons/logo.svg" />
+          </q-avatar>
+        </div>
+      </div>
     </q-drawer>
-    <div
+
+    <!-- <div
       class="q-mini-drawer-hide absolute"
       style="top: 25px; left: 47px; z-index: 10000"
     >
@@ -82,7 +113,7 @@
     </div>
     <q-page-sticky position="left" :offset="[18, 0]">
       <q-btn round color="accent" icon="arrow_upward" class="rotate-90" />
-    </q-page-sticky>
+    </q-page-sticky> -->
   </div>
 </template>
 
@@ -118,5 +149,12 @@ export default defineComponent({
 }
 .fit {
   overflow: hidden !important;
+}
+.control-drawer {
+  top: 20px !important;
+  bottom: 20px !important;
+}
+.rounded {
+  border-radius: 13px;
 }
 </style>

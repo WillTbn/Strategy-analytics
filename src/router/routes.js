@@ -79,6 +79,11 @@ const routes = [
         name: "config",
         component: () => import("../system/pages/ConfigPage.vue"),
       },
+      {
+        path: "calendar",
+        name: "calendar",
+        component: () => import("../system/pages/CalendarrrPage.vue"),
+      },
     ],
   },
 

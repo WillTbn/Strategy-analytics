@@ -1,7 +1,7 @@
 <template>
   <div class="news-letter control-py">
     <div class="row justify-center text-white">
-      <div class="col-12 q-px-xl">
+      <div class="col-lg-12 col-xs-11 q-px-xl">
         <title-description
           class="q-px-md-xl"
           title="Inscreva-se para receber as

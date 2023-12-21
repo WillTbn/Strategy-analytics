@@ -1,6 +1,6 @@
 <template>
   <div
-    class="VariableprimaryLayout q-ma-lg q-pa-lg row margin-i-desktop control-mb"
+    class="VariableprimaryLayout q-ma-lg q-pa-lg row margin-i-desktop control-mb q-gutter-lg"
   >
     <div class="col-md-1 col-sm-4 q-my-lg">
       <span>{{ title }}</span> <br />

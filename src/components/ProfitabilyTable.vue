@@ -2,24 +2,16 @@
   <div class="ProfitabilyTable">
     <div class="row">
       <div class="col-12">
-        <p class="text-h5" style="width: 271px">Rentabilidade</p>
+        <p class="text-h5" style="max-width: 271px">Rentabilidade</p>
       </div>
     </div>
-    <!-- <q-tabs v-model="tab" class="text-white bg-dark" align="start">
-      <q-tab no-caps name="annual" label="Anual" />
-      <q-separator dark vertical />
-      <q-tab no-caps name="media" label="Média Anual" />
-      <q-separator dark vertical />
-      <q-tab no-caps name="accrued" label="Acumulado" />
-      <q-separator dark vertical />
-      <q-tab no-caps name="calendar" label="Calendário" />
-    </q-tabs> -->
     <div>
       <q-btn-toggle
         v-model="tab"
         toggle-color="primary"
         no-caps
         spread
+        no-wrap
         :options="[
           { label: 'Anual', value: 'annual' },
           { label: 'Média Anual', value: 'media' },

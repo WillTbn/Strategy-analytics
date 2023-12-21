@@ -26,7 +26,7 @@
       </div>
     </div>
     <!--  TABS -->
-    <div class="col-4">
+    <div style="height: auto; width: 39.3333%">
       <q-card class="card-relatorio">
         <q-card-section> <report-layout /></q-card-section>
       </q-card>
