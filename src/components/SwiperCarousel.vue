@@ -17,7 +17,7 @@
   :modules="modules" -->
   <swiper
     ref="{swiperRef}"
-    :slidesPerView="3"
+    :slidesPerView="perView"
     :centeredSlides="true"
     :spaceBetween="0"
     :pagination="{
@@ -52,7 +52,8 @@ import "swiper/css/navigation";
 
 // import required modules
 import { EffectCoverflow, Navigation, Virtual } from "swiper/modules";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useQuasar } from "quasar";
 
 export default {
   components: {
@@ -62,6 +63,15 @@ export default {
   },
   setup() {
     const slide = ref(1);
+    const $q = useQuasar();
+    const heightScreen = computed(() => {
+      return (
+        $q.screen.width <= 1024 &&
+        $q.platform.is.platform != "mac" &&
+        $q.platform.is.platform != "ipad"
+      );
+    });
+    const perView = heightScreen.value ? 1 : 3;
     const authors = [
       {
         id: 1,
@@ -83,6 +93,7 @@ export default {
       },
     ];
     return {
+      perView,
       slide,
       authors,
       modules: [EffectCoverflow, Navigation, Virtual],
@@ -91,23 +102,26 @@ export default {
 };
 </script>
 <style>
-.swiper {
-  width: 100%;
-  padding-bottom: 50px;
-  z-index: 12;
+@media (min-width: 768px) {
+  .swiper {
+    width: 100%;
+    padding-bottom: 50px;
+    z-index: 12;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-}
 .swiper-wrapper {
   z-index: 8;
 }

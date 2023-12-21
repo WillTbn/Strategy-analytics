@@ -23,10 +23,4 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-@media (max-width: 768px) {
-  .control-author {
-    width: 320px;
-  }
-}
-</style>
+<style scoped></style>
