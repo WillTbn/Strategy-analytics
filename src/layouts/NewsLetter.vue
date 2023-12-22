@@ -11,7 +11,7 @@
     </div>
     <q-form>
       <div class="row q-pa-xl q-gutter-sm">
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>Nome: *</span>
           <q-input
             outlined
@@ -20,7 +20,7 @@
             dense
           />
         </div>
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>Sobrenome: *</span>
           <q-input
             outlined
@@ -30,7 +30,7 @@
           />
         </div>
 
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>Email: *</span>
           <q-input
             outlined
@@ -40,7 +40,7 @@
           />
         </div>
 
-        <div class="col-12 col-lg-3 col-sm-12 text-white">
+        <div class="col-12 col-md-3 col-sm-12 text-white">
           <span>categoria de investidor: *</span>
 
           <q-select
@@ -55,7 +55,7 @@
             label="Escolha o categoria"
           />
         </div>
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>Empresa: *</span>
           <q-input
             outlined
@@ -64,7 +64,7 @@
             dense
           />
         </div>
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>Cargo: *</span>
           <q-select
             v-model="newsletter.office"
@@ -78,23 +78,7 @@
             label="Escolha o cargo"
           />
         </div>
-
-        <div class="col-12 col-lg-3 col-sm-12">
-          <span>Estado: *</span>
-
-          <q-select
-            v-model="newsletter.state"
-            transition-show="flip-up"
-            transition-hide="flip-down"
-            input-class="white"
-            bg-color="secondary"
-            dense
-            outlined
-            :options="optionsState"
-            label="Escolha o estado"
-          />
-        </div>
-        <div class="col-12 col-lg-3 col-sm-12">
+        <div class="col-12 col-md-3 col-sm-12">
           <span>País: *</span>
 
           <q-select
@@ -107,6 +91,22 @@
             outlined
             :options="optionsCountry"
             label="Escolha o país"
+          />
+        </div>
+        <div class="col-12 col-md-3 col-sm-12">
+          <span>Estado: *</span>
+
+          <q-select
+            v-model="newsletter.state"
+            transition-show="flip-up"
+            transition-hide="flip-down"
+            input-class="white"
+            bg-color="secondary"
+            dense
+            outlined
+            :disable="newsletter.country"
+            :options="optionsState"
+            label="Escolha o estado"
           />
         </div>
       </div>
@@ -148,9 +148,34 @@ export default defineComponent({
       country: "",
       email: "",
     });
-    const optionsOffice = ["Google", "Facebook", "Twitter", "Apple", "Oracle"];
-    const optionsCountry = ["Brasil", "Argentina", "Inglaterra", "USA"];
-    const optionsCategory = ["nível 1", "nível 2", "nível 3", "nível 4"];
+    const optionsOffice = [
+      "Diretor Executivo (CEO)",
+      "Diretor financeiro (CFO)",
+      "Diretor de investimento (CIO)",
+      "Diretor de operação (COO)",
+      "Diretor de risco (CRO)",
+      "Selecionador de fundos",
+      "Analista de investimento",
+      "Gestor de investimento",
+      "Gestor de carteira",
+      "Private banker",
+      "Gerente de ralacionamento",
+      "Analista de riscos",
+      "Trader",
+      "Outros",
+    ];
+    const optionsCountry = [
+      { label: "Brasil", value: "brasil", id: 0 },
+      { label: "Argentina", value: "argentina", id: 1 },
+      { label: "USA", value: "usa", id: 2 },
+      { label: "Austrália", value: "australia", id: 3 },
+      { label: "Portugal", value: "portugal", id: 4 },
+    ];
+    const optionsCategory = [
+      "Investidor profissional",
+      "Investidor institucional",
+      "Investidor individual",
+    ];
     const optionsState = [
       "Rio de janeiro",
       "São Paulo",
