@@ -82,6 +82,7 @@
           <span>País: *</span>
 
           <q-select
+            @hide="getStates()"
             v-model="newsletter.country"
             transition-show="flip-up"
             transition-hide="flip-down"
@@ -104,7 +105,7 @@
             bg-color="secondary"
             dense
             outlined
-            :disable="newsletter.country"
+            :disable="statusState"
             :options="optionsState"
             label="Escolha o estado"
           />
@@ -131,13 +132,30 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 import TitleDescription from "../components/TitleDescription.vue";
+import useStates from "../composables/useStates";
 
 export default defineComponent({
   name: "NewsLetter",
   components: { TitleDescription },
   setup() {
+    const statusState = ref(true);
+    const { get } = useStates();
+    const optionsState = ref();
+
+    const getStates = async (id) => {
+      try {
+        optionsState.value = await get(id);
+        statusState.value = false;
+        // console.log("ESTOU NO TRY", optionsState.value);
+      } catch (e) {
+        console.log("ESTAMOS NO ERROR");
+      } finally {
+        // console.log("FINAL");
+      }
+    };
+    const test = ref();
     const newsletter = ref({
       name: "",
       lastname: "",
@@ -147,6 +165,12 @@ export default defineComponent({
       state: "",
       country: "",
       email: "",
+    });
+    watch(newsletter.value, (n) => {
+      // console.log(n);
+      if (newsletter.value.country) {
+        getStates(newsletter.value.country.id);
+      }
     });
     const optionsOffice = [
       "Diretor Executivo (CEO)",
@@ -176,14 +200,6 @@ export default defineComponent({
       "Investidor institucional",
       "Investidor individual",
     ];
-    const optionsState = [
-      "Rio de janeiro",
-      "São Paulo",
-      "Minas Gerais",
-      "Rio Grande do Sul",
-      "Espirito Santos",
-      "Bahia",
-    ];
 
     return {
       newsletter,
@@ -191,6 +207,8 @@ export default defineComponent({
       optionsCountry,
       optionsCategory,
       optionsState,
+      statusState,
+      getStates,
     };
   },
 });

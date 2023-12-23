@@ -1,7 +1,7 @@
 export default function useStates() {
   const get = async (country) => {
     const states = {
-      argentina: [
+      1: [
         "Gran Chaco",
         "Mesopotâmia",
         "Cuyo",
@@ -10,7 +10,7 @@ export default function useStates() {
         "Patagonia",
         "Noroeste argentino",
       ],
-      australia: [
+      3: [
         "Nova Gales do Sul",
         "Queensland",
         "Austrália do Sul",
@@ -18,7 +18,7 @@ export default function useStates() {
         "Victoria ",
         "Austrália Ocidental",
       ],
-      usa: [
+      2: [
         "AK: Alasca",
         "AL: Alabama",
         "AR: Arkansas",
@@ -71,7 +71,7 @@ export default function useStates() {
         "WY: Wyoming",
       ],
 
-      portugal: [
+      4: [
         "Aveiro",
         "Beja",
         "Braga",
@@ -91,7 +91,7 @@ export default function useStates() {
         "Vila Real",
         " Viseu ",
       ],
-      brasil: [
+      0: [
         "Centro-Oeste",
         "Distrito Federal",
         "Nordeste",
