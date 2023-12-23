@@ -1,6 +1,14 @@
 <template>
   <div class="TablemediaLayout">
-    <!-- Seu conteúdo HTML aqui -->
+    <!-- <q-table
+      class="bg-transparent text-white"
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      table-class="my-special"
+      card-class="my-special"
+      hide-pagination
+    /> -->
     <table-personal :rows="rows" />
   </div>
 </template>
@@ -12,6 +20,29 @@ export default defineComponent({
   name: "TablemediaLayout",
   components: { TablePersonal },
   setup() {
+    const columns = [
+      {
+        name: "name",
+        required: true,
+        label: "",
+        align: "left",
+        field: (row) => row.name,
+        format: (val) => `${val}`,
+        sortable: true,
+      },
+      {
+        name: "calories",
+        align: "center",
+        label: "1a",
+        field: "acumulado",
+        sortable: true,
+      },
+      { name: "Ano", label: "3a", field: "ano", sortable: true },
+      { name: "calendario", label: "5a", field: "calendario" },
+      { name: "five", label: "10a", field: "five" },
+      { name: "six", label: "início", field: "six" },
+    ];
+
     const rows = [
       {
         name: "",
@@ -38,7 +69,7 @@ export default defineComponent({
         six: "5,66",
       },
     ];
-    return { rows };
+    return { rows, columns };
   },
   // Outras configurações do componente aqui
 });
@@ -46,4 +77,10 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+.my-special {
+  font-size: 15px;
+
+  font-weight: 400;
+  line-height: 102.945%; /* 46.325px */
+}
 </style>

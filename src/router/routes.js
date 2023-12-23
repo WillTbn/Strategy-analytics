@@ -84,6 +84,21 @@ const routes = [
         name: "calendar",
         component: () => import("../system/pages/CalendarrrPage.vue"),
       },
+      {
+        path: "loan",
+        name: "loan",
+        component: () => import("../system/pages/LoanPage.vue"),
+      },
+      {
+        path: "report",
+        name: "report",
+        component: () => import("../system/pages/ReportPage.vue"),
+      },
+      {
+        path: "perfomance",
+        name: "perfomance",
+        component: () => import("../system/pages/PerfomancePage.vue"),
+      },
     ],
   },
 

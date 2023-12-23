@@ -25,6 +25,7 @@
       animated
       class="shadow-2 rounded-borders bg-transparent"
     >
+      <!-- keep-alive -->
       <q-tab-panel name="annual">
         <tableannual-layout></tableannual-layout>
       </q-tab-panel>
@@ -69,9 +70,22 @@ export default defineComponent({
   // Outras configurações do componente aqui
 });
 </script>
-
+<style></style>
 <style scoped>
 /* Estilos específicos do componente aqui */
+.bg-transparent::-webkit-scrollbar {
+  width: 12px; /* largura da barra de rolagem inteira */
+}
+
+.bg-transparent::-webkit-scrollbar-track {
+  background: black; /* cor da área de rastreamento */
+}
+
+.bg-transparent::-webkit-scrollbar-thumb {
+  background-color: #4694d1; /* cor do polegar de rolagem */
+  border-radius: 20px; /* arredondamento do polegar de rolagem */
+  border: 3px solid black; /* cria preenchimento em torno do polegar de rolagem */
+}
 .text-header {
   font-size: 15px;
 
@@ -94,12 +108,12 @@ export default defineComponent({
   flex-shrink: 0;
 }
 @media (max-width: 768px) {
-  .text-header {
+  /* .text-header {
     font-size: 6px !important;
   }
   .text-control {
     font-size: 5px;
-  }
+  } */
   .control-span {
     display: block;
     width: 70px;

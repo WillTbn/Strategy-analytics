@@ -32,54 +32,19 @@
 
       <q-list class="q-mt-xl q-pt-xl q-mx-sm q-px-sm">
         <q-item
+          v-for="list in listMenu"
+          :key="list"
           active-class="bg-primary rounded"
           clickable
           exact
           v-ripple
-          :to="{ name: 'dashboard' }"
+          :to="list.toName"
         >
           <q-item-section avatar>
-            <q-icon name="img:icons/icon-home-icon.svg" />
+            <q-icon :name="list.svgIcon" />
           </q-item-section>
 
-          <q-item-section> Inicio </q-item-section>
-        </q-item>
-
-        <q-item
-          clickable
-          active-class="bg-primary rounded"
-          v-ripple
-          exact
-          :to="{ name: 'calendar' }"
-        >
-          <q-item-section avatar>
-            <q-icon name="img:icons/icon-performance.svg" />
-          </q-item-section>
-
-          <q-item-section> Performance </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="img:icons/icon-calendar.svg" />
-          </q-item-section>
-
-          <q-item-section> Calendário </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="img:icons/icon-alternate-file.svg" />
-          </q-item-section>
-
-          <q-item-section> Relatório </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="img:icons/icon-money-withdrawal.svg" />
-          </q-item-section>
-
-          <q-item-section> Emprestimos </q-item-section>
+          <q-item-section> {{ list.name }} </q-item-section>
         </q-item>
       </q-list>
       <div
@@ -125,11 +90,39 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
+    const listMenu = [
+      {
+        toName: { name: "dashboard" },
+        name: "Inicio",
+        svgIcon: "img:icons/icon-home-icon.svg",
+      },
+      {
+        toName: { name: "perfomance" },
+        name: "Perfomance",
+        svgIcon: "img:icons/icon-performance.svg",
+      },
+      {
+        toName: { name: "calendar" },
+        name: "Calendário",
+        svgIcon: "img:icons/icon-calendar.svg",
+      },
+      {
+        toName: { name: "report" },
+        name: "Relatório",
+        svgIcon: "img:icons/icon-alternate-file.svg",
+      },
+      {
+        toName: { name: "loan" },
+        name: "Emprestimo",
+        svgIcon: "img:icons/icon-money-withdrawal.svg",
+      },
+    ];
 
     return {
       miniState,
       drawer,
       leftDrawerOpen,
+      listMenu,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
