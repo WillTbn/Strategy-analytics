@@ -82,8 +82,7 @@
           <span>País: *</span>
 
           <q-select
-            @hide="getStates()"
-            v-model="newsletter.country"
+            v-model="valueCountry.name"
             transition-show="flip-up"
             transition-hide="flip-down"
             input-class="white"
@@ -92,6 +91,7 @@
             outlined
             :options="optionsCountry"
             label="Escolha o país"
+            :loading="loadingInput"
           />
         </div>
         <div class="col-12 col-md-3 col-sm-12">
@@ -108,6 +108,7 @@
             :disable="statusState"
             :options="optionsState"
             label="Escolha o estado"
+            :loading="loadingInput"
           />
         </div>
       </div>
@@ -143,19 +144,26 @@ export default defineComponent({
     const statusState = ref(true);
     const { get } = useStates();
     const optionsState = ref();
+    const loadingInput = ref(false);
 
     const getStates = async (id) => {
       try {
+        loadingInput.value = true;
+
         optionsState.value = await get(id);
         statusState.value = false;
-        // console.log("ESTOU NO TRY", optionsState.value);
       } catch (e) {
-        console.log("ESTAMOS NO ERROR");
+        console.log("ESTAMOS NO ERROR", e);
       } finally {
-        // console.log("FINAL");
+        setTimeout(() => {
+          loadingInput.value = false;
+        }, 1000);
+        newsletter.value.state = "";
       }
     };
-    const test = ref();
+    const valueCountry = ref({
+      name: "",
+    });
     const newsletter = ref({
       name: "",
       lastname: "",
@@ -163,13 +171,13 @@ export default defineComponent({
       company: "",
       office: "",
       state: "",
-      country: "",
+      country: valueCountry.value.name.label,
       email: "",
     });
-    watch(newsletter.value, (n) => {
-      // console.log(n);
-      if (newsletter.value.country) {
-        getStates(newsletter.value.country.id);
+    watch(valueCountry.value, (n) => {
+      if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {
+        newsletter.value.country = n.name.label;
+        getStates(valueCountry.value.name.id);
       }
     });
     const optionsOffice = [
@@ -208,6 +216,8 @@ export default defineComponent({
       optionsCategory,
       optionsState,
       statusState,
+      valueCountry,
+      loadingInput,
       getStates,
     };
   },

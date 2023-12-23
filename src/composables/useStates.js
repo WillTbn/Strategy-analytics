@@ -100,7 +100,7 @@ export default function useStates() {
         "Sudeste",
       ],
     };
-
+    console.log(states[country]);
     return states[country];
   };
 
