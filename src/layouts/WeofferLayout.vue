@@ -3,7 +3,7 @@
     <div class="col-lg-10 col-12">
       <title-subtitle
         class="q-mx-xl"
-        textTop="o que oferecemos?"
+        textTop="O que oferecemos?"
         :upText="false"
         textTitle="Nós ajudamos a encontrar respostas para questões importantes."
         textDescription="Como os investimentos podem ajudar cada vez mais pessoas? "
