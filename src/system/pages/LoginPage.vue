@@ -75,7 +75,7 @@
             />
           </div>
           <div class="col-12 copy">
-            <p>© 2023 Strategy Analytics</p>
+            <p>© {{ registerData }} Strategy Analytics</p>
           </div>
         </div>
       </q-form>
@@ -90,13 +90,14 @@ export default defineComponent({
   name: "LoginPage",
   components: { LogoSmall },
   setup() {
+    const registerData = new Date().getFullYear();
     const dataLogin = ref({
       person: "",
       password: "",
     });
     const LoginRef = ref(null);
 
-    return { dataLogin, LoginRef, isPwd: ref(true) };
+    return { dataLogin, LoginRef, isPwd: ref(true), registerData };
   },
 });
 </script>

@@ -16,7 +16,7 @@
 $primary: #4694d1;
 $secondary: #d9d9d94d;
 $accent: #9c27b0;
-
+$second: #696868;
 $dark: #1d1d1d;
 $dark-page: #121212;
 
@@ -24,3 +24,7 @@ $positive: #21ba45;
 $negative: #f00;
 $info: #31ccec;
 $warning: #f2c037;
+
+.text-second {
+  color: $second;
+}

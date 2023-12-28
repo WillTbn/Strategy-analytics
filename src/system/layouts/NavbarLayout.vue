@@ -20,13 +20,21 @@
           </q-avatar>
         </div>
         <div class="col-12">
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="img:icons/iconeconfiguraes.svg" />
-            </q-item-section>
+          <div class="q-mx-sm q-px-sm">
+            <q-item
+              clickable
+              v-ripple
+              exact
+              :to="{ name: 'config' }"
+              active-class="bg-primary rounded"
+            >
+              <q-item-section avatar>
+                <q-icon name="img:icons/iconeconfiguraes.svg" />
+              </q-item-section>
 
-            <q-item-section> configuração </q-item-section>
-          </q-item>
+              <q-item-section> configuração </q-item-section>
+            </q-item>
+          </div>
         </div>
       </div>
 
@@ -34,12 +42,13 @@
         <q-item
           v-for="list in listMenu"
           :key="list"
-          active-class="bg-primary rounded"
+          :active-class="dark ? 'bg-dark rounded' : 'bg-primary rounded'"
           clickable
           exact
           v-ripple
           :to="list.toName"
         >
+          <!-- active-class="bg-primary rounded" -->
           <q-item-section avatar>
             <q-icon :name="list.svgIcon" />
           </q-item-section>
@@ -85,6 +94,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 export default defineComponent({
+  props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
   setup() {
     const leftDrawerOpen = ref(true);

@@ -3,8 +3,10 @@
     view="hHr lpR fFr"
     class="bg-all"
     :class="{ 'bg-simulator': route.name == 'simulator' }"
+    v-scroll="onScroll"
   >
-    <navbar-drop />
+    <navbar-drop :classHeader="bgHeader" />
+
     <q-page-container padding>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -25,9 +27,16 @@ export default defineComponent({
   components: {
     NavbarDrop,
   },
+  //   .navbar-tabs-top {
+  //   background: #ffffff26 !important;
+  // }
+  // .navbar-tabs {
+  //   background: #100000f0 !important;
+  // }
   setup() {
-    function onScroll() {
-      clickBody();
+    const bgHeader = ref();
+    function onScroll(position) {
+      bgHeader.value = position > 300 ? "navbar-tabs" : "navbar-tabs-top";
     }
     const layout = useLayoutStore();
     const route = useRoute();
@@ -51,6 +60,7 @@ export default defineComponent({
       clickBody,
       layout,
       route,
+      bgHeader,
     };
   },
 });

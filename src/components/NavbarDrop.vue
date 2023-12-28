@@ -1,9 +1,9 @@
 <template>
-  <q-header class="NavbarDrop navbar-tabs" elevated>
+  <q-header class="NavbarDrop" elevated :class="classHeader">
     <div
-      class="row justify-between items-center desktop-only touch-hide border-b"
+      class="row control-justify items-center desktop-only touch-hide border-b"
     >
-      <logo-complet class="q-mx-lg q-px-xl q-my-sm" />
+      <logo-complet class="control-logo q-my-sm" />
       <ul class="c-dropdown">
         <li
           v-for="(item, i) in list"
@@ -89,7 +89,7 @@
         </li>
       </ul>
 
-      <div class="col-2 q-mx-lg q-px-xl q-py-sm">
+      <div class="control-personal q-mx-lg q-px-xl q-py-sm">
         <insert-person />
       </div>
       <!-- mobile -->
@@ -196,6 +196,7 @@ import LogoComplet from "./LogoComplet.vue";
 export default defineComponent({
   name: "NavbarDrop",
   components: { InsertPerson, LogoComplet },
+  props: { classHeader: { type: String, default: "navbar-tabs-top" } },
   setup() {
     const statusDrop = ref(false);
     const layout = useLayoutStore();
@@ -312,7 +313,11 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
-
+.NavbarDrop {
+  /* transform-origin: top center;
+  transform: translateX(-50%) rotateX(-90deg); */
+  transition: all 250ms 550ms ease-in;
+}
 .border-b {
   z-index: 1;
   position: relative;
@@ -327,9 +332,13 @@ export default defineComponent({
   );
   backdrop-filter: blur(7.5px);
 }
-.navbar-tabs {
+.navbar-tabs-top {
   background: #ffffff26 !important;
 }
+.navbar-tabs {
+  background: #100000f0 !important;
+}
+
 .list-control {
   display: flex;
   flex-wrap: wrap;
@@ -364,8 +373,8 @@ export default defineComponent({
 }
 .link-strategy:not(:first-child):hover::after {
   content: "";
-  margin-left: 1rem;
-  width: 30%;
+  margin-left: 0rem;
+  width: 50%;
   height: 3px;
   background: #fff;
   scale: 1;
@@ -375,8 +384,8 @@ export default defineComponent({
 }
 .link-strategy:where(:first-child):hover::after {
   content: "";
-  margin-left: 0.5rem;
-  width: 30%;
+  /* margin-left: 0.5rem; */
+  width: 40%;
   height: 3px;
   background: #fff;
   scale: 1;
@@ -402,6 +411,36 @@ export default defineComponent({
   }
   .strategy {
     padding-left: 60%;
+  }
+}
+.control-justify {
+  justify-content: space-between;
+}
+.control-personal {
+  height: auto;
+  width: 16.6667%;
+  margin-top: 0.2rem;
+}
+.control-logo {
+  padding-left: 48px;
+  padding-right: 48px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+@media (max-width: 1100px) {
+  .control-justify {
+    justify-content: space-around;
+  }
+  .control-personal {
+    height: auto;
+    width: 0.6667%;
+    margin-top: 0;
+  }
+  .control-logo {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 </style>

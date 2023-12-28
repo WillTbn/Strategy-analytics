@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh lpR lFf" class="bg-system">
-    <navbar-layout />
+  <q-layout view="lHh lpR lFf" :class="statusDark">
+    <navbar-layout :dark="Dark.isActive" />
     <q-page-container padding>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { Dark } from "quasar";
+import { defineComponent, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
@@ -21,8 +22,17 @@ export default defineComponent({
   components: { NavbarLayout },
   setup() {
     const route = useRoute();
+    const statusDark = ref();
+    watch(
+      () => Dark.isActive,
+      (a) => {
+        statusDark.value = a ? "bg-system-dark" : "bg-system";
+      }
+    );
     return {
       route,
+      Dark,
+      statusDark,
     };
   },
 });
@@ -40,5 +50,8 @@ export default defineComponent({
 }
 .bg-system {
   background: var(--FUNDO, #f1f3fb);
+}
+.bg-system-dark {
+  background: var(--FUNDO, #000);
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Quem somos"
-          textClass="text-negative"
+          textClass="text-primary"
           textTitle="Strategy Analytics"
           textDescription="Com seis anos de atuação exclusivamente no Brasil, nosso compromisso permanece firme – buscamos facilitar o acesso ao bem-estar financeiro para um número crescente de pessoas. Com um enfoque local e uma profunda compreensão do mercado brasileiro e norte americano, estamos dedicados a orientar nossos clientes em suas jornadas financeiras, oferecendo soluções inovadoras e adaptadas às suas necessidades individuais."
         />

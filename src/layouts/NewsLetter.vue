@@ -1,16 +1,19 @@
 <template>
   <div class="news-letter control-py">
-    <div class="row justify-center text-white">
-      <div class="col-lg-12 col-xs-11 q-px-xl">
-        <title-description
-          class="q-px-md-xl"
-          title="Inscreva-se para receber as
-            Perspectivas da Strategy Analytics"
-        ></title-description>
-      </div>
-    </div>
+    <!-- <div class="row justify-center text-white">
+
+    </div> -->
     <q-form>
-      <div class="row q-pa-xl q-gutter-sm">
+      <div class="row q-pa-xl q-gutter-sm justify-center">
+        <!-- <div class="col-md-12 col-xs-11 q-px-xl"> -->
+        <div class="col-12 col-md-9 col-sm-12">
+          <title-description
+            class="q-px-md-xl"
+            title="Inscreva-se para receber as
+            Perspectivas da Strategy Analytics"
+          ></title-description>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12"></div>
         <div class="col-12 col-md-3 col-sm-12">
           <span>Nome: *</span>
           <q-input
@@ -111,6 +114,7 @@
             :loading="loadingInput"
           />
         </div>
+        <div class="col-12 col-md-3 col-sm-12"></div>
       </div>
       <div class="row justify-center text-right">
         <div class="col-lg-10 col-sm-10">
@@ -126,7 +130,8 @@
         </div>
         <div class="col-12 freak"></div>
         <div class="col-lg-10 col-sm-10 q-mt-sm">
-          <span>Politica de privacidade </span>
+          <span>Leia nossa política de privacidade</span><br />
+          <span> <b> Politica de privacidade </b></span>
         </div>
       </div>
     </q-form>
