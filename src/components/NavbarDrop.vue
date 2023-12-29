@@ -279,16 +279,16 @@ export default defineComponent({
         className: "strategy",
         route: "quadrivium",
       },
-      {
-        content: "Login",
-        className: "strategy",
-        route: "/login",
-      },
-      {
-        content: "Simulado",
-        className: "strategy",
-        route: "/simulator",
-      },
+      // {
+      //   content: "Login",
+      //   className: "strategy",
+      //   route: "/login",
+      // },
+      // {
+      //   content: "Simulado",
+      //   className: "strategy",
+      //   route: "/simulator",
+      // },
     ];
 
     return {

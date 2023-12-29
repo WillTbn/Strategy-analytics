@@ -1,6 +1,9 @@
 const state = () => {
   return {
-    person: "",
+    login: {
+      person: "",
+      password: "",
+    },
     accountEdit: {},
     data: {
       name: "Charles Leclerc",

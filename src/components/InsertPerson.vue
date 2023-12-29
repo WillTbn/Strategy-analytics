@@ -1,18 +1,11 @@
 <template>
-  <!-- <transition name="fade" mode="out-in"> -->
-  <!-- <span :key="regis.status"> -->
-  <!-- <q-btn
-        padding="xs lg"
-        label="Cadastre-se"
-        class="btn-control"
-        v-if="!regis.status"
-        no-caps
-        @click.prevent="regis.status = true"
-      ></q-btn> -->
-  <span style="position: absolute" class="control-span-form">
-    <!-- :label-color="inputColor.label" -->
+  <span
+    style="position: absolute"
+    class="control-span-form"
+    @keyup.enter="fromLogin()"
+  >
     <q-input
-      v-model="user.person"
+      v-model="login.person"
       label="Insira seu CPF"
       standout
       dense
@@ -21,31 +14,47 @@
       :bg-color="inputColor.bg"
     >
       <template v-slot:append>
-        <q-avatar>
-          <q-icon name="lock" size="1.5rem" :color="inputColor.label" />
-        </q-avatar>
+        <transition name="fade" mode="out-in">
+          <q-avatar>
+            <q-icon
+              :name="iconRef"
+              size="1.5rem"
+              :color="inputColor.label"
+              @click.enter="fromLogin()"
+            />
+          </q-avatar>
+        </transition>
       </template>
     </q-input>
-    <!-- <span
-          @click.prevent="regis.status = false"
-          class="text-danger control-btn"
-        >
-          sair</span
-        > -->
   </span>
-  <!-- </span> -->
-  <!-- </transition> -->
 </template>
 <script>
 import { useQuasar } from "quasar";
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, watch, ref } from "vue";
 import { useRegisterStore } from "../stores/register";
 import { useUserStore } from "../stores/user";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "InsertPerson",
   setup() {
     const $q = useQuasar();
+    const useStore = useUserStore();
+    const router = useRouter();
+    const { login } = storeToRefs(useStore);
+
+    const iconRef = ref("lock");
+    // const dataIcon = ref(0);
+
+    watch(login.value, (a) => {
+      if (a.person.length == 14) {
+        iconRef.value = "arrow_forward";
+      } else {
+        iconRef.value = "lock";
+      }
+    });
+
     const heightScreen = computed(() => {
       return (
         $q.screen.width <= 1024 &&
@@ -61,11 +70,18 @@ export default defineComponent({
         ? "{ color: '#000 !important' }"
         : "{ color: '#fff' !important' }",
     };
+    const fromLogin = () => {
+      if (login.value.person != "") {
+        router.push("/login");
+      }
+    };
 
     return {
       regis: useRegisterStore(),
-      user: useUserStore(),
+      login,
+      fromLogin,
       inputColor,
+      iconRef,
     };
   },
 });
@@ -77,4 +93,13 @@ export default defineComponent({
 .control-btn {
   cursor: pointer;
 }
+/* .fade-enter-active,
+.fade-leave-active {
+  transition: opacity 355ms;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+} */
 </style>

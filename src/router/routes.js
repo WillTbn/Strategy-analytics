@@ -68,6 +68,7 @@ const routes = [
   {
     path: "/system/",
     component: () => import("../system/layouts/MainLayout.vue"),
+    props: true,
     children: [
       {
         path: "",
@@ -81,8 +82,21 @@ const routes = [
       },
       {
         path: "calendar",
-        name: "calendar",
-        component: () => import("../system/pages/CalendarrrPage.vue"),
+        props: true,
+        // component: () => import("../system/pages/CalendarPage.vue"),
+        component: () => import("../system/layouts/CalendarLayout.vue"),
+        children: [
+          {
+            path: "",
+            name: "calendar",
+            component: () => import("../system/pages/CalendarPage.vue"),
+          },
+          {
+            path: "all",
+            name: "calendarAll",
+            component: () => import("../system/pages/CalendarallPage.vue"),
+          },
+        ],
       },
       {
         path: "loan",
