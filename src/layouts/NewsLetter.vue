@@ -130,7 +130,7 @@
         </div>
         <div class="col-12 freak"></div>
         <div class="col-lg-10 col-sm-10 q-mt-sm">
-          <span>Leia nossa política de privacidade</span><br />
+          <span>Leia nossa política de privacidade</span>
           <span> <b> Politica de privacidade </b></span>
         </div>
       </div>

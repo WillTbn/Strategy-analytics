@@ -121,7 +121,7 @@ export default function useStates() {
         "Tocantins",
       ],
     };
-    console.log(states[country]);
+    // console.log(states[country]);
     return states[country];
   };
 

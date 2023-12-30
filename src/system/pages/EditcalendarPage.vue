@@ -1,20 +1,24 @@
 <template>
-  <div class="CalendarLayout q-ma-xl">
-    <!-- <div class="row text-center q-ma-xl">
+  <div class="EditcalendarPage">
+    <div class="row justify-center text-center">
       <div class="col-12">
-        <titleinter-medium text="Calendário Strategy Analytics" />
+        <titleinter-medium text="Data de distribuição de lucros" />
       </div>
-    </div> -->
-    <router-view />
+
+
+
+
+    </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-// import TitleinterMedium from "../components/TitleinterMedium.vue";
+import TitleinterMedium from "../components/TitleinterMedium.vue";
+
 export default defineComponent({
-  name: "CalendarLayout",
-  components: {},
+  name: "EditcalendarPage",
+  components: { TitleinterMedium },
   setup() {
     return {};
   },

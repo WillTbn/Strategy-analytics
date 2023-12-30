@@ -336,7 +336,7 @@ export default defineComponent({
   background: #ffffff26 !important;
 }
 .navbar-tabs {
-  background: #100000f0 !important;
+  background: #100000 !important;
 }
 
 .list-control {

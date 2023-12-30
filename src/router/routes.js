@@ -96,6 +96,11 @@ const routes = [
             name: "calendarAll",
             component: () => import("../system/pages/CalendarallPage.vue"),
           },
+          {
+            path: "edit",
+            name: "edit",
+            component: () => import("../system/pages/EditcalendarPage.vue"),
+          },
         ],
       },
       {

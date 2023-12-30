@@ -4,7 +4,7 @@
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Nossa gestão"
-          textClass="text-negative"
+          textClass="text-primary"
           textTitle="Administração de investimentos da Strategy Analytics"
           textDescription="A equipe de Gestão de Investimentos da Strategy Analytics é fundamental para o papel da Strategy Analytics como gestora de confiança e de ativos."
         />

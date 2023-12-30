@@ -36,7 +36,7 @@ export default defineComponent({
   setup() {
     const bgHeader = ref();
     function onScroll(position) {
-      bgHeader.value = position > 300 ? "navbar-tabs" : "navbar-tabs-top";
+      bgHeader.value = position >= 50 ? "navbar-tabs" : "navbar-tabs-top";
     }
     const layout = useLayoutStore();
     const route = useRoute();

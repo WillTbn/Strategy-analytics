@@ -2,7 +2,7 @@
   <div class="CalendarallPage">
     <div class="row justify-center">
       <div class="col-10">
-        <VCalendar :columns="columns" :expanded="expanded" />
+        <VCalendar :columns="columns" expanded />
       </div>
     </div>
   </div>

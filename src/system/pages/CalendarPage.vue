@@ -2,7 +2,7 @@
   <div class="CalendarPage">
     <div class="row q-pa-lg justify-center items-center">
       <div class="col-12 text-center">
-        <textinter-normal text="Calendário Strategy Analytics" />
+        <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
       <div class="col-5">
         <VCalendar
@@ -47,14 +47,14 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import TextinterNormal from "../components/TextinterNormal.vue";
+import TitleinterMedium from "../components/TitleinterMedium.vue";
 export default defineComponent({
   name: "CalendarPage",
-  components: { TextinterNormal },
+  components: { TitleinterMedium },
   setup() {
     const links = [
       { name: "Ver tudo", route: "/system/calendar/all" },
-      { name: "Alterar data rendimento", route: "/system/" },
+      { name: "Alterar data rendimento", route: "/system/calendar/edit" },
       { name: "Antecipar", route: "/system" },
     ];
 

@@ -46,13 +46,13 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: black; /* cor da área de rastreamento */
+  background: #100000; /* cor da área de rastreamento */
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: #4694d1; /* cor do polegar de rolagem */
   border-radius: 20px; /* arredondamento do polegar de rolagem */
-  border: 3px solid black; /* cria preenchimento em torno do polegar de rolagem */
+  border: 3px solid #100000; /* #100000 cria preenchimento em torno do polegar de rolagem #4694d1 */
 }
 .bg-all {
   // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
