@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <title><%= productName %></title> -->
+    <title><%= productName %></title>
 
     <meta charset="utf-8" />
-    <!-- <meta name="description" content="<%= productDescription %>" /> -->
+    <meta name="description" content="<%= productDescription %>" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta
       name="viewport"
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
     />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://strategyanalytics.com.br/" />
+    <meta
+      property="og:title"
+      content="Gestão de Investimentos e Serviços Financeiros | Strategy Analytics
+"
+    />
+    <meta
+      property="og:description"
+      content="A Strategy Analytics é uma das principais empresas de gestão de ativos e investimentos do Brasil. Saiba mais sobre nossa gestão de investimentos e serviços ..."
+    />
+    <meta
+      property="og:image"
+      content="https://strategyanalytics.com.br/img/icon-strategy-meta.jpg"
+    />
 
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://strategyanalytics.com.br/" />
+    <meta
+      property="twitter:title"
+      content="Gestão de Investimentos e Serviços Financeiros | Strategy Analytics
+"
+    />
+    <meta
+      property="twitter:description"
+      content="A Strategy Analytics é uma das principais empresas de gestão de ativos e investimentos do Brasil. Saiba mais sobre nossa gestão de investimentos e serviços ..."
+    />
+    <meta
+      property="twitter:image"
+      content="https://strategyanalytics.com.br/img/icon-strategy-meta.jpg"
+    />
     <link
       rel="icon"
       type="image/png"

@@ -23,7 +23,7 @@ import { useRoute } from "vue-router";
 
 import { useLayoutStore } from "../stores/layout";
 import NavbarDrop from "../components/NavbarDrop.vue";
-import { useMeta } from "quasar";
+// import { useMeta } from "quasar";
 export default defineComponent({
   components: {
     NavbarDrop,
@@ -177,7 +177,7 @@ export default defineComponent({
       //   : ((layout.className = "bg-simulator"),
       //     (layout.bgDrawer = "bg-simulator-draw"));
     });
-    useMeta(metaData);
+    // useMeta(metaData);
     return {
       onScroll,
       clickBody,
