@@ -1,7 +1,7 @@
 <template>
   <q-page class="text-white control-bg items-center">
     <header-layout class="main" :reverse="true">
-      <div class="col-md-5 col-sm-4 q-ml-lg text-left">
+      <div class="col-md-5 col-sm-10 q-ml-lg text-left">
         <title-subtitle
           textTop="perspectivas para 2° metade do ano de 2023"
           textTitle="Novo regime, novas oportunidades"
@@ -10,6 +10,7 @@
         />
         <q-btn
           class="q-mt-sm"
+          size="sm"
           dense
           no-caps
           color="secondary"
