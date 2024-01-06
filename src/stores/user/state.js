@@ -28,6 +28,7 @@ const state = () => {
           nickname: "bra",
         },
       ],
+      profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
     },
   };
 };

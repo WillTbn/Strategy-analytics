@@ -6,6 +6,9 @@ export const useLayoutStore = defineStore("layout", {
     bgDrawer: "",
     screenWidth: "",
     menuHeader: "",
+    calendarSteps: "home",
+    reportSteps: "all",
+    loanSteps: "home",
   }),
   getters: {},
   actions: {
@@ -29,6 +32,17 @@ export const useLayoutStore = defineStore("layout", {
       // if (Object.keys(sle).length > 0) {
       //   sle[0].classList.remove("active");
       // }
+    },
+
+    updateCalendarsteps(payload) {
+      this.calendarSteps = payload;
+    },
+    upateReportsteps(payload) {
+      this.reportSteps = payload;
+    },
+    updateLoansteps(payload) {
+      console.log(payload);
+      this.loanSteps = payload;
     },
   },
 });

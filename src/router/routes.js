@@ -81,27 +81,9 @@ const routes = [
         component: () => import("../system/pages/ConfigPage.vue"),
       },
       {
+        name: "calendar",
         path: "calendar",
-        props: true,
-        // component: () => import("../system/pages/CalendarPage.vue"),
-        component: () => import("../system/layouts/CalendarLayout.vue"),
-        children: [
-          {
-            path: "",
-            name: "calendar",
-            component: () => import("../system/pages/CalendarPage.vue"),
-          },
-          {
-            path: "all",
-            name: "calendarAll",
-            component: () => import("../system/pages/CalendarallPage.vue"),
-          },
-          {
-            path: "edit",
-            name: "edit",
-            component: () => import("../system/pages/EditcalendarPage.vue"),
-          },
-        ],
+        component: () => import("../system/pages/CalendarPage.vue"),
       },
       {
         path: "loan",

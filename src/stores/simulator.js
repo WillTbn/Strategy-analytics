@@ -9,6 +9,12 @@ export const useSimulatorStore = defineStore("simulator", {
       toReceiver: "Receber retornos mensal",
       perceFinal: 0,
     },
+    loan: {
+      value: 50,
+      plotValue: "1.450",
+      porcentage: 93,
+      contribuition: "109,14",
+    },
   }),
   getters: {
     doubleCount: (state) => state.data.year * 2,
@@ -32,6 +38,21 @@ export const useSimulatorStore = defineStore("simulator", {
         this.data.percentage = this.data.percentage - number;
       } else {
         this.data.percentage = 0;
+      }
+    },
+
+    decreaseLoan(number) {
+      if (this.loan.value > 50) {
+        this.loan.value = this.loan.value - number;
+      } else {
+        this.loan.value = 50;
+      }
+    },
+    incrementLoan(number) {
+      if (this.loan.value < 500) {
+        this.loan.value = this.loan.value + number;
+      } else {
+        this.loan.value = 500;
       }
     },
   },

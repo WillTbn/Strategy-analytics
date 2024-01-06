@@ -1,57 +1,52 @@
 <template>
   <div class="CalendarPage">
-    <div class="row q-pa-lg justify-center items-center">
-      <div class="col-12 text-center">
-        <titleinter-medium text="Calendário Strategy Analytics" />
-      </div>
-      <div class="col-5">
-        <VCalendar
-          borderless
-          color="blue"
-          :attributes="attrs"
-          expanded
-          title="Calendario "
-          nav-visibility="hover"
-        />
-      </div>
-      <div class="col-4 self-center">
-        <q-item>
-          <q-item-section top avatar>
-            <q-avatar color="primary" text-color="white" icon="" />
-          </q-item-section>
+    <q-tab-panels v-model="calendarSteps" animated>
+      <q-tab-panel name="home">
+        <calendar-layout></calendar-layout>
+      </q-tab-panel>
 
-          <q-item-section>
-            <q-item-label>Distribuição de lucros</q-item-label>
-            <q-item-label caption lines="2"
-              >Data atual:
-              <span class="text-weight-bolder text-dark">1° Dia útil</span>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-      </div>
-    </div>
-    <div class="row justify-center q-pa-lg">
-      <div class="col-4" v-for="link in links" :key="link">
-        <q-btn
-          outline
-          no-caps
-          rounded
-          color="primary"
-          :label="link.name"
-          :to="link.route"
-        />
-      </div>
-    </div>
+      <q-tab-panel name="all">
+        <calendarall-layout />
+      </q-tab-panel>
+
+      <q-tab-panel name="anticipate">
+        <calendaranticipate-layout />
+      </q-tab-panel>
+      <q-tab-panel name="edit">
+        <editcalendar-layout />
+      </q-tab-panel>
+      <q-tab-panel name="finally">
+        <calendarfinally-layout />
+      </q-tab-panel>
+    </q-tab-panels>
   </div>
 </template>
 
 <script>
+import { storeToRefs } from "pinia";
+import { useLayoutStore } from "../../stores/layout";
+import CalendarLayout from "../layouts/CalendarLayout.vue";
+import EditcalendarLayout from "../layouts/EditcalendarLayout.vue";
+import CalendarallLayout from "../layouts/CalendarallLayout.vue";
+import CalendarfinallyLayout from "../layouts/CalendarfinallyLayout.vue";
+import CalendaranticipateLayout from "../layouts/CalendaranticipateLayout.vue";
 import { defineComponent, ref } from "vue";
-import TitleinterMedium from "../components/TitleinterMedium.vue";
+
+// import TitleinterMedium from "../components/TitleinterMedium.vue";
 export default defineComponent({
   name: "CalendarPage",
-  components: { TitleinterMedium },
+  components: {
+    CalendarLayout,
+    EditcalendarLayout,
+    CalendarallLayout,
+    CalendarfinallyLayout,
+    CalendaranticipateLayout
+  },
   setup() {
+    const layoutStore = useLayoutStore();
+    const { calendarSteps } = storeToRefs(layoutStore);
+
+    const steps = ref("home");
     const links = [
       { name: "Ver tudo", route: "/system/calendar/all" },
       { name: "Alterar data rendimento", route: "/system/calendar/edit" },
@@ -74,7 +69,7 @@ export default defineComponent({
         },
       },
     ]);
-    return { attrs, links };
+    return { attrs, links, steps, calendarSteps };
   },
   // Outras configurações do componente aqui
 });

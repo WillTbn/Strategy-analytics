@@ -1,5 +1,5 @@
 <template>
-  <q-page class="DashboardPage" style="min-height: 2160px">
+  <q-page class="DashboardPage">
     <dashboard-layout />
   </q-page>
 </template>

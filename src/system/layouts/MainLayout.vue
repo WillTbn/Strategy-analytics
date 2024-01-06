@@ -4,7 +4,7 @@
     <q-page-container padding>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
-          <component :is="Component" :key="route.path"></component>
+          <component :is="Component" :key="route.name"></component>
         </transition>
       </router-view>
     </q-page-container>
