@@ -275,7 +275,7 @@ export default defineComponent({
         className: "text-weight-bold desc col-3 strategy",
       },
       {
-        content: "Quadarivium",
+        content: "Quadrivium",
         className: "strategy",
         route: "quadrivium",
       },

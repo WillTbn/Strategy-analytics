@@ -2,7 +2,8 @@
   <div class="paranoma-layout control-py">
     <text-image
       classAdd="justify-center text-left q-pa-lg q-my-xl"
-      image="img/default-img.png"
+      image="img/landing-page/banner-half-panorama1.jpg"
+      :border="true"
     >
       <div class="col-md-6 col-sm-10">
         <title-subtitle
@@ -24,7 +25,8 @@
     </text-image>
     <text-image
       classAdd="justify-around text-right q-pa-lg q-my-xl reverse"
-      image="img/default-img.png"
+      image="img/landing-page/banner-half-panorama2.jpg"
+      :border="true"
     >
       <div class="col-md-6 col-sm-10">
         <title-subtitle

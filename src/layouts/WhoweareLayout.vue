@@ -20,8 +20,9 @@
   <text-image
     v-for="are in WeAre"
     :key="are"
-    image="img/default-img.png"
+    :image="are.image"
     :classAdd="are.className"
+    :border="true"
   >
     <div class="col-2 col-md-3">
       <title-subtitle
@@ -76,6 +77,7 @@ export default defineComponent({
         description:
           "Colocando em prática as economias de pessoas e instituições em todo o mundo nos mercados globais.",
         className: "justify-center items-center text-left q-pa-lg q-my-xl",
+        image: "img/landing-page/banner-half-investidores.jpg",
       },
       {
         title: "Somos técnologos",
@@ -83,12 +85,14 @@ export default defineComponent({
           "Inovando constantemente para fornecer comodidade, transparência e precisão de investimentos.",
         className:
           "justify-center items-center text-right q-pa-lg q-my-xl reverse",
+        image: "img/landing-page/banner-half-tecnologo.jpg",
       },
       {
         title: "Somos da equipe",
         description:
           "Colocando em prática as economias de pessoas e instituições em todo o mundo nos mercados globais.",
         className: "justify-center items-center text-left q-pa-lg q-my-xl",
+        image: "img/landing-page/banner-half-equipe.jpg",
       },
     ];
 

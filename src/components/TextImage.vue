@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6">
       <slot />
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-6" :class="{ 'border-img': border }">
       <q-img :src="image" :ratio="16 / 9" />
     </div>
   </div>
@@ -19,6 +19,12 @@ export default defineComponent({
       default: "justify-center text-left q-pa-lg q-my-xl",
     },
     image: { type: String },
+    border: { type: Boolean },
   },
 });
 </script>
+<style>
+.border-img {
+  border: solid 2px #0085ff;
+}
+</style>

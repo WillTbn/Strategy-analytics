@@ -268,7 +268,7 @@ export default defineComponent({
     const listStrategy = [
       { content: "Estratégias", className: "text-weight-bold desc col-3" },
       {
-        content: "Quadarivium",
+        content: "Quadrivium",
         className: "col-3 text-h6 link-strategy",
         route: "quadrivium",
       },
