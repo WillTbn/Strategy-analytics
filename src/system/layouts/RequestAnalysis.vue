@@ -1,5 +1,5 @@
 <template>
-  <div class="CalendarfinallyLayout" style="height: 100%">
+  <div class="RequestAnalysis" style="height: 100%">
     <div
       class="row justify-center text-center items-center"
       style="height: 70dvh"
@@ -28,7 +28,7 @@ import TitleinterMedium from "../components/TitleinterMedium.vue";
 import { useLayoutStore } from "../../stores/layout";
 
 export default defineComponent({
-  name: "CalendarfinallyLayout",
+  name: "RequestAnalysis",
   components: { TitleinterMedium },
   setup() {
     const router = useRouter();
@@ -36,6 +36,7 @@ export default defineComponent({
     onMounted(() => {
       setTimeout(() => {
         storeLayout.updateCalendarsteps("home");
+        storeLayout.updateLoansteps("home");
         router.replace({ path: "/system" });
       }, 2000);
     });
@@ -47,7 +48,7 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
-.CalendarfinallyLayout {
+.RequestAnalysis {
   height: 95dvh;
 }
 </style>

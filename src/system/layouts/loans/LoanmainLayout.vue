@@ -71,8 +71,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-/* Estilos específicos do componente aqui */
+<style>
 .control-value {
   font-feature-settings: "clig" off, "liga" off;
 

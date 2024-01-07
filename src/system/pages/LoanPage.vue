@@ -9,6 +9,7 @@
       <q-tab-panel name="home"> <loanmain-layout /> </q-tab-panel>
 
       <q-tab-panel name="details"> <loandetails-layout /> </q-tab-panel>
+      <q-tab-panel name="finally"> <request-analysis /></q-tab-panel>
     </q-tab-panels>
   </div>
 </template>
@@ -21,10 +22,16 @@ import TextareaTitle from "../components/TextareaTitle.vue";
 import { useLayoutStore } from "src/stores/layout";
 import { storeToRefs } from "pinia";
 import LoandetailsLayout from "../layouts/loans/LoandetailsLayout.vue";
+import RequestAnalysis from "../layouts/RequestAnalysis.vue";
 
 export default defineComponent({
   name: "LoanPage",
-  components: { LoanmainLayout, LoandetailsLayout, TextareaTitle },
+  components: {
+    LoanmainLayout,
+    LoandetailsLayout,
+    TextareaTitle,
+    RequestAnalysis,
+  },
   setup() {
     const layout = useLayoutStore();
     const { loanSteps } = storeToRefs(layout);

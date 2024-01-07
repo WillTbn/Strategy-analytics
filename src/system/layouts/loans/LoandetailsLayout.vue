@@ -5,12 +5,15 @@
       style="height: 60vh"
     >
       <div class="col-12 self-center">
-        <p>De quanto você precisa?</p>
-
+        <p>Valor das parcelas</p>
+        <span class="control-value f-inter q-py-lg">
+          R$ {{ loan.plotValue }},00
+        </span>
         <p class="">
           Utilizamos <b>{{ loan.porcentage }}%</b> da distribuição de lucros
-          mensal para pagamento da parcela, resultando em uma novo valor de
-          <b>R$ {{ loan.contribuition }}</b> para as próximas contribuições.
+          mensal para pagamento da parcela, resultando em uma novo <br />
+          valor de <b>R$ {{ loan.contribuition }}</b> para as próximas
+          contribuições.
         </p>
       </div>
     </div>

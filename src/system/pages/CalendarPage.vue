@@ -16,7 +16,7 @@
         <editcalendar-layout />
       </q-tab-panel>
       <q-tab-panel name="finally">
-        <calendarfinally-layout />
+        <request-analysis />
       </q-tab-panel>
     </q-tab-panels>
   </div>
@@ -28,7 +28,7 @@ import { useLayoutStore } from "../../stores/layout";
 import CalendarLayout from "../layouts/CalendarLayout.vue";
 import EditcalendarLayout from "../layouts/EditcalendarLayout.vue";
 import CalendarallLayout from "../layouts/CalendarallLayout.vue";
-import CalendarfinallyLayout from "../layouts/CalendarfinallyLayout.vue";
+import RequestAnalysis from "../layouts/RequestAnalysis.vue";
 import CalendaranticipateLayout from "../layouts/CalendaranticipateLayout.vue";
 import { defineComponent, ref } from "vue";
 
@@ -39,8 +39,8 @@ export default defineComponent({
     CalendarLayout,
     EditcalendarLayout,
     CalendarallLayout,
-    CalendarfinallyLayout,
-    CalendaranticipateLayout
+    RequestAnalysis,
+    CalendaranticipateLayout,
   },
   setup() {
     const layoutStore = useLayoutStore();
