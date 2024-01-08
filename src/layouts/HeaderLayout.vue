@@ -20,7 +20,7 @@
         style="max-width: 653px"
         > -->
       <!-- srcset="img/image 1.png" -->
-      <!-- <q-img src="img/image 1.png" :ratio="4 / 3" fit="scale-down" /> -->
+      <q-img :src="image" :ratio="4 / 3" fit="scale-down" />
       <!-- </div> -->
     </div>
   </div>
@@ -37,6 +37,7 @@ export default defineComponent({
     reverse: {
       type: Boolean,
     },
+    image:{type:String}
   },
   setup() {
     const statusMember = ref(false);

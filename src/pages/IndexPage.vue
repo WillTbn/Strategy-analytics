@@ -111,7 +111,7 @@ export default defineComponent({
 
 */
 .bg-header {
-  background-image: url("img/landing-page/banner-home-right-darkblue.jpg");
+  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-right-darkblue.jpg");
   background-position-x: center;
   background-repeat: no-repeat;
 }
