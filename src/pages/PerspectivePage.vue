@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white control-bg items-center">
-    <header-layout class="main" :reverse="true">
+    <header-layout class="main bg-header-perpective" :reverse="true">
       <div class="col-md-5 col-sm-10 q-ml-lg text-left">
         <title-subtitle
           textTop="perspectivas para 2° metade do ano de 2023"
@@ -54,3 +54,10 @@ export default defineComponent({
   setup() {},
 });
 </script>
+<style>
+.bg-header-perpective {
+  background-image: url("img/landing-page/banner-home-left-darkblue.jpg");
+  background-position-x: center;
+  background-repeat: no-repeat;
+}
+</style>

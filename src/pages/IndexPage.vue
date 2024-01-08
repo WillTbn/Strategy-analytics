@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white" style="min-height: 2160px">
-    <header-layout class="main control-mb" :reverse="false">
+    <header-layout class="main control-mb bg-header" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
           textTop="perspectivas para 2° metade do ano de 2023"
@@ -95,7 +95,7 @@ export default defineComponent({
   background-repeat: round; */
   /* margin-top: -100px; */
 }
-.main::before {
+/* .main::before {
   content: "";
   position: absolute;
   top: 0;
@@ -107,5 +107,12 @@ export default defineComponent({
   background-position: top;
   background-size: cover;
   filter: blur(10px);
+}
+
+*/
+.bg-header {
+  background-image: url("img/landing-page/banner-home-right-darkblue.jpg");
+  background-position-x: center;
+  background-repeat: no-repeat;
 }
 </style>

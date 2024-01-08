@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile"
+    class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile padding-t-mobile"
     :class="{ reverse: reverse }"
   >
     <!-- <div class="col-md-5 col-sm-4 q-ml-lg text-left">
@@ -12,13 +12,15 @@
       /> -->
     <slot />
     <!-- </div> -->
-    <div class="col-sm-12 col-md-6 q-mt-xl q-px-xl">
+    <div
+      class="col-sm-12 col-md-6 q-mt-xl q-px-xl control-height padding-t-mobile"
+    >
       <!-- <div
         :class="{ 'q-mt-xl q-pt-xl': heightScreen }"
         style="max-width: 653px"
         > -->
       <!-- srcset="img/image 1.png" -->
-      <q-img src="img/image 1.png" :ratio="4 / 3" fit="scale-down" />
+      <!-- <q-img src="img/image 1.png" :ratio="4 / 3" fit="scale-down" /> -->
       <!-- </div> -->
     </div>
   </div>
@@ -95,6 +97,9 @@ span {
 .t-height {
   height: 14rem !important;
 }
+.control-height {
+  min-height: 35rem;
+}
 body:not(.desktop) {
   .margin-mobile-right {
     padding-right: 2rem;
@@ -106,6 +111,14 @@ body:not(.desktop) {
 body:is(.platform-android) {
   .margin-top-android {
     padding-top: 13rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .control-height {
+    min-height: auto;
+  }
+  .padding-t-mobile {
+    padding-top: 3rem;
   }
 }
 </style>
