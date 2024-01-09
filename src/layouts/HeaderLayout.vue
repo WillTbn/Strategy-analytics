@@ -3,25 +3,12 @@
     class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile padding-t-mobile"
     :class="{ reverse: reverse }"
   >
-    <!-- <div class="col-md-5 col-sm-4 q-ml-lg text-left">
-      <title-subtitle
-        textTop="perspectivas para 2° metade do ano de 2023"
-        textTitle="Novo regime, novas oportunidades"
-        textDescription="28 de Junho de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
-        Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
-      /> -->
     <slot />
-    <!-- </div> -->
+
     <div
       class="col-sm-12 col-md-6 q-mt-xl q-px-xl control-height padding-t-mobile"
     >
-      <!-- <div
-        :class="{ 'q-mt-xl q-pt-xl': heightScreen }"
-        style="max-width: 653px"
-        > -->
-      <!-- srcset="img/image 1.png" -->
       <q-img :src="image" :ratio="4 / 3" fit="scale-down" />
-      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -37,7 +24,7 @@ export default defineComponent({
     reverse: {
       type: Boolean,
     },
-    image:{type:String}
+    image: { type: String },
   },
   setup() {
     const statusMember = ref(false);

@@ -57,7 +57,8 @@ export default defineComponent({
 <style>
 .bg-header-perpective {
   background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-left-darkblue.jpg");
-  background-position-x: center;
+  background-position-x: right;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
