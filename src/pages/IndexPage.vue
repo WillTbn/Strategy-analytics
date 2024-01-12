@@ -70,48 +70,15 @@ export default defineComponent({
     #1a1e2d 53%,
     #1a1e2d 84%,
     #4e1723 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+  */
 }
 .main {
   position: relative;
   width: 100%;
-  /*
-  height: 120vh;
-   background: linear-gradient(
-    45deg,
-    #1a1e2d 0%,
-    #1b1f2e 7%,
-    #13476d 23%,
-    #11517c 28%,
-    #10517e 30%,
-    #124e78 33%,
-    #1a1e2d 53%,
-    #1a1e2d 84%,
-    #4e1723 100%
-  );
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  background-repeat: round; */
-  /* margin-top: -100px; */
-}
-/* .main::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: inherit;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  filter: blur(10px);
 }
 
-*/
 .bg-header {
-  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-right-darkblue.jpg");
+  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-right-2700novo.jpg");
   background-position-x: left;
   background-repeat: no-repeat;
   background-size: cover;

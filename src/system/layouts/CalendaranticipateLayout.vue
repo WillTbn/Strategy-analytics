@@ -13,12 +13,17 @@
           v-model="model"
           transition-show="flip-up"
           transition-hide="flip-down"
-          bg-color="blue-1"
-          color="primary"
+          bg-color="transparent"
+          color="dark"
           dense
           outlined
+          square
+          filled
           :options="quantity"
           label="Quantidade (1-24)"
+          class="border-btn"
+          rounded
+          label-color="dark"
         />
       </div>
     </div>
@@ -59,12 +64,14 @@
           outline
           no-caps
           rounded
-          color="primary"
+          color="dark"
           label="solicitar"
           padding="sm xl"
           size="lg"
           @click.prevent="goStep('finally')"
           :disabled="!terms || !model"
+          flat
+          class="border-btn"
         />
       </div>
     </div>

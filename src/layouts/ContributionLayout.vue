@@ -1,5 +1,7 @@
 <template>
-  <div class="row ustify-center text-center q-gutter-lg q-mt-xl padding-i-mobile">
+  <div
+    class="row ustify-center text-center q-gutter-lg q-mt-xl padding-i-mobile"
+  >
     <div class="col-md-4 col-sm-6">
       <p class="text-h5 text-weight-bolder">Nossa Contribuição?</p>
     </div>
@@ -32,7 +34,7 @@ export default defineComponent({
   setup() {
     const contributions = [
       {
-        title: "Segurança Finaneira",
+        title: "Segurança Financeira",
         image: "img/contribution-segurancy.png",
         description:
           "Garantia de Estabilidade Financeira Estamos comprometidos em orientar milhões de indivíduos a construir um patrimônio seguro e duradouro, assegurando seu bem-estar financeiro ao longo da vida..",

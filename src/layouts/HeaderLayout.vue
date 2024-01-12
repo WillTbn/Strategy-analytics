@@ -6,7 +6,8 @@
     <slot />
 
     <div
-      class="col-sm-12 col-md-6 q-mt-xl q-px-xl control-height padding-t-mobile"
+      class="col-sm-12 col-md-6 q-mt-xl q-px-xl padding-t-mobile"
+      :class="{'control-height ' : !image}"
     >
       <q-img :src="image" :ratio="4 / 3" fit="scale-down" />
     </div>

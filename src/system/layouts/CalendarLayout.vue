@@ -1,17 +1,21 @@
 <template>
-  <div class="CalendarLayout q-ma-xl">
-    <div class="row q-pa-lg justify-center items-center">
+  <div class="CalendarLayout">
+    <div class="row justify-center items-center">
       <div class="col-12 text-center">
         <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
-      <div class="col-5">
+    </div>
+    <div class="row justify-center q-my-xl items-center">
+      <div class="col-8">
+        <!-- <calendar-full /> -->
+
         <VCalendar
+          :navigate="false"
           borderless
           color="blue"
           :attributes="attrs"
           expanded
           title="Calendario "
-          nav-visibility="hover"
         />
       </div>
       <div class="col-4 self-center">
@@ -31,16 +35,23 @@
       </div>
     </div>
     <div class="row justify-center q-pa-lg">
-      <div class="col-4" v-for="link in links" :key="link">
+      <div class="col-3" v-for="link in links" :key="link">
         <q-btn
           outline
           no-caps
           rounded
+          text-color="dark"
           color="primary"
           :label="link.name"
           @click.prevent="goStep(link.value)"
+          flat
+          class="border-btn"
         />
       </div>
+    </div>
+
+    <div class="retangulo">
+      <div class="ondulacao"></div>
     </div>
   </div>
 </template>
@@ -49,6 +60,8 @@
 import { defineComponent, ref } from "vue";
 import TitleinterMedium from "../components/TitleinterMedium.vue";
 import { useLayoutStore } from "../../stores/layout";
+// import CalendarCurrent from "../components/calendar/CalendarCurrent.vue";
+
 export default defineComponent({
   name: "CalendarLayout",
   components: { TitleinterMedium },
@@ -87,4 +100,27 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+.retangulo {
+  background-color: lightgray;
+  border: 1px solid lightblue;
+  height: 100px;
+  width: 200px;
+  position: relative;
+}
+
+.retangulo::before,
+.retangulo::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: lightgray;
+  border: 1px solid lightblue;
+  height: 50px;
+  width: 50px;
+}
+
+.retangulo::before {
+  top: 25px;
+  right: -25px;
+}
 </style>

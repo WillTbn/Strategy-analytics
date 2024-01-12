@@ -1,6 +1,6 @@
 <template>
   <div class="DashboardLayout row q-gutter-x-sm q-gutter-y-lg container">
-    <div class="col-7">
+    <div class="col-md-7 col-12">
       <div class="row">
         <div class="col-md-6 q-px-sm">
           <q-card class="card-container" bordered>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <!--  TABS -->
-    <div style="height: auto; width: 39.3333%">
+    <div class="card-relatorio-row">
       <q-card class="card-relatorio">
         <q-card-section> <report-layout /></q-card-section>
       </q-card>
@@ -62,8 +62,8 @@ export default defineComponent({
   padding: 1.5rem 1rem;
 }
 .card-container {
-  min-height: 277px;
-  max-height: 290px;
+  /* min-height: 310px; */
+  height: 310px;
 }
 .card-relatorio {
   min-height: 90vh;
@@ -77,7 +77,23 @@ export default defineComponent({
 }
 /* q-mt-lg q-ml-sm */
 .col-chart {
-  margin: 3.5rem 5rem 0 0.5rem;
+  margin: 3.1rem 5rem 0 0.5rem;
   padding-right: 0.5rem;
+}
+.card-relatorio-row {
+  height: auto;
+  width: 39.3333%;
+}
+@media (max-width: 768px) {
+  .card-container:not(:first-child) {
+    margin-top: 1rem !important;
+  }
+  .card-relatorio-row {
+    height: auto;
+    width: 99.3333%;
+  }
+  .col-chart {
+    margin: 0.1rem;
+  }
 }
 </style>

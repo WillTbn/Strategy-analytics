@@ -1,30 +1,38 @@
 <template>
-  <div class="ChartWallet">
-    <div id="chart">
-      <b class="h5 font-weight-bolder ml-2"></b>
-      <apexchart
-        type="area"
-        height="250"
-        ref="chart"
-        :options="options"
-        :series="series"
-      ></apexchart>
-    </div>
+  <div class="ChartComparative">
+    <apexchart
+      type="area"
+      height="320"
+      ref="chart"
+      :options="options"
+      :series="series"
+    ></apexchart>
+    <!-- width="75%" -->
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "ChartWallet",
+  name: "ChartComparative",
   setup() {
     const series = [
       {
-        name: "Carteira Strategy Anaytics",
+        name: "Strategy Analytics",
         data: [10, 20, 30, 40, 40, 45, 50],
+      },
+      {
+        name: "ibovespa",
+        data: [10, -20, 15, -5, -10, 10, 0],
+      },
+      {
+        name: "S&P",
+        data: [10, 20, 5, 5, 9, 2, -5],
       },
     ];
     const options = {
+      legend: { position: "right", fontFamily: "Inter" },
+      colors: ["#2E93fA", "#66DA26", "#E91E63"],
       chart: {
         height: 350,
         type: "line",
@@ -38,10 +46,16 @@ export default defineComponent({
       stroke: {
         curve: "straight",
       },
-      // title: {
-      //   text: "Product Trends by Month",
-      //   align: "center",
-      // },
+      title: {
+        text: "Carteira Strategy Analytics",
+        align: "center",
+        style: {
+          fontSize: "24px",
+          fontWeight: "bold",
+          fontFamily: "Inter",
+          color: "#263238",
+        },
+      },
       grid: {
         row: {
           colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
@@ -54,11 +68,12 @@ export default defineComponent({
           style: {
             colors: ["gray", "gray", "gray", "gray", "gray", "gray", "gray"],
             fontSize: "8px",
+            fontFamily: "Inter",
             fontWeight: 600,
           },
         },
         categories: [
-          "-       -2022-Q1",
+          "--- 2022-Q1",
           "2022-Q2",
           "2022-Q3",
           "2022-Q4",
@@ -75,6 +90,9 @@ export default defineComponent({
           align: "left",
           formatter: (value) => {
             return `${value}%`;
+          },
+          style: {
+            fontFamily: "Inter",
           },
         },
       },

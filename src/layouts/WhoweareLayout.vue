@@ -77,7 +77,7 @@ export default defineComponent({
         description:
           "Colocando em prática as economias de pessoas e instituições em todo o mundo nos mercados globais.",
         className: "justify-center items-center text-left q-pa-lg q-my-xl",
-        image: "img/landing-page/banner-half-investidores.jpg",
+        image: "img/landing-page/banner-half-investidores-1900.jpg",
       },
       {
         title: "Somos técnologos",
@@ -85,7 +85,7 @@ export default defineComponent({
           "Inovando constantemente para fornecer comodidade, transparência e precisão de investimentos.",
         className:
           "justify-center items-center text-right q-pa-lg q-my-xl reverse",
-        image: "img/landing-page/banner-half-tecnologo.jpg",
+        image: "img/landing-page/banner-half-tecnologo-1900.jpg",
       },
       {
         title: "Somos da equipe",

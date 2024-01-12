@@ -14,6 +14,7 @@
           icon="fa-solid fa-minus"
           style="cursor: pointer"
           rounded
+          flat
         />
         <span class="control-value f-inter"> R$ {{ loan.value }}.000,00 </span>
 
@@ -24,6 +25,7 @@
           text-color="dark"
           icon="fa-solid fa-plus"
           style="cursor: pointer"
+          flat
         />
         <p class="">Emprestimo minimo R$50.000,00 máximo 500.000,00</p>
       </div>
@@ -34,9 +36,11 @@
           outline
           no-caps
           rounded
-          color="primary"
+          color="dark"
           label="Prosseguir"
           @click.prevent="goStep('details')"
+          flat
+          class="border-btn"
         />
       </div>
     </div>

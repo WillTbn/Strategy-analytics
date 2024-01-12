@@ -1,11 +1,11 @@
 <template>
   <div class="LoanPage">
-    <div class="row text-center justify-center q-mt-lg">
+    <div class="row text-center justify-center q-pt-lg">
       <div class="col-12">
         <textarea-title text="Emprestimo" />
       </div>
     </div>
-    <q-tab-panels v-model="loanSteps" animated>
+    <q-tab-panels v-model="loanSteps" animated class="bg-transparent">
       <q-tab-panel name="home"> <loanmain-layout /> </q-tab-panel>
 
       <q-tab-panel name="details"> <loandetails-layout /> </q-tab-panel>

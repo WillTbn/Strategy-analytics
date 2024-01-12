@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white control-bg items-center">
-    <header-layout class="main" :reverse="false">
+    <header-layout class="main" :reverse="false" image="img/image 1.png">
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-control">
         <title-subtitle
           textTopPersonal="Nossa liderança"
@@ -18,8 +18,8 @@
       :scroll-offset="150"
       :offset="[18, 18]"
     >
-      <q-btn fab icon="keyboard_arrow_up" color="secondary" />
-    </q-page-scroller></q-page>
+      <q-btn fab icon="keyboard_arrow_up" color="secondary" /> </q-page-scroller
+  ></q-page>
 </template>
 <script>
 import { defineComponent, ref } from "vue";

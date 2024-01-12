@@ -1,6 +1,6 @@
 <template>
   <div class="CalendarPage">
-    <q-tab-panels v-model="calendarSteps" animated>
+    <q-tab-panels v-model="calendarSteps" animated class="bg-transparent">
       <q-tab-panel name="home">
         <calendar-layout></calendar-layout>
       </q-tab-panel>

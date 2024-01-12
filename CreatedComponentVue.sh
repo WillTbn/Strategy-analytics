@@ -28,6 +28,7 @@ else
   echo "|       →  3 - sistema components (src/system/components)      |"
   echo "|       →  4 - sistema layouts (src/system/layouts)            |"
   echo "|       →  5 - sistema pages (src/system/pages)                |"
+  echo "|       →  6 - sistema charts (src/system/components/charts)   |"
   echo "|--------------------------------------------------------------|"
   echo "Digite qual:"
   read a_input
@@ -40,6 +41,7 @@ else
           3) diretorio="src/system/components/";;
           4) diretorio="src/system/layouts/";;
           5) diretorio="src/system/pages/";;
+          6) diretorio="src/system/components/charts/";;
           *) opc="EXCEPTION";
           echo "Não temos suporte para ${a_input}  ${opc}";;
       esac

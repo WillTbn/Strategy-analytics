@@ -2,7 +2,7 @@
   <div class="CalendarallLayout">
     <div class="row justify-center">
       <div class="col-10">
-        <VCalendar :columns="columns" expanded />
+        <VCalendar :columns="columns" expanded :row="row" />
       </div>
       <div class="col-12 q-mt-lg">
         <q-btn
@@ -34,6 +34,7 @@ export default defineComponent({
       lg: "1024px",
     });
     const columns = mapCurrent({ lg: 4 }, 6);
+    const row = mapCurrent({ lg: 4 }, 6);
     const expanded = mapCurrent({ lg: true }, true);
     const goStep = (value) => {
       storeLayout.updateCalendarsteps(value);

@@ -23,9 +23,11 @@
           outline
           no-caps
           rounded
-          color="primary"
+          color="dark"
           label="Solicitar agora"
           @click.prevent="goStep('finally')"
+          flat
+          class="border-btn"
         />
       </div>
     </div>
