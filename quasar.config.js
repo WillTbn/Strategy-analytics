@@ -52,12 +52,8 @@ module.exports = configure(function (/* ctx */) {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
       },
-      extendWebpack(cfg) {
-        cfg.plugins.push(
-          new webpack.DefinePlugin({
-            __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(true),
-          })
-        );
+      extendViteConf(viteConf) {
+        viteConf.define.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
       },
       vueRouterMode: "history", // available values: 'hash', 'history'
       // vueRouterBase,
