@@ -22,33 +22,7 @@ export default defineComponent({
     SwiperCarousel,
   },
   setup() {
-    const slide = ref(1);
-    const authors = [
-      {
-        id: 1,
-        author: "Lewis Hamilton",
-        image: "img/image-3.png",
-        office: "vice-analista Strategy",
-      },
-      {
-        id: 2,
-        author: "Max Verstappen",
-        image: "img/image-4.png",
-        office: "Diretor Strategy",
-      },
-      {
-        id: 3,
-        author: "Charles Leclerc",
-        image: "img/image-5.png",
-        office: "Vice-diretor Strategy",
-      },
-    ];
-
-    return {
-      slide,
-      authors,
-      fullscreen: ref(false),
-    };
+    return {};
   },
 });
 </script>

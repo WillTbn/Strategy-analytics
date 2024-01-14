@@ -29,7 +29,7 @@
     :initialSlide="slide"
     class="mySwiper q-mb-xl"
   >
-    <swiper-slide v-for="(author, i) in authors" :key="i">
+    <swiper-slide v-for="(author, i) in authors" :key="author[i]">
       <author-carousel
         :author="author.author"
         :image="author.image"

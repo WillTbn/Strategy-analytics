@@ -20,6 +20,7 @@
             outlined
             v-model="newsletter.name"
             bg-color="secondary"
+            color="white"
             dense
           />
         </div>
@@ -85,7 +86,7 @@
           <span>País: *</span>
 
           <q-select
-            v-model="valueCountry.name"
+            v-model="country"
             transition-show="flip-up"
             transition-hide="flip-down"
             input-class="white"
@@ -101,7 +102,7 @@
           <span>Estado: *</span>
 
           <q-select
-            v-model="newsletter.state"
+            v-model="state"
             transition-show="flip-up"
             transition-hide="flip-down"
             input-class="white"
@@ -176,15 +177,23 @@ export default defineComponent({
       company: "",
       office: "",
       state: "",
-      country: valueCountry.value.name.label,
+      country: "",
       email: "",
     });
-    watch(valueCountry.value, (n) => {
-      if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {
-        newsletter.value.country = n.name.label;
-        getStates(valueCountry.value.name.id);
+    const state = ref("");
+    const country = ref("");
+
+    watch(country, (n) => {
+      if (n) {
+        getStates(n.id);
       }
     });
+    // watch(valueCountry.value, (n) => {
+    //   if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {
+    //     newsletter.value.country = n.name.label;
+    //     getStates(valueCountry.value.name.id);
+    //   }
+    // });
     const optionsOffice = [
       "Diretor Executivo (CEO)",
       "Diretor financeiro (CFO)",
@@ -223,6 +232,8 @@ export default defineComponent({
       statusState,
       valueCountry,
       loadingInput,
+      country,
+      state,
       getStates,
     };
   },

@@ -188,7 +188,13 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style>
+.q-field__label,
+no-pointer-events,
+absolute,
+ellipsis {
+  color: #fff;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 355ms;
