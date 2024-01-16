@@ -64,7 +64,7 @@
           outline
           no-caps
           rounded
-          color="primary"
+          class="border-btn"
           label="voltar"
           @click.prevent="goStep('home')"
         />
@@ -75,7 +75,7 @@
           outline
           no-caps
           rounded
-          color="primary"
+          class="border-btn"
           label="Confirmar"
           :disabled="terms != true && model.id != data.profit_date.id"
           @click.prevent="submit"
@@ -117,7 +117,7 @@ export default defineComponent({
     });
     const submit = () => {
       $q.notify("Inf");
-      storeLayout.updateCalendarsteps('finally');
+      storeLayout.updateCalendarsteps("finally");
     };
     const goStep = (value) => {
       storeLayout.updateCalendarsteps(value);

@@ -14,7 +14,10 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "AssetClasses",
-  setup() {
+  props: {
+    statusDark: { type: Boolean, required: true },
+  },
+  setup(props) {
     const series = [73, 27];
     const options = {
       colors: ["#2E93fA", "#001"],
@@ -30,7 +33,7 @@ export default defineComponent({
           fontSize: "18px",
           fontWeight: "bold",
           fontFamily: "Inter",
-          color: "#263238",
+          color: !props.statusDark ? "#263238" : "#fff",
         },
       },
       responsive: [
@@ -42,6 +45,9 @@ export default defineComponent({
             },
             legend: {
               position: "bottom",
+            },
+            style: {
+              color: !props.statusDark ? "#263238" : "#fff",
             },
           },
         },

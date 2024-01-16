@@ -18,7 +18,7 @@
 // import MenuLayout from "../layouts/MenuLayout.vue";
 import NavbarLayout from "../layouts/NavbarLayout.vue";
 import { Dark } from "quasar";
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
@@ -39,7 +39,7 @@ export default defineComponent({
     return {
       route,
       Dark,
-      statusDark: ref(Dark.isActive ? "bg-system-dark" : "bg-system"),
+      statusDark: computed(() => Dark.isActive ? "bg-system-dark" : "bg-system"),
     };
   },
 });

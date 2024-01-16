@@ -15,7 +15,10 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "ChartComparative",
-  setup() {
+  props: {
+    statusDark: { type: Boolean, required: true },
+  },
+  setup(props) {
     const series = [
       {
         name: "Strategy Analytics",
@@ -31,7 +34,10 @@ export default defineComponent({
       },
     ];
     const options = {
-      legend: { position: "right", fontFamily: "Inter" },
+      legend: {
+        position: "right",
+        fontFamily: "Inter",
+      },
       colors: ["#2E93fA", "#66DA26", "#E91E63"],
       chart: {
         height: 350,
@@ -53,7 +59,7 @@ export default defineComponent({
           fontSize: "24px",
           fontWeight: "bold",
           fontFamily: "Inter",
-          color: "#263238",
+          color: !props.statusDark ? "#263238" : "#fff",
         },
       },
       grid: {
@@ -81,6 +87,7 @@ export default defineComponent({
           "2023-Q2",
           "2023-Q3",
         ],
+        
       },
       yaxis: {
         opposite: true,

@@ -14,7 +14,10 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "DividendYield",
-  setup() {
+  props: {
+    statusDark: { type: Boolean, required: true },
+  },
+  setup(props) {
     const series = [
       {
         name: "Rendimentos de dividendos",
@@ -44,7 +47,7 @@ export default defineComponent({
           fontSize: "12px",
           fontWeight: "bold",
           fontFamily: "Inter",
-          color: "#263238",
+          color: !props.statusDark ? "#263238" : "#fff",
         },
       },
       dataLabels: {
@@ -76,6 +79,7 @@ export default defineComponent({
             },
             style: {
               fontFamily: "Inter",
+              color: !props.statusDark ? "#263238" : "#fff",
             },
           },
         },

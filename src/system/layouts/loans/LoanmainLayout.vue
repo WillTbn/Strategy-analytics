@@ -36,11 +36,10 @@
           outline
           no-caps
           rounded
-          color="dark"
           label="Prosseguir"
-          @click.prevent="goStep('details')"
-          flat
           class="border-btn"
+          flat
+          @click.prevent="goStep('details')"
         />
       </div>
     </div>

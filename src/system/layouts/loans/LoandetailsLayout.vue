@@ -23,7 +23,6 @@
           outline
           no-caps
           rounded
-          color="dark"
           label="Solicitar agora"
           @click.prevent="goStep('finally')"
           flat

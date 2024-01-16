@@ -1,5 +1,6 @@
 // app global css in SCSS form
 @import "_c-dropdown.scss";
+@import "system.scss";
 @font-face {
   font-family: instokWeb;
   src: url(./IstokWeb-Regular.ttf);
@@ -218,13 +219,4 @@ body {
     display: block;
     text-align: center;
   }
-}
-.border-btn {
-  border: solid 1px $primary;
-}
-.bg-system {
-  background: #d9d9d9 !important;
-}
-.bg-system-dark {
-  background: #000 !important;
 }

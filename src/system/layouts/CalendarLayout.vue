@@ -40,19 +40,17 @@
           outline
           no-caps
           rounded
-          text-color="dark"
-          color="primary"
-          :label="link.name"
-          @click.prevent="goStep(link.value)"
           flat
+          @click.prevent="goStep(link.value)"
           class="border-btn"
+          :label="link.name"
         />
       </div>
     </div>
 
-    <div class="retangulo">
+    <!-- <div class="retangulo">
       <div class="ondulacao"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 

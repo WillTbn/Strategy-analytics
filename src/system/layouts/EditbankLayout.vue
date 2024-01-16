@@ -1,37 +1,46 @@
 <template>
   <div class="EditbankLayout">
-    <q-card style="min-width: 350px">
+    <q-card style="min-width: 350px; border-radius: 16px" class="q-px-md">
       <q-card-section class="row text-center">
-        <div class="text-h6 col-12" v-if="accountEdit.bank">Editar conta</div>
-        <div class="col-12" v-else>Nova conta bancária</div>
+        <div class="col-12" v-if="accountEdit.bank">
+          <span class="text-h5 text-weight-bolder">Remove conta bancária</span
+          ><br />
+          <span class="text-second text-weight-bolder"
+            >Confirme em dados e clique em remover</span
+          >
+        </div>
+        <div class="col-12 text-h6" v-else>Nova conta bancária</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
         <q-form>
-          <div class="q-mb-lg">
+          <div class="">
             <span class="text-primary text-weight-bold">Banco:</span><br />
             <input
               type="text"
               name="name"
               v-model="accountEdit.bank"
               id="name"
+              :disabled="accountEdit.bank"
             />
           </div>
-          <div class="q-mb-lg">
+          <div class="">
             <span class="text-primary text-weight-bold">Agencia:</span><br />
             <input
               type="text"
               name="agency"
               v-model="accountEdit.agency"
+              :disabled="accountEdit.agency"
               id="agency"
             />
           </div>
-          <div class="q-mb-lg">
+          <div class="">
             <span class="text-primary text-weight-bold">Conta:</span><br />
             <input
               type="text"
               name="number"
               v-model="accountEdit.number"
+              :disabled="accountEdit.number"
               id="number"
             />
           </div>
@@ -42,19 +51,20 @@
               type="text"
               name="nickname"
               v-model="accountEdit.nickname"
+              :disabled="accountEdit.nickname"
               id="nickname"
             />
           </div>
           <div class="row text-center">
-            <div class="q-mb-lg col-12">
+            <div class="col-12">
               <q-btn
+                v-if="!accountEdit.bank"
                 outline
-                color="primary"
-                label="Salvar"
-                type="submit"
-                text-color="dark"
                 no-caps
+                label="Salvar"
+                class="border-btn"
               />
+              <q-btn v-else no-caps label="Remover" class="border-btn-red" />
             </div>
           </div>
         </q-form>

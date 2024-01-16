@@ -8,7 +8,7 @@
     <div class="row text-second">
       <div class="col-12"><span>Tema:</span><br /></div>
       <div class="col-2 text-center">
-        <q-btn outline color="primary" @click="activeTema()">
+        <q-btn color="white" @click="activeTema(false)">
           <q-avatar size="42px">
             <q-icon name="img:icons/claro-bg.svg" />
           </q-avatar>
@@ -16,9 +16,9 @@
         <p>claro</p>
       </div>
       <div class="col-2 text-center">
-        <q-btn color="black" @click="activeTema()">
+        <q-btn color="dark" @click="activeTema(true)">
           <q-avatar size="42px">
-            <q-icon name="img:icons/camada-22.svg" />
+            <q-icon name="img:icons/slogan.png" />
           </q-avatar>
         </q-btn>
         <p>Escuro</p>
@@ -38,28 +38,25 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 // import TextinterNormal from "../components/TextinterNormal.vue";
 import TextareaTitle from "../components/TextareaTitle.vue";
-import { useQuasar } from "quasar";
+import { useQuasar, Dark } from "quasar";
 
 export default defineComponent({
   name: "DashsetupLayout",
   components: { TextareaTitle },
   setup() {
     const $q = useQuasar();
-    const activeTema = () => {
-      console.log("aqui ->", activeTema.name);
-      // get status
-      console.log($q.dark.isActive); // true, false
-
-      // get configured status
-      console.log($q.dark.mode); // "auto", true, false
-      // setMoon($q.dark.isActive);
-      $q.dark.toggle();
+    const activeTema = (status) => {
+      Dark.set(status);
+      // $q.dark.toggle();
     };
     const animation = ref(true);
-    return { animation, activeTema };
+    return {
+      animation,
+      activeTema,
+    };
   },
   // Outras configurações do componente aqui
 });

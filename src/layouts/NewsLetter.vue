@@ -183,10 +183,12 @@ export default defineComponent({
     const state = ref("");
     const country = ref("");
 
-    watch(country, (n) => {
-      if (n) {
-        getStates(n.id);
-      }
+    watch(country, (newValue, oldValue) => {
+      // console.log("Valor original", oldValue);
+      // console.log("Valor novo", newValue);
+
+      if (oldValue.id && oldValue.id != newValue.id) state.value = "";
+      if (newValue) getStates(newValue.id);
     });
     // watch(valueCountry.value, (n) => {
     //   if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {

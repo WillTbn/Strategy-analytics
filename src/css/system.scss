@@ -1,0 +1,107 @@
+@import "./quasar.variables.scss";
+@import "./theme-dark.scss";
+@import "./theme-white.scss";
+.bg-system {
+  background: #d9d9d9 !important;
+}
+.bg-system-dark {
+  background: #000 !important;
+}
+
+.bg-navbar {
+  background: linear-gradient(
+    91deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  backdrop-filter: blur(17.5px);
+}
+.bg-navbar_dark {
+  background: #69686883 !important;
+  backdrop-filter: blur(17.5px);
+}
+
+// MENU SISTEMA
+.NavbarLayout > .q-drawer-container > .q-drawer:not(body.body--dark) {
+  top: 20px !important;
+  bottom: 20px !important;
+
+  background: transparent !important;
+  backdrop-filter: blur(2.5px);
+  z-index: 1000 !important;
+}
+.control-drawer {
+  // border: 2px solid rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 26px;
+  border-bottom-right-radius: 26px;
+  border-right: 1px solid #00000a14;
+  // border-bottom-right-color: 4px solid rgba(0, 0, 255, 0.5);
+  border-top: 1px solid #00000a14;
+  border-bottom: 1px solid #00000a14;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#020000+9,020000+50,2989d8+50,020000+50,207cca+51,7db9e8+100 */
+  // background: linear-gradient(to bottom,  #020000 9%,#020000 50%,#2989d8 50%,#020000 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+bg-navbar_dark > .position-absolute {
+  background: linear-gradient(
+    to right,
+    transparent 9%,
+    transparent 36%,
+    #69686883 38%,
+    transparent 40%,
+    transparent 100%
+  );
+}
+.bg-transparent > .position-absolute {
+  background: linear-gradient(
+    to right,
+    transparent 9%,
+    transparent 36%,
+    #d9d9d9 38%,
+    transparent 40%,
+    transparent 100%
+  );
+}
+.position-absolute::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: transparent;
+  border-right: 1px solid #999;
+  height: 33px;
+  width: 33px;
+  transform: translate(-10px);
+
+  /* box-shadow: 5px 3px 10px 2px #999; */
+}
+.position-absolute:not(body.mobile) {
+  cursor: pointer;
+  position: absolute;
+  top: -30px;
+  left: 40px;
+  bottom: 0;
+  width: 50px;
+  z-index: 3000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transform: translateX(40%);
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: red;
+}
+img {
+  fill: currentColor;
+}
+.dark q-icon svg path {
+  fill: white;
+}
+
+/* Aplicar a cor de texto padrão no modo Light */
+.light q-icon svg path {
+  fill: currentColor; /* Ou a cor desejada no modo Light */
+}
+
+.border-btn-red {
+  border: solid 1px $negative;
+}

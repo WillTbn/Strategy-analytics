@@ -1,9 +1,9 @@
 <template>
   <div class="PerfomancePage row q-pa-lg">
-    <div class="col-12 q-mb-lg"><chart-comparative /></div>
-    <div class="col-4"><dividend-yield /></div>
-    <div class="col-4"><asset-classes /></div>
-    <div class="col-4"><assets-risk /></div>
+    <div class="col-12 q-mb-lg"><chart-comparative :statusDark="dark" /></div>
+    <div class="col-4"><dividend-yield :statusDark="dark" /></div>
+    <div class="col-4"><asset-classes :statusDark="dark" /></div>
+    <div class="col-4"><assets-risk :statusDark="dark" /></div>
     <!-- <div class="col-12">
       <q-img src="charts/grafico-2.svg " />
     </div>
@@ -22,15 +22,18 @@
 <script>
 import ChartComparative from "../components/charts/ChartComparative.vue";
 
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import DividendYield from "../components/charts/DividendYield.vue";
 import AssetClasses from "../components/charts/AssetClasses.vue";
 import AssetsRisk from "../components/charts/AssetsRisk.vue";
+import { Dark } from "quasar";
 export default defineComponent({
   name: "PerfomancePage",
   components: { ChartComparative, DividendYield, AssetClasses, AssetsRisk },
   setup() {
-    return {};
+    return {
+      dark: computed(() => Dark.isActive),
+    };
   },
   // Outras configurações do componente aqui
 });

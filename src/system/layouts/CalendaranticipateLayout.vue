@@ -64,7 +64,6 @@
           outline
           no-caps
           rounded
-          color="dark"
           label="solicitar"
           padding="sm xl"
           size="lg"

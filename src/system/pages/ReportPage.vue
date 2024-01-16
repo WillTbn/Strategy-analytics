@@ -6,11 +6,10 @@
           outline
           no-caps
           rounded
-          color="dark"
-          :label="link.name"
-          @click.prevent="goStep(link.value)"
           flat
           class="border-btn"
+          :label="link.name"
+          @click.prevent="goStep(link.value)"
         />
       </div>
     </div>
