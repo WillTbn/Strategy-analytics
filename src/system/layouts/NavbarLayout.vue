@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <q-list class="q-mt-xl q-pt-xl q-mx-sm q-px-sm">
+      <q-list class="q-mt-xl q-pt-lg q-mx-sm q-px-sm">
         <q-item
           v-for="list in listMenu"
           :key="list"
@@ -53,6 +53,16 @@
         >
           <q-item-section avatar>
             <q-icon style="font-size: 2.5em">
+              <q-tooltip
+                v-if="miniState"
+                anchor="center right"
+                self="center left"
+                :offset="[10, 10]"
+                transition-show="rotate"
+                transition-hide="rotate"
+              >
+                {{ list.name }}
+              </q-tooltip>
               <svg
                 :width="list.svgWidth"
                 :height="list.svgHeight"
@@ -74,24 +84,23 @@
           <q-item-section> {{ list.name }} </q-item-section>
         </q-item>
       </q-list>
-      <div
-        class="bg-transparent q-mt-xl q-pt-lg row"
-        :class="{ 'justify-between text-center': miniState }"
-      >
+      <div class="bg-transparent q-mt-xl q-pt-lg row">
         <div class="col-12">
           <!-- <q-avatar size="36px" class="q-mb-sm">
             <img src="icons/logo.svg" />
           </q-avatar> -->
-          <q-item v-ripple>
+          <q-item v-ripple class="justify-center text-center">
             <q-item-section side>
               <q-avatar size="46px">
-                <img src="icons/logo.svg" />
+                <!-- <img src="icons/logo.svg" /> -->
+                <svg-logo :dark="dark" />
               </q-avatar>
             </q-item-section>
 
-            <q-item-section class="">
-              <q-avatar size="96px">
-                <img src="icons/logo_strategy_anaytics.svg" />
+            <q-item-section side>
+              <q-avatar size="120px">
+                <!-- <img src="icons/LETREIRO COM BARRA.svg" /> -->
+                <svg-sign :dark="dark" />
               </q-avatar>
             </q-item-section>
           </q-item>
@@ -120,9 +129,13 @@
 import { defineComponent, ref } from "vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
+import SvgLogo from "../components/svgs/SvgLogo.vue";
+import SvgSign from "../components/svgs/SvgSign.vue";
+
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
+  components: { SvgLogo, SvgSign },
   setup() {
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);

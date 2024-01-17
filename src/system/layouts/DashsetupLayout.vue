@@ -41,15 +41,18 @@
 import { defineComponent, ref, computed } from "vue";
 // import TextinterNormal from "../components/TextinterNormal.vue";
 import TextareaTitle from "../components/TextareaTitle.vue";
-import { useQuasar, Dark } from "quasar";
+import { Dark } from "quasar";
+import useCookies from "../../composables/useCookies";
 
 export default defineComponent({
   name: "DashsetupLayout",
   components: { TextareaTitle },
   setup() {
-    const $q = useQuasar();
+    const { setDarkMode } = useCookies();
+
     const activeTema = (status) => {
-      Dark.set(status);
+      // Dark.set(status);
+      setDarkMode(status);
       // $q.dark.toggle();
     };
     const animation = ref(true);

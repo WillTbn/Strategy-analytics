@@ -18,8 +18,9 @@
 // import MenuLayout from "../layouts/MenuLayout.vue";
 import NavbarLayout from "../layouts/NavbarLayout.vue";
 import { Dark } from "quasar";
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import useCookies from "../../composables/useCookies";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
@@ -28,6 +29,7 @@ export default defineComponent({
   components: { NavbarLayout },
   setup() {
     const route = useRoute();
+    const { getValue, getDarkMode } = useCookies();
     // const statusDark = ref();
     // watch(
     //   () => Dark.isActive,
@@ -36,10 +38,15 @@ export default defineComponent({
     //   }
 
     // );
+    onMounted(() => {
+      getDarkMode();
+    });
     return {
       route,
       Dark,
-      statusDark: computed(() => Dark.isActive ? "bg-system-dark" : "bg-system"),
+      statusDark: computed(() =>
+        Dark.isActive ? "bg-system-dark" : "bg-system"
+      ),
     };
   },
 });

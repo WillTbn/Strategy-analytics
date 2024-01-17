@@ -1,6 +1,6 @@
 <template>
   <div class="DashboardLayout row q-gutter-x-sm q-gutter-y-lg container">
-    <div class="col-md-7 col-12">
+    <div :class="classProperties">
       <div class="row">
         <div class="col-md-6 q-px-sm">
           <q-card class="card-container" bordered>
@@ -16,7 +16,7 @@
             </q-card-section>
           </q-card>
         </div>
-        <div class="col-md-12 col-chart">
+        <div class="col-md-12 col-chart" :class="classProp.chart">
           <q-card class="card-container">
             <q-card-section>
               <wallet-layout />
@@ -26,20 +26,50 @@
       </div>
     </div>
     <!--  TABS -->
-    <div class="card-relatorio-row">
-      <q-card class="card-relatorio">
+    <div :class="classProp.report">
+      <!-- <q-transition name="fade" duration="200" direction="left"> -->
+      <q-card class="card-relatorio" v-if="relatorioStatus">
+        <q-btn
+          flat
+          dense
+          @click.prevent="updateStatusReport(false)"
+          style="position: absolute; right: 0; z-index: 1000"
+        >
+          <q-avatar size="44px">
+            <q-icon name="fa-regular fa-eye-slash" />
+          </q-avatar>
+        </q-btn>
+
         <q-card-section> <report-layout /></q-card-section>
       </q-card>
+      <div class="review-cardReport" v-else>
+        <q-btn
+          flat
+          dense
+          @click.prevent="updateStatusReport(true)"
+          style="right: 0; z-index: 1000"
+          no-caps
+        >
+          <span>ixibir widget de relatorios</span>
+          <q-avatar size="24px">
+            <q-icon name="fa-regular fa-eye" />
+          </q-avatar>
+        </q-btn>
+      </div>
+      <!-- </q-transition> -->
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import ProfitdistributionLayout from "../layouts/ProfitdistributionLayout.vue";
 import LoanLayout from "../layouts/LoanLayout.vue";
 import WalletLayout from "../layouts/WalletLayout.vue";
 import ReportLayout from "./ReportLayout.vue";
+import useCookies from "src/composables/useCookies";
+import { useLayoutStore } from "src/stores/layout";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "DashboardLayout",
@@ -50,7 +80,39 @@ export default defineComponent({
     ReportLayout,
   },
   setup() {
-    return {};
+    const { getWidgetReport, setWidgetReport } = useCookies();
+
+    const layoutStore = useLayoutStore();
+    const { dashboard } = storeToRefs(layoutStore);
+
+    const relatorioStatus = computed(() => dashboard.value.reporthome);
+    const updateStatusReport = (value) => {
+      setWidgetReport(value);
+    };
+    const classProp = ref({
+      chart: computed(() =>
+        relatorioStatus.value ? "col-chart-one" : "col-chart-two"
+      ),
+      report: computed(() =>
+        relatorioStatus.value ? "card-report-view " : "card-report-not"
+      ),
+      containerHome: computed(() =>
+        relatorioStatus.value ? "col-md-7 col-12" : "col-12"
+      ),
+    });
+
+    onMounted(() => {
+      layoutStore.updatedDashReport(getWidgetReport());
+    });
+
+    return {
+      relatorioStatus,
+      classProp,
+      classProperties: computed(() =>
+        relatorioStatus.value ? " col-md-7 col-12" : "col-12"
+      ),
+      updateStatusReport,
+    };
   },
   // Outras configurações do componente aqui
 });
@@ -60,6 +122,7 @@ export default defineComponent({
 /* Estilos específicos do componente aqui */
 .container {
   padding: 1.5rem 1rem;
+  transition: all ease-out 3ms;
 }
 .card-container {
   /* min-height: 310px; */
@@ -77,12 +140,26 @@ export default defineComponent({
 }
 /* q-mt-lg q-ml-sm */
 .col-chart {
-  margin: 3.1rem 5rem 0 0.5rem;
   padding-right: 0.5rem;
 }
-.card-relatorio-row {
+.col-chart-one {
+  margin: 3.1rem 5rem 0 0.5rem;
+}
+.col-chart-two {
+  margin: 1rem 5rem 0 0.5rem;
+}
+.card-report-view {
   height: auto;
   width: 39.3333%;
+}
+.card-report-not {
+  height: auto;
+  width: 99.3333%;
+  display: flex;
+  justify-content: flex-end;
+}
+.card-remove {
+  display: none;
 }
 @media (max-width: 768px) {
   .card-container:not(:first-child) {
