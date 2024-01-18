@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import useConfigdate from "../../composables/useConfigdate";
 import { defineComponent, ref } from "vue";
 import TextinterNormal from "../components/TextinterNormal.vue";
 
@@ -28,32 +29,7 @@ export default defineComponent({
   name: "ProfitdistributionLayout",
   components: { TextinterNormal },
   setup() {
-    const brLocale = {
-      days: [
-        "Domingo",
-        "Segunda-feira",
-        "Terça-feira",
-        "Quarta-feira",
-        "Quinta-feira",
-        "Sexta-feira",
-        "Sabado",
-      ],
-      daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
-      months: [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro",
-      ],
-    };
+    const { brLocale } = useConfigdate();
     return {
       brLocale,
       date: ref("2024/01/23"),

@@ -189,6 +189,13 @@ export default defineComponent({
 });
 </script>
 <style>
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+  color: white !important;
+  margin-left: 0.5rem !important;
+}
 .q-field__label,
 no-pointer-events,
 absolute,

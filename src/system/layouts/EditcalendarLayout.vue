@@ -7,13 +7,11 @@
       <div class="col-12 q-mt-xl">
         <p class="">Quando deseja receber sua distribuição de lucros?</p>
       </div>
-      <div class="col-3">
+      <div class="col-md-3 col-12">
         <q-select
           v-model="model"
           transition-show="flip-up"
           transition-hide="flip-down"
-          bg-color="blue-1"
-          color="primary"
           dense
           outlined
           :options="workingDays"
@@ -130,4 +128,11 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+/* .q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+  color: black !important;
+  margin-left: 0.5rem !important;
+} */
 </style>

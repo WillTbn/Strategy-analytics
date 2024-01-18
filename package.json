@@ -16,6 +16,8 @@
     "@egjs/vue3-flicking": "^4.11.1",
     "@fullcalendar/core": "^6.1.10",
     "@fullcalendar/daygrid": "^6.1.10",
+    "@fullcalendar/interaction": "^6.1.10",
+    "@fullcalendar/multimonth": "^6.1.10",
     "@fullcalendar/vue3": "^6.1.10",
     "@popperjs/core": "^2.11.8",
     "@quasar/extras": "^1.16.4",

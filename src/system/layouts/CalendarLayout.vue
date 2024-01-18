@@ -5,20 +5,33 @@
         <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
     </div>
-    <div class="row justify-center q-my-xl items-center">
-      <div class="col-8">
+    <div class="row justify-center q-mt-xl items-center">
+      <div class="col-md-3 col-sm-12">
         <!-- <calendar-full /> -->
+        <!--
+          <VCalendar
+            :navigate="false"
+            borderless
+            color="blue"
+            :attributes="attrs"
+            expanded
+            title="Calendario "
+          />
 
-        <VCalendar
-          :navigate="false"
-          borderless
-          color="blue"
-          :attributes="attrs"
-          expanded
-          title="Calendario "
+        -->
+        <q-date
+          class="control-calendar bg-transparent"
+          today-btn
+          flat
+          no-unset
+          v-model="date"
+          :event-color="(date) => (date[9] % 2 === 0 ? 'teal' : 'orange')"
+          :locale="brLocale"
+          disable
+          readonly
         />
       </div>
-      <div class="col-4 self-center">
+      <div class="col-md-4 col-12 self-center">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />
@@ -34,8 +47,8 @@
         </q-item>
       </div>
     </div>
-    <div class="row justify-center q-pa-lg">
-      <div class="col-3" v-for="link in links" :key="link">
+    <div class="row justify-center q-pa-lg text-center">
+      <div class="col-md-3 col-6" v-for="link in links" :key="link">
         <q-btn
           outline
           no-caps
@@ -47,10 +60,6 @@
         />
       </div>
     </div>
-
-    <!-- <div class="retangulo">
-      <div class="ondulacao"></div>
-    </div> -->
   </div>
 </template>
 
@@ -58,6 +67,7 @@
 import { defineComponent, ref } from "vue";
 import TitleinterMedium from "../components/TitleinterMedium.vue";
 import { useLayoutStore } from "../../stores/layout";
+import useConfigdate from "../../composables/useConfigdate";
 // import CalendarCurrent from "../components/calendar/CalendarCurrent.vue";
 
 export default defineComponent({
@@ -65,6 +75,7 @@ export default defineComponent({
   components: { TitleinterMedium },
   setup() {
     const layoutStore = useLayoutStore();
+    const { brLocale, monthNow, yearNow } = useConfigdate();
     const goStep = (value) => {
       layoutStore.updateCalendarsteps(value);
     };
@@ -73,9 +84,10 @@ export default defineComponent({
       { name: "Alterar data rendimento", value: "edit" },
       { name: "Antecipar", value: "anticipate" },
     ];
-
-    const yearNow = new Date().getFullYear();
-    const monthNow = new Date().getMonth();
+    const day = "01";
+    const completedDate = `${yearNow}/${monthNow()}/${day}`;
+    // const date = ref("2024/01/23");
+    const date = ref(completedDate);
     // const getUtilDay =
     const attrs = ref([
       {
@@ -90,7 +102,7 @@ export default defineComponent({
         },
       },
     ]);
-    return { attrs, links, goStep };
+    return { date, attrs, links, brLocale, goStep };
   },
   // Outras configurações do componente aqui
 });
@@ -98,27 +110,10 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
-.retangulo {
-  background-color: lightgray;
-  border: 1px solid lightblue;
-  height: 100px;
-  width: 200px;
-  position: relative;
+.control-calendar {
+  height: 500px;
 }
-
-.retangulo::before,
-.retangulo::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background-color: lightgray;
-  border: 1px solid lightblue;
-  height: 50px;
-  width: 50px;
-}
-
-.retangulo::before {
-  top: 25px;
-  right: -25px;
+.q-date {
+  width: auto !important;
 }
 </style>
