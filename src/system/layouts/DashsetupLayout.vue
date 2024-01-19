@@ -41,7 +41,7 @@
 import { defineComponent, ref, computed } from "vue";
 // import TextinterNormal from "../components/TextinterNormal.vue";
 import TextareaTitle from "../components/TextareaTitle.vue";
-import { Dark } from "quasar";
+// import { Dark } from "quasar";
 import useCookies from "../../composables/useCookies";
 
 export default defineComponent({

@@ -30,6 +30,7 @@
     "v-calendar": "^3.1.2",
     "vue": "^3.0.0",
     "vue-carousel-3d": "^1.0.1",
+    "vue-i18n": "^9.9.0",
     "vue-router": "^4.0.0",
     "vue3-apexcharts": "^1.4.4",
     "vueperslides": "^3.5.1"

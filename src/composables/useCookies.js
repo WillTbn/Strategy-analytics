@@ -13,7 +13,10 @@ export default function useCookies() {
   const verify = () => {
     return Cookies.has("accept");
   };
-
+  const toggleMod = () => {
+    Dark.toggle();
+    setDarkMode(Dark.isActive);
+  };
   const setCookie = (name, value, options) => {
     Cookies.set(name, value, options);
   };
@@ -44,6 +47,7 @@ export default function useCookies() {
 
   return {
     verify,
+    toggleMod,
     getValue,
     getDarkMode,
     getWidgetReport,

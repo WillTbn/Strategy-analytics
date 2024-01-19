@@ -89,7 +89,12 @@
           <!-- <q-avatar size="36px" class="q-mb-sm">
             <img src="icons/logo.svg" />
           </q-avatar> -->
-          <q-item v-ripple class="justify-center text-center">
+          <q-item
+            clickable
+            v-ripple
+            class="justify-center text-center"
+            @click.prevent="activeMode"
+          >
             <q-item-section side>
               <q-avatar size="46px">
                 <!-- <img src="icons/logo.svg" /> -->
@@ -131,12 +136,14 @@ import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
 import SvgLogo from "../components/svgs/SvgLogo.vue";
 import SvgSign from "../components/svgs/SvgSign.vue";
+import useCookies from "src/composables/useCookies";
 
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
   components: { SvgLogo, SvgSign },
   setup() {
+    // const {setDarkMode} = useCookies()
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
@@ -230,6 +237,7 @@ export default defineComponent({
       leftDrawerOpen,
       listMenu,
       data,
+      activeMode: useCookies().toggleMod,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
