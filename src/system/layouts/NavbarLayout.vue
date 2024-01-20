@@ -84,35 +84,41 @@
           <q-item-section> {{ list.name }} </q-item-section>
         </q-item>
       </q-list>
-      <div class="bg-transparent q-mt-xl q-pt-lg row">
-        <div class="col-12">
-          <!-- <q-avatar size="36px" class="q-mb-sm">
-            <img src="icons/logo.svg" />
-          </q-avatar> -->
-          <q-item
-            clickable
-            v-ripple
-            class="justify-center text-center"
-            @click.prevent="activeMode"
-          >
-            <q-item-section side>
-              <q-avatar size="46px">
-                <!-- <img src="icons/logo.svg" /> -->
-                <svg-logo :dark="dark" />
-              </q-avatar>
-            </q-item-section>
+      <div class="bg-transparent absolute-bottom">
+        <div class="row q-mt-xl q-pt-lg">
+          <div class="col-12">
+            <!-- <q-avatar size="36px" class="q-mb-sm">
+              <img src="icons/logo.svg" />
+            </q-avatar> -->
+            <q-item
+              clickable
+              v-ripple
+              class="justify-center text-center"
+              @click.prevent="activeMode"
+              style="border-bottom-right-radius: 26px"
+            >
+              <q-item-section side>
+                <q-avatar size="46px">
+                  <!-- <img src="icons/logo.svg" /> -->
+                  <svg-logo :dark="dark" />
+                </q-avatar>
+              </q-item-section>
 
-            <q-item-section side>
-              <q-avatar size="120px">
-                <!-- <img src="icons/LETREIRO COM BARRA.svg" /> -->
-                <svg-sign :dark="dark" />
-              </q-avatar>
-            </q-item-section>
-          </q-item>
+              <q-item-section side>
+                <q-avatar size="120px">
+                  <!-- <img src="icons/LETREIRO COM BARRA.svg" /> -->
+                  <svg-sign :dark="dark" />
+                </q-avatar>
+              </q-item-section>
+            </q-item>
+          </div>
         </div>
       </div>
     </q-drawer>
-    <div class="position-absolute" :class="{ 'move-position ': !miniState }">
+    <div
+      class="position-absolute absolute-center"
+      :class="{ 'move-position ': !miniState }"
+    >
       <q-avatar
         size="lg"
         color="transparent"
@@ -254,10 +260,6 @@ export default defineComponent({
 .move-position {
   transform: translateX(480%) !important;
 }
-.icon-select {
-  transform: rotate(180deg);
-}
-
 .control-area {
   height: calc(100% - 150px);
   margin-top: 150px;

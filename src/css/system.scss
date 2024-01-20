@@ -30,6 +30,10 @@
   backdrop-filter: blur(2.5px);
   z-index: 1000 !important;
 }
+.icon-select {
+  transform: rotate(180deg);
+}
+
 .control-drawer {
   // border: 2px solid rgba(0, 0, 0, 0.5);
   border-top-right-radius: 26px;
@@ -75,7 +79,6 @@ bg-navbar_dark > .position-absolute {
 }
 .position-absolute:not(body.mobile) {
   cursor: pointer;
-  position: absolute;
   top: -30px;
   left: 40px;
   bottom: 0;

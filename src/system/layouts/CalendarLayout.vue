@@ -5,20 +5,8 @@
         <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
     </div>
-    <div class="row justify-center q-mt-xl items-center">
-      <div class="col-md-3 col-sm-12">
-        <!-- <calendar-full /> -->
-        <!--
-          <VCalendar
-            :navigate="false"
-            borderless
-            color="blue"
-            :attributes="attrs"
-            expanded
-            title="Calendario "
-          />
-
-        -->
+    <div class="row justify-center q-ma-xl items-center">
+      <div class="col-md-5 col-sm-12">
         <q-date
           class="control-calendar bg-transparent"
           today-btn
@@ -31,7 +19,7 @@
           readonly
         />
       </div>
-      <div class="col-md-4 col-12 self-center">
+      <div class="col-md-5 col-12 self-center">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />

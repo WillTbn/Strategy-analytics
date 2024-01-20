@@ -2,8 +2,7 @@
   <div class="LoanLayout">
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <textinter-normal text="Empréstimo" />
-        <q-separator inset></q-separator>
+        <titleinter-medium text="Empréstimo" />
       </div>
     </div>
 
@@ -41,11 +40,12 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import TextinterNormal from "../components/TextinterNormal.vue";
+// import TextinterNormal from "../components/TextinterNormal.vue";
+import TitleinterMedium from "../components/TitleinterMedium.vue";
 
 export default defineComponent({
   name: "LoanLayout",
-  components: { TextinterNormal },
+  components: { TitleinterMedium },
   setup() {
     const third = ref(false);
     const datas = [

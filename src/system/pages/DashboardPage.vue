@@ -20,4 +20,7 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+.DashboardPage {
+  padding-top: 2px;
+}
 </style>

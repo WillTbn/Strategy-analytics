@@ -28,27 +28,33 @@
     <!--  TABS -->
     <div :class="classProp.report">
       <!-- <q-transition name="fade" duration="200" direction="left"> -->
-      <q-card class="card-relatorio" v-if="relatorioStatus">
+      <q-card class="card-relatorio">
+        <!---->
         <q-btn
           flat
           dense
-          @click.prevent="updateStatusReport(false)"
-          style="position: absolute; right: 0; z-index: 1000"
+          @click.prevent="updateStatusReport()"
+          style="position: absolute; left: 35px; z-index: 1000"
+          :class="{ 'absolute-center ': !reportStatus }"
         >
           <q-avatar size="44px">
-            <q-icon name="fa-regular fa-eye-slash" />
+            <q-icon
+              name="fa-solid fa-angle-right"
+              :class="{ 'icon-select ': !reportStatus }"
+            />
           </q-avatar>
         </q-btn>
 
-        <q-card-section> <report-layout /></q-card-section>
+        <q-card-section v-if="reportStatus"> <report-layout /></q-card-section>
       </q-card>
+      <!--
       <div class="review-cardReport" v-else>
         <q-btn
           flat
           dense
           @click.prevent="updateStatusReport(true)"
           style="right: 0; z-index: 1000"
-          no-caps
+          no-caps<FontAwesomeIcon icon="fa-solid fa-angle-right" />
         >
           <span>ixibir widget de relatorios</span>
           <q-avatar size="24px">
@@ -56,6 +62,7 @@
           </q-avatar>
         </q-btn>
       </div>
+      -->
       <!-- </q-transition> -->
     </div>
   </div>
@@ -85,19 +92,20 @@ export default defineComponent({
     const layoutStore = useLayoutStore();
     const { dashboard } = storeToRefs(layoutStore);
 
-    const relatorioStatus = computed(() => dashboard.value.reporthome);
-    const updateStatusReport = (value) => {
-      setWidgetReport(value);
+    const reportStatus = computed(() => dashboard.value.reporthome);
+    const updateStatusReport = () => {
+      dashboard.value.reporthome = !dashboard.value.reporthome;
+      setWidgetReport(dashboard.value.reporthome);
     };
     const classProp = ref({
       chart: computed(() =>
-        relatorioStatus.value ? "col-chart-one" : "col-chart-two"
+        reportStatus.value ? "col-chart-one" : "col-chart-two"
       ),
       report: computed(() =>
-        relatorioStatus.value ? "card-report-view " : "card-report-not"
+        reportStatus.value ? "card-report-view " : "card-report-not"
       ),
       containerHome: computed(() =>
-        relatorioStatus.value ? "col-md-7 col-12" : "col-12"
+        reportStatus.value ? "col-md-7 col-12" : "col-12"
       ),
     });
 
@@ -106,10 +114,10 @@ export default defineComponent({
     });
 
     return {
-      relatorioStatus,
+      reportStatus,
       classProp,
       classProperties: computed(() =>
-        relatorioStatus.value ? " col-md-7 col-12" : "col-12"
+        reportStatus.value ? " col-md-7 col-12" : "col-11"
       ),
       updateStatusReport,
     };
@@ -122,14 +130,14 @@ export default defineComponent({
 /* Estilos específicos do componente aqui */
 .container {
   padding: 1.5rem 1rem;
-  transition: all ease-out 3ms;
+  transition: all ease-out 9ms;
 }
 .card-container {
   /* min-height: 310px; */
   height: 310px;
 }
 .card-relatorio {
-  min-height: 90vh;
+  /* min-height: 90vh; */
   min-width: 100%;
 }
 .q-card__section--vert {
@@ -153,10 +161,13 @@ export default defineComponent({
   width: 39.3333%;
 }
 .card-report-not {
-  height: auto;
+  /* height: auto;
   width: 99.3333%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; */
+  height: auto;
+  width: 4.3333%;
+  transform: translateX(25px);
 }
 .card-remove {
   display: none;

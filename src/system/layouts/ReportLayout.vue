@@ -2,7 +2,7 @@
   <div class="ReportLayout">
     <div class="row justify-center text-center">
       <div class="col-12">
-        <textinter-normal text="Ultimo relatórios" />
+        <textinter-normal text="Ultimos relatórios" />
         <q-separator inset></q-separator>
       </div>
 
