@@ -82,6 +82,7 @@ import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+import useLogin from "../../composables/useLogin";
 
 export default defineComponent({
   name: "LoginPage",
@@ -92,6 +93,7 @@ export default defineComponent({
     const router = useRouter();
     const personRef = ref(null);
     const passwordRef = ref(null);
+    const { setUserLoggedin } = useLogin();
 
     const $q = useQuasar();
     const { login } = storeToRefs(useStore);
@@ -99,6 +101,8 @@ export default defineComponent({
       personRef.value.validate();
       passwordRef.value.validate();
       if (!personRef.value.hasError || !passwordRef.value.hasError) {
+        setUserLoggedin(login.value.person);
+
         $q.notify({
           icon: "done",
           color: "positive",

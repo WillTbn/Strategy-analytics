@@ -21,6 +21,7 @@ import { Dark } from "quasar";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import useCookies from "../../composables/useCookies";
+import useLogin from "../../composables/useLogin";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
@@ -29,6 +30,7 @@ export default defineComponent({
   components: { NavbarLayout },
   setup() {
     const route = useRoute();
+    const { getLoggedIn } = useLogin();
     const { getValue, getDarkMode } = useCookies();
     // const statusDark = ref();
     // watch(
@@ -39,6 +41,7 @@ export default defineComponent({
 
     // );
     onMounted(() => {
+      getLoggedIn();
       getDarkMode();
     });
     return {

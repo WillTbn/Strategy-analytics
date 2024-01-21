@@ -20,7 +20,7 @@
           <q-item clickable v-ripple :to="{ name: 'config' }">
             <q-item-section side class="text-dark">
               <q-avatar size="46px">
-                <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+                <img :src="data.avatar" />
               </q-avatar>
             </q-item-section>
             <q-item-section>
@@ -37,6 +37,25 @@
                 <q-icon name="img:icons/iconeconfiguraes.svg" />
               </q-item-section>
             </q-item-section>
+          </q-item>
+        </div>
+        <!-- <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" /> -->
+      </div>
+      <div class="row justify-center text-center">
+        <div class="col-6">
+          <q-item clickable class="j" @click.prevent="setLogout">
+            <!-- style="border-bottom-right-radius: 26px" -->
+            <q-item-section side>
+              <!-- <q-avatar square> -->
+              <q-icon
+                size="xs"
+                name="fa-solid fa-arrow-right-from-bracket"
+                color="red"
+              />
+              <!-- </q-avatar> -->
+            </q-item-section>
+
+            <q-item-section> sair </q-item-section>
           </q-item>
         </div>
       </div>
@@ -143,13 +162,14 @@ import { storeToRefs } from "pinia";
 import SvgLogo from "../components/svgs/SvgLogo.vue";
 import SvgSign from "../components/svgs/SvgSign.vue";
 import useCookies from "src/composables/useCookies";
-
+import useLogin from "../../composables/useLogin";
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
   components: { SvgLogo, SvgSign },
   setup() {
     // const {setDarkMode} = useCookies()
+    const { setLogout } = useLogin();
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
@@ -236,8 +256,9 @@ export default defineComponent({
         // svgIcon: "fa-solid fa-circle-dollar-to-slot",
       },
     ];
-
+    // setLogout
     return {
+      setLogout,
       miniState,
       drawer,
       leftDrawerOpen,

@@ -12,13 +12,15 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref, watch, onMounted } from "vue";
 export default defineComponent({
   name: "ChartComparative",
   props: {
     statusDark: { type: Boolean, required: true },
   },
   setup(props) {
+    const chart = ref(null);
+
     const series = [
       {
         name: "Strategy Analytics",
@@ -33,7 +35,8 @@ export default defineComponent({
         data: [10, 20, 5, 5, 9, 2, -5],
       },
     ];
-    const options = {
+    const options = ref({
+      theme: {},
       legend: {
         position: "right",
         fontFamily: "Inter",
@@ -87,7 +90,6 @@ export default defineComponent({
           "2023-Q2",
           "2023-Q3",
         ],
-        
       },
       yaxis: {
         opposite: true,
@@ -103,9 +105,35 @@ export default defineComponent({
           },
         },
       },
-    };
-
-    return { options, series };
+    });
+    watch(props.statusDark, (a, t) => {
+      console.log("ddsds", a);
+      console.log(">>>> ", props.statusDark);
+      console.log("------ > ", chart.value);
+      // if (props.statusDark && props.statusDark != null) {
+      //   chart.value.updateOptions({
+      //     theme: "dark",
+      //     // Update other chart options here
+      //   });
+      //   console.log(chart.value);
+      // } else if(!props.statusDark) {
+      //   chart.value.updateOptions({
+      //     theme: "light",
+      //     // Update other chart options here
+      //   });
+      //   console.log(chart.value);
+      // }
+    });
+    // function updateChartOptions() {
+    //   chart.value.updateOptions({
+    //     theme: "dark",
+    //     // Update other chart options here
+    //   });
+    // }
+    onMounted(() => {
+      chart.value = new ApexCharts(".apexcharts-content", options.value);
+    });
+    return { options, series, chart };
   },
   // Outras configurações do componente aqui
 });

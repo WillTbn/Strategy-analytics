@@ -4,7 +4,7 @@
       <q-item>
         <q-item-section avatar>
           <q-avatar size="9rem">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            <img :src="data.avatar" />
           </q-avatar>
         </q-item-section>
 

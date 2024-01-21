@@ -11,6 +11,10 @@ const actions = {
     // console.log("vendpo stor->", teste);
     this.accountEdit = teste;
   },
+
+  setUserData(payload) {
+    this.data = payload;
+  },
 };
 
 export default { ...actions };

@@ -35,7 +35,7 @@ export default defineComponent({
     const storeLayout = useLayoutStore();
 
     const { mapCurrent } = useScreens({
-      xs: "0px",
+      xs: "300px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
@@ -55,7 +55,7 @@ export default defineComponent({
       calendarOptions: {
         plugins: [multiMonthPlugin],
         initialView: "multiMonthYear",
-        locales:"pt-br"
+        locales: "pt-br",
       },
     };
   },
