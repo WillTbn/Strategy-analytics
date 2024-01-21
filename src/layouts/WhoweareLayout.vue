@@ -92,7 +92,7 @@ export default defineComponent({
         description:
           "Colocando em prática as economias de pessoas e instituições em todo o mundo nos mercados globais.",
         className: "justify-center items-center text-left q-pa-lg q-my-xl",
-        image: "img/landing-page/banner-half-equipe.jpg",
+        image: "img/landing-page/banner-half-somos da equipe-1900.jpg",
       },
     ];
 

@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white control-bg items-center">
-    <header-layout class="main" :reverse="false" image="img/image 1.png">
+    <header-layout class="main bg-who" :reverse="false">
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Quem somos"
@@ -41,3 +41,4 @@ export default defineComponent({
   setup() {},
 });
 </script>
+<style></style>
