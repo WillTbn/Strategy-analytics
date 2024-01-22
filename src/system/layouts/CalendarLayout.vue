@@ -6,7 +6,8 @@
       </div>
     </div>
     <div class="row justify-center q-ma-xl items-center">
-      <div class="col-md-5 col-sm-12">
+      <div class="col"></div>
+      <div class="col-12 col-md-7">
         <q-date
           class="control-calendar bg-transparent"
           today-btn
@@ -19,7 +20,7 @@
           readonly
         />
       </div>
-      <div class="col-md-5 col-12 self-center">
+      <div class="col self-center">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />

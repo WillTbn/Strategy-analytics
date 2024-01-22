@@ -1,9 +1,11 @@
 import { useUserStore } from "src/stores/user";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+import useNotify from "./useNotify";
 
 export default function useLogin() {
   const router = useRouter();
   const useStore = useUserStore();
+  const notification = useNotify();
   const keyLocal = "SA_user";
   const users = [
     {
@@ -97,7 +99,8 @@ export default function useLogin() {
 
   const getDataUser = (value) => {
     let user = users.find((x) => x.cpf == value);
-    return user ? user : users.find((x) => x.cpf == "0");
+    return user ?? "";
+    // notification.errorNotify("Usuário o senha inválido!")
   };
 
   const getLoggedIn = async () => {
@@ -115,7 +118,12 @@ export default function useLogin() {
    * @param {string} value //cpf
    */
   const setUserLoggedin = async (value) => {
-    localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value)));
+    if (getDataUser(value)) {
+      localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value)));
+      router.push("/system/");
+    } else {
+      notification.errorNotify("Usuário ou senha inválido!");
+    }
   };
 
   const setLogout = async () => {

@@ -18,7 +18,7 @@
       <div class="col-2 text-center">
         <q-btn color="dark" @click="activeTema(true)">
           <q-avatar size="42px">
-            <q-icon name="img:icons/slogan.png" />
+            <q-icon name="img:icons/slogan-dark.svg" />
           </q-avatar>
         </q-btn>
         <p>Escuro</p>

@@ -32,10 +32,8 @@
               }}</q-item-label>
             </q-item-section>
 
-            <q-item-section side class="q-pa-lg">
-              <q-item-section avatar>
-                <q-icon name="img:icons/iconeconfiguraes.svg" />
-              </q-item-section>
+            <q-item-section side avatar top>
+              <q-icon name="img:icons/iconeconfiguraes.svg" />
             </q-item-section>
           </q-item>
         </div>

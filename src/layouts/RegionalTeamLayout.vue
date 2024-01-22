@@ -1,22 +1,26 @@
 <template>
-  <detail-user
-    v-for="item in primaryUsers"
-    :key="item"
-    class="q-px-xl"
-    :title="item.name"
-    :description="item.history"
-    :image="item.avatar"
-    :office="item.office"
-  />
-  <detail-user-secondary
-    v-for="item in secondaryUsers"
-    :key="item"
-    class="col-md-6 col-sm-12"
-    :title="item.name"
-    :description="item.history"
-    :image="item.avatar"
-    :office="item.office"
-  />
+  <div class="row justiy-center">
+    <detail-user
+      v-for="item in primaryUsers"
+      :key="item"
+      class="col-md-6 col-sm-12"
+      :title="item.name"
+      :description="item.history"
+      :image="item.avatar"
+      :office="item.office"
+    />
+  </div>
+  <div class="row justiy-center">
+    <detail-user-secondary
+      v-for="item in secondaryUsers"
+      :key="item"
+      class="col-md-6 col-sm-12"
+      :title="item.name"
+      :description="item.history"
+      :image="item.avatar"
+      :office="item.office"
+    />
+  </div>
 </template>
 <script>
 import { defineComponent } from "vue";

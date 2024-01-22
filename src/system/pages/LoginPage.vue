@@ -3,9 +3,9 @@
     <q-page-container>
       <div
         class="justify-center text-white row items-center content-center text-center"
-        style="height: 50vh"
+        style="height: 40vh"
       >
-        <div class="col-md-12 self-center q-my-lg">
+        <div class="col-md-12 self-center">
           <logo-small />
         </div>
         <div class="col-md-12 col-sm-6 self-center">
@@ -48,15 +48,12 @@
                 />
               </template>
             </q-input>
+            <p class="text-hover text-weight-bolder q-pa-lg">
+              Esqueceu sua senha?
+            </p>
           </div>
         </div>
-        <div class="row justify-end text-white text-end">
-          <div class="col-md-6 col-sm-12">
-            <span class="text-secondary text-hover" style="margin-left: 5rem"
-              >Esqueci minha senha</span
-            >
-          </div>
-        </div>
+
         <div class="row justify-center text-white text-center text-bolder">
           <div class="col-md-12 self-center q-mt-lg">
             <q-btn
@@ -80,7 +77,6 @@ import { defineComponent, ref } from "vue";
 import LogoSmall from "../components/LogoSmall.vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
-import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import useLogin from "../../composables/useLogin";
 
@@ -90,29 +86,16 @@ export default defineComponent({
   setup() {
     const registerData = new Date().getFullYear();
     const useStore = useUserStore();
-    const router = useRouter();
     const personRef = ref(null);
     const passwordRef = ref(null);
     const { setUserLoggedin } = useLogin();
 
-    const $q = useQuasar();
     const { login } = storeToRefs(useStore);
     const onSubmit = () => {
       personRef.value.validate();
       passwordRef.value.validate();
       if (!personRef.value.hasError || !passwordRef.value.hasError) {
         setUserLoggedin(login.value.person);
-
-        $q.notify({
-          icon: "done",
-          color: "positive",
-          message: "Tudo certo, vamos ao sistema!",
-        });
-
-        setTimeout(() => {
-          console.log("olá");
-          router.push("/system/");
-        }, 1000);
       }
     };
 

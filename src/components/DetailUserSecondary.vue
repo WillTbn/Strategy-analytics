@@ -2,15 +2,15 @@
   <q-card class="transparant-bg q-px-lg" flat>
     <q-card-section horizontal class="flex flex-center">
       <q-card-section class="">
-        <q-avatar size="8rem">
+        <q-avatar size="6rem">
           <img :src="image" :srcset="image" />
         </q-avatar>
       </q-card-section>
       <q-card-section class="q-py-xl">
-        <div class="text-h4 text-weight-bold">{{ title }}</div>
-        <span class="text-subtitle2">{{ office }}</span>
+        <div class="text-h5 text-weight-bold">{{ title }}</div>
+        <span class="text-subtitle1">{{ office }}</span>
         <div
-          class="text-italic q-mt-lg text-r4"
+          class="text-italic q-mt-sm text-r4"
           style="max-width: 714px !important"
         >
           {{ description }}
@@ -34,6 +34,6 @@ export default defineComponent({
 </script>
 <style>
 .text-r4 {
-  font-size: 1.4vw;
+  font-size: 1vw;
 }
 </style>

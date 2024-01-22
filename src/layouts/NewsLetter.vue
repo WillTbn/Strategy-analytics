@@ -132,7 +132,9 @@
         <div class="col-12 freak"></div>
         <div class="col-lg-10 col-sm-10 q-mt-sm">
           <span>Leia nossa</span>
-          <span> <b class="policy"> Politica de privacidade </b></span>
+          <span style="border-left: solid 2px; margin-left: 12px">
+            <b class="policy"> Politica de privacidade </b>
+          </span>
         </div>
       </div>
     </q-form>
