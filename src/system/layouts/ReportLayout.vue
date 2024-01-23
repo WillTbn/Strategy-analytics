@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-12">
-        <q-card style="min-height: 35rem" flat>
+        <div style="min-height: 35rem">
           <q-tabs
             v-model="tab"
             class="text-grey"
@@ -27,11 +27,10 @@
             </q-tab-panel>
 
             <q-tab-panel name="crypto">
-              <div class="text-h6">Alarms</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <reportcrypto-layout />
             </q-tab-panel>
           </q-tab-panels>
-        </q-card>
+        </div>
       </div>
     </div>
   </div>
@@ -39,12 +38,13 @@
 
 <script>
 import ReportclassicLayout from "../layouts/reports/ReportclassicLayout.vue";
+import ReportcryptoLayout from "../layouts/reports/ReportcryptoLayout.vue";
 import { defineComponent, ref } from "vue";
 import TextinterNormal from "../components/TextinterNormal.vue";
 
 export default defineComponent({
   name: "ReportLayout",
-  components: { TextinterNormal, ReportclassicLayout },
+  components: { TextinterNormal, ReportclassicLayout, ReportcryptoLayout },
   setup() {
     return { tab: ref("classic") };
   },

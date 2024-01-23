@@ -9,12 +9,35 @@ export default function useLogin() {
   const keyLocal = "SA_user";
   const users = [
     {
+      cpf: "448.811.378-83",
+      password: "Strategy",
+      name: "Éric Siqueira Vicente",
+      email: "fantoma2010.siqueira@gmail.com",
+      state: "São Paulo",
+      country: "Brasil",
+      investor: "Investor Strategy",
+      phone: "(12) 981578736",
+      avatar:
+        "https://strategyconect.com/wp-content/uploads/2023/12/circular_image_3_minimal_zoom.png",
+      account: [
+        {
+          id: 2,
+          bank: " 336 - Banco C6 S.A.",
+          agency: "0001",
+          number: "20043688-0",
+          nickname: "C6 bank",
+        },
+      ],
+      profit_date: { label: "5º dia útil do mês", value: "five", id: 0 },
+    },
+    {
       cpf: "152.111.222-77",
+      password: "Strategy",
       name: "Jorge Nunes",
       email: "jlbnunes@gmail.com",
       state: "Rio de Janeiro",
       country: "Brasil",
-      investidor: "investor Obsidian",
+      investor: "investor Obsidian",
       phone: "(12) 98342-5387",
       avatar: "https://jorgenunes.vercel.app/assets/img/Jorge_Nunes-dev.jpeg",
       account: [
@@ -30,11 +53,12 @@ export default function useLogin() {
     },
     {
       cpf: "111.111.111-11",
+      password: "Strategy",
       name: "Maria Fasques Monteiro",
       email: "mariafasquesmonteiro@gmail.com",
       state: "California",
       country: "USA",
-      investidor: "investor Obsidian",
+      investor: "investor Obsidian",
       phone: "(51) 322-5387",
       avatar: "https://reqres.in/img/faces/3-image.jpg",
       account: [
@@ -50,11 +74,12 @@ export default function useLogin() {
     },
     {
       cpf: "222.222.222-22",
+      password: "Strategy",
       name: "João Velasques Todesgo",
       email: "joaov.todesgo@gmail.com",
       state: "Victoria",
       country: "Australia",
-      investidor: "investor Obsidian",
+      investor: "investor Obsidian",
       phone: "(48) 32321-5387",
       avatar: "https://reqres.in/img/faces/9-image.jpg",
       account: [
@@ -70,11 +95,12 @@ export default function useLogin() {
     },
     {
       cpf: "0",
+      password: "Strategy",
       name: "Charles Leclerc",
       email: "leclercchales@gmail.com",
       state: "São pauulo",
       country: "Brasil",
-      investidor: "investor Obsidian",
+      investor: "investor Obsidian",
       phone: "(12) 98897-6543",
       avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
       account: [
@@ -103,10 +129,13 @@ export default function useLogin() {
     // notification.errorNotify("Usuário o senha inválido!")
   };
 
+  const verifyPassword = (data, password) => {
+    return data.password === password ?? false;
+  };
+
   const getLoggedIn = async () => {
     const json = localStorage.getItem(keyLocal);
     const userData = JSON.parse(json);
-
     if (!userData) {
       router.push({ name: "login" });
       return;
@@ -118,8 +147,11 @@ export default function useLogin() {
    * @param {string} value //cpf
    */
   const setUserLoggedin = async (value) => {
-    if (getDataUser(value)) {
-      localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value)));
+    if (
+      getDataUser(value.person) &&
+      verifyPassword(getDataUser(value.person), value.password)
+    ) {
+      localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value.person)));
       router.push("/system/");
     } else {
       notification.errorNotify("Usuário ou senha inválido!");

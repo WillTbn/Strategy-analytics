@@ -8,13 +8,13 @@
       <div class="col-6 q-my-lg" style="max-width: 500px">
         <q-btn
           color="primary"
-          @click="scale = scale > 0.25 ? scale - 0.25 : scale"
+          @click="scale = scale > 0.2 ? scale - 0.2 : scale"
           label="-"
         />
         <span>{{ scale * 100 }}%</span>
         <q-btn
           color="primary"
-          @click="scale = scale < 2 ? scale + 0.25 : scale"
+          @click="scale = scale < 2 ? scale + 0.2 : scale"
           label="+"
         />
       </div>

@@ -12,7 +12,7 @@
           <q-item-label class="text-h4">{{ data.name }}</q-item-label>
           <q-item-label caption class="q-ma-sm">
             <q-icon name="fa-solid fa-user" size="1rem" />
-            {{ data.investidor }}
+            {{ data.investor }}
           </q-item-label>
           <q-item-label caption class="q-ma-sm">
             <q-icon name="fa-solid fa-envelope" size="1rem" />

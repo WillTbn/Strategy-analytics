@@ -95,7 +95,7 @@ export default defineComponent({
       personRef.value.validate();
       passwordRef.value.validate();
       if (!personRef.value.hasError || !passwordRef.value.hasError) {
-        setUserLoggedin(login.value.person);
+        setUserLoggedin(login.value);
       }
     };
 
