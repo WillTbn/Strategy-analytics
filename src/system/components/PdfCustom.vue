@@ -12,13 +12,7 @@
         v-for="page in pages"
         :key="page"
       >
-        <VuePDF
-          ref="pdfRef"
-          :pdf="pdf"
-          :page="page"
-          :scale="scale"
-          @loaded="onLoaded"
-        >
+        <VuePDF :pdf="pdf" :page="page" :scale="scaleRef" @loaded="onLoaded">
           <q-skeleton width="150px" />
           <q-skeleton height="25rem" />
         </VuePDF>
@@ -31,6 +25,8 @@
 import { defineComponent, onMounted, ref } from "vue";
 import { VuePDF, usePDF } from "@tato30/vue-pdf";
 import AudioPattern from "./AudioPattern.vue";
+import { useLayoutStore } from "src/stores/layout";
+import { storeToRefs } from "pinia";
 // import { PageViewport } from "pdfjs-dist/types/src/display/display_utils";
 export default defineComponent({
   name: "PdfCustom",
@@ -38,18 +34,28 @@ export default defineComponent({
   props: {
     documentPDF: { type: String, required: true },
     audio: { type: String },
-    scale: { type: Number, default: 1 },
   },
   setup(props) {
     const loadingSppiner = ref(true);
+    const scaleRef = ref();
+
+    const layoutStore = useLayoutStore();
+    const { dashboard } = storeToRefs(layoutStore);
     const onLoaded = (value) => {
       if (value) {
         loadingSppiner.value = false;
+        scaleRef.value = dashboard.value.pdfScale;
       }
     };
     const { pdf, pages } = usePDF(props.documentPDF);
     // let { height, width } = viewport()
-    return { pdf, pages, loadingSppiner, onLoaded };
+    return {
+      scaleRef,
+      pdf,
+      pages,
+      loadingSppiner,
+      onLoaded,
+    };
   },
   // Outras configurações do componente aqui
 });

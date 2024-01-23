@@ -11,7 +11,7 @@ export const useLayoutStore = defineStore("layout", {
     loanSteps: "home",
     dashboard: {
       reporthome: true,
-      pdfScale: 1,
+      pdfScale: null,
     },
   }),
   getters: {},
@@ -51,6 +51,7 @@ export const useLayoutStore = defineStore("layout", {
       this.dashboard.reporthome = payload;
     },
     updatePdfScale(payload) {
+      console.log(payload);
       this.dashboard.pdfScale = payload;
     },
   },

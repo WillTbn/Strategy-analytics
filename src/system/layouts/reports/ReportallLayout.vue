@@ -18,15 +18,15 @@
             dense-toggle
             :label-lines="1"
           >
-            <q-scroll-area style="height: 35rem">
-              <q-card style="max-height: 35rem">
+            <!-- <q-scroll-area style="height: 35rem"> -->
+              <q-card style="max-height: 33rem">
                 <pdf-custom
                   :documentPDF="item.doc"
                   :audio="item.audio"
                   :scale="dashboard.pdfScale"
                 />
               </q-card>
-            </q-scroll-area>
+            <!-- </q-scroll-area> -->
           </q-expansion-item>
         </q-banner>
       </div>
@@ -46,15 +46,15 @@
             dense-toggle
             :label-lines="1"
           >
-            <q-scroll-area style="height: 35rem">
-              <q-card style="max-height: 35rem">
+            <!-- <q-scroll-area style="height: 35rem"> -->
+              <q-card style="max-height: 33rem">
                 <pdf-custom
                   :documentPDF="item.doc"
                   :audio="item.audio"
                   :scale="dashboard.pdfScale"
                 />
               </q-card>
-            </q-scroll-area>
+            <!-- </q-scroll-area> -->
           </q-expansion-item>
         </q-banner>
       </div>

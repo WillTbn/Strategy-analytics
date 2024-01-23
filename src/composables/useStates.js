@@ -131,13 +131,13 @@ export default function useStates() {
     if (value <= 599) {
       scaleValue = 1.2;
     } else if (value > 600 && value <= 1023) {
-      scaleValue = 1.39;
+      scaleValue = 0.8;
     } else if (value > 1024 && value <= 1439) {
       scaleValue = 1.15;
     } else if (value > 1440 && value <= 1919) {
       scaleValue = 1.22;
     } else if (value > 1920) {
-      scaleValue = 1.3;
+      scaleValue = 2;
     }
     return scaleValue;
   };
