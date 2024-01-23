@@ -71,7 +71,7 @@ const routes = [
     props: true,
     children: [
       {
-        path: "",
+        path: "dashboard",
         name: "dashboard",
         component: () => import("../system/pages/DashboardPage.vue"),
       },

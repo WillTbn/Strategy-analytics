@@ -153,7 +153,7 @@ export default function useLogin() {
       verifyPassword(getDataUser(value.person), value.password)
     ) {
       localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value.person)));
-      router.push("/system/");
+      router.push("/system/dashboard");
     } else {
       notification.errorNotify("Usuário ou senha inválido!");
     }
@@ -161,7 +161,7 @@ export default function useLogin() {
 
   const setLogout = async () => {
     localStorage.removeItem(keyLocal);
-    router.replace({ name: "home" });
+    router.replace({ name: "login" });
     // router.go();
   };
 
