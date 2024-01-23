@@ -160,7 +160,7 @@ export default function useLogin() {
 
   const setLogout = async () => {
     localStorage.removeItem(keyLocal);
-    router.go();
+    router.go({name:'login'});
   };
 
   return {
