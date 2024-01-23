@@ -47,23 +47,6 @@
 
         <q-card-section v-if="reportStatus"> <report-layout /></q-card-section>
       </q-card>
-      <!--
-      <div class="review-cardReport" v-else>
-        <q-btn
-          flat
-          dense
-          @click.prevent="updateStatusReport(true)"
-          style="right: 0; z-index: 1000"
-          no-caps<FontAwesomeIcon icon="fa-solid fa-angle-right" />
-        >
-          <span>ixibir widget de relatorios</span>
-          <q-avatar size="24px">
-            <q-icon name="fa-regular fa-eye" />
-          </q-avatar>
-        </q-btn>
-      </div>
-      -->
-      <!-- </q-transition> -->
     </div>
   </div>
 </template>

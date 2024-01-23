@@ -6,6 +6,7 @@
           <q-card style="max-height: 35rem">
             <pdf-custom
               documentPDF="doc/report/classic/Relatorio_20.01.2024.pdf"
+              :scale="dashboard.pdfScale"
             />
           </q-card>
         </q-scroll-area>
@@ -19,19 +20,22 @@
 
 import PdfCustom from "../../components/PdfCustom.vue";
 import { defineComponent, ref } from "vue";
+import { useLayoutStore } from "src/stores/layout";
+import { storeToRefs } from "pinia";
 export default defineComponent({
   name: "ReportclassicLayout",
   components: { PdfCustom },
   setup() {
-    const scale = ref(0.2);
     const loadingSppiner = ref(true);
+    const layoutStore = useLayoutStore();
+    const {dashboard} = storeToRefs(layoutStore)
     // const { pdf, pages } = usePDF("");
     const onLoaded = (value) => {
       if (value) {
         loadingSppiner.value = false;
       }
     };
-    return { scale, loadingSppiner, onLoaded };
+    return { dashboard, loadingSppiner, onLoaded };
   },
   // Outras configurações do componente aqui
 });

@@ -6,6 +6,7 @@
           <q-card style="max-height: 35rem">
             <pdf-custom
               documentPDF="doc/report/crypto/Relatorio_06.01.2024.pdf"
+              :scale="dashboard.pdfScale"
             />
           </q-card>
         </q-scroll-area>
@@ -15,13 +16,16 @@
 </template>
 
 <script>
+import { storeToRefs } from "pinia";
+import { useLayoutStore } from "src/stores/layout";
 import { defineComponent, ref } from "vue";
 import PdfCustom from "../../components/PdfCustom.vue";
 export default defineComponent({
   name: "ReportcryptoLayout",
   components: { PdfCustom },
   setup() {
-    const scale = ref(0.2);
+    const layoutStore = useLayoutStore();
+    const { dashboard } = storeToRefs(layoutStore);
     const loadingSppiner = ref(true);
     // const { pdf, pages } = usePDF("");
     const onLoaded = (value) => {
@@ -29,7 +33,7 @@ export default defineComponent({
         loadingSppiner.value = false;
       }
     };
-    return { scale, loadingSppiner, onLoaded };
+    return { dashboard, loadingSppiner, onLoaded };
   },
   // Outras configurações do componente aqui
 });

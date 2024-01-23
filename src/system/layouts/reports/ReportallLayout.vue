@@ -20,7 +20,11 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-custom :documentPDF="item.doc" />
+                <pdf-custom
+                  :documentPDF="item.doc"
+                  :audio="item.audio"
+                  :scale="dashboard.pdfScale"
+                />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>
@@ -44,7 +48,11 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-custom :documentPDF="item.doc" :audio="item.audio" />
+                <pdf-custom
+                  :documentPDF="item.doc"
+                  :audio="item.audio"
+                  :scale="dashboard.pdfScale"
+                />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>
@@ -56,14 +64,18 @@
 
 <script>
 // import { VuePDF, usePDF } from "@tato30/vue-pdf";
+import { useLayoutStore } from "src/stores/layout";
 import { defineComponent, ref } from "vue";
 import PdfCustom from "../../components/PdfCustom.vue";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "ReportallLayout",
   components: { PdfCustom },
   setup() {
     // const { pdf, pages } = usePDF("doc/classic.pdf");
+    const layoutStore = useLayoutStore();
+    const { dashboard } = storeToRefs(layoutStore);
 
     const premium = [
       {
@@ -99,10 +111,11 @@ export default defineComponent({
         name: "Cryptomoedas ",
         date: "12/01/2024",
         doc: "doc/report/crypto/Relatorio_12.01.2024.pdf",
-      }
+      },
     ];
 
     return {
+      dashboard,
       premium,
       crypto,
     };

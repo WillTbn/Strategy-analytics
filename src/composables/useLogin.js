@@ -137,7 +137,8 @@ export default function useLogin() {
     const json = localStorage.getItem(keyLocal);
     const userData = JSON.parse(json);
     if (!userData) {
-      router.push({ name: "login" });
+      router.replace({ path: "/login" });
+      // router.push({ name: "login" });
       return;
     }
     useStore.setUserData(getDataUser(userData.cpf));
@@ -160,7 +161,8 @@ export default function useLogin() {
 
   const setLogout = async () => {
     localStorage.removeItem(keyLocal);
-    router.go({name:'login'});
+    router.replace({ name: "home" });
+    // router.go();
   };
 
   return {

@@ -22,6 +22,8 @@ import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import useCookies from "../../composables/useCookies";
 import useLogin from "../../composables/useLogin";
+import useStates from "../../composables/useStates";
+import { useLayoutStore } from "src/stores/layout";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
@@ -30,8 +32,10 @@ export default defineComponent({
   components: { NavbarLayout },
   setup() {
     const route = useRoute();
+    const layout = useLayoutStore();
     const { getLoggedIn } = useLogin();
     const { getValue, getDarkMode } = useCookies();
+    const { dimension } = useStates();
     // const statusDark = ref();
     // watch(
     //   () => Dark.isActive,
@@ -41,6 +45,7 @@ export default defineComponent({
 
     // );
     onMounted(() => {
+      layout.updatePdfScale(dimension(window.innerWidth));
       getLoggedIn();
       getDarkMode();
     });

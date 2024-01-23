@@ -124,8 +124,25 @@ export default function useStates() {
     // console.log(states[country]);
     return states[country];
   };
+  const dimension = (value) => {
+    // const dimension = window.innerWidth;
+    let scaleValue;
 
+    if (value <= 599) {
+      scaleValue = 1.2;
+    } else if (value > 600 && value <= 1023) {
+      scaleValue = 1.39;
+    } else if (value > 1024 && value <= 1439) {
+      scaleValue = 1.15;
+    } else if (value > 1440 && value <= 1919) {
+      scaleValue = 1.22;
+    } else if (value > 1920) {
+      scaleValue = 1.3;
+    }
+    return scaleValue;
+  };
   return {
     get,
+    dimension,
   };
 }

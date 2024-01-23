@@ -9,9 +9,10 @@ export const useLayoutStore = defineStore("layout", {
     calendarSteps: "home",
     reportSteps: "all",
     loanSteps: "home",
-    dashboard:{
-      reporthome:true
-    }
+    dashboard: {
+      reporthome: true,
+      pdfScale: 1,
+    },
   }),
   getters: {},
   actions: {
@@ -46,8 +47,11 @@ export const useLayoutStore = defineStore("layout", {
       console.log(payload);
       this.loanSteps = payload;
     },
-    updatedDashReport(payload){
-      this.dashboard.reporthome = payload
-    }
+    updatedDashReport(payload) {
+      this.dashboard.reporthome = payload;
+    },
+    updatePdfScale(payload) {
+      this.dashboard.pdfScale = payload;
+    },
   },
 });
