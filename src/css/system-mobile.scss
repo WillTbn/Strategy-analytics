@@ -1,0 +1,30 @@
+@media (max-width: 768px) {
+  .card-container {
+    height: auto !important;
+    width: 320px !important;
+  }
+  .card-relatorio-row {
+    height: auto;
+    width: 99.3333%;
+  }
+  .col-chart {
+    margin: 0 0.4rem !important;
+  }
+  .card-report-view {
+    height: auto;
+    width: 99.3333%;
+  }
+  .card-report-view {
+    width: 99.3333% !important;
+  }
+  .control-value {
+    font-size: 33px !important;
+    line-height: 3 !important;
+    // font-style: bolder;
+    // font-weight: 800;
+    // line-height: 32.5px; /* 90.278% */
+  }
+  .btn-update {
+    margin-bottom: 1rem !important;
+  }
+}

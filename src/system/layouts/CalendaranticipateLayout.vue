@@ -1,7 +1,7 @@
 <template>
   <div class="CalendaranticipateLayout">
     <div class="row justify-center text-center">
-      <div class="col-12">
+      <div class="col-12 q-mt-xs-lg q-mt-md-none">
         <titleinter-medium text="Antecipação de lucros" />
       </div>
 

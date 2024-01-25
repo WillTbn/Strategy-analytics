@@ -100,7 +100,7 @@ module.exports = configure(function (/* ctx */) {
       //
       // components: [],
       // directives: [],
-
+      cssAddon: true,
       // Quasar plugins
       plugins: ["Loading", "Notify", "Cookies", "Meta", "Cookies"],
     },

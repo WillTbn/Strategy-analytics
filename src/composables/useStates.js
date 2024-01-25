@@ -129,7 +129,7 @@ export default function useStates() {
     let scaleValue;
 
     if (value <= 599) {
-      scaleValue = 1.2;
+      scaleValue = 0.7;
     } else if (value > 600 && value <= 1023) {
       scaleValue = 0.8;
     } else if (value > 1024 && value <= 1439) {

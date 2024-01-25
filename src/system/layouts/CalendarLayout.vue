@@ -1,11 +1,11 @@
 <template>
   <div class="CalendarLayout">
     <div class="row justify-center items-center">
-      <div class="col-12 text-center">
+      <div class="col-12 text-center q-my-xs-md q-my-md-none">
         <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
     </div>
-    <div class="row justify-center q-ma-xl items-center">
+    <div class="row justify-center q-ma-md-xl items-center">
       <div class="col"></div>
       <div class="col-12 col-md-7">
         <q-date
@@ -20,7 +20,7 @@
           readonly
         />
       </div>
-      <div class="col self-center">
+      <div class="col self-center desktop-only">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />
@@ -36,8 +36,30 @@
         </q-item>
       </div>
     </div>
-    <div class="row justify-center q-pa-lg text-center">
-      <div class="col-md-3 col-6" v-for="link in links" :key="link">
+    <div class="row mobile-only">
+      <div class="col-12 justify-center">
+        <q-item>
+          <q-item-section top avatar>
+            <q-avatar color="primary" text-color="white" icon="" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Distribuição de lucros</q-item-label>
+            <q-item-label caption lines="2"
+              >Data atual:
+              <span class="text-weight-bolder text-dark">1° Dia útil</span>
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
+    </div>
+
+    <div class="row justify-center q-pa-xs-lg q-pa-md-none text-center">
+      <div
+        class="col-md-3 col-xs-12 q-mt-xs-md q-mt-md-none"
+        v-for="link in links"
+        :key="link"
+      >
         <q-btn
           outline
           no-caps
@@ -46,6 +68,7 @@
           @click.prevent="goStep(link.value)"
           class="border-btn"
           :label="link.name"
+          no-wrap
         />
       </div>
     </div>

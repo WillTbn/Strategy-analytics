@@ -12,8 +12,7 @@
           size="sm"
           text-color="dark"
           icon="fa-solid fa-minus"
-          style="cursor: pointer"
-          rounded
+         class="btn-update"
           flat
         />
         <span class="control-value f-inter"> R$ {{ loan.value }}.000,00 </span>
@@ -24,7 +23,7 @@
           size="sm"
           text-color="dark"
           icon="fa-solid fa-plus"
-          style="cursor: pointer"
+         class="btn-update"
           flat
         />
         <p class="">Emprestimo minimo R$50.000,00 máximo 500.000,00</p>

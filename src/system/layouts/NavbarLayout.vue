@@ -13,7 +13,7 @@
       <!-- elevated -->
       <!-- class="control-drawer" -->
       <div
-        class="bg-transparent q-mt-lg row"
+        class="bg-transparent q-mt-sm-lg row"
         :class="{ 'justify-between text-center': miniState }"
       >
         <div class="col-12">
@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <q-list class="q-mt-xl q-pt-lg q-mx-sm q-px-sm">
+      <q-list class="q-mt-sm-xl q-pt-lg q-mx-sm q-px-sm">
         <q-item
           v-for="list in listMenu"
           :key="list"
@@ -133,7 +133,18 @@
       </div>
     </q-drawer>
     <div
-      class="position-absolute absolute-center"
+      class="mobile-only bg-primary"
+      :class="jsonState.barstate"
+      @click.prevent="drawer = !drawer"
+      style="z-index: 4000"
+    >
+      <q-avatar size="lg" color="transparent" class="avatar-icon">
+        <!-- <FontAwesomeIcon icon="fa-solid fa-xmark" /> -->
+        <q-icon size="xs" left :name="jsonState.icon" />
+      </q-avatar>
+    </div>
+    <div
+      class="position-absolute absolute-center desktop-only"
       :class="{ 'move-position ': !miniState }"
     >
       <q-avatar
@@ -154,7 +165,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
 import SvgLogo from "../components/svgs/SvgLogo.vue";
@@ -168,6 +179,17 @@ export default defineComponent({
   setup() {
     // const {setDarkMode} = useCookies()
     const { setLogout } = useLogin();
+    const barState = computed(() =>
+      drawer.value ? "fixed-top-right" : "fixed-top-left"
+    );
+    const jsonState = computed(() =>
+      drawer.value
+        ? {
+            barstate: "fixed-top-right bar-xmark",
+            icon: "fa-solid fa-xmark",
+          }
+        : { barstate: "fixed-top-left barstate", icon: "fa-solid fa-bars" }
+    );
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
@@ -256,6 +278,8 @@ export default defineComponent({
     ];
     // setLogout
     return {
+      jsonState,
+      barState,
       setLogout,
       miniState,
       drawer,

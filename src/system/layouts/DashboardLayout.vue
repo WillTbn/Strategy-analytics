@@ -3,21 +3,24 @@
     <div :class="classProperties">
       <div class="row">
         <div class="col-md-6 q-px-sm">
-          <q-card class="card-container" bordered>
+          <q-card class="card-container q-mt-xs-lg q-mt-md-none" bordered>
             <q-card-section>
               <profitdistribution-layout />
             </q-card-section>
           </q-card>
         </div>
-        <div class="col-md-6">
-          <q-card class="card-container">
+        <div class="col-md-6 q-mx-xs-sm q-mx-md-none">
+          <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
               <loan-layout />
             </q-card-section>
           </q-card>
         </div>
-        <div class="col-md-12 col-chart" :class="classProp.chart">
-          <q-card class="card-container">
+        <div
+          class="col-md-12 col-chart q-mx-xs-sm q-mx-md-none"
+          :class="classProp.chart"
+        >
+          <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
               <wallet-layout />
             </q-card-section>
@@ -116,7 +119,6 @@ export default defineComponent({
   transition: all ease-out 9ms;
 }
 .card-container {
-  /* min-height: 310px; */
   height: 310px;
 }
 .card-relatorio {
@@ -154,17 +156,5 @@ export default defineComponent({
 }
 .card-remove {
   display: none;
-}
-@media (max-width: 768px) {
-  .card-container:not(:first-child) {
-    margin-top: 1rem !important;
-  }
-  .card-relatorio-row {
-    height: auto;
-    width: 99.3333%;
-  }
-  .col-chart {
-    margin: 0.1rem;
-  }
 }
 </style>

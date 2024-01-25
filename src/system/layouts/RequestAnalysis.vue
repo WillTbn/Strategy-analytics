@@ -37,7 +37,7 @@ export default defineComponent({
       setTimeout(() => {
         storeLayout.updateCalendarsteps("home");
         storeLayout.updateLoansteps("home");
-        router.replace({ path: "/system" });
+        router.replace({ path: "/system/dashboard" });
       }, 2000);
     });
     return {};
