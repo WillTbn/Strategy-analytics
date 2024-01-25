@@ -4,20 +4,19 @@
       type="area"
       height="350"
       ref="line"
-      :options="options"
+      :options="optionsYield"
       :series="series"
     ></apexchart>
   </div>
 </template>
 
 <script>
+import useCharts from "src/composables/useCharts";
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "DividendYield",
-  props: {
-    statusDark: { type: Boolean, required: true },
-  },
-  setup(props) {
+
+  setup() {
     const series = [
       {
         name: "Rendimentos de dividendos",
@@ -30,62 +29,9 @@ export default defineComponent({
         data: [3, 3, 3, 3, 3, 2.9, 3, 3, 3, 3, 2.9, 3],
       },
     ];
-    const options = {
-      legend: { position: "top", fontFamily: "Inter" },
-      colors: ["#2E93fA", "#E91E63"],
-      chart: {
-        height: 350,
-        type: "line",
-      },
-      stroke: {
-        width: [0, 4],
-      },
-      title: {
-        text: "Rendimentos de dividendos da Carteira",
-        align: "left",
-        style: {
-          fontSize: "12px",
-          fontWeight: "bold",
-          fontFamily: "Inter",
-          color: !props.statusDark ? "#263238" : "#fff",
-        },
-      },
-      dataLabels: {
-        enabled: true,
-        enabledOnSeries: [],
-      },
-      labels: [
-        "JAN",
-        "FEV",
-        "MAR",
-        "ABR",
-        "MAI",
-        "JUN",
-        "JUL",
-        "AGO",
-        "SET",
-        "OUT",
-        "NOV",
-        "DEZ",
-      ],
+    const { optionsYield } = useCharts();
 
-      yaxis: [
-        {
-          // opposite: true,
-          labels: {
-            align: "left",
-            formatter: (value) => {
-              return `0,${value}%`;
-            },
-            style: {
-              fontFamily: "Inter",
-              color: !props.statusDark ? "#263238" : "#fff",
-            },
-          },
-        },
-      ],
-    };
-    return { series, options };
+    return { series, optionsYield };
   },
   // Outras configurações do componente aqui
 });

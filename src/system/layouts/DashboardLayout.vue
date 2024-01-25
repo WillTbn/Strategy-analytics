@@ -22,7 +22,7 @@
         >
           <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
-              <wallet-layout />
+              <wallet-layout :key="dark" />
             </q-card-section>
           </q-card>
         </div>
@@ -63,6 +63,7 @@ import ReportLayout from "./ReportLayout.vue";
 import useCookies from "src/composables/useCookies";
 import { useLayoutStore } from "src/stores/layout";
 import { storeToRefs } from "pinia";
+import { Dark } from "quasar";
 
 export default defineComponent({
   name: "DashboardLayout",
@@ -106,6 +107,7 @@ export default defineComponent({
         reportStatus.value ? " col-md-7 col-12" : "col-11"
       ),
       updateStatusReport,
+      dark: computed(() => Dark.isActive),
     };
   },
   // Outras configurações do componente aqui

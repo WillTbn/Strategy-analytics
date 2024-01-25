@@ -73,7 +73,7 @@
   </q-layout>
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import LogoSmall from "../components/LogoSmall.vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
@@ -88,7 +88,7 @@ export default defineComponent({
     const useStore = useUserStore();
     const personRef = ref(null);
     const passwordRef = ref(null);
-    const { setUserLoggedin } = useLogin();
+    const { setUserLoggedin,verifyLogged } = useLogin();
 
     const { login } = storeToRefs(useStore);
     const onSubmit = () => {
@@ -98,6 +98,9 @@ export default defineComponent({
         setUserLoggedin(login.value);
       }
     };
+    onMounted(() => {
+      verifyLogged();
+    });
 
     return {
       login,

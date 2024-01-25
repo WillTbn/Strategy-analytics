@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-12">
-        <div style="min-height: 33rem">
+        <div style="min-height: 35rem">
           <q-tabs
             v-model="tab"
             class="text-grey"

@@ -1,9 +1,9 @@
 <template>
   <div class="PerfomancePage row q-pa-lg">
-    <div class="col-12 q-mb-lg"><chart-comparative :statusDark="dark" /></div>
-    <div class="col-md-4 col-12"><dividend-yield :statusDark="dark" /></div>
-    <div class="col-md-4 col-12"><asset-classes :statusDark="dark" /></div>
-    <div class="col-md-4 col-12"><assets-risk :statusDark="dark" /></div>
+    <div class="col-12 q-mb-lg"><chart-comparative :key="dark" /></div>
+    <div class="col-md-4 col-12"><dividend-yield :key="dark" /></div>
+    <div class="col-md-4 col-12"><asset-classes :key="dark" /></div>
+    <div class="col-md-4 col-12"><assets-risk :key="dark" /></div>
     <!-- <div class="col-12">
       <q-img src="charts/grafico-2.svg " />
     </div>

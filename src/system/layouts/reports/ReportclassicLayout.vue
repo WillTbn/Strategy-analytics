@@ -3,7 +3,7 @@
     <div class="row justify-center q-gutter-sm">
       <div class="col-12">
         <!-- <q-scroll-area style="height: 35rem"> -->
-        <q-card style="max-height: 34rem" square flat>
+        <q-card style="max-height: 35rem" square flat>
           <pdf-custom
             documentPDF="doc/report/classic/Relatorio_20.01.2024.pdf"
           />

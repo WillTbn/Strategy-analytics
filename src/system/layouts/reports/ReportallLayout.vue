@@ -18,19 +18,19 @@
             dense-toggle
             :label-lines="1"
           >
-            <!-- <q-scroll-area style="height: 35rem"> -->
-              <q-card style="max-height: 33rem">
+            <q-scroll-area style="height: 35rem">
+              <q-card style="max-height: 35rem">
                 <pdf-custom
                   :documentPDF="item.doc"
                   :audio="item.audio"
                   :scale="dashboard.pdfScale"
                 />
               </q-card>
-            <!-- </q-scroll-area> -->
+            </q-scroll-area>
           </q-expansion-item>
         </q-banner>
       </div>
-      <div class="col-md-5 col-12">
+      <!-- <div class="col-md-5 col-12">
         <q-banner
           class="q-my-sm"
           rounded
@@ -46,18 +46,18 @@
             dense-toggle
             :label-lines="1"
           >
-            <!-- <q-scroll-area style="height: 35rem"> -->
-              <q-card style="max-height: 33rem">
+            <q-scroll-area style="height: 35rem">
+              <q-card style="max-height: 35rem">
                 <pdf-custom
                   :documentPDF="item.doc"
                   :audio="item.audio"
                   :scale="dashboard.pdfScale"
                 />
               </q-card>
-            <!-- </q-scroll-area> -->
+            </q-scroll-area>
           </q-expansion-item>
         </q-banner>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -83,17 +83,17 @@ export default defineComponent({
         date: "15/01/2024",
         doc: "doc/report/classic/Relatorio_15.01.2024.pdf",
       },
-      {
-        name: "Premium Classic",
-        date: "18/01/2024",
-        doc: "doc/report/classic/Relatorio_18.01.2024.pdf",
-        audio: "audios/CP-SA.mp3",
-      },
-      {
-        name: "Premium Classic",
-        date: "20/01/2024",
-        doc: "doc/report/classic/Relatorio_20.01.2024.pdf",
-      },
+      // {
+      //   name: "Premium Classic",
+      //   date: "18/01/2024",
+      //   doc: "doc/report/classic/Relatorio_18.01.2024.pdf",
+      //   audio: "audios/CP-SA.mp3",
+      // },
+      // {
+      //   name: "Premium Classic",
+      //   date: "20/01/2024",
+      //   doc: "doc/report/classic/Relatorio_20.01.2024.pdf",
+      // },
     ];
     const crypto = [
       {

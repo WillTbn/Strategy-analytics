@@ -4,7 +4,6 @@
       <div class="col-12 text-center">
         <p class="f-inter title-wallet">Carteira Strategy Analytics</p>
       </div>
-
       <div class="col-12">
         <chart-wallet />
       </div>

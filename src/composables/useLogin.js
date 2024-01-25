@@ -7,6 +7,7 @@ export default function useLogin() {
   const useStore = useUserStore();
   const notification = useNotify();
   const keyLocal = "SA_user";
+  const json = localStorage.getItem(keyLocal);
   const users = [
     {
       cpf: "448.811.378-83",
@@ -132,9 +133,13 @@ export default function useLogin() {
   const verifyPassword = (data, password) => {
     return data.password === password ?? false;
   };
-
+  const verifyLogged = async () => {
+    const userData = JSON.parse(json);
+    if (userData) {
+      router.replace({ path: "/system/dashboard" });
+    }
+  };
   const getLoggedIn = async () => {
-    const json = localStorage.getItem(keyLocal);
     const userData = JSON.parse(json);
     if (!userData) {
       router.replace({ path: "/login" });
@@ -170,5 +175,6 @@ export default function useLogin() {
     getLoggedIn,
     getDataUser,
     setLogout,
+    verifyLogged,
   };
 }

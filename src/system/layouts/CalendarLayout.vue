@@ -5,7 +5,7 @@
         <titleinter-medium text="Calendário Strategy Analytics" />
       </div>
     </div>
-    <div class="row justify-center q-ma-md-xl items-center">
+    <div class="row justify-center q-ma-md-xl">
       <div class="col"></div>
       <div class="col-12 col-md-7">
         <q-date
@@ -20,7 +20,7 @@
           readonly
         />
       </div>
-      <div class="col self-center desktop-only">
+      <div class="col desktop-only">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />
@@ -30,7 +30,9 @@
             <q-item-label>Distribuição de lucros</q-item-label>
             <q-item-label caption lines="2"
               >Data atual:
-              <span class="text-weight-bolder text-dark">1° Dia útil</span>
+              <span class="text-weight-bolder" :class="textCol"
+                >1° Dia útil</span
+              >
             </q-item-label>
           </q-item-section>
         </q-item>
@@ -47,7 +49,9 @@
             <q-item-label>Distribuição de lucros</q-item-label>
             <q-item-label caption lines="2"
               >Data atual:
-              <span class="text-weight-bolder text-dark">1° Dia útil</span>
+              <span class="text-weight-bolder" :class="textCol"
+                >1° Dia útil</span
+              >
             </q-item-label>
           </q-item-section>
         </q-item>
@@ -76,11 +80,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import TitleinterMedium from "../components/TitleinterMedium.vue";
 import { useLayoutStore } from "../../stores/layout";
 import useConfigdate from "../../composables/useConfigdate";
 // import CalendarCurrent from "../components/calendar/CalendarCurrent.vue";
+import { Dark } from "quasar";
 
 export default defineComponent({
   name: "CalendarLayout",
@@ -88,6 +93,7 @@ export default defineComponent({
   setup() {
     const layoutStore = useLayoutStore();
     const { brLocale, monthNow, yearNow } = useConfigdate();
+
     const goStep = (value) => {
       layoutStore.updateCalendarsteps(value);
     };
@@ -114,7 +120,14 @@ export default defineComponent({
         },
       },
     ]);
-    return { date, attrs, links, brLocale, goStep };
+    return {
+      date,
+      attrs,
+      links,
+      brLocale,
+      goStep,
+      textCol: computed(() => (Dark.isActive ? "text-white" : "text-dark")),
+    };
   },
   // Outras configurações do componente aqui
 });
