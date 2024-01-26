@@ -27,10 +27,7 @@
               <q-item-label class="text-weight-bold control-text">
                 {{ data.name }}
               </q-item-label>
-              <q-item-label
-                caption
-                class="text-weight-bold control-text"
-              >
+              <q-item-label caption class="text-weight-bold control-text">
                 {{ data.email }}
               </q-item-label>
             </q-item-section>
@@ -147,7 +144,7 @@
       </q-avatar>
     </div>
     <div
-      class="position-absolute absolute-center desktop-only"
+      class="position-absolute fixed-center desktop-only"
       :class="{ 'move-position ': !miniState }"
     >
       <q-avatar

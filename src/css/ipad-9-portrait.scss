@@ -12,7 +12,7 @@
   }
 }
 
-@media (max-height: 1024px) {
+@media (max-height: 1024px) and (max-width: 1439px) {
   .card-report-view {
     height: auto !important;
     width: 99.3333% !important;
