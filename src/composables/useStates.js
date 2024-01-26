@@ -125,24 +125,39 @@ export default function useStates() {
     return states[country];
   };
   const dimension = (value) => {
-    // const dimension = window.innerWidth;
+    const valueHeight = window.innerHeight;
     let scaleValue;
 
     if (value <= 599) {
       scaleValue = 0.7;
-    } else if (value > 600 && value <= 1023) {
-      scaleValue = 0.8;
-    } else if (value > 1024 && value <= 1439) {
-      scaleValue = 1.15;
-    } else if (value > 1440 && value <= 1919) {
+    } else if (value >= 600 && value <= 1023) {
+      scaleValue = valueHeight >= 1023 ? 1.6 : 0.8;
+    } else if (value >= 1024 && value <= 1439) {
+      scaleValue = valueHeight >= 700 ? 2 : 1.15;
+    } else if (value >= 1440 && value <= 1919) {
       scaleValue = 1.17;
-    } else if (value > 1920) {
+    } else if (value >= 1920 && 2250) {
       scaleValue = 2;
+    } else if (value > 2250) {
+      scaleValue = 1.8;
     }
     return scaleValue;
   };
+
+  const dimensionHeight = (value) => {
+    // const height = window.innerHeight;
+    return value <= 800 ? "normal" : "ultra";
+  };
+  const viewport = () => {
+    const viewHeight = window.innerHeight;
+    const viewWidth = window.innerWidth;
+    return { viewWidth, viewHeight };
+  };
+
   return {
     get,
     dimension,
+    dimensionHeight,
+    viewport,
   };
 }

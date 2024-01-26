@@ -12,6 +12,9 @@ export const useLayoutStore = defineStore("layout", {
     dashboard: {
       reporthome: true,
       pdfScale: null,
+      screenWidth: "",
+      screenViewWdth: 0,
+      screenViewHeight: 0,
     },
   }),
   getters: {},
@@ -53,6 +56,15 @@ export const useLayoutStore = defineStore("layout", {
     updatePdfScale(payload) {
       console.log(payload);
       this.dashboard.pdfScale = payload;
+    },
+    setScreenWidth(payload) {
+      this.dashboard.screenWidth = payload;
+    },
+    setViewWidth(payload) {
+      this.dashboard.screenViewWdth = payload;
+    },
+    setViewHeight(payload) {
+      this.dashboard.screenViewHeight = payload;
     },
   },
 });

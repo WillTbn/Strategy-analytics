@@ -1,7 +1,10 @@
 <template>
-  <div class="DashboardLayout row q-gutter-x-sm q-gutter-y-lg container">
+  <div
+    class="DashboardLayout row q-gutter-x-sm q-gutter-y-lg container items-center"
+    :class="dashboard.screenWidth"
+  >
     <div :class="classProperties">
-      <div class="row">
+      <div class="row items-end">
         <div class="col-md-6 q-px-sm">
           <q-card class="card-container q-mt-xs-lg q-mt-md-none" bordered>
             <q-card-section>
@@ -17,7 +20,7 @@
           </q-card>
         </div>
         <div
-          class="col-md-12 col-chart q-mx-xs-sm q-mx-md-none"
+          class="col-md-12 col-12 col-chart q-mx-xs-sm q-mx-md-none"
           :class="classProp.chart"
         >
           <q-card class="card-container q-mt-xs-lg q-mt-md-none">
@@ -64,6 +67,7 @@ import useCookies from "src/composables/useCookies";
 import { useLayoutStore } from "src/stores/layout";
 import { storeToRefs } from "pinia";
 import { Dark } from "quasar";
+import useStates from "src/composables/useStates";
 
 export default defineComponent({
   name: "DashboardLayout",
@@ -78,6 +82,7 @@ export default defineComponent({
 
     const layoutStore = useLayoutStore();
     const { dashboard } = storeToRefs(layoutStore);
+    const { dimension } = useStates();
 
     const reportStatus = computed(() => dashboard.value.reporthome);
     const updateStatusReport = () => {
@@ -92,22 +97,25 @@ export default defineComponent({
         reportStatus.value ? "card-report-view " : "card-report-not"
       ),
       containerHome: computed(() =>
-        reportStatus.value ? "col-md-7 col-12" : "col-12"
+        reportStatus.value ? "col-lg-7 col-12" : "col-12"
       ),
     });
 
     onMounted(() => {
       layoutStore.updatedDashReport(getWidgetReport());
+      layoutStore.setScreenWidth(dimension(window.innerWidth));
     });
 
     return {
       reportStatus,
       classProp,
       classProperties: computed(() =>
-        reportStatus.value ? " col-md-7 col-12" : "col-11"
+        reportStatus.value ? " col-lg-7 col-12" : "col-11"
       ),
       updateStatusReport,
       dark: computed(() => Dark.isActive),
+      dashboard,
+      // classHeight:dashboard.value.screenWidth,
     };
   },
   // Outras configurações do componente aqui
@@ -115,6 +123,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.ultra {
+  height: 100vh;
+}
+.normal {
+  height: 100%;
+}
 /* Estilos específicos do componente aqui */
 .container {
   padding: 1.5rem 1rem;

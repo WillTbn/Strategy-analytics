@@ -8,8 +8,12 @@
       </div>
     </div>
 
-    <div class="row q-gutter-x-lg q-ma-sm justify-between">
-      <div class="col-5 f-inter" v-for="(item, i) in datas" :key="i">
+    <div class="row q-gutter-x-lg q-ma-sm justify-md-between justify-center">
+      <div
+        class="col-md-5 col-xs-4 f-inter align-text-personal"
+        v-for="(item, i) in datas"
+        :key="i"
+      >
         <div class="">
           <span class="title">{{ item.title }}</span>
           <p class="">{{ item.value }}</p>

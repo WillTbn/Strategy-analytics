@@ -1,8 +1,10 @@
 import { computed, ref } from "vue";
 import { Dark } from "quasar";
 import { useRouter } from "vue-router";
+import { useLayoutStore } from "src/stores/layout";
 
 export default function useCharts() {
+  const dashboard = useLayoutStore().dashboard;
   const optionsTheme = () => {
     return Dark.isActive
       ? {
@@ -39,12 +41,14 @@ export default function useCharts() {
   ];
   const themeOptions = computed(() => optionsTheme());
   const colorText = computed(() => (Dark.isActive ? "#fff" : "#000"));
-
+  const legendPosition = computed(() =>
+    dashboard.screenViewWdth <= 1000 ? "top" : "right"
+  );
   const colorArray = computed(() => (Dark.isActive ? arrayDark : arrayWhite));
   const optionsComparative = ref({
     theme: themeOptions,
     legend: {
-      position: "right",
+      position: legendPosition,
       fontFamily: "Inter",
     },
     colors: ["#2E93fA", "#66DA26", "#E91E63"],

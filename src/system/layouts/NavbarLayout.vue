@@ -23,13 +23,16 @@
                 <img :src="data.avatar" />
               </q-avatar>
             </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-weight-bold">{{
-                data.name
-              }}</q-item-label>
-              <q-item-label caption class="text-weight-bold">{{
-                data.email
-              }}</q-item-label>
+            <q-item-section no-wrap>
+              <q-item-label class="text-weight-bold control-text">
+                {{ data.name }}
+              </q-item-label>
+              <q-item-label
+                caption
+                class="text-weight-bold control-text"
+              >
+                {{ data.email }}
+              </q-item-label>
             </q-item-section>
 
             <q-item-section side avatar top>
@@ -101,7 +104,7 @@
           <q-item-section> {{ list.name }} </q-item-section>
         </q-item>
       </q-list>
-      <div class="bg-transparent absolute-bottom">
+      <div class="bg-transparent absolute-bottom" style="overflow-x: hidden">
         <div class="row q-mt-xl q-pt-lg">
           <div class="col-12">
             <!-- <q-avatar size="36px" class="q-mb-sm">
@@ -136,7 +139,7 @@
       class="mobile-only bg-primary"
       :class="jsonState.barstate"
       @click.prevent="drawer = !drawer"
-      style="z-index: 4000"
+      style="z-index: 4000; overflow-x: hidden"
     >
       <q-avatar size="lg" color="transparent" class="avatar-icon">
         <!-- <FontAwesomeIcon icon="fa-solid fa-xmark" /> -->
@@ -297,6 +300,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.control-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .bg-personal {
   background: linear-gradient(#00000033, #0038584d, #0077ba6b, #00a3ff80);
 }

@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 580px) {
   .card-container {
     height: auto !important;
     width: 320px !important;
@@ -26,5 +26,26 @@
   }
   .btn-update {
     margin-bottom: 1rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .card-container {
+    height: auto !important;
+    width: 100% !important;
+  }
+  .card-report-view {
+    height: auto !important;
+    width: 99.3333% !important;
+    padding-left: 0.5rem;
+  }
+  .ultra {
+    height: 100% !important;
+  }
+  .col-chart-one {
+    margin: auto !important;
+    padding-left: 0.5rem;
+  }
+  .align-text-personal:not(:nth-child(2), :nth-child(4)) {
+    text-align: right;
   }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="row text-second">
       <div class="col-12"><span>Tema:</span><br /></div>
-      <div class="col-2 text-center">
+      <div class="col-2 col-md-4 text-center">
         <q-btn color="white" @click="activeTema(false)">
           <q-avatar size="42px">
             <q-icon name="img:icons/claro-bg.svg" />

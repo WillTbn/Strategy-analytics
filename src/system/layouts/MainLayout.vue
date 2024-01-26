@@ -35,7 +35,7 @@ export default defineComponent({
     const layout = useLayoutStore();
     const { getLoggedIn } = useLogin();
     const { getValue, getDarkMode } = useCookies();
-    const { dimension } = useStates();
+    const { dimension, dimensionHeight, viewport } = useStates();
     // const statusDark = ref();
     // watch(
     //   () => Dark.isActive,
@@ -46,6 +46,9 @@ export default defineComponent({
     // );
     onMounted(() => {
       layout.updatePdfScale(dimension(window.innerWidth));
+      layout.setScreenWidth(dimensionHeight(window.innerHeight));
+      layout.setViewWidth(viewport().viewWidth);
+      layout.setViewHeight(viewport().viewHeight);
       getLoggedIn();
       getDarkMode();
     });

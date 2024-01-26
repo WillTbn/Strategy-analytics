@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row justify-center q-ma-md-xl">
-      <div class="col"></div>
+      <div class="col platform-ios-hide"></div>
       <div class="col-12 col-md-7">
         <q-date
           class="control-calendar bg-transparent"
@@ -38,8 +38,8 @@
         </q-item>
       </div>
     </div>
-    <div class="row mobile-only">
-      <div class="col-12 justify-center">
+    <div class="row mobile-only justify-center">
+      <div class="col-12 col-md-3">
         <q-item>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="" />
@@ -60,7 +60,7 @@
 
     <div class="row justify-center q-pa-xs-lg q-pa-md-none text-center">
       <div
-        class="col-md-3 col-xs-12 q-mt-xs-md q-mt-md-none"
+        class="col-sm-3 col-xs-12 q-mt-xs-md q-mt-md-none"
         v-for="link in links"
         :key="link"
       >

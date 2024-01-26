@@ -77,7 +77,7 @@ export default function useLogin() {
       cpf: "222.222.222-22",
       password: "Strategy",
       name: "João Velasques Todesgo",
-      email: "joaov.todesgo@gmail.com",
+      email: "joaov.todesgosdadsadasdasdsadasdsad@gmail.com",
       state: "Victoria",
       country: "Australia",
       investor: "investor Obsidian",

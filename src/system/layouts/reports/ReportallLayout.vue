@@ -30,7 +30,7 @@
           </q-expansion-item>
         </q-banner>
       </div>
-      <!-- <div class="col-md-5 col-12">
+      <div class="col-md-5 col-12">
         <q-banner
           class="q-my-sm"
           rounded
@@ -57,7 +57,7 @@
             </q-scroll-area>
           </q-expansion-item>
         </q-banner>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -83,17 +83,17 @@ export default defineComponent({
         date: "15/01/2024",
         doc: "doc/report/classic/Relatorio_15.01.2024.pdf",
       },
-      // {
-      //   name: "Premium Classic",
-      //   date: "18/01/2024",
-      //   doc: "doc/report/classic/Relatorio_18.01.2024.pdf",
-      //   audio: "audios/CP-SA.mp3",
-      // },
-      // {
-      //   name: "Premium Classic",
-      //   date: "20/01/2024",
-      //   doc: "doc/report/classic/Relatorio_20.01.2024.pdf",
-      // },
+      {
+        name: "Premium Classic",
+        date: "18/01/2024",
+        doc: "doc/report/classic/Relatorio_18.01.2024.pdf",
+        audio: "audios/CP-SA.mp3",
+      },
+      {
+        name: "Premium Classic",
+        date: "20/01/2024",
+        doc: "doc/report/classic/Relatorio_20.01.2024.pdf",
+      },
     ];
     const crypto = [
       {

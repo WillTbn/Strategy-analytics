@@ -32,6 +32,14 @@ export default route(function (/* { store, ssrContext } */) {
     routes,
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
+  Router.beforeEach((to, from, next) => {
+    console.log(to.name, from.name);
+    document.title =
+      to.name != undefined
+        ? `Strategy Analiycs -  ${to.name}`
+        : "Strategy Analiycs";
+    next();
+  });
 
   return Router;
 });
