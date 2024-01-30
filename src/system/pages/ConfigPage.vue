@@ -1,11 +1,11 @@
 <template>
   <div class="ConfigPage">
     <div class="row q-pa-lg" style="min-height: 100dvh">
-      <div class="col-md-6 col-sm-12 q-pa-lg">
+      <div class="col-md-6 col-sm-12 q-pa-md-lg">
         <personalsetup-layout />
       </div>
       <q-separator vertical></q-separator>
-      <div class="col-md-5 col-sm-12 q-pa-lg">
+      <div class="col-md-5 col-sm-12 q-pa-md-lg">
         <dashsetup-layout />
       </div>
     </div>

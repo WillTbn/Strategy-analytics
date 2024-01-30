@@ -3,6 +3,7 @@
 @import "./theme-white.scss";
 @import "./system-mobile.scss";
 @import "./ipad-9-portrait.scss";
+@import "./ios.scss";
 .bg-system {
   background: #d9d9d9 !important;
 }
@@ -119,4 +120,19 @@ img {
 .btn-update {
   cursor: pointer;
   margin-bottom: 2.3rem;
+}
+
+// dashboard
+.col-chart {
+  padding-right: 0.5rem;
+}
+
+.card-report-not {
+  /* height: auto;
+  width: 99.3333%;
+  display: flex;
+  justify-content: flex-end; */
+  height: auto;
+  width: 5.3333%;
+  transform: translateX(25px);
 }

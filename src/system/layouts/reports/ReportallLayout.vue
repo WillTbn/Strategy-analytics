@@ -20,11 +20,7 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-custom
-                  :documentPDF="item.doc"
-                  :audio="item.audio"
-                  :scale="dashboard.pdfScale"
-                />
+                <pdf-pattern :documentPDF="item.doc" :audio="item.audio" />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>
@@ -48,11 +44,7 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-custom
-                  :documentPDF="item.doc"
-                  :audio="item.audio"
-                  :scale="dashboard.pdfScale"
-                />
+                <pdf-pattern :documentPDF="item.doc" :audio="item.audio" />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>
@@ -66,12 +58,12 @@
 // import { VuePDF, usePDF } from "@tato30/vue-pdf";
 import { useLayoutStore } from "src/stores/layout";
 import { defineComponent, ref } from "vue";
-import PdfCustom from "../../components/PdfCustom.vue";
+import PdfPattern from "../../components/PdfPattern.vue";
 import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "ReportallLayout",
-  components: { PdfCustom },
+  components: { PdfPattern },
   setup() {
     // const { pdf, pages } = usePDF("doc/classic.pdf");
     const layoutStore = useLayoutStore();

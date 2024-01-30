@@ -29,7 +29,7 @@ export default function useCharts() {
         };
   };
 
-  const arrayWhite = ["gary", "gary", "gary", "gary", "gary", "gary", "gary"];
+  const arrayWhite = ["gray", "gray", "gray", "gray", "gray", "gray", "gray"];
   const arrayDark = [
     "white",
     "white",
@@ -39,10 +39,45 @@ export default function useCharts() {
     "white",
     "white",
   ];
+
   const themeOptions = computed(() => optionsTheme());
   const colorText = computed(() => (Dark.isActive ? "#fff" : "#000"));
   const legendPosition = computed(() =>
     dashboard.screenViewWdth <= 1000 ? "top" : "right"
+  );
+  const mobileStyle = ref({
+    style: {
+      fontSize: "10px",
+      fontWeight: "bold",
+      fontFamily: "Inter",
+      color: colorText,
+    },
+    margin: 30,
+    toolbar: {
+      offsetX: 30,
+      offsetY: 30,
+    },
+  });
+  const desktopStyle = ref({
+    style: {
+      fontSize: "12px",
+      fontWeight: "bold",
+      fontFamily: "Inter",
+      color: colorText,
+    },
+    margin: 10,
+    toolbar: {
+      offsetX: 0,
+      offsetY: 0,
+    },
+  });
+  const titleStyle = computed(() =>
+    dashboard.screenViewWdth <= 1000 ? mobileStyle.value : desktopStyle.value
+  );
+  const toolbarOptions = computed(() =>
+    dashboard.screenViewWdth <= 1000
+      ? mobileStyle.value.toolbar
+      : desktopStyle.value.toolbar
   );
   const colorArray = computed(() => (Dark.isActive ? arrayDark : arrayWhite));
   const optionsComparative = ref({
@@ -59,6 +94,7 @@ export default function useCharts() {
       zoom: {
         enabled: false,
       },
+      toolbar: toolbarOptions,
     },
     dataLabels: {
       enabled: false,
@@ -69,12 +105,8 @@ export default function useCharts() {
     title: {
       text: "Carteira Strategy Analytics",
       align: "center",
-      style: {
-        fontSize: "24px",
-        fontWeight: "bold",
-        fontFamily: "Inter",
-        color: colorText,
-      },
+      margin: titleStyle.value.margin,
+      style: titleStyle.value.style,
     },
     grid: {
       row: {
@@ -127,6 +159,7 @@ export default function useCharts() {
       background: "transparent",
       height: 350,
       type: "line",
+      toolbar: toolbarOptions,
     },
     stroke: {
       width: [0, 4],
@@ -134,12 +167,8 @@ export default function useCharts() {
     title: {
       text: "Rendimentos de dividendos da Carteira",
       align: "left",
-      style: {
-        fontSize: "12px",
-        fontWeight: "bold",
-        fontFamily: "Inter",
-        color: colorText,
-      },
+      margin: titleStyle.value.margin,
+      style: titleStyle.value.style,
     },
     dataLabels: {
       enabled: true,
@@ -188,12 +217,8 @@ export default function useCharts() {
     title: {
       text: "Ativos classes",
       align: "left",
-      style: {
-        fontSize: "18px",
-        fontWeight: "bold",
-        fontFamily: "Inter",
-        color: colorText,
-      },
+      margin: titleStyle.value.margin,
+      style: titleStyle.value.style,
     },
     responsive: [
       {
@@ -225,12 +250,8 @@ export default function useCharts() {
     title: {
       text: "Gerenciamento de risco",
       align: "left",
-      style: {
-        fontSize: "18px",
-        fontWeight: "bold",
-        fontFamily: "Inter",
-        color: colorText,
-      },
+      margin: titleStyle.value.margin,
+      style: titleStyle.value.style,
     },
     responsive: [
       {
@@ -249,7 +270,7 @@ export default function useCharts() {
       },
     ],
   });
-
+  //no title
   const walletOption = ref({
     theme: themeOptions,
     chart: {

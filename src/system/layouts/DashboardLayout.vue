@@ -12,17 +12,14 @@
             </q-card-section>
           </q-card>
         </div>
-        <div class="col-md-6 q-mx-xs-sm q-mx-md-none">
+        <div class="col-md-6 control-m-mx">
           <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
               <loan-layout />
             </q-card-section>
           </q-card>
         </div>
-        <div
-          class="col-md-12 col-12 col-chart q-mx-xs-sm q-mx-md-none"
-          :class="classProp.chart"
-        >
+        <div class="col-md-12 col-12 col-chart" :class="classProp.chart">
           <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
               <wallet-layout :key="dark" />
@@ -97,7 +94,7 @@ export default defineComponent({
         reportStatus.value ? "card-report-view " : "card-report-not"
       ),
       containerHome: computed(() =>
-        reportStatus.value ? "col-lg-7 col-12" : "col-12"
+        reportStatus.value ? "col-lg-7 col-md-12" : "col-12"
       ),
     });
 
@@ -148,9 +145,7 @@ export default defineComponent({
   border-radius: 10px;
 }
 /* q-mt-lg q-ml-sm */
-.col-chart {
-  padding-right: 0.5rem;
-}
+
 .col-chart-one {
   margin: 3.1rem 5rem 0 0.5rem;
 }
@@ -161,15 +156,7 @@ export default defineComponent({
   height: auto;
   width: 39.3333%;
 }
-.card-report-not {
-  /* height: auto;
-  width: 99.3333%;
-  display: flex;
-  justify-content: flex-end; */
-  height: auto;
-  width: 4.3333%;
-  transform: translateX(25px);
-}
+
 .card-remove {
   display: none;
 }
