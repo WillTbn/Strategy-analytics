@@ -20,7 +20,11 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-pattern :documentPDF="item.doc" :audio="item.audio" />
+                <pdf-pattern
+                  :title="item.name"
+                  :documentPDF="item.doc"
+                  :audio="item.audio"
+                />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>
@@ -44,7 +48,11 @@
           >
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
-                <pdf-pattern :documentPDF="item.doc" :audio="item.audio" />
+                <pdf-pattern
+                  :title="item.name"
+                  :documentPDF="item.doc"
+                  :audio="item.audio"
+                />
               </q-card>
             </q-scroll-area>
           </q-expansion-item>

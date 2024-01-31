@@ -45,6 +45,10 @@ export default defineComponent({
       if (value) {
         loadingSppiner.value = false;
         scaleRef.value = dashboard.value.pdfScale;
+        console.log(
+          "Essa é a escala que ira renderiza o pdf -> ",
+          scaleRef.value
+        );
       }
     };
     const { pdf, pages } = usePDF(props.documentPDF);
