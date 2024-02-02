@@ -3,9 +3,10 @@
     <q-card class="my-card bg-transparent" flat>
       <q-item>
         <q-item-section avatar>
-          <q-avatar size="9rem">
+          <avatar-new />
+          <!-- <q-avatar size="9rem">
             <img :src="data.avatar" />
-          </q-avatar>
+          </q-avatar> -->
         </q-item-section>
 
         <q-item-section>
@@ -89,12 +90,13 @@ import { defineComponent, ref } from "vue";
 import TextareaTitle from "../components/TextareaTitle.vue";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
+import AvatarNew from "../components/upload/AvatarNew.vue";
 
 // import InputSystem from "../components/InputSystem.vue";
 
 export default defineComponent({
   name: "PersonalsetupLayout",
-  components: { TextareaTitle, EditbankLayout },
+  components: { TextareaTitle, EditbankLayout, AvatarNew },
   setup() {
     const cardStatus = ref(false);
     const edit = ref();

@@ -169,6 +169,9 @@ export default function useLogin() {
     router.replace({ name: "login" });
     // router.go();
   };
+  const UploadAvatar = async (e) => {
+    useStore.setAvatarUpload(e);
+  };
 
   return {
     setUserLoggedin,
@@ -176,5 +179,6 @@ export default function useLogin() {
     getDataUser,
     setLogout,
     verifyLogged,
+    UploadAvatar,
   };
 }

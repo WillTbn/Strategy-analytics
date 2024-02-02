@@ -15,6 +15,9 @@ const actions = {
   setUserData(payload) {
     this.data = payload;
   },
+  setAvatarUpload(payload){
+    this.data.avatar = payload
+  }
 };
 
 export default { ...actions };
