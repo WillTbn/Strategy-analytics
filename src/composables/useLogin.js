@@ -30,6 +30,18 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "5º dia útil do mês", value: "five", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "430.034,83" },
+          { name: "Valor contratado", value: "395.535,43" },
+          { name: "Parcela", value: "9 de 48" },
+          { name: "Valor da parcela", value: "3.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "12/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "1,98%" },
+        ],
+      },
     },
     {
       cpf: "152.111.222-77",
@@ -51,6 +63,18 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "130.034,83" },
+          { name: "Valor contratado", value: "595.535,43" },
+          { name: "Parcela", value: "47 de 48" },
+          { name: "Valor da parcela", value: "10.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "06/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "0,98%" },
+        ],
+      },
     },
     {
       cpf: "111.111.111-11",
@@ -72,6 +96,18 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "1.034,83" },
+          { name: "Valor contratado", value: "25.535,43" },
+          { name: "Parcela", value: "30 de 48" },
+          { name: "Valor da parcela", value: "1.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "22/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "2,98%" },
+        ],
+      },
     },
     {
       cpf: "222.222.222-22",
@@ -93,6 +129,18 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "34,83" },
+          { name: "Valor contratado", value: "55.555,43" },
+          { name: "Parcela", value: "48 de 48" },
+          { name: "Valor da parcela", value: "1.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "22/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "0,98%" },
+        ],
+      },
     },
     {
       cpf: "0",
@@ -121,6 +169,18 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "430.034,83" },
+          { name: "Valor contratado", value: "395.535,43" },
+          { name: "Parcela", value: "9 de 48" },
+          { name: "Valor da parcela", value: "3.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "12/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "1,98%" },
+        ],
+      },
     },
   ];
 
@@ -166,7 +226,10 @@ export default function useLogin() {
 
   const setLogout = async () => {
     localStorage.removeItem(keyLocal);
-    router.replace({ name: "login" });
+
+    // router.push({ name: "login" });
+
+    window.location.reload();
     // router.go();
   };
   const UploadAvatar = async (e) => {
