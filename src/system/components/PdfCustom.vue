@@ -3,9 +3,9 @@
     <div class="text-center q-my-xl" v-if="loadingSppiner">
       <q-spinner-hourglass color="primary" size="5em" />
     </div>
-    <div class="row justif-center">
+    <!-- <div class="row justif-center">
       <audio-pattern :audio="audio" class="col-12" v-if="audio" />
-    </div>
+    </div> -->
     <div class="pdf-control">
       <div
         style="position: relative; display: block"
@@ -24,16 +24,16 @@
 <script>
 import { defineComponent, onMounted, ref } from "vue";
 import { VuePDF, usePDF } from "@tato30/vue-pdf";
-import AudioPattern from "./AudioPattern.vue";
+// import AudioPattern from "./AudioPattern.vue";
 import { useLayoutStore } from "src/stores/layout";
 import { storeToRefs } from "pinia";
 // import { PageViewport } from "pdfjs-dist/types/src/display/display_utils";
 export default defineComponent({
   name: "PdfCustom",
-  components: { VuePDF, AudioPattern },
+  components: { VuePDF },
   props: {
-    documentPDF: { type: String, required: true },
-    audio: { type: String },
+    documentPDF: { required: true },
+    audio: { required: false },
   },
   setup(props) {
     const loadingSppiner = ref(true);

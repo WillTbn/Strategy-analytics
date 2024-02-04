@@ -1,3 +1,4 @@
+import { Platform } from "quasar";
 export default function useStates() {
   const get = async (country) => {
     const states = {
@@ -137,7 +138,7 @@ export default function useStates() {
     } else if (value >= 1440 && value <= 1919) {
       scaleValue = 1.17;
     } else if (value >= 1920 && 2250) {
-      scaleValue = 2;
+      scaleValue = 1.8;
     } else if (value > 2250) {
       scaleValue = 1.6;
     }
@@ -153,11 +154,20 @@ export default function useStates() {
     const viewWidth = window.innerWidth;
     return { viewWidth, viewHeight };
   };
+  const detectTablet = () => {
+    let isTo = false;
+
+    if (Platform.has.touch) {
+      isTo = viewport().viewWidth >= 1080 ? true : false;
+    }
+    return isTo;
+  };
 
   return {
     get,
     dimension,
     dimensionHeight,
     viewport,
+    detectTablet,
   };
 }

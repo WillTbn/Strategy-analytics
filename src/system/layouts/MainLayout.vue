@@ -35,7 +35,7 @@ export default defineComponent({
     const layout = useLayoutStore();
     const { getLoggedIn } = useLogin();
     const { getValue, getDarkMode } = useCookies();
-    const { dimension, dimensionHeight, viewport } = useStates();
+    const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
     // const statusDark = ref();
     // watch(
     //   () => Dark.isActive,
@@ -49,6 +49,7 @@ export default defineComponent({
       layout.setScreenWidth(dimensionHeight(window.innerHeight));
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
+      layout.setDashboardTable(detectTablet());
       getLoggedIn();
       getDarkMode();
     });

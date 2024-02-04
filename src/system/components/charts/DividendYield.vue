@@ -2,7 +2,7 @@
   <div class="DividendYield">
     <apexchart
       type="area"
-      height="350"
+      :height="height"
       ref="line"
       :options="optionsYield"
       :series="series"
@@ -15,7 +15,7 @@ import useCharts from "src/composables/useCharts";
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "DividendYield",
-
+  props: { height: { type: String, default: "350" } },
   setup() {
     const series = [
       {

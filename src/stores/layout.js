@@ -15,6 +15,7 @@ export const useLayoutStore = defineStore("layout", {
       screenWidth: "",
       screenViewWdth: 0,
       screenViewHeight: 0,
+      tablet: null,
     },
   }),
   getters: {},
@@ -65,6 +66,9 @@ export const useLayoutStore = defineStore("layout", {
     },
     setViewHeight(payload) {
       this.dashboard.screenViewHeight = payload;
+    },
+    setDashboardTable(payload) {
+      this.dashboard.tablet = payload;
     },
   },
 });

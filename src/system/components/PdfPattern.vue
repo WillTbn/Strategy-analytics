@@ -25,13 +25,19 @@
         width="100%"
         height="100%"
         id="object-pdf"
+        v-if="!detectTouch"
       >
         <p>
           Seu navegador não tem um plugin para PDF. Você pode
           <q-btn label="clica aqui para abre pdf" @click="setPdfDialog()" />.
-          <!-- :href="documentPDF" -->
         </p>
       </object>
+      <pdf-custom
+        v-else
+        :documentPDF="pdfCustom.pdfDocument"
+        :audio="pdfCustom.audio"
+        :key="pdfCustom"
+      />
 
       <q-dialog
         v-model="dialog"
@@ -50,9 +56,7 @@
               >
               </q-avatar>
               <q-toolbar-title>
-                <!-- <span class="text-weight-bold"> -->
                 {{ title }}
-                <!-- </span> -->
               </q-toolbar-title>
 
               <q-btn flat round dense icon="close" v-close-popup />
@@ -73,28 +77,44 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import AudioPattern from "./AudioPattern.vue";
 import PdfCustom from "./PdfCustom.vue";
+import { Platform } from "quasar";
 
 export default defineComponent({
   name: "PdfPattern",
+
   components: { AudioPattern, PdfCustom },
   props: {
     documentPDF: { type: String, required: true },
     audio: { type: String },
     title: { type: String },
+    status: { type: Boolean },
   },
   setup(props) {
     const dialog = ref(false);
-    const pdfCustom = ref({ pdfDocument: null, audio: null });
+    // const $q = useQuasar();
+    const detectTouch = computed(() => Platform.has.touch);
+    const pdfCustom = ref({
+      pdfDocument: props.documentPDF,
+      audio: props.audio,
+    });
     const setPdfDialog = () => {
-      dialog.value = true;
+      // dialog.value = true;
       pdfCustom.value.pdfDocument = props.documentPDF;
       pdfCustom.value.audio = props.audio;
       console.log("AQUI -> ", pdfCustom.value);
     };
-    return { dialog, setPdfDialog, pdfCustom };
+    // onMounted(() => {
+    //   if (detectTouch.value) {
+    //     console.log("Tela detectada com touch");
+    //     setPdfDialog();
+    //   } else {
+    //     console.log("AMIGO ESTOU AQUI 2");
+    //   }
+    // });
+    return { dialog, detectTouch, setPdfDialog, pdfCustom };
   },
   // Outras configurações do componente aqui
 });

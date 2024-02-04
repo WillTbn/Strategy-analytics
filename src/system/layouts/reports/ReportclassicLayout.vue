@@ -2,13 +2,14 @@
   <div class="ReportclassicLayout">
     <div class="row justify-center q-gutter-sm">
       <div class="col-12">
-        <!-- <q-scroll-area style="height: 35rem"> -->
         <q-card style="max-height: 35rem" square flat>
           <pdf-pattern
             documentPDF="doc/report/classic/Relatorio_20.01.2024.pdf"
+            title="Premium Classic"
           />
         </q-card>
-        <!-- </q-scroll-area> -->
+        <!-- <q-scroll-area style="height: 35rem">
+        </q-scroll-area> -->
       </div>
     </div>
   </div>

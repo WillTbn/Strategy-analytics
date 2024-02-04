@@ -2,7 +2,7 @@
   <div class="ChartComparative">
     <apexchart
       type="area"
-      height="320"
+      :height="height"
       ref="chart"
       :options="optionsComparative"
       :series="series"
@@ -16,6 +16,7 @@ import useCharts from "src/composables/useCharts";
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "ChartComparative",
+  props: { height: { type: String, default: "350" } },
   setup() {
     const chart = ref(null);
     const { optionsComparative } = useCharts();
