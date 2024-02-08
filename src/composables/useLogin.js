@@ -182,6 +182,39 @@ export default function useLogin() {
         ],
       },
     },
+    {
+      cpf: "26.7406.868-07",
+      password: "102030",
+      name: "Lúcio Flávio de Souza",
+      email: "contatolucio@hotmail.com",
+      state: "São pauulo",
+      country: "Brasil",
+      investor: "investor Obsidian",
+      phone: "(12) 99242-99263",
+      avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+      account: [
+        {
+          id: 1,
+          bank: "Caixa",
+          agency: "0314",
+          number: "153881-0",
+          nickname: "caixa",
+        }
+      ],
+      profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      loan: {
+        datas: [
+          { name: "Saldor devedor", value: "430.034,83" },
+          { name: "Valor contratado", value: "395.535,43" },
+          { name: "Parcela", value: "9 de 48" },
+          { name: "Valor da parcela", value: "3.485,91" },
+        ],
+        info: [
+          { name: "Próximo vencimento:", value: "12/03/2024" },
+          { name: "Taxa de juros ao mês:", value: "1,98%" },
+        ],
+      },
+    }
   ];
 
   const getDataUser = (value) => {
