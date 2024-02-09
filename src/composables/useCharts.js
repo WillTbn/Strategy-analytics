@@ -103,7 +103,7 @@ export default function useCharts() {
       curve: "straight",
     },
     title: {
-      text: "Carteira Strategy Analytics",
+      text: "Carteira",
       align: "center",
       margin: titleStyle.value.margin,
       style: titleStyle.value.style,
@@ -125,14 +125,23 @@ export default function useCharts() {
         },
       },
       categories: [
-        "--- 2022-Q1",
-        "2022-Q2",
-        "2022-Q3",
-        "2022-Q4",
-        "2023-Q1",
+        "--- 2023-Q3",
         "2023-Q2",
-        "2023-Q3",
+        "2023-Q1",
+        "2024-Q0",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
       ],
+      // categories: [
+      //   "--- 2022-Q1",
+      //   "2022-Q2",
+      //   "2022-Q3",
+      //   "2022-Q4",
+      //   "2023-Q1",
+      //   "2023-Q2",
+      //   "2023-Q3",
+      // ],
     },
     yaxis: {
       opposite: true,
@@ -162,7 +171,7 @@ export default function useCharts() {
       toolbar: toolbarOptions,
     },
     stroke: {
-      width: [0, 4],
+      width: [0, 10],
     },
     title: {
       text: "Rendimentos de dividendos da Carteira",
@@ -313,13 +322,13 @@ export default function useCharts() {
         },
       },
       categories: [
-        "-       -2022-Q1",
-        "2022-Q2",
-        "2022-Q3",
-        "2022-Q4",
-        "2023-Q1",
+        "-       -2023-Q3",
         "2023-Q2",
-        "2023-Q3",
+        "2023-Q1",
+        "2023-Q0",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
       ],
     },
     yaxis: {
@@ -329,7 +338,7 @@ export default function useCharts() {
       labels: {
         align: "left",
         formatter: (value) => {
-          return `${value}%`;
+          return value.includes("-") ? `${value}%` : `+ ${value}%`;
         },
         style: {
           colors: colorArray,

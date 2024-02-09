@@ -22,11 +22,11 @@ export default defineComponent({
     const { optionsComparative } = useCharts();
     const series = [
       {
-        name: "Strategy Analytics",
-        data: [10, 20, 30, 40, 40, 45, 50],
+        name: "Carteira",
+        data: [10, 20, 30, 40, 43, 45, 50],
       },
       {
-        name: "ibovespa",
+        name: "Ibovespa",
         data: [10, -20, 15, -5, -10, 10, 0],
       },
       {

@@ -21,7 +21,7 @@ export default defineComponent({
       {
         name: "Rendimentos de dividendos",
         type: "column",
-        data: [4, 5, 4, 3, 3, 3, 3, 3, 7, 3, 1, 3],
+        data: [4, 5, 4, 3, 3, 3, 3, 3, 7, 3, 1, 10.1],
       },
       {
         name: "Media",
