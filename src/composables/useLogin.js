@@ -169,21 +169,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
-      loan: {
-        datas: [
-          { name: "Saldor devedor", value: "430.034,83" },
-          { name: "Valor contratado", value: "395.535,43" },
-          { name: "Parcela", value: "9 de 48" },
-          { name: "Valor da parcela", value: "3.485,91" },
-        ],
-        info: [
-          { name: "Próximo vencimento:", value: "12/03/2024" },
-          { name: "Taxa de juros ao mês:", value: "1,98%" },
-        ],
-      },
+      loan: {},
     },
     {
-      cpf: "26.7406.868-07",
+      cpf: "267.406.868-07",
       password: "102030",
       name: "Lúcio Flávio de Souza",
       email: "contatolucio@hotmail.com",
@@ -199,22 +188,11 @@ export default function useLogin() {
           agency: "0314",
           number: "153881-0",
           nickname: "caixa",
-        }
+        },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
-      loan: {
-        datas: [
-          { name: "Saldor devedor", value: "430.034,83" },
-          { name: "Valor contratado", value: "395.535,43" },
-          { name: "Parcela", value: "9 de 48" },
-          { name: "Valor da parcela", value: "3.485,91" },
-        ],
-        info: [
-          { name: "Próximo vencimento:", value: "12/03/2024" },
-          { name: "Taxa de juros ao mês:", value: "1,98%" },
-        ],
-      },
-    }
+      loan: {},
+    },
   ];
 
   const getDataUser = (value) => {
@@ -240,6 +218,7 @@ export default function useLogin() {
       return;
     }
     useStore.setUserData(getDataUser(userData.cpf));
+    // useStore.setLoan(getDataUser(userData.cpf).loan);
   };
   /**
    *

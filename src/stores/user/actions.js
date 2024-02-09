@@ -14,10 +14,14 @@ const actions = {
 
   setUserData(payload) {
     this.data = payload;
+    this.loan = payload != "" ? payload.loan : "";
   },
-  setAvatarUpload(payload){
-    this.data.avatar = payload
-  }
+  setAvatarUpload(payload) {
+    this.data.avatar = payload;
+  },
+  setLoan(payload) {
+    this.loan = payload;
+  },
 };
 
 export default { ...actions };

@@ -12,10 +12,10 @@
             </q-card-section>
           </q-card>
         </div>
-        <div class="col-md-6 ">
+        <div class="col-md-6">
           <q-card class="card-container q-mt-xs-lg q-mt-md-none">
             <q-card-section>
-              <loan-layout />
+              <loan-layout :key="dark" :mod="dark" />
             </q-card-section>
           </q-card>
         </div>

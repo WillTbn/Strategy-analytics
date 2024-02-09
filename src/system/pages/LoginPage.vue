@@ -23,7 +23,6 @@
               item-aligned
               mask="###.###.###-##"
               label="CPF ou CNPJ"
-              stack-label
               :rules="[(val) => !!val || 'Campo obrigatório']"
               ref="personRef"
             />
@@ -34,7 +33,6 @@
               label-color="white"
               color="white"
               item-aligned
-              stack-label
               :type="isPwd ? 'password' : 'text'"
               :rules="[(val) => !!val || 'Campo obrigatório']"
               ref="passwordRef"
@@ -88,7 +86,7 @@ export default defineComponent({
     const useStore = useUserStore();
     const personRef = ref(null);
     const passwordRef = ref(null);
-    const { setUserLoggedin,verifyLogged } = useLogin();
+    const { setUserLoggedin, verifyLogged } = useLogin();
 
     const { login } = storeToRefs(useStore);
     const onSubmit = () => {
