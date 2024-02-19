@@ -13,7 +13,7 @@
 
 <script>
 import useCharts from "src/composables/useCharts";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 export default defineComponent({
   name: "ChartComparative",
   props: { height: { type: String, default: "350" } },

@@ -284,7 +284,74 @@ export default function useCharts() {
     theme: themeOptions,
     chart: {
       background: "transparent",
-      height: 350,
+      height: 250,
+      type: "line",
+      zoom: {
+        enabled: false,
+      },
+      toolbar: toolbarOptions,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    // title: {
+    //   text: "Product Trends by Month",
+    //   align: "center",
+    // },
+    legend: {
+      labels: {
+        colors: ["#000"],
+        useSeriesColors: false,
+      },
+    },
+    grid: {
+      row: {
+        colors: ["#fff", "transparent"], // takes an array which will be repeated on columns
+        opacity: 1,
+      },
+    },
+    xaxis: {
+      tickPlacement: "center",
+      labels: {
+        style: {
+          colors: colorArray,
+          fontSize: "8px",
+          fontWeight: 600,
+        },
+      },
+      categories: [
+        "-       -2023-Q3",
+        "2023-Q2",
+        "2023-Q1",
+        "2023-Q0",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+      ],
+    },
+    yaxis: {
+      opposite: true,
+      min: -20,
+      max: 50,
+      labels: {
+        align: "left",
+        formatter: (value) => {
+          return `${value}%`;
+        },
+        style: {
+          colors: colorArray,
+        },
+      },
+    },
+  });
+  const walletOptionCurrent = ref({
+    theme: themeOptions,
+    chart: {
+      background: "transparent",
+      height: 250,
       type: "line",
       zoom: {
         enabled: false,
@@ -338,7 +405,7 @@ export default function useCharts() {
       labels: {
         align: "left",
         formatter: (value) => {
-          return value.includes("-") ? `${value}%` : `+ ${value}%`;
+          return `R$ ${value}.000`;
         },
         style: {
           colors: colorArray,
@@ -353,5 +420,6 @@ export default function useCharts() {
     optionsYield,
     optionsAssetsClass,
     optionsAssetRisks,
+    walletOptionCurrent,
   };
 }

@@ -63,6 +63,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      investment: {
+        initial: 50000,
+        current: null,
+      },
       loan: {
         datas: [
           { name: "Saldor devedor", value: "130.034,83" },
@@ -96,6 +100,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      investment: {
+        initial: 50000,
+        current: null,
+      },
       loan: {
         datas: [
           { name: "Saldor devedor", value: "1.034,83" },
@@ -129,6 +137,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      investment: {
+        initial: 50000,
+        current: null,
+      },
       loan: {
         datas: [
           { name: "Saldor devedor", value: "34,83" },
@@ -169,6 +181,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      investment: {
+        initial: 50000,
+        current: null,
+      },
       loan: {},
     },
     {
@@ -191,6 +207,10 @@ export default function useLogin() {
         },
       ],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
+      investment: {
+        initial: 50000,
+        current: null,
+      },
       loan: {},
     },
   ];
