@@ -14,6 +14,7 @@ const getters = {
       valueNew = investmentInitial + addValue;
       arrayReturn.push(valueNew);
     }
+    console.log("array return -> ", arrayReturn);
     return arrayReturn;
   },
 };

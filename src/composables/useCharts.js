@@ -279,6 +279,18 @@ export default function useCharts() {
       },
     ],
   });
+
+  //pontos
+  const addPoints = (valueNumber) => {
+    let numberString = valueNumber.toString();
+
+    let group = [];
+
+    for (var i = numberString.length; i > 0; i -= 3) {
+      group.unshift(numberString.substring(Math.max(0, i - 3), i));
+    }
+    return group.join(".");
+  };
   //no title
   const walletOption = ref({
     theme: themeOptions,
@@ -334,12 +346,13 @@ export default function useCharts() {
     },
     yaxis: {
       opposite: true,
-      min: -20,
-      max: 50,
+      min: -10,
+      // max: 50,
       labels: {
         align: "left",
         formatter: (value) => {
-          return `${value}%`;
+          let numberNew = addPoints(value);
+          return `${numberNew}%`;
         },
         style: {
           colors: colorArray,
@@ -400,12 +413,12 @@ export default function useCharts() {
     },
     yaxis: {
       opposite: true,
-      min: -20,
-      max: 50,
+      min: -10,
+      // max: 50,
       labels: {
         align: "left",
         formatter: (value) => {
-          return `R$ ${value}.000`;
+          return `R$ ${value},00`;
         },
         style: {
           colors: colorArray,

@@ -9,10 +9,10 @@
             ? 'fa-solid fa-percent'
             : 'fa-solid fa-dollar-sign'
         "
-        disabled
         @click.prevent="toggleValue()"
         style="position: absolute; top: 5px; right: 10px"
       >
+        <!-- disabled -->
         <q-tooltip> Em desenvolvimento </q-tooltip>
       </q-btn>
       <apexchart
@@ -39,24 +39,24 @@ export default defineComponent({
     const useStore = useUserStore();
     const currencyOrPercentage = ref(false);
     const toggleValue = () => {
-      console.log(chart.value);
+      // console.log(chart.value);
       currencyOrPercentage.value = !currencyOrPercentage.value;
-      console.log("currencyOrPercentage.value ->", currencyOrPercentage.value);
+      // console.log("currencyOrPercentage.value ->", currencyOrPercentage.value);
       if (currencyOrPercentage.value) {
         // chart.value.toggleSeries("Carteira Strategy Anaytics");
-        chart.value.appendSeries([
+        chart.value.updateSeries([
           {
             name: "Carteira Strategy Anaytics",
             data: dataCarteira.value,
           },
         ]);
-        console.log(walletOptionCurrent.value);
+        // console.log(walletOptionCurrent.value);
         chart.value.updateOptions(walletOptionCurrent.value);
 
         chart.value.resetSeries();
       } else {
         // chart.value.toggleSeries("Carteira Strategy Anaytics");
-        chart.value.appendSeries([
+        chart.value.updateSeries([
           {
             name: "Carteira Strategy Anaytics",
             data: [10, 20, 30, 40, 40, 45, 50],

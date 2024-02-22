@@ -33,11 +33,11 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
   Router.beforeEach((to, from, next) => {
-    console.log(to.name, from.name);
+    let home = to.name == 'home' ? "Gestão de Investimentos e Serviços Financeiros" : to.name
     document.title =
       to.name != undefined
-        ? `Strategy Analiycs -  ${to.name}`
-        : "Strategy Analiycs";
+        ? `Strategy Analytics -  ${home}`
+        : "Strategy Analytics";
     next();
   });
 
