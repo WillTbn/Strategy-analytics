@@ -188,7 +188,7 @@ export default defineComponent({
 }
 .control-svg {
   width: 653px;
-    height: 500px;
+  height: 500px;
 }
 @media (max-width: 768px) {
   .control-svg {

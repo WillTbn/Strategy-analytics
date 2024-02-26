@@ -5,7 +5,7 @@
         <title-secondary text="Rentabilidade" />
       </div>
     </div>
-    <div class="row justify-around q-py-lg contol-ma items-end">
+    <div class="row justify-around q-py-lg contol-ma">
       <div class="col-md-6 col-xs-12">
         <profitabily-chart />
       </div>
