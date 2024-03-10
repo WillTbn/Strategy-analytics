@@ -3,6 +3,7 @@ const state = () => {
     login: {
       person: "",
       password: "",
+      expiration: null,
     },
     accountEdit: {},
     data: {},

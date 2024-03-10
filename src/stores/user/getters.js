@@ -17,6 +17,14 @@ const getters = {
     console.log("array return -> ", arrayReturn);
     return arrayReturn;
   },
+
+  expiration: (state) => {
+    const dataLocal = JSON.parse(localStorage.getItem("SA_user"));
+    console.log("ESTOU NO GETTERS", dataLocal);
+    if (dataLocal) {
+      return dataLocal.expiration_date != null ? true : false;
+    }
+  },
 };
 
 export default { ...getters };

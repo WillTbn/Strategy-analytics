@@ -6,8 +6,10 @@ export default function useLogin() {
   const router = useRouter();
   const useStore = useUserStore();
   const notification = useNotify();
+  //tem que colocar isso no .env
   const keyLocal = "SA_user";
   const json = localStorage.getItem(keyLocal);
+
   const users = [
     {
       cpf: "448.811.378-83",
@@ -215,8 +217,24 @@ export default function useLogin() {
     },
   ];
 
-  const getDataUser = (value) => {
+  const expireLogin = (user) => {
+    return user.expiration_date < Date.now();
+  };
+  const setExpiration = () => {
+    const nowDate = new Date();
+    return nowDate.setHours(nowDate.getHours() + 12);
+  };
+  const logOut = () => {
+    const expiration = JSON.parse(json).expiration_date;
+    !expiration ? setLogout() : "";
+  };
+
+  const getDataUser = (value, expiration_date = null) => {
     let user = users.find((x) => x.cpf == value);
+    if (expiration_date) {
+      user.expiration_date = expiration_date;
+    }
+    // logOut();
     return user ?? "";
     // notification.errorNotify("Usuário o senha inválido!")
   };
@@ -227,7 +245,9 @@ export default function useLogin() {
   const verifyLogged = async () => {
     const userData = JSON.parse(json);
     if (userData) {
-      router.replace({ path: "/system/dashboard" });
+      expireLogin(userData)
+        ? setLogout()
+        : router.replace({ path: "/system/dashboard" });
     }
   };
   const getLoggedIn = async () => {
@@ -249,7 +269,10 @@ export default function useLogin() {
       getDataUser(value.person) &&
       verifyPassword(getDataUser(value.person), value.password)
     ) {
-      localStorage.setItem(keyLocal, JSON.stringify(getDataUser(value.person)));
+      localStorage.setItem(
+        keyLocal,
+        JSON.stringify(getDataUser(value.person, setExpiration()))
+      );
       router.push("/system/dashboard");
     } else {
       notification.errorNotify("Usuário ou senha inválido!");
