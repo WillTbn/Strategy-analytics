@@ -4,7 +4,7 @@
     <variableprimary-layout
       title="Renda variável"
       primaryTitle="Expansão de Patrimônio"
-      sigla="APF30"
+      sigla="EXP30"
       price="300.000"
       current=" +1,41 (+1,78%)"
       distri="7,49%"

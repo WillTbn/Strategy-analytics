@@ -35,7 +35,7 @@ export default defineComponent({
       {
         name: "Éric Vicente",
         office: "Presidente Strategy Analytics ®",
-        avatar: "img/image-4.png",
+        avatar: "system/profiles/1.png",
         history:
           "Fundador, presidente e CEO da Strategy Analytics ®. Estabeleceu a Strategy Analytics em 2018  e, sob sua liderança, a empresa evoluiu para nível global em soluções de investimento e tecnologia, destinadas a auxiliar investidores na construção de um futuro financeiro mais promissor.",
       },
