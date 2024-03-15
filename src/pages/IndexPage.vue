@@ -3,9 +3,9 @@
     <header-layout class="main control-mb bg-header" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
-          textTop="perspectivas para 2° metade do ano de 2023"
+          textTop="perspectivas para 1° semestre de 2024"
           textTitle="Novo regime, novas oportunidades"
-          textDescription="28 de Junho de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
+          textDescription="O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
         Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
         />
         <q-btn

@@ -21,13 +21,13 @@ export default defineComponent({
         calendario: "30/11/2022 Até 30/11/2023",
       },
       {
-        name: "Retorno total (%) a 30 de set 2023",
+        name: "Retorno total (%) a 1º semestre de 2024",
         acumulado: "56,30",
         ano: "34,23",
         calendario: "38,43",
       },
       {
-        name: "Índice de referência (%) a 30 set 2023",
+        name: "Índice de referência (%) a 1º semestre de 2024",
         acumulado: "57,29",
         ano: "35,43",
         calendario: "39,29",
