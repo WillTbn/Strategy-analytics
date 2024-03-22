@@ -198,7 +198,7 @@ export default function useLogin() {
       country: "Brasil",
       investor: "investor Obsidian",
       phone: "(12) 99242-99263",
-      avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
+      avatar: "https://strategyanalytics.com.br/system/profiles/Lucio.jpg",
       account: [
         {
           id: 1,

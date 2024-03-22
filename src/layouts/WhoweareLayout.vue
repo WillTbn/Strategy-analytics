@@ -56,7 +56,7 @@ export default defineComponent({
         js: "js-left",
       },
       {
-        title: "Produtos",
+        title: "Serviços",
         image: "img/produtos.png",
         description:
           "Entregando o serviço que mais se adapta ao interesse de todos perfil de investimento.",
