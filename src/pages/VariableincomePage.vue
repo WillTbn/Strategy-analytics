@@ -6,9 +6,9 @@
       primaryTitle="Expansão de Patrimônio"
       sigla="EXP30"
       price="300.000"
-      current=" +1,41 (+1,78%)"
-      distri="7,49%"
-      taxa="0,45%"
+      current=" 9,48%"
+      distri="152,91%"
+      taxa="0,25%"
     />
     <whyincome-layout title="Por que EXP30?">
       <ol class="q-mt-xl">

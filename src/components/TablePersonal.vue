@@ -15,7 +15,7 @@
           {{ row.name }}
         </span>
       </div>
-      <q-separator inset color="orange" />
+
       <div
         class="text-control col-md-2 col-xs-2 self-center"
         :class="{ 'text-header': i == 0 }"
@@ -24,7 +24,6 @@
           {{ row.acumulado }}
         </span>
       </div>
-      <q-separator inset />
       <div
         class="text-control col-md-2 col-xs-2 self-center"
         :class="{ 'text-header': i == 0 }"
@@ -33,7 +32,6 @@
           {{ row.ano }}
         </span>
       </div>
-      <q-separator inset />
       <div
         class="text-control col-md-2 col-xs-2 self-center"
         :class="{ 'text-header': i == 0 }"
@@ -42,7 +40,6 @@
           {{ row.calendario }}
         </span>
       </div>
-      <q-separator inset />
       <div
         class="text-control col-md-2 col-xs-2 self-center"
         :class="{ 'text-header': i == 0 }"
@@ -51,25 +48,21 @@
           {{ row.five }}
         </span>
       </div>
-      <q-separator inset />
       <div class="text-control col-md-2 col-xs-2 self-center">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.six }}
         </span>
       </div>
-      <q-separator inset />
       <div class="text-control col-md-2 col-xs-2 self-center">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.seven }}
         </span>
       </div>
-      <q-separator inset />
       <div class="text-control col-md-2 col-xs-2 self-center">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.eight }}
         </span>
       </div>
-      <q-separator inset />
       <div class="text-control col-md-2 col-xs-2 self-center">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.nine }}
@@ -89,7 +82,7 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "TablePersonal",
-  props: { rows: { type: Array, required: true } },
+  props: { rows: { type: Array } },
   setup() {
     return {};
   },

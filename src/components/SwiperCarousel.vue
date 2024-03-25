@@ -1,20 +1,4 @@
 <template>
-  <!-- <div class="radial-shadow-prev"></div> -->
-  <!-- ref="{snSlide}"
-  :effect="'coverflow'"
-  :grabCursor="true"
-  :centeredSlides="true"
-  :slidesPerView="3"
-  :spaceBetween="30"
-  :coverflowEffect="{
-    rotate: 50,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: false,
-  }"
-  :navigation="true"
-  :modules="modules" -->
   <swiper
     ref="{swiperRef}"
     :slidesPerView="perView"
@@ -75,22 +59,22 @@ export default {
     const authors = [
       {
         id: 1,
-        author: "Lewis Hamilton",
-        image: "img/image-3.png",
-        office: "vice-analista Strategy",
+        author: "Matheus A C Gonzaga",
+        image: "img/authors/MatheusACGonzaga.jpg",
+        office: "Pesquisador Macro",
       },
       {
         id: 2,
-        author: "Max Verstappen",
-        image: "img/image-4.png",
-        office: "Diretor Strategy",
+        author: "Marcelo Cabral",
+        image: "img/authors/MarceloCabral.jpg",
+        office: "Head de Criptos",
       },
-      {
-        id: 3,
-        author: "Charles Leclerc",
-        image: "img/image-5.png",
-        office: "Vice-diretor Strategy",
-      },
+      // {
+      //   id: 3,
+      //   author: "Charles Leclerc",
+      //   image: "img/image-5.png",
+      //   office: "Vice-diretor Strategy",
+      // },
     ];
     return {
       perView,

@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center">
+  <div class="row justify-center" style="align-items: center">
     <detail-user
       v-for="item in primaryUsers"
       :key="item"
@@ -39,14 +39,13 @@ export default defineComponent({
         history:
           "Fundador, presidente e CEO da Strategy Analytics ®. Estabeleceu a Strategy Analytics em 2018  e, sob sua liderança, a empresa evoluiu para nível global em soluções de investimento e tecnologia, destinadas a auxiliar investidores na construção de um futuro financeiro mais promissor.",
       },
-      //https://strategyconect.com/wp-content/uploads/2023/12/circular_image_3_minimal_zoom.png
-      // {
-      //   name: "Joãozinho",
-      //   office: "Presidente Strategy Analytics",
-      //   avatar: "img/image-4.png",
-      //   history:
-      //     "Fundador, presidente e CEO da Strategy Analytics, Inc. Juntamente com sete sócios, ele estabeleceu a Strategy Analytics em 1988 e, sob sua liderança, a empresa evoluiu para uma líder global em soluções de investimento e tecnologia, destinadas a auxiliar investidores na construção de um futuro financeiro mais promissor.",
-      // },
+      {
+        name: "Marco Aurélio",
+        office: "Country Manager",
+        avatar: "img/localTeam/MarcoAurelio.jpg",
+        history:
+          "Marco é Country Manager da Strategy Analytics, responsável pela liderança e direcionamento estratégico dos negócios da Strategy Analytics",
+      },
     ];
     const secondaryUsers = [
       {

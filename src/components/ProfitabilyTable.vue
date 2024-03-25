@@ -27,18 +27,18 @@
     >
       <!-- keep-alive -->
       <q-tab-panel name="annual">
-        <tableannual-layout></tableannual-layout>
+        <tableannual-layout :tableRow="table.yearly" />
       </q-tab-panel>
 
       <q-tab-panel name="media">
-        <tablemedia-layout />
+        <tablemedia-layout :tableRow="table.annualAverage" />
       </q-tab-panel>
 
       <q-tab-panel name="accrued">
-        <tableaccrued-layout />
+        <tableaccrued-layout :tableRow="table.accumulated" />
       </q-tab-panel>
       <q-tab-panel name="calendar">
-        <tablecalendar-layout />
+        <tablecalendar-layout :tableRow="table.calendar" />
       </q-tab-panel>
     </q-tab-panels>
   </div>
@@ -50,7 +50,8 @@ import { defineComponent, ref } from "vue";
 import TableannualLayout from "../layouts/TableannualLayout.vue";
 import TablemediaLayout from "../layouts/TablemediaLayout.vue";
 import TablecalendarLayout from "../layouts/TablecalendarLayout.vue";
-TablecalendarLayout;
+import { useStoreLayout } from "../stores/layoutStore";
+import { storeToRefs } from "pinia";
 
 // import TitleSecondary from "./TitleSecondary.vue";
 
@@ -63,9 +64,11 @@ export default defineComponent({
     TablecalendarLayout,
   },
   setup() {
+    const layoutStore = useStoreLayout();
+    const { table } = storeToRefs(layoutStore);
     const tab = ref("annual");
 
-    return { tab };
+    return { tab, table };
   },
   // Outras configurações do componente aqui
 });

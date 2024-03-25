@@ -25,15 +25,19 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import TitleSecondary from "../components/TitleSecondary.vue";
 import ProfitabilyChart from "../components/ProfitabilyChart.vue";
 import ProfitabilyTable from "../components/ProfitabilyTable.vue";
-
+import useTable from "../composables/useTable";
 export default defineComponent({
   name: "ProfitabilityLayout",
   components: { TitleSecondary, ProfitabilyChart, ProfitabilyTable },
   setup() {
+    const { getTable } = useTable();
+    onMounted(() => {
+      getTable();
+    });
     return {};
   },
   // Outras configurações do componente aqui
