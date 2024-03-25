@@ -8,7 +8,7 @@
       :class="{ 'border-table': i != 0 }"
     >
       <div
-        class="text-control col-md-4 col-xs-2 q-pr-md-xl self-center"
+        class="text-control col-md-4 col-xs-2 q-pr-md-xl self-end"
         :class="{ 'text-header': i == 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
@@ -17,7 +17,7 @@
       </div>
 
       <div
-        class="text-control col-md-2 col-xs-2 self-center"
+        class="text-control col-md-2 col-xs-2 self-end"
         :class="{ 'text-header': i == 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
@@ -25,7 +25,7 @@
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-center"
+        class="text-control col-md-2 col-xs-2 self-end"
         :class="{ 'text-header': i == 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
@@ -33,7 +33,7 @@
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-center"
+        class="text-control col-md-2 col-xs-2 self-end"
         :class="{ 'text-header': i == 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
@@ -41,34 +41,34 @@
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-center"
+        class="text-control col-md-2 col-xs-2 self-end"
         :class="{ 'text-header': i == 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.five }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-center">
+      <div class="text-control col-md-2 col-xs-2 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.six }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-center">
+      <div class="text-control col-md-2 col-xs-2 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.seven }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-center">
+      <div class="text-control col-md-2 col-xs-2 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.eight }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-center">
+      <div class="text-control col-md-2 col-xs-2 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.nine }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-center">
+      <div class="text-control col-md-2 col-xs-2 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.ten }}
         </span>
@@ -122,9 +122,9 @@ export default defineComponent({
   border-bottom: solid 3px #ddd;
 }
 @media (max-width: 768px) {
-  .text-header {
+  /* .text-header {
     font-size: 10px !important;
-  }
+  } */
   /* .text-control {
     font-size: 5px;
   } */

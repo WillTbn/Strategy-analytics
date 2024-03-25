@@ -5,13 +5,18 @@ export default function useTable() {
   const storeLayout = useStoreLayout();
   const route = useRoute();
   const variableIncome = {
+    growth: {
+      primary: "24,6K",
+      secondary: "+480,14%",
+      image: "img/charts/Expansao_de_Patrimonio.svg",
+    },
     yearly: [
       {
         name: "",
-        acumulado: "30/11/2019 Até 30/11/2020",
-        ano: "30/11/2020 Até 30/11/2021",
-        calendario: "30/11/2021 Até 30/11/2022",
-        five: "30/11/2022 Até 30/11/2023",
+        acumulado: "30/11/2019 30/11/2020",
+        ano: "30/11/2020 30/11/2021",
+        calendario: "30/11/2021 30/11/2022",
+        five: "30/11/2022 30/11/2023",
       },
       {
         name: "Retorno total (%)",
@@ -97,13 +102,18 @@ export default function useTable() {
   };
 
   const fixedIncome = {
+    growth: {
+      primary: "15,3K",
+      secondary: "+53,11%",
+      image: "img/charts/Previdencia_Futura.svg",
+    },
     yearly: [
       {
         name: "",
-        acumulado: "30/11/2019 Até 30/11/2020",
-        ano: "30/11/2020 Até 30/11/2021",
-        calendario: "30/11/2021 Até 30/11/2022",
-        five: "30/11/2022 Até 30/11/2023",
+        acumulado: "30/11/2019 30/11/2020",
+        ano: "30/11/2020 30/11/2021",
+        calendario: "30/11/2021 30/11/2022",
+        five: "30/11/2022 30/11/2023",
       },
       {
         name: "Retorno total (%) a 1º semestre de 2024",
@@ -190,13 +200,18 @@ export default function useTable() {
   };
 
   const flexibleIncome = {
+    growth: {
+      primary: "13,2K",
+      secondary: "+32,23%",
+      image: "img/charts/Liquidez_Elevada.svg",
+    },
     yearly: [
       {
         name: "",
-        acumulado: "30/11/2019 Até 30/11/2020",
-        ano: "30/11/2020 Até 30/11/2021",
-        calendario: "30/11/2021 Até 30/11/2022",
-        five: "30/11/2022 Até 30/11/2023",
+        acumulado: "30/11/2019 30/11/2020",
+        ano: "30/11/2020 30/11/2021",
+        calendario: "30/11/2021 30/11/2022",
+        five: "30/11/2022 30/11/2023",
       },
       {
         name: "Retorno total (%)",
@@ -281,7 +296,7 @@ export default function useTable() {
     ],
   };
 
-  const getTable = async () => {
+  const getTable = () => {
     if (route.name === "rendaflexivel") storeLayout.setTable(flexibleIncome);
     if (route.name === "rendavariavel") storeLayout.setTable(variableIncome);
     if (route.name === "rendafixa") storeLayout.setTable(fixedIncome);

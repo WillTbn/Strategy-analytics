@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="row justify-around q-py-lg contol-ma">
-      <div class="col-md-6 col-xs-12">
-        <profitabily-chart />
+      <div class="col-md-6 col-xs-12 self-start">
+        <profitabily-chart v-if="table.growth" :growthData="table.growth" />
       </div>
-      <div class="col-md-6 col-xs-12">
+      <div class="col-md-6 col-xs-12 self-end">
         <profitabily-table />
       </div>
     </div>
@@ -30,15 +30,19 @@ import TitleSecondary from "../components/TitleSecondary.vue";
 import ProfitabilyChart from "../components/ProfitabilyChart.vue";
 import ProfitabilyTable from "../components/ProfitabilyTable.vue";
 import useTable from "../composables/useTable";
+import { useStoreLayout } from "../stores/layoutStore";
+import { storeToRefs } from "pinia";
 export default defineComponent({
   name: "ProfitabilityLayout",
   components: { TitleSecondary, ProfitabilyChart, ProfitabilyTable },
   setup() {
     const { getTable } = useTable();
+    const layoutStore = useStoreLayout();
+    const { table } = storeToRefs(layoutStore);
     onMounted(() => {
       getTable();
     });
-    return {};
+    return { table };
   },
   // Outras configurações do componente aqui
 });
