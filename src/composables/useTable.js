@@ -7,7 +7,7 @@ export default function useTable() {
   const variableIncome = {
     growth: {
       primary: "24,6K",
-      secondary: "+480,14%",
+      secondary: "+146,14%",
       image: "img/charts/Expansao_de_Patrimonio.svg",
     },
     yearly: [

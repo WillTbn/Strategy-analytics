@@ -5,11 +5,11 @@
       class="row q-py-lg q-my-lg no-wrap before-class"
       v-for="(row, i) in rows"
       :key="row[i]"
-      :class="{ 'border-table': i != 0 }"
     >
+      <!-- :class="{ 'border-table': i != 0 }" -->
       <div
-        class="text-control col-md-4 col-xs-2 q-pr-md-xl self-end"
-        :class="{ 'text-header': i == 0 }"
+        class="text-control col-md-4 col-xs-4 q-pr-md-xl self-end"
+        :class="{ 'border-table': i != 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.name }}
@@ -17,58 +17,58 @@
       </div>
 
       <div
-        class="text-control col-md-2 col-xs-2 self-end"
-        :class="{ 'text-header': i == 0 }"
+        class="text-control col-md-2 col-xs-4 self-end"
+        :class="{ 'border-table': i != 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.acumulado }}
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-end"
-        :class="{ 'text-header': i == 0 }"
+        class="text-control col-md-2 col-xs-4 self-end"
+        :class="{ 'border-table': i != 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.ano }}
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-end"
-        :class="{ 'text-header': i == 0 }"
+        class="text-control col-md-2 col-xs-4 self-end"
+        :class="{ 'border-table': i != 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.calendario }}
         </span>
       </div>
       <div
-        class="text-control col-md-2 col-xs-2 self-end"
-        :class="{ 'text-header': i == 0 }"
+        class="text-control col-md-2 col-xs-4 self-end"
+        :class="{ 'border-table': i != 0 }"
       >
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.five }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-end">
+      <div class="text-control col-md-2 col-xs-4 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.six }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-end">
+      <div class="text-control col-md-2 col-xs-4 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.seven }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-end">
+      <div class="text-control col-md-2 col-xs-4 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.eight }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-end">
+      <div class="text-control col-md-2 col-xs-4 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.nine }}
         </span>
       </div>
-      <div class="text-control col-md-2 col-xs-2 self-end">
+      <div class="text-control col-md-2 col-xs-4 self-end">
         <span :class="{ 'control-span': i !== 0 }">
           {{ row.ten }}
         </span>
