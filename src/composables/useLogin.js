@@ -189,32 +189,6 @@ export default function useLogin() {
       },
       loan: {},
     },
-    {
-      cpf: "267.406.868-07",
-      password: "102030",
-      name: "Lúcio Flávio de Souza",
-      email: "contatolucio@hotmail.com",
-      state: "São pauulo",
-      country: "Brasil",
-      investor: "investor Obsidian",
-      phone: "(12) 99242-99263",
-      avatar: "https://strategyanalytics.com.br/system/profiles/Lucio.jpg",
-      account: [
-        {
-          id: 1,
-          bank: "Caixa",
-          agency: "0314",
-          number: "153881-0",
-          nickname: "caixa",
-        },
-      ],
-      profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
-      investment: {
-        initial: 50000,
-        current: null,
-      },
-      loan: {},
-    },
   ];
 
   const expireLogin = (user) => {
