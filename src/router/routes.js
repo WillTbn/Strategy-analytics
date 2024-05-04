@@ -69,10 +69,14 @@ const routes = [
     path: "/system/",
     component: () => import("../system/layouts/MainLayout.vue"),
     props: true,
+    meta: {
+      auth: true,
+    },
     children: [
       {
         path: "dashboard",
         name: "dashboard",
+        number: 20,
         component: () => import("../system/pages/DashboardPage.vue"),
       },
       {
@@ -98,7 +102,19 @@ const routes = [
       {
         path: "perfomance",
         name: "perfomance",
+
         component: () => import("../system/pages/PerfomancePage.vue"),
+      },
+      {
+        path: "users",
+        name: "users",
+        component: () => import("../system/pages/UsersPage.vue"),
+      },
+      {
+        path: "clients",
+        name: "clients",
+        number: 30,
+        component: () => import("../system/pages/ClientsPage.vue"),
       },
     ],
   },

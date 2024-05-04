@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <q-list class="q-mt-sm-xl q-pt-lg q-mx-sm q-px-sm">
+      <q-list class="q-mt-sm-xl q-pt-lg q-mx-sm q-px-sm" v-if="isClient">
         <q-item
           v-for="list in listMenu"
           :key="list"
@@ -194,9 +194,11 @@ export default defineComponent({
     const drawer = ref(true);
     const miniState = ref(true);
     const userStore = useUserStore();
-    const { data } = storeToRefs(userStore);
+    const { data, isClient } = storeToRefs(userStore);
+    // const canUser = userStore.isClient;
     const listMenu = [
       {
+        can: "client",
         toName: { name: "dashboard" },
         name: "Inicio",
         svgIcon: "img:icons/icon-home-icon.svg",
@@ -216,6 +218,7 @@ export default defineComponent({
         // </span>
       },
       {
+        can: "client",
         toName: { name: "perfomance" },
         name: "Perfomance",
         svgIcon: "img:icons/icon-performance.svg",
@@ -233,6 +236,7 @@ export default defineComponent({
         // svgIcon: "fa-solid fa-gauge",
       },
       {
+        can: "client",
         toName: { name: "calendar" },
         name: "Calendário",
         svgIcon: "img:icons/icon-calendar.svg",
@@ -247,6 +251,7 @@ export default defineComponent({
         pathClipRule: "",
       },
       {
+        can: "client",
         toName: { name: "report" },
         name: "Relatório",
         svgIcon: "img:icons/icon-alternate-file.svg",
@@ -261,6 +266,7 @@ export default defineComponent({
         pathClipRule: "",
       },
       {
+        can: "client",
         toName: { name: "loan" },
         name: "Emprestimo",
         svgIcon: "img:icons/icon-money-withdrawal.svg",
@@ -278,6 +284,7 @@ export default defineComponent({
     ];
     // setLogout
     return {
+      isClient,
       jsonState,
       barState,
       setLogout,

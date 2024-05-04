@@ -25,6 +25,9 @@ const getters = {
       return dataLocal.expiration_date != null ? true : false;
     }
   },
+  isClient: (state) => {
+    return state.data.role_id == 3;
+  },
 };
 
 export default { ...getters };

@@ -1,21 +1,18 @@
 <template>
   <q-page class="DashboardPage">
-    <dashboard-layout />
+    <dashboard-layout v-if="isClient" />
+    <div class="" v-else>Usuário administrado logado</div>
   </q-page>
 </template>
 
-<script>
+<script setup>
 import { defineComponent } from "vue";
+import { storeToRefs } from "pinia";
 import DashboardLayout from "../layouts/DashboardLayout.vue";
+import { useUserStore } from "../../stores/user";
 
-export default defineComponent({
-  name: "DashboardPage",
-  components: { DashboardLayout },
-  setup() {
-    return {};
-  },
-  // Outras configurações do componente aqui
-});
+const userStore = useUserStore();
+const { data, isClient } = storeToRefs(userStore);
 </script>
 
 <style scoped>

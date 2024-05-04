@@ -1,10 +1,12 @@
 import { useUserStore } from "src/stores/user";
 import { useRouter } from "vue-router";
 import useNotify from "./useNotify";
+import { storeToRefs } from "pinia";
 
 export default function useLogin() {
   const router = useRouter();
   const useStore = useUserStore();
+  const { isClient } = storeToRefs(useStore);
   const notification = useNotify();
   //tem que colocar isso no .env
   const keyLocal = "SA_user";
@@ -20,6 +22,8 @@ export default function useLogin() {
       country: "Brasil",
       investor: "Investor Strategy",
       phone: "(12) 981578736",
+      role_id: 1,
+      abilities: ["all-access", "view-users", "view-clients"],
       avatar:
         "https://strategyconect.com/wp-content/uploads/2023/12/circular_image_3_minimal_zoom.png",
       account: [
@@ -54,6 +58,8 @@ export default function useLogin() {
       country: "Brasil",
       investor: "investor Obsidian",
       phone: "(12) 98342-5387",
+      role_id: 1,
+      abilities: ["all-access", "view-users", "view-clients"],
       avatar: "https://jorgenunes.vercel.app/assets/img/Jorge_Nunes-dev.jpeg",
       account: [
         {
@@ -92,6 +98,8 @@ export default function useLogin() {
       investor: "investor Obsidian",
       phone: "(51) 322-5387",
       avatar: "https://reqres.in/img/faces/3-image.jpg",
+      role_id: 2,
+      abilities: ["view-clients"],
       account: [
         {
           id: 2,
@@ -129,6 +137,8 @@ export default function useLogin() {
       investor: "investor Obsidian",
       phone: "(48) 32321-5387",
       avatar: "https://reqres.in/img/faces/9-image.jpg",
+      role_id: 3,
+      abilities: [],
       account: [
         {
           id: 2,
@@ -157,34 +167,21 @@ export default function useLogin() {
       },
     },
     {
-      cpf: "0",
-      password: "Strategy",
-      name: "Charles Leclerc",
-      email: "leclercchales@gmail.com",
-      state: "São pauulo",
+      cpf: "037.855.176-02",
+      password: "Simone1%",
+      name: "Simone Dos Santos Cateringer",
+      email: "Simalhas5@gmail.com",
+      state: "Minas Gerais",
       country: "Brasil",
       investor: "investor Obsidian",
-      phone: "(12) 98897-6543",
-      avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
-      account: [
-        {
-          id: 1,
-          bank: "C6 BANK",
-          agency: "0507",
-          number: "142085-2",
-          nickname: "bb",
-        },
-        {
-          id: 2,
-          bank: "Bradesco",
-          agency: "0507",
-          number: "1138605-3",
-          nickname: "bra",
-        },
-      ],
+      phone: "(35) 9725-1727",
+      avatar: "https://strategyanalytics.com.br/system/profiles/simone.jpg",
+      abilities: ["client"],
+      role_id: 3,
+      account: [],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
       investment: {
-        initial: 50000,
+        initial: 0,
         current: null,
       },
       loan: {},
@@ -215,6 +212,11 @@ export default function useLogin() {
 
   const verifyPassword = (data, password) => {
     return data.password === password ?? false;
+  };
+  const routeRetorn = () => {
+    return isClient
+      ? router.push({ path: "/system/dashboard" })
+      : router.push({ path: "/system/clients" });
   };
   const verifyLogged = async () => {
     const userData = JSON.parse(json);
@@ -264,7 +266,9 @@ export default function useLogin() {
   const UploadAvatar = async (e) => {
     useStore.setAvatarUpload(e);
   };
-
+  const getAll = async () => {
+    return users;
+  };
   return {
     setUserLoggedin,
     getLoggedIn,
@@ -272,5 +276,6 @@ export default function useLogin() {
     setLogout,
     verifyLogged,
     UploadAvatar,
+    getAll,
   };
 }

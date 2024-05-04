@@ -46,7 +46,7 @@ export default defineComponent({
         // chart.value.toggleSeries("Carteira Strategy Anaytics");
         chart.value.updateSeries([
           {
-            name: "Carteira Strategy Anaytics",
+            name: "Carteira",
             data: dataCarteira.value,
           },
         ]);
@@ -58,8 +58,8 @@ export default defineComponent({
         // chart.value.toggleSeries("Carteira Strategy Anaytics");
         chart.value.updateSeries([
           {
-            name: "Carteira Strategy Anaytics",
-            data: [10, 20, 30, 40, 40, 45, 50],
+            name: "Carteira",
+            data: dataCarteira.value,
           },
         ]);
         chart.value.updateOptions(walletOption.value);
@@ -68,16 +68,19 @@ export default defineComponent({
     };
     const series = [
       {
-        name: "Carteira Strategy Anaytics",
+        name: "Carteira",
         data: [10, 20, 30, 40, 40, 45, 50],
       },
     ];
     const dataCarteira = computed(() =>
       useStore.currentInvestimentSeries(series[0].data)
     );
-    // const options = {
-
-    // };
+    const showTime = () => {
+      setTimeout((series[0].data = dataCarteira.value), 2000);
+    };
+    onMounted(() => {
+      showTime();
+    });
 
     return {
       options,
