@@ -74,10 +74,14 @@ const routes = [
     },
     children: [
       {
-        path: "dashboard",
-        name: "dashboard",
-        number: 20,
-        component: () => import("../system/pages/DashboardPage.vue"),
+        path: "perfomance",
+        name: "perfomance",
+        component: () => import("../system/pages/PerfomancePage.vue"),
+      },
+      {
+        path: "wallet",
+        name: "wallet",
+        component: () => import("../system/pages/WalletPage.vue"),
       },
       {
         path: "config",
@@ -100,10 +104,10 @@ const routes = [
         component: () => import("../system/pages/ReportPage.vue"),
       },
       {
-        path: "perfomance",
-        name: "perfomance",
+        path: "graphic",
+        name: "graphic",
 
-        component: () => import("../system/pages/PerfomancePage.vue"),
+        component: () => import("../system/pages/GraphicPage.vue"),
       },
       {
         path: "users",

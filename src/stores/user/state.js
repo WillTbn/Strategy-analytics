@@ -8,6 +8,7 @@ const state = () => {
     accountEdit: {},
     data: {},
     loan: {},
+    wallet: {},
   };
 };
 

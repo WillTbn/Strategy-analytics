@@ -181,10 +181,15 @@ export default function useLogin() {
       account: [],
       profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
       investment: {
-        initial: 0,
+        initial: "0",
         current: null,
       },
-      loan: {},
+      wallet: {
+        current: 0.0,
+      },
+      loan: {
+        current: 0.0,
+      },
     },
   ];
 
@@ -215,7 +220,7 @@ export default function useLogin() {
   };
   const routeRetorn = () => {
     return isClient
-      ? router.push({ path: "/system/dashboard" })
+      ? router.push({ path: "/system/wallet" })
       : router.push({ path: "/system/clients" });
   };
   const verifyLogged = async () => {
@@ -223,7 +228,7 @@ export default function useLogin() {
     if (userData) {
       expireLogin(userData)
         ? setLogout()
-        : router.replace({ path: "/system/dashboard" });
+        : router.replace({ path: "/system/wallet" });
     }
   };
   const getLoggedIn = async () => {
@@ -249,7 +254,7 @@ export default function useLogin() {
         keyLocal,
         JSON.stringify(getDataUser(value.person, setExpiration()))
       );
-      router.push("/system/dashboard");
+      router.push("/system/wallet");
     } else {
       notification.errorNotify("Usuário ou senha inválido!");
     }

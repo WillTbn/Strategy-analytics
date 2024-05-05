@@ -197,9 +197,10 @@ export default defineComponent({
     const { data, isClient } = storeToRefs(userStore);
     // const canUser = userStore.isClient;
     const listMenu = [
+      // Perfomance old
       {
         can: "client",
-        toName: { name: "dashboard" },
+        toName: { name: "wallet" },
         name: "Inicio",
         svgIcon: "img:icons/icon-home-icon.svg",
         svgWidth: "51",
@@ -216,6 +217,7 @@ export default defineComponent({
         //     Vector    <span class="material-symbols-outlined">
         // cottage
         // </span>
+        // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z"/></svg>
       },
       {
         can: "client",
@@ -234,6 +236,27 @@ export default defineComponent({
 
         //id="Vector" fill-rule="evenodd" clip-rule="evenodd"
         // svgIcon: "fa-solid fa-gauge",
+      },
+      {
+        can: "client",
+        toName: { name: "graphic" },
+        name: "Graficos",
+        svgIcon: "img:icons/icon-home-icon.svg",
+        svgWidth: "51",
+        svgHeight: "49",
+        svgViewBox: "0 0 576 512",
+        svgId: "&#240;&#159;&#166;&#134; icon &#34;home icon&#34;",
+        pathId: "Vector",
+        pathData:
+          "M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z",
+        pathFileRule: "",
+        pathClipRule: "",
+        // svgIcon: "cottage",
+
+        //     Vector    <span class="material-symbols-outlined">
+        // cottage
+        // </span>
+        // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z"/></svg>
       },
       {
         can: "client",

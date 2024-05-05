@@ -15,6 +15,7 @@ const actions = {
   setUserData(payload) {
     this.data = payload;
     this.loan = payload != "" ? payload.loan : "";
+    this.wallet = payload.wallet != "" ? payload.wallet : "";
   },
   setAvatarUpload(payload) {
     this.data.avatar = payload;
