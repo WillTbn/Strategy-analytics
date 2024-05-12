@@ -5,8 +5,12 @@
       @mouseover="setUpload()"
       @mouseleave="hoverImage = false"
       class="avatar-control"
+      v-if="data.account"
     >
-      <img :src="data.avatar" :class="{ 'avatar-control-h': hoverImage }" />
+      <img
+        :src="data.account.avatar"
+        :class="{ 'avatar-control-h': hoverImage }"
+      />
       <q-icon
         name="fa-solid fa-pen absolute"
         v-if="hoverImage"

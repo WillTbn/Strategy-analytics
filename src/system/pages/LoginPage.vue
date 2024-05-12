@@ -60,7 +60,13 @@
               text-color="white"
               label="continuar"
               type="submit"
-            />
+              :disabled="loading"
+              :loading="loading"
+            >
+              <template v-slot:loading>
+                <q-spinner-pie size="3em" />
+              </template>
+            </q-btn>
           </div>
           <div class="col-12 copy">
             <p>© {{ registerData }} Strategy Analytics</p>
@@ -70,45 +76,32 @@
     </q-page-container>
   </q-layout>
 </template>
-<script>
-import { defineComponent, ref, onMounted } from "vue";
+<script setup>
+import { defineComponent, ref, onMounted, computed } from "vue";
 import LogoSmall from "../components/LogoSmall.vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
-import useLogin from "../../composables/useLogin";
+// import useLogin from "../../composables/useLogin";
+import useAuth from "../../composables/system/useAuth";
 
-export default defineComponent({
-  name: "LoginPage",
-  components: { LogoSmall },
-  setup() {
-    const registerData = new Date().getFullYear();
-    const useStore = useUserStore();
-    const personRef = ref(null);
-    const passwordRef = ref(null);
-    const { setUserLoggedin, verifyLogged } = useLogin();
-
-    const { login } = storeToRefs(useStore);
-    const onSubmit = () => {
-      personRef.value.validate();
-      passwordRef.value.validate();
-      if (!personRef.value.hasError || !passwordRef.value.hasError) {
-        setUserLoggedin(login.value);
-      }
-    };
-    onMounted(() => {
-      verifyLogged();
-    });
-
-    return {
-      login,
-      onSubmit,
-      isPwd: ref(true),
-      registerData,
-      personRef,
-      passwordRef,
-    };
-  },
+const registerData = new Date().getFullYear();
+const useStore = useUserStore();
+const personRef = ref(null);
+const passwordRef = ref(null);
+const { auth, errors, loading, verifyLogged } = useAuth();
+// const isValidperson = computed(() => errors.person.length > 0);
+const { login } = storeToRefs(useStore);
+const onSubmit = () => {
+  personRef.value.validate();
+  passwordRef.value.validate();
+  if (!personRef.value.hasError || !passwordRef.value.hasError) {
+    auth(login.value);
+  }
+};
+const isPwd = ref(true);
+onMounted(() => {
+  verifyLogged();
 });
 </script>
 <style scoped>

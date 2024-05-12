@@ -13,15 +13,19 @@ const actions = {
   },
 
   setUserData(payload) {
-    this.data = payload;
-    this.loan = payload != "" ? payload.loan : "";
-    this.wallet = payload.wallet != "" ? payload.wallet : "";
+    this.data = { ...payload };
+    this.wallet = payload.role_id === 3 ? { ...payload.user_wallet } : "";
+    this.loan = payload.investment ? payload.loan : "";
+    this.investment = payload.investment ? payload.investment : "";
   },
   setAvatarUpload(payload) {
     this.data.avatar = payload;
   },
   setLoan(payload) {
     this.loan = payload;
+  },
+  setAbilities(payload) {
+    this.abilities = payload;
   },
 };
 

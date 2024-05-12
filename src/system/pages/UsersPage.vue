@@ -4,15 +4,11 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-export default defineComponent({
-  name: "UsersPage",
-  setup() {
-    return {};
-  },
-  // Outras configurações do componente aqui
-});
+<script setup>
+import { storeToRefs } from "pinia";
+import { useUserStore } from "src/stores/user";
+const storeUser = useUserStore();
+const { data } = storeToRefs(storeUser);
 </script>
 
 <style scoped>

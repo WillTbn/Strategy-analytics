@@ -9,6 +9,8 @@ const state = () => {
     data: {},
     loan: {},
     wallet: {},
+    investment: {},
+    abilities: {},
   };
 };
 

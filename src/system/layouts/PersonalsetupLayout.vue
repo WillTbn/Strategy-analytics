@@ -1,6 +1,6 @@
 <template>
   <div class="PersonalsetupLayout">
-    <q-card class="my-card bg-transparent" flat>
+    <q-card class="my-card bg-transparent" flat v-if="data.account">
       <q-item>
         <q-item-section avatar>
           <avatar-new />
@@ -22,7 +22,7 @@
           <!-- <FontAwesomeIcon icon="fa-solid fa-earth-americas" /> -->
           <q-item-label caption class="q-ma-sm">
             <q-icon name="fa-solid fa-earth-americas" size="1rem" />
-            {{ data.state }} - {{ data.country }}
+            {{ data.account.state }} - {{ data.account.country }}
           </q-item-label>
         </q-item-section>
       </q-item>
@@ -45,7 +45,7 @@
       </div>
       <div class="q-mb-lg">
         <span class="text-primary text-weight-bold">Telefone:</span><br />
-        <input type="text" name="name" v-model="data.phone" id="name" />
+        <input type="text" name="name" v-model="data.account.phone" id="name" />
       </div>
     </q-form>
     <p style="display: flex; align-content: center; align-items: center">
@@ -59,24 +59,25 @@
         @click.prevent="editBank(0)"
       />
     </p>
-
-    <p
-      v-for="item in data.account"
-      :key="item"
-      style="display: flex; align-content: center; align-items: center"
-    >
-      <span class="text-second text-weight-bold"> {{ item.bank }} </span>
-      <span class="text-weight-bold q-pl-sm">{{ item.number }}</span>
-      <q-btn
-        @click="editBank(item)"
-        flat
-        round
-        color="primary"
-        class="q-pl-sm"
-        size="6px"
-        icon="fa-solid fa-pen"
-      />
-    </p>
+    <div class="" v-if="data.role_id == 3">
+      <p
+        v-for="item in data.user_bank_accounts"
+        :key="item"
+        style="display: flex; align-content: center; align-items: center"
+      >
+        <span class="text-second text-weight-bold"> {{ item.bank }} </span>
+        <span class="text-weight-bold q-pl-sm">{{ item.number }}</span>
+        <q-btn
+          @click="editBank(item)"
+          flat
+          round
+          color="primary"
+          class="q-pl-sm"
+          size="6px"
+          icon="fa-solid fa-pen"
+        />
+      </p>
+    </div>
 
     <q-dialog v-model="cardStatus">
       <editbank-layout />

@@ -9,6 +9,7 @@
       :class="$q.dark.isActive ? 'bg-navbar_dark' : 'bg-transparent'"
       mini-to-overlay
       class="control-drawer"
+      v-if="data.account"
     >
       <!-- elevated -->
       <!-- class="control-drawer" -->
@@ -20,7 +21,7 @@
           <q-item clickable v-ripple :to="{ name: 'config' }">
             <q-item-section side class="text-dark">
               <q-avatar size="46px">
-                <img :src="data.avatar" />
+                <img :src="data.account.avatar" />
               </q-avatar>
             </q-item-section>
             <q-item-section no-wrap>
@@ -171,14 +172,14 @@ import { storeToRefs } from "pinia";
 import SvgLogo from "../components/svgs/SvgLogo.vue";
 import SvgSign from "../components/svgs/SvgSign.vue";
 import useCookies from "src/composables/useCookies";
-import useLogin from "../../composables/useLogin";
+import useAuth from "../../composables/system/useAuth";
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
   components: { SvgLogo, SvgSign },
   setup() {
     // const {setDarkMode} = useCookies()
-    const { setLogout } = useLogin();
+    const { setLogout } = useAuth();
     const barState = computed(() =>
       drawer.value ? "fixed-top-right" : "fixed-top-left"
     );

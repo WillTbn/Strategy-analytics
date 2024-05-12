@@ -1,12 +1,21 @@
 <template>
   <div class="WalletPage">
     <!-- Seu conteúdo HTML aqui -->
-    Aqui virá o layout da carteira do cliente
-    <div class="q-pa-md row items-start q-gutter-md">
-      <q-card class="my-card">
-        <q-card-section>
+
+    <div class="q-pa-md row justify-between q-gutter-md q-pa-xl">
+      <q-card class="my-card q-pr-xl">
+        <q-card-section class="q-mx-xl">
+          <div class="text-subtitle2">Saldo</div>
           <span class="text-h2 text-weight-bolder">
-            {{ $filters.currentValue(wallet.current) }}
+            {{ $filters.currentValue(wallet.current_balance) }}
+          </span>
+        </q-card-section>
+      </q-card>
+      <q-card class="my-card q-pr-xl">
+        <q-card-section class="q-mx-xl">
+          <div class="text-subtitle2">Total investido</div>
+          <span class="text-h2 text-weight-bolder">
+            {{ $filters.currentValue(wallet.current_investment) }}
           </span>
         </q-card-section>
       </q-card>
@@ -21,7 +30,7 @@ import { onMounted, ref } from "vue";
 
 // import WalletLayout from "../layouts/wallet/WalletLayout.vue";
 const userStore = useUserStore();
-const { data, wallet } = storeToRefs(userStore);
+const { data, wallet, investment } = storeToRefs(userStore);
 </script>
 
 <style scoped>

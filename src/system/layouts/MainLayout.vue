@@ -10,6 +10,7 @@
         </transition>
       </router-view>
     </q-page-container>
+    <q-spinner-gears size="140px" color="primary" />
   </q-layout>
 </template>
 
@@ -21,7 +22,7 @@ import { Dark } from "quasar";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import useCookies from "../../composables/useCookies";
-import useLogin from "../../composables/useLogin";
+import useAuth from "../../composables/system/useAuth";
 import useStates from "../../composables/useStates";
 import { useLayoutStore } from "src/stores/layout";
 
@@ -33,7 +34,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const layout = useLayoutStore();
-    const { getLoggedIn } = useLogin();
+    const { verifyLogged, loading } = useAuth();
     const { getValue, getDarkMode } = useCookies();
     const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
     // const statusDark = ref();
@@ -50,7 +51,7 @@ export default defineComponent({
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
-      getLoggedIn();
+      // verifyLogged();
       getDarkMode();
     });
     return {
