@@ -1,3 +1,4 @@
+
 const actions = {
   getAccount(payload) {
     let getJson = [];
@@ -14,6 +15,7 @@ const actions = {
 
   setUserData(payload) {
     this.data = { ...payload };
+    this.routeHome = payload.role_id == 3 ? 'wallet' : 'users';
     this.wallet = payload.role_id === 3 ? { ...payload.user_wallet } : "";
     this.loan = payload.investment ? payload.loan : "";
     this.investment = payload.investment ? payload.investment : "";

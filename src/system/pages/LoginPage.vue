@@ -74,6 +74,12 @@
         </div>
       </q-form>
     </q-page-container>
+    <q-inner-loading
+      :showing="loading"
+      label="Please wait..."
+      label-class="text-teal"
+      label-style="font-size: 1.1em"
+    />
   </q-layout>
 </template>
 <script setup>
@@ -89,7 +95,7 @@ const registerData = new Date().getFullYear();
 const useStore = useUserStore();
 const personRef = ref(null);
 const passwordRef = ref(null);
-const { auth, errors, loading, verifyLogged } = useAuth();
+const { auth, errors, loading } = useAuth();
 // const isValidperson = computed(() => errors.person.length > 0);
 const { login } = storeToRefs(useStore);
 const onSubmit = () => {
@@ -101,7 +107,7 @@ const onSubmit = () => {
 };
 const isPwd = ref(true);
 onMounted(() => {
-  verifyLogged();
+  // await verifyLogged();
 });
 </script>
 <style scoped>

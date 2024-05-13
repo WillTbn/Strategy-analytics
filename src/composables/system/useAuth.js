@@ -12,7 +12,9 @@ export default function useAuth() {
   const {
     setTokenCookie,
     deleteTokenCookie,
+    setUserCookie,
     tokenName, hasTokenCookie, tokenCookie,
+    getuserCookie, hasUserCookie
 
   } = useCookies()
 
@@ -23,6 +25,7 @@ export default function useAuth() {
     person: "",
     password: "",
   });
+  const role = ref(null)
 
   const auth = async (value) => {
     loading.value = true;
@@ -31,12 +34,12 @@ export default function useAuth() {
       .then((resp) => {
         if (resp.data.token) {
           console.log(resp);
-          setTokenCookie(resp.data.token,)
+          setTokenCookie(resp.data.token)
           axios.defaults.headers.common['Authorization'] = `Bearer ${resp.data.token}`
           useStore.setAbilities(resp.data.abilities);
 
-          window.location.reload();
-          // router.replace({ path: "/system/wallet" });
+
+          router.replace({ path: "/system/" });
         }
       })
       .catch((e) => {
@@ -48,29 +51,26 @@ export default function useAuth() {
   };
   const verifyLogged = async () => {
     loading.value = true
-    if (!hasTokenCookie || tokenCookie == "undefined") {
-      console.log("não encontrei o token");
-      deleteTokenCookie()
-      router.push({ name: "login" });
-      loading.value = false
+    if (hasUserCookie) {
+      console.log('esta aqui o user cookie -> ', getuserCookie)
+      setUserCookie(getuserCookie)
       return;
     }
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
-    const resp = await api.get("auth/validate", useTokenData).then((resp) => {
+    console.log('token -> ', useTokenData)
+    try {
+      const resp = await api.get("auth/validate", useTokenData)
       const data = resp.data.data
       useStore.setUserData(data);
-      routeRetorn(data.role_id);
-    }).catch((e) => {
-      console.log('não tem resp')
+    } catch (e) {
+      console.log('não tem resp -> ', e)
       errorNotify("Faça login!");
       deleteTokenCookie()
-      router.replace({ name: "login" });
-      return;
-    }).finally(() => {
+      // router.replace({ name: "login" });
+    } finally {
       loading.value = false
-    });
-
+    }
   };
   const setLogout = async () => {
     const useTokenData = Cookies.get(tokenName);
@@ -84,16 +84,20 @@ export default function useAuth() {
       .finally(() => router.push({ path: "/login" }));
   };
   const routeRetorn = (role) => {
-    return role == 3
-      ? router.push({ path: "/system/wallet" })
-      : router.push({ path: "/system/users" });
+    const routeName = role == 3
+      ? "wallet"
+      : "users"
+
+    return routeName
   };
 
   return {
     auth,
     verifyLogged,
     setLogout,
+    routeRetorn,
     errors,
     loading,
+    role,
   };
 }

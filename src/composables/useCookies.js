@@ -1,13 +1,18 @@
 // import { storeToRefs } from "pinia";
 import { Cookies, Dark } from "quasar";
 import { useLayoutStore } from "src/stores/layout";
+import { useUserStore } from "src/stores/user";
 
 export default function useCookies() {
   const setOptionsCookie = { path: '/', secure: true, sameSite: "None" }
   const tokenName = process.env.COOKIE_TOKEN_NAME ?? "SA_token";
+  const userCookie = process.env.COOKIE_TOKEN_NAME ?? "SA_user";
   const hasTokenCookie = Cookies.has(tokenName);
+  const hasUserCookie = Cookies.has(userCookie);
+  const getuserCookie = Cookies.get(userCookie);
   const tokenCookie = Cookies.get(tokenName);
   const storeLayout = useLayoutStore();
+  const storeUser = useUserStore();
   // const {dashboard} = storeToRefs(storeLayout)
 
   const booleanVerify = (value) => {
@@ -50,10 +55,15 @@ export default function useCookies() {
   };
   const deleteTokenCookie = () => {
     Cookies.remove(tokenName, setOptionsCookie);
+    Cookies.remove(userCookie, setOptionsCookie);
   }
   const setTokenCookie = (value) => {
     Cookies.set(tokenName, value, setOptionsCookie);
   };
+  const setUserCookie = (value) => {
+    Cookies.set(userCookie, value, setOptionsCookie);
+    storeUser.setUserData(getuserCookie)
+  }
 
   return {
     verify,
@@ -66,6 +76,9 @@ export default function useCookies() {
     setWidgetReport,
     deleteTokenCookie,
     setTokenCookie,
+    setUserCookie,
+    getuserCookie,
+    hasUserCookie,
     tokenName,
     hasTokenCookie,
     tokenCookie

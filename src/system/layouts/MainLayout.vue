@@ -10,7 +10,13 @@
         </transition>
       </router-view>
     </q-page-container>
-    <q-spinner-gears size="140px" color="primary" />
+    <!-- :showing="visible" -->
+    <!-- <q-inner-loading
+      :showing="loading"
+      label="Please wait..."
+      label-class="text-teal"
+      label-style="font-size: 1.1em"
+    /> -->
   </q-layout>
 </template>
 
@@ -20,11 +26,13 @@
 import NavbarLayout from "../layouts/NavbarLayout.vue";
 import { Dark } from "quasar";
 import { defineComponent, ref, computed, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import useCookies from "../../composables/useCookies";
 import useAuth from "../../composables/system/useAuth";
 import useStates from "../../composables/useStates";
 import { useLayoutStore } from "src/stores/layout";
+import { useUserStore } from "src/stores/user";
+import { storeToRefs } from "pinia";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
@@ -33,10 +41,13 @@ export default defineComponent({
   components: { NavbarLayout },
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const layout = useLayoutStore();
-    const { verifyLogged, loading } = useAuth();
+    const { loading } = useAuth();
     const { getValue, getDarkMode } = useCookies();
     const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
+    const userStore = useUserStore();
+    const { routeHome } = storeToRefs(userStore);
     // const statusDark = ref();
     // watch(
     //   () => Dark.isActive,
@@ -51,11 +62,14 @@ export default defineComponent({
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
-      // verifyLogged();
+      router.replace({ name: routeHome.value });
+      console.log(route);
+      console.log(routeHome.value);
       getDarkMode();
     });
     return {
       route,
+      routeHome,
       Dark,
       statusDark: computed(() =>
         Dark.isActive ? "bg-system-dark" : "bg-system"

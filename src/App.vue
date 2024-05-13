@@ -17,10 +17,8 @@ export default defineComponent({
   name: "App",
   setup() {
     const route = useRoute;
-    const { verifyLogged } = useAuth();
     const mode = process.env.VERSION_APP;
     onMounted(() => {
-      // verifyLogged();
       console.log("isso é no app->", process.env);
     });
 

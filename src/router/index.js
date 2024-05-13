@@ -7,6 +7,7 @@ import {
 } from "vue-router";
 import routes from "./routes";
 import useAuth from "src/composables/system/useAuth";
+import useCookies from "src/composables/useCookies";
 
 /*
  * If not building with SSR mode, you can
@@ -32,8 +33,9 @@ export default route(function (/* { store, ssrContext } */) {
     routes,
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
-  Router.beforeEach(async (to, from, next) => {
-    const { verifyLogged } = useAuth();
+  Router.beforeEach((to, from, next) => {
+    const { verifyLogged, routeRetorn } = useAuth();
+    const { hasTokenCookie } = useCookies()
     let home =
       to.name == "home"
         ? "Gestão de Investimentos e Serviços Financeiros"
@@ -42,11 +44,14 @@ export default route(function (/* { store, ssrContext } */) {
       to.name != undefined
         ? `Strategy Analytics -  ${home}`
         : "Strategy Analytics";
-
     if (to.meta?.auth) {
-      verifyLogged();
+      console.log('eee é - from', from)
+      if (!hasTokenCookie) {
+        next({ name: 'login' })
+      }
+      verifyLogged()
     }
-    next();
+    next()
   });
 
   return Router;
