@@ -4,7 +4,7 @@
     <!-- <menubar-layout /> -->
     <navbar-layout :dark="Dark.isActive" />
     <q-page-container padding>
-      <router-view v-slot="{ Component }">
+      <router-view v-if="piniaDataLoaded" v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.path"></component>
         </transition>
@@ -25,7 +25,7 @@
 // import MenuLayout from "../layouts/MenuLayout.vue";
 import NavbarLayout from "../layouts/NavbarLayout.vue";
 import { Dark } from "quasar";
-import { defineComponent, ref, computed, onMounted } from "vue";
+import { defineComponent, ref, computed, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useCookies from "../../composables/useCookies";
 import useAuth from "../../composables/system/useAuth";
@@ -47,27 +47,26 @@ export default defineComponent({
     const { getValue, getDarkMode } = useCookies();
     const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
     const userStore = useUserStore();
-    const { routeHome } = storeToRefs(userStore);
-    // const statusDark = ref();
-    // watch(
-    //   () => Dark.isActive,
-    //   (a) => {
-    //    return statusDark.value = a ? "bg-system-dark" : "bg-system";
-    //   }
-
-    // );
-    onMounted(() => {
+    const { routeHome, data } = storeToRefs(userStore);
+    const piniaDataLoaded = ref(false);
+    watch(routeHome, () => {
+      if (routeHome.value) {
+        console.log("redirecionar para -> ", routeHome.value);
+        piniaDataLoaded.value = true;
+        router.replace({ name: routeHome.value });
+      }
+    });
+    onMounted(async () => {
       layout.updatePdfScale(dimension(window.innerWidth));
       layout.setScreenWidth(dimensionHeight(window.innerHeight));
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
-      router.replace({ name: routeHome.value });
-      console.log(route);
-      console.log(routeHome.value);
+      // console.log("essa rota vai -> ", routeHome.value);
       getDarkMode();
     });
     return {
+      piniaDataLoaded,
       route,
       routeHome,
       Dark,

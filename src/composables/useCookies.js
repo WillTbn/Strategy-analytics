@@ -1,5 +1,5 @@
 // import { storeToRefs } from "pinia";
-import { Cookies, Dark } from "quasar";
+import { Cookies, Dark, LocalStorage } from "quasar";
 import { useLayoutStore } from "src/stores/layout";
 import { useUserStore } from "src/stores/user";
 
@@ -56,9 +56,11 @@ export default function useCookies() {
   const deleteTokenCookie = () => {
     Cookies.remove(tokenName, setOptionsCookie);
     Cookies.remove(userCookie, setOptionsCookie);
+    LocalStorage.remove(tokenCookie)
   }
   const setTokenCookie = (value) => {
-    Cookies.set(tokenName, value, setOptionsCookie);
+    Cookies.set(tokenName, value.token, setOptionsCookie);
+    localStorage.setItem(value.token, JSON.stringify(value.abilities))
   };
   const setUserCookie = (value) => {
     Cookies.set(userCookie, value, setOptionsCookie);

@@ -1,3 +1,5 @@
+
+import { Cookies } from "quasar";
 const getters = {
   // doubleCount: (state) => state.counter * 2,
   getInvestiment: (state) => {
@@ -28,6 +30,14 @@ const getters = {
   isClient: (state) => {
     return state.data.role_id == 3;
   },
+  canAccess: (state) => {
+    return state.abilities = JSON.parse(localStorage.getItem(Cookies.get("SA_token")))
+  },
+  menuAccess: (state) => (params) => {
+    if (state.abilities.length > 0) {
+      return state.abilities.includes('all-access') ?? state.abilities.includes(params)
+    }
+  }
 };
 
 export default { ...getters };

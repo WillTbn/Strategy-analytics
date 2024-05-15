@@ -6,9 +6,11 @@ import useNotify from "../useNotify";
 import { ref } from "vue";
 import { route } from "quasar/wrappers";
 import useCookies from "../useCookies";
+import useStates from "../useStates";
 
 export default function useAuth() {
   const useStore = useUserStore();
+  const { redirectRouteForUser } = useStates()
   const {
     setTokenCookie,
     deleteTokenCookie,
@@ -33,17 +35,11 @@ export default function useAuth() {
       .post("login", value)
       .then((resp) => {
         if (resp.data.token) {
-          console.log(resp);
-          setTokenCookie(resp.data.token)
-          axios.defaults.headers.common['Authorization'] = `Bearer ${resp.data.token}`
-          useStore.setAbilities(resp.data.abilities);
-
-
+          setTokenCookie(resp.data)
           router.replace({ path: "/system/" });
         }
       })
       .catch((e) => {
-        console.log("aqui -> ", tokenName);
         errorNotify(e.response.data.message);
         errors.value = e.response.data.errors;
       })
@@ -52,50 +48,39 @@ export default function useAuth() {
   const verifyLogged = async () => {
     loading.value = true
     if (hasUserCookie) {
-      console.log('esta aqui o user cookie -> ', getuserCookie)
       setUserCookie(getuserCookie)
       return;
     }
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
-    console.log('token -> ', useTokenData)
+
     try {
       const resp = await api.get("auth/validate", useTokenData)
       const data = resp.data.data
       useStore.setUserData(data);
+      await redirectRouteForUser(data.role_id)
     } catch (e) {
-      console.log('não tem resp -> ', e)
-      errorNotify("Faça login!");
+      infoNotify("Faça login!");
       deleteTokenCookie()
-      // router.replace({ name: "login" });
     } finally {
       loading.value = false
     }
   };
   const setLogout = async () => {
     const useTokenData = Cookies.get(tokenName);
-    // console.log('estou no setLogout ->', tokenName)
+
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
     await api.post("auth/logout", useTokenData).then((resp) => {
       deleteTokenCookie()
       infoNotify(resp.data.message)
     })
       .catch(e => console.log(e))
-      .finally(() => router.push({ path: "/login" }));
+      .finally(() => router.replace({ path: "/login" }));
   };
-  const routeRetorn = (role) => {
-    const routeName = role == 3
-      ? "wallet"
-      : "users"
-
-    return routeName
-  };
-
   return {
     auth,
     verifyLogged,
     setLogout,
-    routeRetorn,
     errors,
     loading,
     role,

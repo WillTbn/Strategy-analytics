@@ -10,8 +10,9 @@ const state = () => {
     loan: {},
     wallet: {},
     investment: {},
-    abilities: {},
-    routeHome: ""
+    abilities: [],
+    routeHome: "",
+    NavbarMenu: "adm"
   };
 };
 

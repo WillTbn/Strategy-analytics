@@ -1,5 +1,9 @@
 import { Platform } from "quasar";
+import { useUserStore } from "src/stores/user";
+import { useRoute } from "vue-router";
 export default function useStates() {
+  const useStore = useUserStore()
+  const route = useRoute()
   const get = async (country) => {
     const states = {
       1: [
@@ -162,8 +166,23 @@ export default function useStates() {
     }
     return isTo;
   };
+  const redirectRouteForUser = async (role_id) => {
+    const nameRoute = {
+      1: {
+        name: "users"
+      },
+      2: {
+        name: "controlReports"
+      },
+      3: {
+        name: "wallet"
+      }
+    }
 
+    useStore.setRouteHome(nameRoute[role_id].name)
+  }
   return {
+    redirectRouteForUser,
     get,
     dimension,
     dimensionHeight,

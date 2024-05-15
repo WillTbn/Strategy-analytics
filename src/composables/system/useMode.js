@@ -1,12 +1,43 @@
 import { useRouter } from "vue-router";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
+import { ref } from 'vue'
 export default function useMode() {
-  const router = useRouter();
-  const useStore = useUserStore();
 
-  const { isClient } = storeToRefs(useStore);
-  const clientsListMenu = [
+  const admNavList = [
+    {
+      can: "all-access",
+      toName: { name: "users" },
+      name: "Usuários administradores",
+      svgIcon: "img:icons/icon-home-icon.svg",
+      svgWidth: "51",
+      svgHeight: "49",
+      svgViewBox: "0 0 448 512",
+      svgId: "&#240;&#159;&#166;&#134; icon &#34;home icon&#34;",
+      pathId: "Vector",
+      pathData:
+        "M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z",
+      pathFileRule: "",
+      pathClipRule: "",
+    },
+    {
+      // can: "control-reports", eessa é a real tem que troca no banco de dados 
+      can: "reports-access",
+      toName: { name: "controlReports" },
+      name: "Relatórios",
+      svgIcon: "img:icons/icon-home-icon.svg",
+      svgWidth: "51",
+      svgHeight: "49",
+      svgViewBox: "0 0 576 512",
+      svgId: "&#240;&#159;&#166;&#134; icon &#34;home icon&#34;",
+      pathId: "Vector",
+      pathData:
+        "M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8V454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5V83.8c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5z",
+      pathFileRule: "",
+      pathClipRule: "",
+    },
+  ]
+  const clientNavList = [
     {
       can: "client",
       toName: { name: "wallet" },
@@ -113,28 +144,12 @@ export default function useMode() {
       pathClipRule: "",
       // svgIcon: "fa-solid fa-circle-dollar-to-slot",
     },
-  ];
-  const adminListMenu = [
-    {
-      can: "users",
-      toName: { name: "users" },
-      name: "Usuários administradores",
-      svgIcon: "img:icons/icon-home-icon.svg",
-      svgWidth: "51",
-      svgHeight: "49",
-      svgViewBox: "0 0 448 512",
-      svgId: "&#240;&#159;&#166;&#134; icon &#34;home icon&#34;",
-      pathId: "Vector",
-      pathData:
-        "M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z",
-      pathFileRule: "",
-      pathClipRule: "",
-    },
-  ];
-  const isMenuList = () => {
-    return isClient.value ? clientsListMenu : adminListMenu;
-  };
+  ]
+
+
   return {
-    isMenuList,
+    // isMenuList,
+    clientNavList,
+    admNavList,
   };
 }

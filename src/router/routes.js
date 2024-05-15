@@ -121,6 +121,12 @@ const routes = [
         component: () => import("../system/pages/ClientsPage.vue"),
         meta: { admin: true },
       },
+      {
+        path: "controlReports",
+        name: "controlReports",
+        component: () => import("../system/pages/ControlreportPage.vue"),
+        meta: { admin: true },
+      },
     ],
   },
 

@@ -45,7 +45,7 @@ export default route(function (/* { store, ssrContext } */) {
         ? `Strategy Analytics -  ${home}`
         : "Strategy Analytics";
     if (to.meta?.auth) {
-      console.log('eee é - from', from)
+
       if (!hasTokenCookie) {
         next({ name: 'login' })
       }
