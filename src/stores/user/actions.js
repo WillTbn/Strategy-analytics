@@ -16,7 +16,6 @@ const actions = {
   setUserData(payload) {
     this.data = { ...payload };
     console.log('roleID->', payload.role_id)
-    this.routeHome = payload.role_id == 3 ? 'wallet' : 'users';
     this.NavbarMenu = payload.role_id == 3 ? 'client' : 'admin';
     this.wallet = payload.role_id === 3 ? { ...payload.user_wallet } : "";
     this.loan = payload.investment ? payload.loan : "";

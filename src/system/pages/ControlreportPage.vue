@@ -1,16 +1,15 @@
 <template>
-  <div class="ControlreportPage">Listde relatorios</div>
+  <q-page class="ControlreportPage">
+    <titlebody-layout textTitle="Controle de relatórios" />
+    <action-layout />
+    <listreport-layout />
+  </q-page>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-export default defineComponent({
-  name: "ControlreportPage",
-  setup() {
-    return {};
-  },
-  // Outras configurações do componente aqui
-});
+<script setup>
+import TitlebodyLayout from "../layouts/TitlebodyLayout.vue";
+import ListreportLayout from "../layouts/control/ListreportLayout.vue";
+import ActionLayout from "../layouts/control/ActionLayout.vue";
 </script>
 
 <style scoped>

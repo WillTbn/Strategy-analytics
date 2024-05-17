@@ -2,7 +2,7 @@
   <q-layout view="lHh lpR lFf" :class="statusDark">
     <!-- <menusidebar-layout /> -->
     <!-- <menubar-layout /> -->
-    <navbar-layout :dark="Dark.isActive" />
+    <navbar-layout :dark="Dark.isActive" v-if="piniaDataLoaded" />
     <q-page-container padding>
       <router-view v-if="piniaDataLoaded" v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -10,13 +10,11 @@
         </transition>
       </router-view>
     </q-page-container>
-    <!-- :showing="visible" -->
-    <!-- <q-inner-loading
-      :showing="loading"
-      label="Please wait..."
+    <q-inner-loading
+      :showing="!piniaDataLoaded"
       label-class="text-teal"
       label-style="font-size: 1.1em"
-    /> -->
+    />
   </q-layout>
 </template>
 
@@ -53,7 +51,7 @@ export default defineComponent({
       if (routeHome.value) {
         console.log("redirecionar para -> ", routeHome.value);
         piniaDataLoaded.value = true;
-        router.replace({ name: routeHome.value });
+        router.push({ name: routeHome.value });
       }
     });
     onMounted(async () => {

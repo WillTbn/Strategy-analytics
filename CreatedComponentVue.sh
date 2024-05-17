@@ -21,15 +21,19 @@ else
   # lay="src/layouts"
   # pag="src/pages"
 
-  echo "|--------------------------------------------------------------|"
-  echo "|       →  0 - components (src/components)                     |"
-  echo "|       →  1 - layouts (src/layouts)                           |"
-  echo "|       →  2 - pages (src/pages)                               |"
-  echo "|       →  3 - sistema components (src/system/components)      |"
-  echo "|       →  4 - sistema layouts (src/system/layouts)            |"
-  echo "|       →  5 - sistema pages (src/system/pages)                |"
-  echo "|       →  6 - sistema charts (src/system/components/charts)   |"
-  echo "|--------------------------------------------------------------|"
+  echo "|-------------------------------------------------------------|"
+  echo "| →  0 - components (src/components)                          |"
+  echo "| →  1 - layouts (src/layouts)                                |"
+  echo "| →  2 - pages (src/pages)                                    |"
+  echo "| →  3 - sistema components (src/system/components)           |"
+  echo "| →  4 - sistema layouts (src/system/layouts)                 |"
+  echo "| →  5 - sistema pages (src/system/pages)                     |"
+  echo "| →  6 - sistema charts (src/system/components/charts)        |"
+  echo "|      _______________Control-CRUD______________              |"
+  echo "| →  7 - sistema reports (src/system/layouts/control/reports) |"
+  echo "| →  8 - sistema reports (src/system/layouts/control/users)   |"
+  echo "| →  9 - sistema reports (src/system/layouts/control/clients) |"
+  echo "|-------------------------------------------------------------|"
   echo "Digite qual:"
   read a_input
   while [ -n  "$a_input" ]
@@ -42,6 +46,9 @@ else
           4) diretorio="src/system/layouts/";;
           5) diretorio="src/system/pages/";;
           6) diretorio="src/system/components/charts/";;
+          7) diretorio="src/system/layouts/control/reports/";;
+          8) diretorio="src/system/layouts/control/users/";;
+          9) diretorio="src/system/layouts/control/clients/";;
           *) opc="EXCEPTION";
           echo "Não temos suporte para ${a_input}  ${opc}";;
       esac
