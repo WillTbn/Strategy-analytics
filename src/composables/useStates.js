@@ -178,7 +178,7 @@ export default function useStates() {
         name: "wallet"
       }
     }
-
+    console.log('rediredRoute ->', nameRoute[role_id].name)
     useStore.setRouteHome(nameRoute[role_id].name)
   }
   return {

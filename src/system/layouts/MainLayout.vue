@@ -2,16 +2,20 @@
   <q-layout view="lHh lpR lFf" :class="statusDark">
     <!-- <menusidebar-layout /> -->
     <!-- <menubar-layout /> -->
-    <navbar-layout :dark="Dark.isActive" v-if="piniaDataLoaded" />
+    <navbar-layout
+      :key="route.name"
+      :dark="Dark.isActive"
+      v-if="!loading || piniaDataLoaded"
+    />
     <q-page-container padding>
-      <router-view v-if="piniaDataLoaded" v-slot="{ Component }">
+      <router-view v-if="!loading || piniaDataLoaded" v-slot="{ Component }">
         <transition name="fade" mode="out-in">
-          <component :is="Component" :key="route.path"></component>
+          <component :is="Component" :key="route.name"></component>
         </transition>
       </router-view>
     </q-page-container>
     <q-inner-loading
-      :showing="!piniaDataLoaded"
+      :showing="loading && !piniaDataLoaded"
       label-class="text-teal"
       label-style="font-size: 1.1em"
     />
@@ -47,7 +51,8 @@ export default defineComponent({
     const userStore = useUserStore();
     const { routeHome, data } = storeToRefs(userStore);
     const piniaDataLoaded = ref(false);
-    watch(routeHome, () => {
+    watch(routeHome, (after, before) => {
+      console.log("estou o watch -> ", after);
       if (routeHome.value) {
         console.log("redirecionar para -> ", routeHome.value);
         piniaDataLoaded.value = true;
@@ -60,12 +65,19 @@ export default defineComponent({
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
-      // console.log("essa rota vai -> ", routeHome.value);
+      if (route.fullPath == "/system/") {
+        // window.location.reload();
+        // console.log("esta uma merda ->", routeHome.value);
+        router.push({ name: routeHome.value });
+        piniaDataLoaded.value = true;
+      }
+
       getDarkMode();
     });
     return {
       piniaDataLoaded,
       route,
+      loading,
       routeHome,
       Dark,
       statusDark: computed(() =>

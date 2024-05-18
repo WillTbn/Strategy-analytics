@@ -13,7 +13,7 @@
             standout="bg-teal text-white"
             v-model="editData.title"
             label="Título*"
-            class="col-8 q-py-lg"
+            class="col-8 q-py-lg bg-tranparent"
             :rules="[(val) => !!val || 'Campo obrigatório']"
           />
           <q-select

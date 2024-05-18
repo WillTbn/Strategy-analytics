@@ -1,10 +1,10 @@
 <template>
-  <div class="ListreportLayout">
+  <div class="ListuserLayout">
     <div class="row justify-center">
       <q-table
         flat
         bordered
-        title="Relalórios"
+        title="Usuários"
         :rows="data"
         :columns="columns"
         :filter="filter"
@@ -12,7 +12,6 @@
         no-results-label="The filter didn't uncover any results"
         row-key="name"
         class="col-8"
-        :loading="loading"
       >
         <template v-slot:top-right>
           <q-input
@@ -35,14 +34,10 @@
             <q-icon size="2em" :name="filter ? 'filter_b_and_w' : icon" />
           </div>
         </template>
-        <template v-slot:body-cell-actions="props">
+        <!-- <template v-slot:body-cell-actions="props">
           <q-td :props="props">
             <div class="row justify-end q-gutter-sm">
-              <!-- <q-btn
-                color="primary"
-                label="edit"
-                
-              /> -->
+              
               <q-btn
                 color="green"
                 label="view"
@@ -54,58 +49,18 @@
                 @click="confirmAction(props.row)"
               />
             </div>
-            <!-- <div class="my-table-details">
-              {{ props.row.id }}
-            </div> -->
           </q-td>
-        </template>
+        </template> -->
       </q-table>
     </div>
-
-    <q-dialog v-model="confirm" backdrop-filter="hue-rotate(120deg)">
-      <q-card class="bg-negative">
-        <q-card-section class="row items-center">
-          <q-avatar
-            icon="fa-solid fa-circle-exclamation"
-            text-color=""
-            size="7rem"
-          />
-          <!-- color="yellow" -->
-          <span class="q-ml-sm"
-            >Voce irá excluir o relátorio "{{ delData.title }}".</span
-          >
-        </q-card-section>
-        <!-- <FontAwesomeIcon icon="fa-solid fa-circle-exclamation" /> -->
-        <q-card-actions align="around">
-          <q-btn label="Cancel" color="primary" v-close-popup />
-          <q-btn
-            label="Confirmar"
-            color="positive"
-            @click.prevent="deleteReport(delData.id)"
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </div>
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "vue";
-import useReport from "../../../composables/system/Requests/useReport";
-import { useReportStore } from "src/stores/report";
-import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
-
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: "ListreportLayout",
+  name: "ListuserLayout",
   setup() {
-    const { getAllreport, deleteReport, loading } = useReport();
-    const storeReport = useReportStore();
-    const { data } = storeToRefs(storeReport);
-    const filter = ref("");
-    const router = useRouter();
-    const delData = ref();
-    const confirm = ref(false);
     const rows = [];
     const columns = [
       {
@@ -141,32 +96,7 @@ export default defineComponent({
       // },
       { name: "actions", label: "Ações", align: "center", field: "action" },
     ];
-    const editReport = (value) => {
-      console.log(value);
-      storeReport.setEditaData(value);
-      router.replace({ name: "Relatorio" });
-    };
-    const delReport = (value) => {};
-    const confirmAction = (value) => {
-      confirm.value = true;
-      delData.value = value;
-    };
-    onMounted(async () => {
-      console.log("AMIGO ESTOU AQUI");
-      await getAllreport();
-    });
-    return {
-      loading,
-      data,
-      rows,
-      filter,
-      columns,
-      editReport,
-      confirm,
-      delData,
-      confirmAction,
-      deleteReport,
-    };
+    return { row, column };
   },
   // Outras configurações do componente aqui
 });

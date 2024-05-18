@@ -36,6 +36,7 @@ export default function useAuth() {
       .then((resp) => {
         if (resp.data.token) {
           setTokenCookie(resp.data)
+          useStore.setAbilities(resp.data.abilities)
           router.replace({ path: "/system/" });
         }
       })

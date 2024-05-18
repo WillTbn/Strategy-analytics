@@ -48,6 +48,7 @@ export default route(function (/* { store, ssrContext } */) {
 
       if (!hasTokenCookie) {
         next({ name: 'login' })
+        return
       }
       verifyLogged()
     }

@@ -22,7 +22,7 @@ const getters = {
 
   expiration: (state) => {
     const dataLocal = JSON.parse(localStorage.getItem("SA_user"));
-    console.log("ESTOU NO GETTERS", dataLocal);
+
     if (dataLocal) {
       return dataLocal.expiration_date != null ? true : false;
     }
@@ -31,7 +31,10 @@ const getters = {
     return state.data.role_id == 3;
   },
   canAccess: (state) => {
-    return state.abilities = JSON.parse(localStorage.getItem(Cookies.get("SA_token")))
+    const can = JSON.parse(localStorage.getItem(Cookies.get("SA_token")))
+    // console.log('vamos olha para o data -> ', state.data)
+    state.abilities = can
+    return (params) => can.includes(params)
   },
   menuAccess: (state) => (params) => {
     if (state.abilities.length > 0) {

@@ -106,9 +106,7 @@
       <q-list class="q-mt-sm-xl q-pt-lg q-mx-sm q-px-sm" v-else>
         <div class="" v-for="list in admNavList" :key="list">
           <q-item
-            v-if="
-              canAccess.includes(list.can) || canAccess.includes('all-access')
-            "
+            v-if="canAccess(list.can) || canAccess('all-access')"
             :active-class="dark ? 'bg-dark rounded' : 'bg-primary rounded'"
             clickable
             exact
