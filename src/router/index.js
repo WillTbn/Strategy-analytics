@@ -45,10 +45,13 @@ export default route(function (/* { store, ssrContext } */) {
         ? `Strategy Analytics -  ${home}`
         : "Strategy Analytics";
     if (to.meta?.auth) {
-
+      console.log(to);
       if (!hasTokenCookie) {
         next({ name: 'login' })
         return
+      }
+      if (to.meta?.admin) {
+        console.log('Essa é uma rota com mais uma proteção!')
       }
       verifyLogged()
     }

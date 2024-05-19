@@ -35,23 +35,27 @@
             <q-icon size="2em" :name="filter ? 'filter_b_and_w' : icon" />
           </div>
         </template>
-        <!-- <template v-slot:body-cell-actions="props">
+        <template v-slot:body-cell-actions="props">
           <q-td :props="props">
             <div class="row justify-end q-gutter-sm">
-              
-              <q-btn
-                color="green"
-                label="view"
-                @click="editReport(props.row)"
+              <resend-email
+                v-if="!props.row.email_verified_at"
+                :token="props.row.access_token.id"
               />
-              <q-btn
+              <!-- <q-btn
+                v-if="!props.row.email_verified_at"
+                color="green"
+                label="Resend email"
+                @click="resendEmail(props.row)"
+              /> -->
+              <!-- <q-btn
                 color="red"
                 label="excluir"
                 @click="confirmAction(props.row)"
-              />
+              /> -->
             </div>
           </q-td>
-        </template> -->
+        </template>
       </q-table>
     </div>
   </div>
@@ -60,8 +64,12 @@
 <script>
 import useAdm from "src/composables/system/Requests/useAdm";
 import { defineComponent, onMounted, ref } from "vue";
+import ResendEmail from "src/system/components/ResendEmail.vue";
 export default defineComponent({
   name: "ListuserLayout",
+  components: {
+    ResendEmail,
+  },
   setup() {
     const rows = [];
     const filter = ref("");
@@ -108,12 +116,14 @@ export default defineComponent({
       // },
       { name: "actions", label: "Ações", align: "center", field: "action" },
     ];
-
+    const resendEmail = (data) => {
+      console.log(data);
+    };
     onMounted(async () => {
       await getAllAdm();
     });
 
-    return { usersAdm, columnsAdm, loading, filter };
+    return { usersAdm, columnsAdm, loading, filter, resendEmail };
   },
   // Outras configurações do componente aqui
 });

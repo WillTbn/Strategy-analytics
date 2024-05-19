@@ -132,6 +132,7 @@ const routes = [
         path: "report-view",
         name: "Relatorio",
         component: () => import("../system/layouts/control/reports/ReadreportLayout.vue"),
+        meta: { admin: true },
         props: true
       }
     ],
