@@ -5,13 +5,14 @@
         flat
         bordered
         title="Usuários"
-        :rows="data"
-        :columns="columns"
+        :rows="usersAdm"
+        :columns="columnsAdm"
         :filter="filter"
-        no-data-label="I didn't find anything for you"
-        no-results-label="The filter didn't uncover any results"
+        no-data-label="Não encontrei nenhum usuároi para exibir."
+        no-results-label="Esse filtro não encontrou nenhum resultado"
         row-key="name"
         class="col-8"
+        :loading="loading"
       >
         <template v-slot:top-right>
           <q-input
@@ -57,12 +58,15 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import useAdm from "src/composables/system/Requests/useAdm";
+import { defineComponent, onMounted, ref } from "vue";
 export default defineComponent({
   name: "ListuserLayout",
   setup() {
     const rows = [];
-    const columns = [
+    const filter = ref("");
+    const { loading, usersAdm, getAllAdm } = useAdm();
+    const columnsAdm = [
       {
         name: "id",
         required: true,
@@ -73,16 +77,24 @@ export default defineComponent({
         sortable: true,
       },
       {
-        name: "title",
-        align: "center",
-        label: "Título",
-        field: "title",
+        name: "name",
+        align: "left",
+        label: "Nome",
+        field: "name",
         sortable: true,
       },
       {
-        name: "description",
-        label: "Descrição",
-        field: "description",
+        name: "email",
+        align: "left",
+        label: "Email",
+        field: "email",
+        sortable: true,
+      },
+      {
+        name: "role_id",
+        label: "Papel",
+        field: "role_id",
+        format: (val) => (val == 1 ? `Master` : "Funcionário"),
         align: "center",
         sortable: true,
       },
@@ -96,7 +108,12 @@ export default defineComponent({
       // },
       { name: "actions", label: "Ações", align: "center", field: "action" },
     ];
-    return { row, column };
+
+    onMounted(async () => {
+      await getAllAdm();
+    });
+
+    return { usersAdm, columnsAdm, loading, filter };
   },
   // Outras configurações do componente aqui
 });

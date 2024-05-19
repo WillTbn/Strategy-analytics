@@ -4,7 +4,7 @@ import { api, axios } from "boot/axios";
 import { ref } from "vue";
 import { useReportStore } from "src/stores/report";
 export default function useReport() {
-  const { errorNotify } = useNotify()
+  const { errorNotify, successNotify } = useNotify()
   const { tokenCookie } = useCookies()
   const storeReport = useReportStore()
   const loading = ref(false)
@@ -62,10 +62,15 @@ export default function useReport() {
     formData.append('description', data.description);
     formData.append('type', data.type);
     api.defaults.headers.common['Accept'] = 'form-data';
+    api.defaults.headers.common['Accept'] = 'application/json';
 
     try {
       const response = await api.post('reports/create', formData);
-      console.log(response.data)
+      loading.value = false
+      successNotify('Relatorio criado com sucesso!');
+      setTimeout(() => {
+        window.location.reload()
+      }, 500)
     } catch (e) {
       console.log(e.response.data.message)
       errorNotify(e.response.data.message);

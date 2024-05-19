@@ -1,6 +1,8 @@
 <template>
   <q-page>
     <titlebody-layout textTitle="Controle de usuários administradores" />
+
+    <listuser-layout />
   </q-page>
 </template>
 
@@ -9,8 +11,10 @@ import TitlebodyLayout from "../layouts/TitlebodyLayout.vue";
 import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
 import { onMounted } from "vue";
-const storeUser = useUserStore();
-const { data } = storeToRefs(storeUser);
+import ListuserLayout from "../layouts/control/users/ListuserLayout.vue";
+
+// const storeUser = useUserStore();
+// const { data } = storeToRefs(storeUser);
 </script>
 
 <style scoped>
