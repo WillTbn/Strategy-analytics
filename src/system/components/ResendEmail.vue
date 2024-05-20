@@ -2,11 +2,15 @@
   <div class="resendEmail">
     <q-btn
       v-if="statusStopWatch"
-      color="green"
-      label="Resend email 2"
+      color="indigo"
       @click="resend()"
       :disabled="loading"
-    />
+      icon="fa-regular fa-paper-plane"
+    >
+      <q-tooltip class="bg-indigo" :offset="[10, 10]">
+        Reenviar e-mail para usuário se autentificar
+      </q-tooltip>
+    </q-btn>
     <div class="" v-else>
       <span class="text-overline">Tempo para reenvio</span>
       <br />

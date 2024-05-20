@@ -1,6 +1,6 @@
 <template>
   <div class="ListuserLayout">
-    <div class="row justify-center">
+    <div class="row justify-center" v-if="step == 'list'">
       <q-table
         flat
         bordered
@@ -8,12 +8,25 @@
         :rows="usersAdm"
         :columns="columnsAdm"
         :filter="filter"
-        no-data-label="Não encontrei nenhum usuároi para exibir."
+        no-data-label="Não encontrei nenhum usuário para exibir."
         no-results-label="Esse filtro não encontrou nenhum resultado"
         row-key="name"
         class="col-8"
         :loading="loading"
       >
+        <template v-slot:loading>
+          <q-inner-loading showing color="primary" />
+        </template>
+        <template v-slot:top-left>
+          <q-btn
+            color="primary"
+            :disable="loading"
+            label="Adicionar novo usuário"
+            @click="addUser"
+          />
+          <!-- <q-btn v-if="rows.length !== 0" class="q-ml-sm" color="primary" :disable="loading" label="Remove row" @click="removeRow" /> -->
+          <!-- <q-space /> -->
+        </template>
         <template v-slot:top-right>
           <q-input
             borderless
@@ -31,7 +44,7 @@
         <template v-slot:no-data="{ icon, message, filter }">
           <div class="full-width row flex-center text-accent q-gutter-sm">
             <q-icon size="2em" name="sentiment_dissatisfied" />
-            <span> Well this is sad... {{ message }} </span>
+            <span> Bem, ainda estamos procurando {{ message }} </span>
             <q-icon size="2em" :name="filter ? 'filter_b_and_w' : icon" />
           </div>
         </template>
@@ -42,22 +55,12 @@
                 v-if="!props.row.email_verified_at"
                 :token="props.row.access_token.id"
               />
-              <!-- <q-btn
-                v-if="!props.row.email_verified_at"
-                color="green"
-                label="Resend email"
-                @click="resendEmail(props.row)"
-              /> -->
-              <!-- <q-btn
-                color="red"
-                label="excluir"
-                @click="confirmAction(props.row)"
-              /> -->
             </div>
           </q-td>
         </template>
       </q-table>
     </div>
+    <create-useradm v-else @step-view="(v) => (step = v)" />
   </div>
 </template>
 
@@ -65,14 +68,17 @@
 import useAdm from "src/composables/system/Requests/useAdm";
 import { defineComponent, onMounted, ref } from "vue";
 import ResendEmail from "src/system/components/ResendEmail.vue";
+import CreateUseradm from "./CreateUseradm.vue";
 export default defineComponent({
   name: "ListuserLayout",
   components: {
     ResendEmail,
+    CreateUseradm,
   },
   setup() {
     const rows = [];
     const filter = ref("");
+    const step = ref("list");
     const { loading, usersAdm, getAllAdm } = useAdm();
     const columnsAdm = [
       {
@@ -114,7 +120,13 @@ export default defineComponent({
       //     return val == null ? "X" : val;
       //   },
       // },
-      { name: "actions", label: "Ações", align: "center", field: "action" },
+      {
+        name: "actions",
+        label: "Ações",
+        align: "center",
+        field: "action",
+        step,
+      },
     ];
     const resendEmail = (data) => {
       console.log(data);
@@ -122,8 +134,19 @@ export default defineComponent({
     onMounted(async () => {
       await getAllAdm();
     });
+    const addUser = () => {
+      step.value = "createUser";
+    };
 
-    return { usersAdm, columnsAdm, loading, filter, resendEmail };
+    return {
+      usersAdm,
+      columnsAdm,
+      step,
+      loading,
+      filter,
+      resendEmail,
+      addUser,
+    };
   },
   // Outras configurações do componente aqui
 });

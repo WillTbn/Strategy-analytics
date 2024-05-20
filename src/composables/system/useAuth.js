@@ -31,20 +31,23 @@ export default function useAuth() {
 
   const auth = async (value) => {
     loading.value = true;
-    api
-      .post("login", value)
-      .then((resp) => {
-        if (resp.data.token) {
-          setTokenCookie(resp.data)
-          useStore.setAbilities(resp.data.abilities)
-          router.replace({ path: "/system/" });
-        }
-      })
-      .catch((e) => {
-        errorNotify(e.response.data.message);
-        errors.value = e.response.data.errors;
-      })
-      .finally(() => (loading.value = false));
+    axios.get('http://localhost:8085/sanctum/csrf-cookie').then(response => {
+
+      api
+        .post("login", value)
+        .then((resp) => {
+          if (resp.data.token) {
+            setTokenCookie(resp.data)
+            useStore.setAbilities(resp.data.abilities)
+            router.replace({ path: "/system/" });
+          }
+        })
+        .catch((e) => {
+          errorNotify(e.response.data.message);
+          errors.value = e.response.data.errors;
+        })
+        .finally(() => (loading.value = false));
+    });
   };
   const verifyLogged = async () => {
     loading.value = true
