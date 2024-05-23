@@ -7,13 +7,13 @@
           rounded
           dense
           inline-actions
-          v-for="item in premium"
+          v-for="item in classic"
           :key="item"
         >
           <q-expansion-item
             expand-separator
-            :label="item.name"
-            :caption="item.date"
+            :label="item.title"
+            :caption="item.display_date_at"
             dense
             dense-toggle
             :label-lines="1"
@@ -21,8 +21,8 @@
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
                 <pdf-pattern
-                  :title="item.name"
-                  :documentPDF="item.doc"
+                  :title="item.title"
+                  :documentPDF="item.document"
                   :audio="item.audio"
                 />
               </q-card>
@@ -40,8 +40,8 @@
         >
           <q-expansion-item
             expand-separator
-            :label="item.name"
-            :caption="item.date"
+            :label="item.title"
+            :caption="item.display_date_at"
             dense
             dense-toggle
             :label-lines="1"
@@ -49,8 +49,8 @@
             <q-scroll-area style="height: 35rem">
               <q-card style="max-height: 35rem">
                 <pdf-pattern
-                  :title="item.name"
-                  :documentPDF="item.doc"
+                  :title="item.title"
+                  :documentPDF="item.document"
                   :audio="item.audio"
                 />
               </q-card>
@@ -65,6 +65,7 @@
 <script>
 // import { VuePDF, usePDF } from "@tato30/vue-pdf";
 import { useLayoutStore } from "src/stores/layout";
+import { useReportStore } from "src/stores/report";
 import { defineComponent, ref } from "vue";
 import PdfPattern from "../../components/PdfPattern.vue";
 import { storeToRefs } from "pinia";
@@ -76,6 +77,8 @@ export default defineComponent({
     // const { pdf, pages } = usePDF("doc/classic.pdf");
     const layoutStore = useLayoutStore();
     const { dashboard } = storeToRefs(layoutStore);
+    const reportStore = useReportStore();
+    const { data, crypto, classic } = storeToRefs(reportStore);
 
     const premium = [
       {
@@ -95,29 +98,31 @@ export default defineComponent({
         doc: "doc/report/classic/Relatorio_20.01.2024.pdf",
       },
     ];
-    const crypto = [
-      {
-        name: "Cryptomoedas ",
-        date: "28/12/2023",
-        doc: "doc/report/crypto/Relatorio_28.12.23.pdf",
-      },
-      {
-        name: "Cryptomoedas ",
-        date: "06/01/2024",
-        doc: "doc/report/crypto/Relatorio_06.01.2024.pdf",
-        audio: "audios/CP-SA.mp3",
-      },
-      {
-        name: "Cryptomoedas ",
-        date: "12/01/2024",
-        doc: "doc/report/crypto/Relatorio_12.01.2024.pdf",
-      },
-    ];
+    // const crypto = [
+    //   {
+    //     name: "Cryptomoedas ",
+    //     date: "28/12/2023",
+    //     doc: "doc/report/crypto/Relatorio_28.12.23.pdf",
+    //   },
+    //   {
+    //     name: "Cryptomoedas ",
+    //     date: "06/01/2024",
+    //     doc: "doc/report/crypto/Relatorio_06.01.2024.pdf",
+    //     audio: "audios/CP-SA.mp3",
+    //   },
+    //   {
+    //     name: "Cryptomoedas ",
+    //     date: "12/01/2024",
+    //     doc: "doc/report/crypto/Relatorio_12.01.2024.pdf",
+    //   },
+    // ];
 
     return {
       dashboard,
       premium,
       crypto,
+      data,
+      classic,
     };
   },
   // Outras configurações do componente aqui

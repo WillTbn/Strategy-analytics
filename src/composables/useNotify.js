@@ -2,12 +2,15 @@ import { useQuasar } from "quasar";
 
 export default function useNotify() {
   const $q = useQuasar();
-
+  const time = 2500;
+  const actions = { icon: 'close', 'aria-label': 'Dismiss' }
   const successNotify = (message) => {
     $q.notify({
       type: "positive",
       position: "top",
       message: message || "Tudo certo!",
+      actions: [actions],
+      timeout: time
     });
   };
 
@@ -16,6 +19,8 @@ export default function useNotify() {
       type: "negative",
       position: "top",
       message: message || "Falha!",
+      actions: [actions],
+      timeout: time
     });
   };
   const infoNotify = (message) => {
@@ -23,6 +28,8 @@ export default function useNotify() {
       type: "info",
       position: "top",
       message: message || "Informação adquirida!",
+      actions: [actions],
+      timeout: time
     });
   };
 

@@ -8,8 +8,8 @@
         :rows="data"
         :columns="columns"
         :filter="filter"
-        no-data-label="I didn't find anything for you"
-        no-results-label="The filter didn't uncover any results"
+        no-data-label="Não encontrei nada para você"
+        no-results-label="O filtro não descobriu nenhum resultado"
         row-key="name"
         class="col-8"
         :loading="loading"
@@ -125,9 +125,9 @@ export default defineComponent({
         sortable: true,
       },
       {
-        name: "description",
-        label: "Descrição",
-        field: "description",
+        name: "display_date_at",
+        label: "Data de exibição",
+        field: "display_date_at",
         align: "center",
         sortable: true,
       },

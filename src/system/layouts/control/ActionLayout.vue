@@ -12,7 +12,13 @@
     >
       <q-card>
         <q-card-section>
-          <div class="text-h6">Criando relatório</div>
+          <div class="row justify-between">
+            <div class="text-h6 col-6">Criando relatório</div>
+            <div class="col-1">
+              <q-btn icon="close" flat round color="red-14" v-close-popup />
+              <!-- <q-icon name="close" color="red-14" v-close-popup /> -->
+            </div>
+          </div>
         </q-card-section>
 
         <!-- <q-separator /> -->
@@ -41,6 +47,38 @@
                 class="col-12 q-py-lg"
                 standout="bg-teal text-white"
               />
+              <q-input
+                ref="displaytRef"
+                filled
+                v-model="newReport.display_date_at"
+                mask="date"
+                class="col-10 q-mb-lg"
+                :loading="loading"
+                :disable="loading"
+                label="Data de disponibilidade"
+                hint="Só a parte desta data será disponibilizado para os clientes."
+              >
+                <template v-slot:append>
+                  <q-icon name="event" class="cursor-pointer">
+                    <q-popup-proxy
+                      cover
+                      transition-show="scale"
+                      transition-hide="scale"
+                    >
+                      <q-date v-model="newReport.display_date_at">
+                        <div class="row items-center justify-end">
+                          <q-btn
+                            v-close-popup
+                            label="Close"
+                            color="primary"
+                            flat
+                          />
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </q-icon>
+                </template>
+              </q-input>
               <q-file
                 filled
                 ref="documentRef"
@@ -91,8 +129,8 @@
           <q-separator />
 
           <q-card-actions align="right">
-            <q-btn flat label="Decline" color="primary" v-close-popup />
-            <q-btn flat label="Accept" color="primary" type="submit" />
+            <!-- <q-btn flat label="fechar" color="red-14" v-close-popup /> -->
+            <q-btn flat label="Enviar" color="primary" type="submit" />
           </q-card-actions>
         </form>
         <q-inner-loading
@@ -124,6 +162,7 @@ export default defineComponent({
       type: null,
       document: null,
       audio: null,
+      display_date_at: null,
     });
     const options = ["crypto", "classic"];
     const onSubmit = async () => {

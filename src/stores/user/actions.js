@@ -3,7 +3,7 @@ const actions = {
   getAccount(payload) {
     let getJson = [];
     getJson = {
-      ...this.data.account.filter((a) => {
+      ...this.data.user_bank_accounts.filter((a) => {
         return a.id == payload;
       }),
     };
@@ -15,14 +15,15 @@ const actions = {
 
   setUserData(payload) {
     this.data = { ...payload };
-    console.log('roleID->', payload.role_id)
+    this.isDirty = { ...payload }
+    this.isDirtyData = { ...payload.account }
     this.NavbarMenu = payload.role_id == 3 ? 'client' : 'admin';
     this.wallet = payload.role_id === 3 ? { ...payload.user_wallet } : "";
     this.loan = payload.investment ? payload.loan : "";
     this.investment = payload.investment ? payload.investment : "";
   },
   setAvatarUpload(payload) {
-    this.data.avatar = payload;
+    this.data.account.avatar = payload;
   },
   setRouteHome(payload) {
     this.routeHome = payload

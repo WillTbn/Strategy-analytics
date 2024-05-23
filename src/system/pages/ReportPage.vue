@@ -29,8 +29,9 @@
 <script>
 import { storeToRefs } from "pinia";
 import { useLayoutStore } from "../../stores/layout";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import ReportallLayout from "../layouts/reports/ReportallLayout.vue";
+import useReport from "src/composables/system/Requests/useReport";
 
 export default defineComponent({
   name: "ReportPage",
@@ -47,7 +48,10 @@ export default defineComponent({
       { name: "Crypto", value: "crypto" },
       { name: "Selecionar data", value: "select" },
     ];
-
+    const { getAllreport } = useReport();
+    onMounted(async () => {
+      await getAllreport();
+    });
     return { tab: ref("mails"), links, reportSteps, goStep };
   },
   // Outras configurações do componente aqui

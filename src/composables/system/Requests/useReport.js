@@ -3,6 +3,7 @@ import useCookies from '../../useCookies'
 import { api, axios } from "boot/axios";
 import { ref } from "vue";
 import { useReportStore } from "src/stores/report";
+import { date } from 'quasar'
 export default function useReport() {
   const { errorNotify, successNotify } = useNotify()
   const { tokenCookie } = useCookies()
@@ -53,7 +54,7 @@ export default function useReport() {
   }
   const setReport = async (data) => {
     loading.value = true
-
+    data.display_date_at = date.formatDate(data.display_date_at, 'DD-MM-YYYY')
     let formData = new FormData();
     formData.append('document', data.document, data.document.name);
     if (data.audio)
@@ -61,6 +62,7 @@ export default function useReport() {
     formData.append('title', data.title);
     formData.append('description', data.description);
     formData.append('type', data.type);
+    formData.append('display_date_at', data.display_date_at);
     api.defaults.headers.common['Accept'] = 'form-data';
     api.defaults.headers.common['Accept'] = 'application/json';
 

@@ -12,7 +12,9 @@ const state = () => {
     investment: {},
     abilities: [],
     routeHome: "",
-    NavbarMenu: "adm"
+    NavbarMenu: "adm",
+    isDirty: {},
+    isDirtyData: {}
   };
 };
 

@@ -61,6 +61,7 @@
           class="col-4"
           :loading="loading"
           :disable="loading"
+          type="email"
         />
       </div>
 
@@ -83,13 +84,12 @@
           ref="birthdayRef"
           filled
           v-model="newUser.birthday"
-          mask="date"
-          :rules="['date']"
           class="col-3"
           :loading="loading"
           :disable="loading"
+          type="date"
         >
-          <template v-slot:append>
+          <!-- <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy
                 cover
@@ -103,7 +103,7 @@
                 </q-date>
               </q-popup-proxy>
             </q-icon>
-          </template>
+          </template> -->
         </q-input>
         <q-input
           ref="telephoneRef"

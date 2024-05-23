@@ -1,5 +1,11 @@
 <template>
   <div class="AvatarNew">
+    <q-inner-loading
+      :showing="loading"
+      label="Please wait..."
+      label-class="text-teal"
+      label-style="font-size: 1.1em"
+    />
     <q-avatar
       size="9rem"
       @mouseover="setUpload()"
@@ -25,8 +31,16 @@
         ref="avatar"
         name="avatar"
         @change="getImage($event)"
+        :disabled="loading"
       />
     </q-avatar>
+    <q-btn
+      label="upload"
+      color="indigo-14"
+      @click="upload"
+      v-if="buttonSubmit"
+      :disabled="loading"
+    />
   </div>
 </template>
 
@@ -35,13 +49,13 @@ import { defineComponent, ref } from "vue";
 import { useUserStore } from "../../../stores/user";
 import { storeToRefs } from "pinia";
 import useLogin from "../../../composables/useLogin";
+import useAccount from "../../../composables/system/Requests/useAccount";
 export default defineComponent({
   name: "AvatarNew",
   setup() {
     const hoverImage = ref(false);
     const setUpload = () => {
       hoverImage.value = true;
-      console.log("ESTOU O SET", hoverImage.value);
     };
     const form = ref({ name: "" });
     const setImage = ref(true);
@@ -50,6 +64,7 @@ export default defineComponent({
     const selectFile = ref("");
     const avatar = ref(null);
     const { UploadAvatar } = useLogin();
+    const { loading, sendAvatar, buttonSubmit } = useAccount();
     const openFile = () => {
       avatar.value.click();
     };
@@ -63,12 +78,17 @@ export default defineComponent({
       reader.onload = (e) => {
         UploadAvatar(e.target.result);
         setImage.value = false;
+        buttonSubmit.value = true;
       };
     };
-    const upload = () => {
+    const upload = async () => {
+      loading.value = true;
       let formData = new FormData();
       formData.append("avatar", selectFile.value, selectFile.value.name);
-
+      // setTimeout(() => {
+      //   loading.value = false;
+      // }, 1500);
+      await sendAvatar(formData);
       // const url = `${baseApiUrl}/${this.user.type}/avatar`;
       // const auth = JSON.parse(localStorage.getItem(userKey));
       // axios.defaults.headers.common["Authorization"] = `bearer ${auth.token}`;
@@ -94,6 +114,8 @@ export default defineComponent({
       getImage,
       upload,
       setUpload,
+      buttonSubmit,
+      loading,
     };
   },
   // Outras configurações do componente aqui
