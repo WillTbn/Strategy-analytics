@@ -5,6 +5,12 @@ const state = () => {
       password: "",
       expiration: null,
     },
+    authentication: {
+      token: "",
+      person: "",
+      password: "",
+      password_confirm: "",
+    },
     accountEdit: {},
     data: {},
     loan: {},
