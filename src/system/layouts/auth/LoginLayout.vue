@@ -11,7 +11,7 @@
           item-aligned
           mask="###.###.###-##"
           label="CPF ou CNPJ"
-          :rules="[(val) => !!val || 'Campo obrigatório']"
+          :rules="personRule"
           ref="personRef"
         />
         <q-input
@@ -34,7 +34,9 @@
             />
           </template>
         </q-input>
-        <p class="text-hover text-weight-bolder q-pa-lg">Esqueceu sua senha?</p>
+        <p class="text-hover text-weight-bolder q-pa-lg forgot" @click="forgot">
+          Esqueceu sua senha?
+        </p>
       </div>
     </div>
 
@@ -59,6 +61,12 @@
       </div>
     </div>
   </q-form>
+  <q-inner-loading
+    :showing="loading"
+    label="Por favor, aguarde..."
+    label-class="text-teal"
+    label-style="font-size: 1.1em"
+  />
 </template>
 
 <script>
@@ -68,6 +76,7 @@ import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
 // import useLogin from "../../composables/useLogin";
 import useAuth from "../../../composables/system/useAuth";
+import useRoles from "../../../composables/system/useRoles";
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import RegisterData from "src/system/components/RegisterData.vue";
 
@@ -77,11 +86,13 @@ export default defineComponent({
     HeaderAuth,
     RegisterData,
   },
-  setup() {
+  emits: ["status-login"],
+  setup(props, ctx) {
     const useStore = useUserStore();
-    const personRef = ref(null);
+    // const personRef = ref(null);
     const passwordRef = ref(null);
     const { auth, errors, loading } = useAuth();
+    const { personRef, personRule } = useRoles();
     // const isValidperson = computed(() => errors.person.length > 0);
     const { login } = storeToRefs(useStore);
     const route = useRoute();
@@ -92,6 +103,9 @@ export default defineComponent({
         auth(login.value);
       }
     };
+    const forgot = () => {
+      ctx.emit("status-login", "ForgotPassword");
+    };
     const isPwd = ref(true);
     onMounted(() => {});
     return {
@@ -100,8 +114,10 @@ export default defineComponent({
       loading,
       login,
       isPwd,
+      personRule,
       onSubmit,
       auth,
+      forgot,
     };
   },
   // Outras configurações do componente aqui

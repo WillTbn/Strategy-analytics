@@ -98,6 +98,7 @@
 <script>
 import { storeToRefs } from "pinia";
 import useToken from "src/composables/system/Requests/useToken";
+import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
 import { useUserStore } from "src/stores/user";
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
@@ -122,14 +123,9 @@ export default defineComponent({
     const { errorNotify } = useNotify();
     const passwordRef = ref(null);
     const passwordConfirmRef = ref(null);
+    const { fiedValidate, passwordConfirmRule, personRule } = useRoles();
     const isPwd = ref(true);
-    const fiedValidate = ref([
-      { id: 1, name: "Contém letra maiuscula", status: false },
-      { id: 2, name: "Contém letra minuscula", status: false },
-      { id: 3, name: "Contém caracters Especiais", status: false },
-      { id: 4, name: "Contém números", status: false },
-      { id: 5, name: "Contém tamanho superior a 8", status: false },
-    ]);
+
     // const verifyLength = computed(() => authentication.value.password.length);
     const verifyValue = computed(() => authentication.value.password);
     watch(verifyValue, (n, o) => {
@@ -149,15 +145,6 @@ export default defineComponent({
         ? (fiedValidate.value[4].status = true)
         : (fiedValidate.value[4].status = false);
     });
-    const passwordConfirmRule = [
-      (value) => !!value || "Campo é obrigatorio",
-      (value) =>
-        value == authentication.value.password || "Senhas não conferem",
-    ];
-    const personRule = [
-      (val) => !!val || "Campo é obrigatorio.",
-      (val) => val.length == 14 || "Campo incompleto",
-    ];
 
     const onSubmit = async () => {
       const rulesDetect = fiedValidate.value.filter((e) => e.status == false);

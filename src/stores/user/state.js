@@ -10,6 +10,7 @@ const state = () => {
       person: "",
       password: "",
       password_confirm: "",
+      password_confirmation: "",
     },
     accountEdit: {},
     data: {},

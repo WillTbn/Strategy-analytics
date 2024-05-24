@@ -1,7 +1,7 @@
 <template>
   <div
     class="HeaderAuth justify-center text-white row items-center content-center text-center"
-    style="height: 40vh"
+    :style="styleNew"
   >
     <div class="col-md-12 self-center">
       <logo-small />
@@ -21,6 +21,7 @@ export default defineComponent({
   },
   props: {
     text: { type: String },
+    styleNew: { type: String, default: "height: 40vh" },
   },
   setup() {
     return {};

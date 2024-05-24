@@ -59,10 +59,50 @@ export default function useToken() {
     }
   }
 
+  const forgotPassword = async (data) => {
+    loading.value = true
+    try {
+      const res = await api.post(`password/forgot`, { ...data });
+      if (res.data.status == 200) {
+        successNotify(res.data.message, 10000)
+      }
+
+      console.log(res.data.message)
+    } catch (e) {
+      console.log(e)
+      console.log(e.response.data.message)
+      errorNotify(e.response.data.message);
+    } finally {
+      loading.value = false
+    }
+  }
+  const passwordReset = async (data) => {
+    loading.value = true
+    try {
+      const res = await api.post(`password/reset`, { ...data });
+      if (res.data.status == 200) {
+        successNotify(res.data.message, 10000)
+        tokenStatus.value = "login"
+        router.push({ name: "login" });
+      }
+
+      console.log(res.data.message)
+    } catch (e) {
+      console.log(e)
+      console.log(e.response.data.message)
+      errorNotify(e.response.data.message);
+    } finally {
+      loading.value = false
+    }
+  }
+
+
   return {
     resendToken,
     validateToken,
     checkingToken,
+    forgotPassword,
+    passwordReset,
     loading,
     tokenStatus,
   }
