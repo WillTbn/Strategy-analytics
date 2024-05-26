@@ -17,6 +17,7 @@ export default function useRefForm() {
   const zipcodeRef = ref(null);
   const cityRef = ref(null);
   const countryRef = ref(null);
+  const statestreetRef = ref(null)
 
   const validateInput = () => {
     nameRef.value.validate();
@@ -28,6 +29,44 @@ export default function useRefForm() {
     phoneRef.value.validate();
     roleRef.value.validate();
   };
+  const validateDataInitial = () => {
+    nameRef.value.validate();
+    lastnameRef.value.validate();
+    emailRef.value.validate();
+    birthdayRef.value.validate();
+    personRef.value.validate();
+    genreRef.value.validate();
+    phoneRef.value.validate();
+  }
+  const validateRegisterAddress = () => {
+    zipcodeRef.value.validate()
+    streetRef.value.validate()
+    districtRef.value.validate()
+    statestreetRef.value.validate()
+    cityRef.value.validate()
+    numberstreetRef.value.validate()
+  }
+  const validateDataAddresMsg = () => {
+    return (
+      zipcodeRef.value.hasError ||
+      streetRef.value.hasError ||
+      districtRef.value.hasError ||
+      statestreetRef.value.hasError ||
+      cityRef.value.hasError ||
+      numberstreetRef.value.hasError
+    );
+  }
+  const validateDataErrorMsg = () => {
+    return (
+      nameRef.value.hasError ||
+      lastnameRef.value.hasError ||
+      emailRef.value.hasError ||
+      birthdayRef.value.hasError ||
+      personRef.value.hasError ||
+      genreRef.value.hasError ||
+      phoneRef.value.hasError
+    );
+  }
   const validateErrorMsg = () => {
     return (
       nameRef.value.hasError ||
@@ -52,6 +91,12 @@ export default function useRefForm() {
   ];
   const optionNot = ["accepted", "refused"];
   return {
+    validateInput,
+    validateErrorMsg,
+    validateDataInitial,
+    validateDataErrorMsg,
+    validateRegisterAddress,
+    validateDataAddresMsg,
     nameRef,
     lastnameRef,
     emailRef,
@@ -60,10 +105,16 @@ export default function useRefForm() {
     genreRef,
     phoneRef,
     roleRef,
-    validateInput,
-    validateErrorMsg,
     optionGenre,
     optionRole,
-    optionNot
+    optionNot,
+    telephoneRef,
+    streetRef,
+    numberstreetRef,
+    districtRef,
+    zipcodeRef,
+    cityRef,
+    countryRef,
+    statestreetRef
   }
 }

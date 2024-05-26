@@ -66,6 +66,11 @@ const routes = [
     component: () => import("../system/pages/LoginPage.vue"),
   },
   {
+    path: "/register",
+    name: "register",
+    component: () => import("../system/pages/RegisterPage.vue"),
+  },
+  {
     path: "/system/",
     component: () => import("../system/layouts/MainLayout.vue"),
     props: true,

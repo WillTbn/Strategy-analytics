@@ -41,6 +41,14 @@
     </div>
 
     <div class="row justify-center text-white text-center text-bolder">
+      <div class="col-12">
+        <p
+          class="text-hover text-weight-bolder q-pa-lg forgot"
+          @click="goRegister"
+        >
+          Registe-se
+        </p>
+      </div>
       <div class="col-md-12 self-center q-mt-lg">
         <q-btn
           color="secondary"
@@ -73,7 +81,7 @@
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useUserStore } from "../../../stores/user";
 import { storeToRefs } from "pinia";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 // import useLogin from "../../composables/useLogin";
 import useAuth from "../../../composables/system/useAuth";
 import useRoles from "../../../composables/system/useRoles";
@@ -96,12 +104,16 @@ export default defineComponent({
     // const isValidperson = computed(() => errors.person.length > 0);
     const { login } = storeToRefs(useStore);
     const route = useRoute();
+    const router = useRouter();
     const onSubmit = () => {
       personRef.value.validate();
       passwordRef.value.validate();
       if (!personRef.value.hasError || !passwordRef.value.hasError) {
         auth(login.value);
       }
+    };
+    const goRegister = () => {
+      router.replace({ name: "register" });
     };
     const forgot = () => {
       ctx.emit("status-login", "ForgotPassword");
@@ -118,6 +130,7 @@ export default defineComponent({
       onSubmit,
       auth,
       forgot,
+      goRegister,
     };
   },
   // Outras configurações do componente aqui
