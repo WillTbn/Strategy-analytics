@@ -31,8 +31,11 @@ export default function useAuth() {
 
   const auth = async (value) => {
     loading.value = true;
+    axios.defaults.headers.common['Accept'] = 'application/json';
+    axios.defaults.withCredentials = true;
+    axios.defaults.withXSRFToken = true;
     axios.get('http://localhost:8085/sanctum/csrf-cookie').then(response => {
-
+      console.log(response)
       api
         .post("login", value)
         .then((resp) => {
@@ -47,7 +50,10 @@ export default function useAuth() {
           errors.value = e.response.data.errors;
         })
         .finally(() => (loading.value = false));
-    });
+    }).catch((e) => {
+      errorNotify('Error ao authentificar csrf ');
+      console.log(e)
+    }).finally(() => loading.value = false);
   };
   const verifyLogged = async () => {
     loading.value = true

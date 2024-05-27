@@ -19,8 +19,6 @@ export default boot(({ app }) => {
   // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
   //       so you won't necessarily have to import axios in each vue file
   api.defaults.headers.common['Accept'] = 'application/json';
-  axios.defaults.withCredentials = true;
-  axios.defaults.withXSRFToken = true;
   api.defaults.withCredentials = true;
   api.defaults.withXSRFToken = true;
   app.config.globalProperties.$api = api;

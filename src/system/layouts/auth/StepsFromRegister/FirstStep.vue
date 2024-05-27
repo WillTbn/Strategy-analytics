@@ -131,6 +131,18 @@
           class="col-md-3 col-sm-10"
         />
       </div>
+      <div class="row">
+        <div class="col-3 self-center">
+          <q-btn
+            no-caps
+            dense
+            outline
+            color="white"
+            :to="{ name: 'login' }"
+            label="Volta tela Login"
+          />
+        </div>
+      </div>
       <div class="row justify-center text-white text-center text-bolder">
         <div class="col-md-12 self-center q-mt-lg">
           <q-btn

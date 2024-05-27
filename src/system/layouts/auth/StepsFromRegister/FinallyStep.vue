@@ -14,6 +14,8 @@
           item-aligned
           :type="isPwd ? 'password' : 'text'"
           :rules="[(val) => !!val || 'Campo não atende os requisitos.']"
+          :loading="loading"
+          :disable="loading"
           ref="passwordRef"
         >
           <template v-slot:append>
@@ -43,6 +45,8 @@
           :type="isPwd ? 'password' : 'text'"
           :rules="passwordConfirmRule"
           ref="passwordConfirmRef"
+          :loading="loading"
+          :disable="loading"
         >
           <template v-slot:append>
             <q-icon
@@ -85,6 +89,12 @@
         />
       </q-form>
     </div>
+    <q-dialog
+      v-model="dialogWelcome"
+      backdrop-filter="blur(10px) saturate(250%)"
+    >
+      <welcome-msg />
+    </q-dialog>
   </div>
 </template>
 <script>
@@ -96,18 +106,20 @@ import useRefForm from "src/composables/system/Requests/useRefForm";
 import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
 import ItensPassword from "src/system/components/auth/ItensPassword.vue";
-
+import WelcomeMsg from "./WelcomeMsg.vue";
 export default defineComponent({
   name: "FinallyStep",
   components: {
     ItensPassword,
+    WelcomeMsg,
   },
   setup() {
-    const { loading } = useRegister();
+    const { loading, registration, registrationStatus } = useRegister();
     const userStore = useUserStore();
     const { register } = storeToRefs(userStore);
     const { infoNotify, errorNotify } = useNotify();
     const { optionNot } = useRefForm();
+    const dialogWelcome = ref(false);
 
     const { fiedValidate, passwordConfirmRef, passwordRef, notificationsRef } =
       useRoles();
@@ -148,7 +160,9 @@ export default defineComponent({
       register.value.name =
         register.value.FirstName + " " + register.value.lastName;
 
+      await registration(register.value);
       console.log(register.value);
+      dialogWelcome.value = true;
       //ckePass##2
       // await passwordReset(authentication.value);
       // ctx.emit("status-login", tokenStatus.value);
@@ -164,6 +178,8 @@ export default defineComponent({
       onSubmit,
       register,
       fiedValidate,
+      registrationStatus,
+      dialogWelcome,
     };
   },
 });

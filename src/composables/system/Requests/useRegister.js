@@ -4,9 +4,8 @@ import useNotify from 'src/composables/useNotify'
 export default function useRegister() {
   const loading = ref(false)
   const statusPerson = ref(false)
+  const registrationStatus = ref(false)
   const { infoNotify, errorNotify, successNotify } = useNotify()
-  // https://viacep.com.br/ws/22710380/json/
-  const urlViaCep = 'https://viacep.com.br/ws/'
   const validateCPF = async (person) => {
     try {
       loading.value = true
@@ -38,7 +37,26 @@ export default function useRegister() {
       loading.value = false
     }
   }
+  const registration = async (data) => {
+    try {
+      loading.value = true
+      const res = await api.post('register', { ...data })
+      console.log('resposta -> ', res.data)
+      successNotify(res.data.message, 40000)
+      registrationStatus.value = true
+    } catch (e) {
+      console.log(e)
+      errorNotify('Erro ao tentar registar.')
+
+    } finally {
+      loading.value = false
+    }
+  }
   return {
-    validateCPF, statusPerson, loading, viaCEP
+    validateCPF,
+    viaCEP,
+    registration,
+    registrationStatus,
+    statusPerson, loading,
   }
 }
