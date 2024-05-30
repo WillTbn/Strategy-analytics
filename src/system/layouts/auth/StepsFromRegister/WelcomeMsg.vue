@@ -1,7 +1,7 @@
 <template>
   <div class="WelcomeMsg">
     <div class="row justify-center text-white">
-      <header-auth :text="text" styleNew="height:25vh" />
+      <header-auth :text="text" />
       <div class="col-10 col-sm-12 col-md-10">
         <p class="text-h6 text-white">
           Você sera redirecionado em {{ counter }} para tela de login

@@ -3,11 +3,11 @@ import { Cookies } from "quasar";
 const getters = {
   // doubleCount: (state) => state.counter * 2,
   getInvestiment: (state) => {
-    return state.data.investment.initial;
+    return state.data.user_wallet.current_investment;
   },
   currentInvestimentSeries: (state) => (arraySeries) => {
     console.log("Estou aqui", arraySeries);
-    let investmentInitial = state.data.investment.initial;
+    let investmentInitial = state.data.user_wallet.current_investment;
     const arrayReturn = [];
     for (let i = 0; i < arraySeries.length; i++) {
       let valueNew;
@@ -40,6 +40,9 @@ const getters = {
     if (state.abilities.length > 0) {
       return state.abilities.includes('all-access') ?? state.abilities.includes(params)
     }
+  },
+  authEmailCode: (state) => {
+    return state.data.email_verified_at;
   }
 };
 

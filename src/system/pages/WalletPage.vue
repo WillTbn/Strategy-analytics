@@ -25,47 +25,25 @@
       </div>
     </div>
     <div class="row q-pa-xl">
-      <div class="col card-border">
-        <q-icon
-          name="fa-solid fa-money-bill-transfer"
-          class="q-pa-sm"
-          size="2rem"
-        />
+      <div
+        class="col-md q-my-md col-xl-10 card-border"
+        v-for="item in optionsLinks"
+        :key="item"
+      >
+        <q-icon :name="item.icon" class="q-pa-sm" size="2rem" />
         <br />
-        <span class="text-h5">Depósito</span>
-      </div>
-      <div class="col card-border">
-        <q-icon
-          name="fa-solid fa-arrow-right-arrow-left"
-          class="q-pa-sm"
-          size="2rem"
-        />
-        <br />
-        <span class="text-h5">Câmbio</span>
-      </div>
-      <div class="col card-border">
-        <q-icon name="fa-solid fa-arrow-down" class="q-pa-sm" size="2rem" />
-        <br />
-        <span class="text-h5">Retirada</span>
+        <span class="text-h5">{{ item.name }}</span>
       </div>
     </div>
     <div class="row q-pa-xl">
       <balance-items
-        icon="img:../../system/icons/bandeira-do-brasil.png"
-        title="Brasil"
-      />
-      <balance-items
-        icon="fa-solid fa-money-bill-wave"
-        title="investimentos"
-        cipher="$"
-      />
-      <balance-items
-        icon="fa-solid fa-building-columns"
-        title="Banking"
-        cipher="U$"
+        v-for="balance in optionsBalance"
+        :key="balance"
+        :icon="balance.icon"
+        :title="balance.name"
+        :cipher="balance.cipher"
       />
     </div>
-    <!-- http://localhost:9010/system/icons/brasil.svg -->
   </div>
 </template>
 
@@ -74,10 +52,18 @@ import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
 import { onMounted, ref } from "vue";
 import BalanceItems from "../components/wallet/BalanceItems.vue";
-
-// import WalletLayout from "../layouts/wallet/WalletLayout.vue";
 const userStore = useUserStore();
 const { data, wallet, investment } = storeToRefs(userStore);
+const optionsLinks = [
+  { name: "Depósito", icon: "fa-solid fa-money-bill-transfer" },
+  { name: "Câmbio", icon: "fa-solid fa-arrow-right-arrow-left" },
+  { name: "Retirada", icon: "fa-solid fa-arrow-down" },
+];
+const optionsBalance = [
+  { name: "Brasil", icon: "img:../../system/icons/bandeira-do-brasil.png" },
+  { name: "investimentos", icon: "fa-solid fa-money-bill-wave", cipher: "$" },
+  { name: "Banking", icon: "fa-solid fa-building-columns", cipher: "U$" },
+];
 </script>
 
 <style scoped>

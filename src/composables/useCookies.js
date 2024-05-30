@@ -6,7 +6,7 @@ import { useUserStore } from "src/stores/user";
 export default function useCookies() {
   const setOptionsCookie = { path: '/', secure: true, sameSite: "None" }
   const tokenName = process.env.COOKIE_TOKEN_NAME ?? "SA_token";
-  const userCookie = process.env.COOKIE_TOKEN_NAME ?? "SA_user";
+  const userCookie = process.env.COOKIE_USER_DATA ?? "SA_user";
   const hasTokenCookie = Cookies.has(tokenName);
   const hasUserCookie = Cookies.has(userCookie);
   const getuserCookie = Cookies.get(userCookie);

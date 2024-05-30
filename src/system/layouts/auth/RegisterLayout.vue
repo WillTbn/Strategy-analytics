@@ -1,9 +1,6 @@
 <template>
   <div class="RegisterLayout">
-    <header-auth
-      text="Preencha com seus dados para registra-se"
-      styleNew="height:25vh"
-    />
+    <header-auth text="Preencha com seus dados para registra-se" />
     <div class="q-pa-md" color="transparent">
       <q-stepper
         v-model="step"
@@ -13,6 +10,7 @@
         flat
         class="bg-transparent"
         color="light-blue-13"
+        contracted
       >
         <template v-slot:navigation>
           <q-stepper-navigation>

@@ -10,18 +10,16 @@
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
-import useAuth from "./composables/system/useAuth";
 export default defineComponent({
   name: "App",
   setup() {
     const route = useRoute;
     const mode = process.env.VERSION_APP;
-    onMounted(() => {
-      console.log("isso é no app->", process.env);
+    onBeforeMount(() => {
+      console.log("Essa é a versão ->", process.env.VERSION_APP);
     });
-
     return {
       mode,
       route,

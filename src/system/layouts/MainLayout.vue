@@ -2,23 +2,31 @@
   <q-layout view="lHh lpR lFf" :class="statusDark">
     <!-- <menusidebar-layout /> -->
     <!-- <menubar-layout /> -->
-    <navbar-layout
-      :key="route.name"
-      :dark="Dark.isActive"
-      v-if="!loading || piniaDataLoaded"
-    />
+    <navbar-layout :key="route.name" :dark="Dark.isActive" v-if="!loading" />
     <q-page-container padding>
-      <router-view v-if="!loading || piniaDataLoaded" v-slot="{ Component }">
+      <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.name"></component>
         </transition>
       </router-view>
     </q-page-container>
     <q-inner-loading
-      :showing="loading && !piniaDataLoaded"
+      :showing="loading"
       label-class="text-teal"
       label-style="font-size: 1.1em"
     />
+    <q-dialog
+      v-if="piniaDataLoaded"
+      v-model="codeDialog"
+      maximized
+      transition-show="slide-up"
+      transition-hide="slide-down"
+      backdrop-filter="blur(10px) saturate(250%)"
+    >
+      <q-card class="bg-transparent text-white">
+        <code-email />
+      </q-card>
+    </q-dialog>
   </q-layout>
 </template>
 
@@ -35,12 +43,13 @@ import useStates from "../../composables/useStates";
 import { useLayoutStore } from "src/stores/layout";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
+import CodeEmail from "./auth/CodeEmail.vue";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
 
 export default defineComponent({
-  components: { NavbarLayout },
+  components: { NavbarLayout, CodeEmail },
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -51,6 +60,9 @@ export default defineComponent({
     const userStore = useUserStore();
     const { routeHome, data } = storeToRefs(userStore);
     const piniaDataLoaded = ref(false);
+    const codeDialog = computed(() => {
+      return data.value.email_verified_at == null ? true : false;
+    });
     watch(routeHome, (after, before) => {
       console.log("estou o watch -> ", after);
       if (routeHome.value) {
@@ -59,6 +71,8 @@ export default defineComponent({
         router.push({ name: routeHome.value });
       }
     });
+    // const verify = computed(() => return data)
+
     onMounted(async () => {
       layout.updatePdfScale(dimension(window.innerWidth));
       layout.setScreenWidth(dimensionHeight(window.innerHeight));
@@ -71,6 +85,13 @@ export default defineComponent({
         router.push({ name: routeHome.value });
         piniaDataLoaded.value = true;
       }
+      // console.log("vendo", data.value.email_verified_at);
+      // if (data.value.email_verified_at && userStore.authEmailCode == null) {
+      //   codeDialog.value = true;
+      //   console.log("VAMOS ABRE O DIALOG COM O CODIGO ");
+      // } else {
+      //   codeDialog.value = false;
+      // }
 
       getDarkMode();
     });
@@ -80,6 +101,7 @@ export default defineComponent({
       loading,
       routeHome,
       Dark,
+      codeDialog,
       statusDark: computed(() =>
         Dark.isActive ? "bg-system-dark" : "bg-system"
       ),

@@ -9,7 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require("quasar/wrappers");
-require("dotenv").config();
+
 module.exports = configure(function (ctx) {
   return {
     eslint: {
@@ -64,11 +64,23 @@ module.exports = configure(function (ctx) {
 
       publicPath: "/",
       // analyze: true,
-      env: {
-        ENVELOMENT: process.env.ENVELOMENT,
-        VERSION_APP: process.env.VERSION_APP,
-        API_URL: process.env.API_URL,
-      },
+      env:
+        ctx.dev ? {
+          VERSION_APP: 2.0,
+          API_URL: "http://localhost:8085/api/",
+          COOKIE_TOKEN_NAME: "SA_token",
+          COOKIE_USER_DATA: "SA_user",
+          WEB_URL: process.env.WEB_URL,
+          API_URL_CORS: "http://localhost:8085/sanctum/csrf-cookie"
+        } : {
+          VERSION_APP: 1.0,
+          API_URL: "https://testapi.strategyanalytics.com.br/api/",
+          COOKIE_TOKEN_NAME: "SA_token",
+          COOKIE_USER_DATA: "SA_user",
+          WEB_URL: process.env.WEB_URL,
+          API_URL_CORS: "https://testapi.strategyanalytics.com.br/sanctum/csrf-cookie"
+        }
+      ,
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

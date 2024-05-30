@@ -15,7 +15,7 @@
           ref="nameRef"
           :loading="loading"
           :disable="loading"
-          class="col-md-3 col-sm-10"
+          class="col-6 col-md-3 col-sm-6"
         />
         <q-input
           dense
@@ -29,7 +29,7 @@
           ref="lastnameRef"
           :loading="loading"
           :disable="loading"
-          class="col-md-3 col-sm-10"
+          class="col-6 col-md-3 col-sm-6"
         />
         <q-input
           dense
@@ -43,7 +43,7 @@
           ref="emailRef"
           :loading="loading"
           :disable="loading"
-          class="col-md-3 col-sm-10"
+          class="col-10 col-md-3 col-sm-10"
           :rules="emailRule"
         />
         <!-- </div> -->
@@ -62,13 +62,13 @@
           ref="personRef"
           :loading="loading"
           :disable="loading"
-          class="col-md-3 col-sm-10"
+          class="col-md-3 col-10"
         />
         <q-input
           dense
           ref="birthdayRef"
           v-model="register.birthday"
-          class="col-md-3 col-sm-10"
+          class="col-md-3 col-10"
           :loading="loading"
           :disable="loading"
           type="date"
@@ -95,7 +95,7 @@
           map-options
           label="Qual genero se identificar? *"
           lazy-rules
-          class="col-md-3 col-sm-10"
+          class="col-md-3 col-10"
           :loading="loading"
           :disable="loading"
           :rules="requiredRole"
@@ -107,7 +107,7 @@
           v-model="register.telephone"
           label="Telefone(opcional)"
           lazy-rules
-          class="col-3"
+          class="col-md-3 col-10"
           mask="(##) ####-####"
           input-class="text-white"
           :loading="loading"
@@ -128,11 +128,11 @@
           ref="phoneRef"
           :loading="loading"
           :disable="loading"
-          class="col-md-3 col-sm-10"
+          class="col-md-3 col-10"
         />
       </div>
       <div class="row">
-        <div class="col-3 self-center">
+        <div class="col-md-3 col-10 self-center">
           <q-btn
             no-caps
             dense
@@ -211,9 +211,14 @@ export default defineComponent({
         infoNotify("Esta esquecendo de preenche algum campo");
         return;
       }
-      await validateCPF(register.value.person);
-      console.log("Aqui os dados->", statusPerson);
-      if (statusPerson.value) ctx.emit("step-current", 2);
+      try {
+        await validateCPF(register.value.person);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        if (statusPerson.value) ctx.emit("step-current", 2);
+        console.log("Aqui os dados->", statusPerson.value);
+      }
     };
 
     return {

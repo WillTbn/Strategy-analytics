@@ -43,6 +43,9 @@ const actions = {
     this.abilities = {}
     this.routeHome = ""
     this.NavbarMenu = "adm"
+  },
+  setEmailVerified(payload) {
+    this.data.email_verified_at = payload
   }
 };
 

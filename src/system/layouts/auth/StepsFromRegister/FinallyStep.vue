@@ -159,10 +159,14 @@ export default defineComponent({
 
       register.value.name =
         register.value.FirstName + " " + register.value.lastName;
-
-      await registration(register.value);
+      try {
+        await registration(register.value);
+        // console.log("res aqui -> ", res);
+        dialogWelcome.value = registrationStatus.value;
+      } catch (e) {
+        console.log(e);
+      }
       console.log(register.value);
-      dialogWelcome.value = true;
       //ckePass##2
       // await passwordReset(authentication.value);
       // ctx.emit("status-login", tokenStatus.value);

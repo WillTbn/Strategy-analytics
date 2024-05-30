@@ -34,11 +34,14 @@ export default function useAuth() {
     axios.defaults.headers.common['Accept'] = 'application/json';
     axios.defaults.withCredentials = true;
     axios.defaults.withXSRFToken = true;
-    axios.get('http://localhost:8085/sanctum/csrf-cookie').then(response => {
-      console.log(response)
+    const urlCors = process.env.API_URL_CORS
+    console.log('ESSE é o cors url ->', urlCors)
+    axios.get(urlCors).then(response => {
+      console.log('essa é a resposta do cors ->', response)
       api
         .post("login", value)
         .then((resp) => {
+          console.log('resposta do login -> ', resp)
           if (resp.data.token) {
             setTokenCookie(resp.data)
             useStore.setAbilities(resp.data.abilities)
@@ -77,6 +80,7 @@ export default function useAuth() {
     }
   };
   const setLogout = async () => {
+    loading.value = true
     const useTokenData = Cookies.get(tokenName);
 
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
@@ -85,7 +89,10 @@ export default function useAuth() {
       infoNotify(resp.data.message)
     })
       .catch(e => console.log(e))
-      .finally(() => router.replace({ path: "/login" }));
+      .finally(() => {
+        loading.value = true
+        router.replace({ path: "/login" })
+      });
   };
   return {
     auth,
