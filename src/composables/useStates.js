@@ -1,9 +1,15 @@
-import { Platform } from "quasar";
+import { Platform, useQuasar } from "quasar";
 import { useUserStore } from "src/stores/user";
 import { useRoute } from "vue-router";
 export default function useStates() {
   const useStore = useUserStore()
   const route = useRoute()
+  const $q = useQuasar()
+  const ParttensLoading = {
+    message: 'Doing something. Please Wait...',
+    boxClass: 'bg-transparent',
+    spinnerColor: 'primary'
+  }
   const get = async (country) => {
     const states = {
       1: [
@@ -181,6 +187,20 @@ export default function useStates() {
     console.log('rediredRoute ->', nameRoute[role_id].name)
     useStore.setRouteHome(nameRoute[role_id].name)
   }
+  const showLoading = (
+    message = ParttensLoading.message,
+    boxClass = ParttensLoading.boxClass,
+    spinnerColor = ParttensLoading.spinnerColor
+  ) => {
+    $q.loading.show({
+      message: message,
+      boxClass: boxClass,
+      spinnerColor: spinnerColor
+    })
+  }
+  const hideLoading = () => {
+    $q.loading.hide()
+  }
   return {
     redirectRouteForUser,
     get,
@@ -188,5 +208,7 @@ export default function useStates() {
     dimensionHeight,
     viewport,
     detectTablet,
+    showLoading,
+    hideLoading
   };
 }

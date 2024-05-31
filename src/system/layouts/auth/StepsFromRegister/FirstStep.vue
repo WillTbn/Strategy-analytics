@@ -1,15 +1,22 @@
 <template>
   <div class="FirstStep">
+    <div class="row">
+      <div class="col-md-3 col-10 self-center">
+        <q-btn
+          no-caps
+          outline
+          color="white"
+          :to="{ name: 'login' }"
+          icon="fa-solid fa-arrow-left"
+        />
+      </div>
+    </div>
     <q-form @submit.prevent.stop="onSubmit">
       <div class="row justify-center text-white">
         <!-- <div class="col-md-4 col-sm-10 self-center"> -->
         <q-input
-          dense
-          v-model="register.FirstName"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
+          v-bind="{ ...$inputStyle }"
+          v-model.lazy="register.FirstName"
           label="Nome *"
           :rules="nameRule"
           ref="nameRef"
@@ -18,12 +25,8 @@
           class="col-6 col-md-3 col-sm-6"
         />
         <q-input
-          dense
+          v-bind="{ ...$inputStyle }"
           v-model="register.lastName"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
           label="Sobrenome *"
           :rules="nameRule"
           ref="lastnameRef"
@@ -32,30 +35,8 @@
           class="col-6 col-md-3 col-sm-6"
         />
         <q-input
-          dense
-          v-model="register.email"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
-          label="Email *"
-          type="email"
-          ref="emailRef"
-          :loading="loading"
-          :disable="loading"
-          class="col-10 col-md-3 col-sm-10"
-          :rules="emailRule"
-        />
-        <!-- </div> -->
-      </div>
-      <div class="row justify-center q-gutter-sm q-my-lg">
-        <q-input
-          dense
           v-model="register.person"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
+          v-bind="{ ...$inputStyle }"
           mask="###.###.###-##"
           label="CPF *"
           :rules="personRule"
@@ -64,64 +45,38 @@
           :disable="loading"
           class="col-md-3 col-10"
         />
+        <!-- </div> -->
+      </div>
+      <div class="row justify-center q-gutter-sm q-my-lg">
         <q-input
-          dense
+          v-model="register.email"
+          v-bind="{ ...$inputStyle }"
+          label="Email *"
+          type="email"
+          ref="emailRef"
+          :loading="loading"
+          :disable="loading"
+          class="col-10 col-md-3 col-sm-10"
+          :rules="emailRule"
+        />
+
+        <q-input
+          v-bind="{ ...$inputStyle }"
+          navigation-min-year-month="1990/07"
           ref="birthdayRef"
           v-model="register.birthday"
-          class="col-md-3 col-10"
           :loading="loading"
           :disable="loading"
           type="date"
-          label="Data de nascimento *"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
           :rules="requiredRole"
-        />
-
-        <q-select
-          item-aligned
-          dense
-          ref="genreRef"
-          v-model="register.genre"
-          transition-show="flip-up"
-          transition-hide="flip-down"
-          label-color="white"
-          :options="optionGenre"
-          option-value="value"
-          option-label="label"
-          emit-value
-          map-options
-          label="Qual genero se identificar? *"
-          lazy-rules
-          class="col-md-3 col-10"
-          :loading="loading"
-          :disable="loading"
-          :rules="requiredRole"
+          label="Data de Nascimento"
+          class="col-md-3 col-10 text-white"
         />
       </div>
       <div class="row justify-center">
         <q-input
-          ref="telephoneRef"
-          v-model="register.telephone"
-          label="Telefone(opcional)"
-          lazy-rules
-          class="col-md-3 col-10"
-          mask="(##) ####-####"
-          input-class="text-white"
-          :loading="loading"
-          :disable="loading"
-          color="white"
-          label-color="white"
-          item-aligned
-        />
-        <q-input
           v-model="register.phone"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
+          v-bind="{ ...$inputStyle }"
           label="Celular de contato *"
           :rules="phoneRole"
           mask="(##) # ####-####"
@@ -131,24 +86,13 @@
           class="col-md-3 col-10"
         />
       </div>
-      <div class="row">
-        <div class="col-md-3 col-10 self-center">
-          <q-btn
-            no-caps
-            dense
-            outline
-            color="white"
-            :to="{ name: 'login' }"
-            label="Volta tela Login"
-          />
-        </div>
-      </div>
+
       <div class="row justify-center text-white text-center text-bolder">
         <div class="col-md-12 self-center q-mt-lg">
           <q-btn
             color="secondary"
             padding="0.5rem 3rem"
-            text-color="white"
+            text-
             label="continuar"
             type="submit"
             :disabled="loading"
@@ -165,6 +109,7 @@
       </div>
     </q-form>
     <q-inner-loading
+      dark
       :showing="loading"
       label="Por favor, aguarde..."
       label-class="text-teal"
@@ -191,7 +136,6 @@ export default defineComponent({
       emailRef,
       birthdayRef,
       personRef,
-      genreRef,
       phoneRef,
       telephoneRef,
       optionGenre,
@@ -212,7 +156,11 @@ export default defineComponent({
         return;
       }
       try {
-        await validateCPF(register.value.person);
+        await validateCPF(
+          register.value.person,
+          register.value.email,
+          register.value.birthday
+        );
       } catch (e) {
         console.log(e);
       } finally {
@@ -231,7 +179,6 @@ export default defineComponent({
       emailRef,
       birthdayRef,
       personRef,
-      genreRef,
       phoneRef,
       telephoneRef,
       optionGenre,
@@ -244,4 +191,28 @@ export default defineComponent({
   },
 });
 </script>
-<style></style>
+<style>
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -moz-text-fill-color: #000 !important;
+}
+
+input:-ms-autofill,
+textarea:-ms-autofill,
+select:-ms-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -ms-text-fill-color: #000 !important;
+}
+</style>

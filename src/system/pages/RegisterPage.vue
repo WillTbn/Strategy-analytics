@@ -13,7 +13,8 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import useAuth from "../../composables/system/useAuth";
 import RegisterLayout from "../layouts/auth/RegisterLayout.vue";
-const { loading } = useAuth();
+// const { loading } = useAuth();
+const loading = ref(true);
 </script>
 <style>
 .q-field__native,

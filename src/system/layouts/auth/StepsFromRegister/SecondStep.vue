@@ -11,9 +11,7 @@
           :loading="loading"
           :disable="loading"
           @blur="searchCep"
-          input-class="text-white"
-          label-color="white"
-          color="white"
+          v-bind="{ ...$inputStyle }"
           :rules="zipCodeRule"
         />
         <q-input
@@ -23,9 +21,7 @@
           class="col-10 col-md-3"
           :loading="loading"
           :disable="loading"
-          input-class="text-white"
-          label-color="white"
-          color="white"
+          v-bind="{ ...$inputStyle }"
         />
         <q-input
           ref="districtRef"
@@ -34,23 +30,19 @@
           class="col-10 col-md-3"
           :loading="loading"
           :disable="loading"
-          input-class="text-white"
-          label-color="white"
-          color="white"
+          v-bind="{ ...$inputStyle }"
         />
       </div>
       <div class="row text-white justify-center q-gutter-sm">
         <q-input
           ref="numberstreetRef"
           v-model="register.address_numbers"
-          label="Numero"
+          label="Numero *"
           class="col-3"
           :loading="loading"
           :disable="loading"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          :rules="[(val) => !!val || 'Campo numero é obrigatorio']"
+          v-bind="{ ...$inputStyle }"
+          :rules="[(val) => !!val || '']"
         />
         <q-input
           ref="cityRef"
@@ -59,9 +51,7 @@
           class="col-7 col-md-3"
           :loading="loading"
           :disable="loading"
-          input-class="text-white"
-          label-color="white"
-          color="white"
+          v-bind="{ ...$inputStyle }"
         />
         <q-input
           ref="statestreetRef"
@@ -70,9 +60,7 @@
           class="col-10 col-md-3"
           :loading="loading"
           :disable="loading"
-          input-class="text-white"
-          label-color="white"
-          color="white"
+          v-bind="{ ...$inputStyle }"
         />
       </div>
       <div class="row justify-end text-white text-bolder">
@@ -97,12 +85,6 @@
       </div>
     </q-form>
   </div>
-  <q-inner-loading
-    :showing="loading"
-    label="Por favor, aguarde..."
-    label-class="text-teal"
-    label-style="font-size: 1.1em"
-  />
 </template>
 <script>
 import { defineComponent, ref } from "vue";
@@ -147,10 +129,15 @@ export default defineComponent({
       }
       // await viaCEP(register.value.address_zip_code)
     };
+    const numberRole = [(val) => !!val || infoNotify("Estamos aqui")];
     const onSubmit = async () => {
       validateRegisterAddress();
       if (validateDataAddresMsg()) {
         infoNotify("Ops.. está esquecendo de preenche algum campo");
+        return;
+      }
+      if (!register.value.address_numbers) {
+        numberstreetRef.hasError = true;
         return;
       }
       ctx.emit("step-current", 3);
@@ -166,7 +153,9 @@ export default defineComponent({
       cityRef,
       numberstreetRef,
       zipCodeRule,
+      numberRole,
       onSubmit,
+      infoNotify,
     };
   },
 });

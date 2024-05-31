@@ -37,18 +37,18 @@
         <p class="text-hover text-weight-bolder q-pa-lg forgot" @click="forgot">
           Esqueceu sua senha?
         </p>
+        <div class="text-center">
+          <p
+            class="text-hover text-weight-bolder q-pa-lg forgot"
+            @click="goRegister"
+          >
+            Registre-se
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="row justify-center text-white text-center text-bolder">
-      <div class="col-12">
-        <p
-          class="text-hover text-weight-bolder q-pa-lg forgot"
-          @click="goRegister"
-        >
-          Registe-se
-        </p>
-      </div>
       <div class="col-md-12 self-center q-mt-lg">
         <q-btn
           color="secondary"
@@ -74,6 +74,7 @@
     label="Por favor, aguarde..."
     label-class="text-teal"
     label-style="font-size: 1.1em"
+    dark
   />
 </template>
 

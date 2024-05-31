@@ -9,7 +9,7 @@
         animated
         flat
         class="bg-transparent"
-        color="light-blue-13"
+        color="6"
         contracted
       >
         <template v-slot:navigation>
@@ -47,17 +47,11 @@
           <second-step @step-current="step = $event" />
         </q-step>
 
-        <q-step :name="3" title="Cria senha" icon="fa-solid fa-flag-checkered">
+        <q-step :name="3" title="Cria senha" icon="fa-solid fa-lock">
           <finally-step />
         </q-step>
       </q-stepper>
     </div>
-    <!-- <q-inner-loading
-      :showing="loading"
-      label="Por favor, aguarde..."
-      label-class="text-teal"
-      label-style="font-size: 1.1em"
-    /> -->
   </div>
 </template>
 

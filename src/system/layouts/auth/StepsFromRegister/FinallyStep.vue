@@ -5,13 +5,28 @@
         @submit.prevent.stop="onSubmit"
         class="col-md-4 col-sm-12 self-center"
       >
+        <q-select
+          ref="notificationsRef"
+          v-model="register.notifications"
+          transition-show="flip-up"
+          transition-hide="flip-down"
+          label="Receber notificações por e-mail*"
+          hint="campo obrigatório"
+          lazy-rules
+          :options="optionNot"
+          option-value="id"
+          option-label="label"
+          emit-value
+          map-options
+          class="col-3"
+          :loading="loading"
+          :disable="loading"
+          v-bind="{ ...$inputStyle }"
+        />
         <q-input
           v-model="register.password"
           label="Senha"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
+          v-bind="{ ...$inputStyle }"
           :type="isPwd ? 'password' : 'text'"
           :rules="[(val) => !!val || 'Campo não atende os requisitos.']"
           :loading="loading"
@@ -38,10 +53,7 @@
         <q-input
           v-model="register.password_confirmation"
           label="Confirma senha"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
+          v-bind="{ ...$inputStyle }"
           :type="isPwd ? 'password' : 'text'"
           :rules="passwordConfirmRule"
           ref="passwordConfirmRef"
@@ -57,26 +69,7 @@
             />
           </template>
         </q-input>
-        <q-select
-          ref="notificationsRef"
-          dense
-          item-aligned
-          v-model="register.notifications"
-          transition-show="flip-up"
-          transition-hide="flip-down"
-          label="Receber notificações por e-mail*"
-          hint="campo obrigatório"
-          lazy-rules
-          :options="optionNot"
-          option-value="id"
-          option-label="label"
-          emit-value
-          map-options
-          class="col-3"
-          :loading="loading"
-          :disable="loading"
-          label-color="white"
-        />
+
         <q-btn
           class="self-end q-mt-lg"
           color="secondary"

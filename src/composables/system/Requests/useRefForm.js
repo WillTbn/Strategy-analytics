@@ -7,7 +7,6 @@ export default function useRefForm() {
   const emailRef = ref(null);
   const birthdayRef = ref(null);
   const personRef = ref(null);
-  const genreRef = ref(null);
   const phoneRef = ref(null);
   const roleRef = ref(null);
   const telephoneRef = ref(null);
@@ -25,7 +24,6 @@ export default function useRefForm() {
     emailRef.value.validate();
     birthdayRef.value.validate();
     personRef.value.validate();
-    genreRef.value.validate();
     phoneRef.value.validate();
     roleRef.value.validate();
   };
@@ -35,7 +33,6 @@ export default function useRefForm() {
     emailRef.value.validate();
     birthdayRef.value.validate();
     personRef.value.validate();
-    genreRef.value.validate();
     phoneRef.value.validate();
   }
   const validateRegisterAddress = () => {
@@ -63,7 +60,6 @@ export default function useRefForm() {
       emailRef.value.hasError ||
       birthdayRef.value.hasError ||
       personRef.value.hasError ||
-      genreRef.value.hasError ||
       phoneRef.value.hasError
     );
   }
@@ -74,7 +70,6 @@ export default function useRefForm() {
       emailRef.value.hasError ||
       birthdayRef.value.hasError ||
       personRef.value.hasError ||
-      genreRef.value.hasError ||
       phoneRef.value.hasError ||
       roleRef.value.hasError
     );
@@ -89,7 +84,11 @@ export default function useRefForm() {
     { label: "Master", value: "1", id: 1 },
     { label: "Funcionário", value: "2", id: 2 },
   ];
-  const optionNot = ["accepted", "refused"];
+  const optionNot = [
+    // "accepted", "refused"
+    { label: "Aceitar", value: "accepted", id: "accepted" },
+    { label: "recusar", value: "refused", id: "refused" },
+  ];
   return {
     validateInput,
     validateErrorMsg,
@@ -102,7 +101,6 @@ export default function useRefForm() {
     emailRef,
     birthdayRef,
     personRef,
-    genreRef,
     phoneRef,
     roleRef,
     optionGenre,
