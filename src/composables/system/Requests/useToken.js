@@ -3,6 +3,7 @@ import useNotify from 'src/composables/useNotify'
 import { useUserStore } from 'src/stores/user';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
+import useStates from '../../useStates';
 
 export default function useToken() {
   const loading = ref(false)
@@ -10,6 +11,8 @@ export default function useToken() {
   const router = useRouter()
   const userStore = useUserStore()
   const { errorNotify, successNotify } = useNotify()
+  const { showLoading, hideLoading } = useStates()
+  const forgot = ref(false)
   const resendToken = async (token_id) => {
     loading.value = true
     try {
@@ -62,10 +65,11 @@ export default function useToken() {
   }
 
   const forgotPassword = async (data) => {
-    loading.value = true
+    showLoading('Preparando para envia .... ')
     try {
       const res = await api.post(`password/forgot`, { ...data });
       if (res.data.status == 200) {
+        forgot.value = true
         successNotify(res.data.message, 10000)
       }
 
@@ -76,6 +80,7 @@ export default function useToken() {
       errorNotify(e.response.data.message);
     } finally {
       loading.value = false
+      hideLoading()
     }
   }
   const passwordReset = async (data) => {
@@ -140,6 +145,7 @@ export default function useToken() {
     authEmail,
     loading,
     tokenStatus,
+    forgot
   }
 
 }

@@ -191,28 +191,3 @@ export default defineComponent({
   },
 });
 </script>
-<style>
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  background-color: transparent !important;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-  -webkit-text-fill-color: #000 !important;
-}
-
-input:-moz-autofill,
-textarea:-moz-autofill,
-select:-moz-autofill {
-  background-color: transparent !important;
-  box-shadow: 0 0 0px 1000px transparent inset !important;
-  -moz-text-fill-color: #000 !important;
-}
-
-input:-ms-autofill,
-textarea:-ms-autofill,
-select:-ms-autofill {
-  background-color: transparent !important;
-  box-shadow: 0 0 0px 1000px transparent inset !important;
-  -ms-text-fill-color: #000 !important;
-}
-</style>

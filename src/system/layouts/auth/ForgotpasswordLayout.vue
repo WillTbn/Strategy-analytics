@@ -122,15 +122,19 @@ export default defineComponent({
   emits: ["status-login"],
   setup(props, ctx) {
     const { personRef, personRule } = useRoles();
-    const { forgotPassword, loading } = useToken();
+    const { forgotPassword, loading, forgot } = useToken();
     const statusAction = ref("initial");
     const user = ref({
       person: "",
     });
     const onSubmit = async () => {
-      await forgotPassword(user.value);
-
-      statusAction.value = "finally";
+      try {
+        await forgotPassword(user.value);
+        if(forgot.value)
+          statusAction.value = "finally";
+      } catch (e) {
+        console.log(e);
+      }
     };
     const backLogin = () => {
       ctx.emit("status-login", "login");
