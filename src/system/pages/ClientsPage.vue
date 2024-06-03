@@ -1,20 +1,15 @@
 <template>
-  <div class='ClientsPage'>
-    <h1>Aqui ficará todos os usuários</h1>
+  <div class="ClientsPage">
+    <titlebody-layout textTitle="Controle de clientes" />
+    <listclient-layout />
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
-export default defineComponent({
-  name: 'ClientsPage',
-  setup(){
-    return{}
-  }
-  // Outras configurações do componente aqui
-});
+<script setup>
+import TitlebodyLayout from "../layouts/TitlebodyLayout.vue";
+import ListclientLayout from "../layouts/control/clients/ListclientLayout.vue";
 </script>
 
 <style scoped>
-  /* Estilos específicos do componente aqui */
+/* Estilos específicos do componente aqui */
 </style>

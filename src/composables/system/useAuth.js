@@ -60,16 +60,19 @@ export default function useAuth() {
   };
   const verifyLogged = async () => {
     loading.value = true
-    if (hasUserCookie) {
-      setUserCookie(getuserCookie)
-      return;
-    }
+    console.log('Estou na verificação de cookie', hasUserCookie)
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
+    if (hasUserCookie) {
+      console.log('estou aqui getuserCookie', getuserCookie),
+        setUserCookie(getuserCookie)
+      return;
+    }
 
     try {
       const resp = await api.get("auth/validate", useTokenData)
       const data = resp.data.data
+      setUserCookie(data);
       useStore.setUserData(data);
       await redirectRouteForUser(data.role_id)
     } catch (e) {

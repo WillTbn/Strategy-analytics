@@ -2,8 +2,6 @@
   <div class="ListuserLayout">
     <div class="row justify-center" v-if="step == 'list'">
       <q-table
-        flat
-        bordered
         title="Usuários"
         :rows="usersAdm"
         :columns="columnsAdm"
@@ -11,8 +9,8 @@
         no-data-label="Não encontrei nenhum usuário para exibir."
         no-results-label="Esse filtro não encontrou nenhum resultado"
         row-key="name"
-        class="col-8"
         :loading="loading"
+        v-bind="{ ...$tableStyle }"
       >
         <template v-slot:loading>
           <q-inner-loading showing color="primary" />

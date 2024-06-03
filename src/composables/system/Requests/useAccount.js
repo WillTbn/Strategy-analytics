@@ -1,4 +1,5 @@
 import { api } from 'src/boot/axios';
+import useCookies from 'src/composables/useCookies';
 import useNotify from 'src/composables/useNotify'
 import { ref } from 'vue'
 
@@ -6,10 +7,12 @@ export default function useAccount() {
   const loading = ref(false)
   const buttonSubmit = ref(false)
   const { errorNotify, successNotify } = useNotify()
+  const { updateCookieAccount, updateNameByAccount } = useCookies()
   const updateData = async (data) => {
     loading.value = true
     try {
       const res = await api.post(`account/data`, { name: data.name, phone: data.account.phone });
+      await updateNameByAccount(res.data.user, res.data.account)
       console.log(res)
       successNotify(res.data.message)
     } catch (e) {
@@ -26,7 +29,7 @@ export default function useAccount() {
     api.defaults.headers.common['Accept'] = 'application/json';
     try {
       const res = await api.post(`account/avatar`, $file);
-      console.log(res)
+      await updateCookieAccount(res.data.account)
       successNotify(res.data.message)
     } catch (e) {
       errorNotify(e.response.data.message);

@@ -63,8 +63,19 @@ export default function useCookies() {
     localStorage.setItem(value.token, JSON.stringify(value.abilities))
   };
   const setUserCookie = (value) => {
-    Cookies.set(userCookie, value, setOptionsCookie);
-    storeUser.setUserData(getuserCookie)
+    setCookie(userCookie, value)
+    storeUser.setUserData(getValue(userCookie))
+  }
+  const updateCookieAccount = async (newAccount) => {
+    let user = getValue(userCookie)
+    user.account = newAccount
+    setUserCookie(user)
+  }
+  const updateNameByAccount = async (userNew, accountNew) => {
+    let user = getValue(userCookie)
+    user.account = accountNew
+    user.name = userNew.name
+    setUserCookie(user)
   }
 
   return {
@@ -79,6 +90,8 @@ export default function useCookies() {
     deleteTokenCookie,
     setTokenCookie,
     setUserCookie,
+    updateCookieAccount,
+    updateNameByAccount,
     getuserCookie,
     hasUserCookie,
     tokenName,

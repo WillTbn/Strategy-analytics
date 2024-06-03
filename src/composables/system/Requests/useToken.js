@@ -65,23 +65,24 @@ export default function useToken() {
   }
 
   const forgotPassword = async (data) => {
-    showLoading('Preparando para envia .... ')
-    try {
-      const res = await api.post(`password/forgot`, { ...data });
-      if (res.data.status == 200) {
-        forgot.value = true
-        successNotify(res.data.message, 10000)
-      }
-
-      console.log(res.data.message)
-    } catch (e) {
+    showLoading('Coletando dados para envia... ')
+    await api.get(process.env.API_URL_CORS).then(response => {
+    }).catch(() => { infoNotify('Solicitão suspeita recarregue sua pagina.') }).finally(() => loading.value = false)
+    showLoading('Preparando email para envio... ')
+    await api.post(`password/forgot`, { ...data }).then((res) => {
+      // if (res.data.status == 200) {
+      forgot.value = true
+      successNotify(res.data.message, 10000)
+      showLoading('Tudo certo ... ')
+      // }
+    }).catch((e) => {
       console.log(e)
       console.log(e.response.data.message)
       errorNotify(e.response.data.message);
-    } finally {
+    }).finally(() => {
       loading.value = false
       hideLoading()
-    }
+    });
   }
   const passwordReset = async (data) => {
     loading.value = true
