@@ -128,17 +128,24 @@ const routes = [
       },
       {
         path: "controlReports",
-        name: "controlReports",
-        component: () => import("../system/pages/ControlreportPage.vue"),
-        meta: { admin: true },
+        component: () => import("../system/views/ReportView.vue"),
         props: true,
-      },
-      {
-        path: "report-view",
-        name: "Relatorio",
-        component: () => import("../system/layouts/control/reports/ReadreportLayout.vue"),
         meta: { admin: true },
-        props: true
+        children: [
+          {
+            path: "",
+            name: "controlReports",
+            component: () => import("../system/pages/ControlreportPage.vue"),
+            props: true,
+          },
+          {
+            path: ":id",
+            name: "relatorio",
+            component: () => import("../system/layouts/control/reports/ReadreportLayout.vue"),
+            meta: { admin: true },
+            props: true
+          }
+        ]
       }
     ],
   },

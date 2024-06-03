@@ -1,5 +1,10 @@
 <template>
   <div class="TitlebodyLayout row justify-center items-center q-py-lg">
+    <div class="col-8 q-mx-lg">
+      <a href="javascript:history.back()">
+        <q-icon name="fa-solid fa-arrow-left" color="primary" />
+      </a>
+    </div>
     <div class="col-12 text-center q-my-xs-md q-my-md-none">
       <titleinter-medium :text="textTitle" />
     </div>

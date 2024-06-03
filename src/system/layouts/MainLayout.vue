@@ -1,7 +1,5 @@
 <template>
   <q-layout view="lHh lpR lFf" :class="statusDark">
-    <!-- <menusidebar-layout /> -->
-    <!-- <menubar-layout /> -->
     <navbar-layout :key="route.name" :dark="Dark.isActive" v-if="!loading" />
     <q-page-container padding>
       <router-view v-slot="{ Component }">

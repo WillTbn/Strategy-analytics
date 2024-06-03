@@ -142,9 +142,13 @@ export default defineComponent({
       { name: "actions", label: "Ações", align: "center", field: "action" },
     ];
     const editReport = (value) => {
-      console.log(value);
+      console.log("id do value", value.id);
       storeReport.setEditaData(value);
-      router.replace({ name: "Relatorio" });
+      router.push({
+        name: "relatorio",
+        params: { id: value.id },
+        path: `controlReports/${value.id}`,
+      });
     };
     const delReport = (value) => {};
     const confirmAction = (value) => {

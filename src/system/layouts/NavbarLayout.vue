@@ -109,7 +109,6 @@
             v-if="canAccess(list.can) || canAccess('all-access')"
             :active-class="dark ? 'bg-dark rounded' : 'bg-primary rounded'"
             clickable
-            exact
             v-ripple
             :to="list.toName"
           >
