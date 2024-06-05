@@ -1,7 +1,10 @@
 const state = () => {
   return {
     data: [],
-    editData: {}
+    editData: {
+      id: "",
+    },
+    isDirtyReport: {}
   };
 };
 

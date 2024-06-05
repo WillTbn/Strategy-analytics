@@ -1,3 +1,5 @@
+import { date } from 'quasar'
+import { computed } from 'vue';
 export default function useCase() {
   const serializeString = (e) => {
     return e.replace(/[-\s]+/g, "").toUpperCase();
@@ -9,9 +11,21 @@ export default function useCase() {
     const seriOther = serializeString(other);
     return seriOriginal == seriOther
   }
-
+  const dateFormatBr = (value) => {
+    let dateCurrent = new Date(value + " 00:00:00")
+    return date.formatDate(dateCurrent, "DD/MM/YYYY")
+  }
+  const sameDate = (current, oldDate) => {
+    return dateFormatBr(current) == dateFormatBr(oldDate)
+  }
+  const dateFormatUTC = (value) => {
+    return date.formatDate(value, "YYYY/MM/DD")
+  }
   return {
     serializeString,
-    same
+    same,
+    dateFormatBr,
+    sameDate,
+    dateFormatUTC
   }
 } 

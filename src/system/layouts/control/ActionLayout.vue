@@ -3,22 +3,10 @@
     <div class="col-2 q-ma-md">
       <q-btn label="Export relatório" color="primary" @click="fixed = true" />
     </div>
-    <q-dialog
-      v-model="fixed"
-      backdrop-filter="blur(4px)"
-      transition-show="rotate"
-      transition-hide="rotate"
-      persistent
-    >
+    <q-dialog v-model="fixed" v-bind="{ ...$dialogCard }">
       <q-card>
         <q-card-section>
-          <div class="row justify-between">
-            <div class="text-h6 col-6">Criando relatório</div>
-            <div class="col-1">
-              <q-btn icon="close" flat round color="red-14" v-close-popup />
-              <!-- <q-icon name="close" color="red-14" v-close-popup /> -->
-            </div>
-          </div>
+          <header-card titleCard="Criando relatório" />
         </q-card-section>
 
         <!-- <q-separator /> -->
@@ -147,9 +135,12 @@
 import useReport from "src/composables/system/Requests/useReport";
 import useNotify from "src/composables/useNotify";
 import { defineComponent, onMounted, ref } from "vue";
-
+import HeaderCard from "src/system/components/cardDialog/HeaderCard.vue";
 export default defineComponent({
   name: "ActiontLayout",
+  components: {
+    HeaderCard,
+  },
   setup() {
     // const loading = ref(false);
     const { infoNotify } = useNotify();

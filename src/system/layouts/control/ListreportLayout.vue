@@ -2,8 +2,6 @@
   <div class="ListreportLayout">
     <div class="row justify-center">
       <q-table
-        flat
-        bordered
         title="Relalórios"
         :rows="data"
         :columns="columns"
@@ -11,7 +9,7 @@
         no-data-label="Não encontrei nada para você"
         no-results-label="O filtro não descobriu nenhum resultado"
         row-key="name"
-        class="col-8"
+        v-bind="{ ...$tableStyle }"
         :loading="loading"
       >
         <template v-slot:top-right>
@@ -37,20 +35,24 @@
         </template>
         <template v-slot:body-cell-actions="props">
           <q-td :props="props">
-            <div class="row justify-end q-gutter-sm">
+            <div class="row justify-around q-gutter-sm">
               <!-- <q-btn
                 color="primary"
                 label="edit"
                 
               /> -->
               <q-btn
+                v-bind="{ ...$btnTable }"
                 color="green"
-                label="view"
+                label="Ver"
                 @click="editReport(props.row)"
+                icon="fa-solid fa-eye"
               />
               <q-btn
+                v-bind="{ ...$btnTable }"
                 color="red"
                 label="excluir"
+                icon="fa-solid fa-trash"
                 @click="confirmAction(props.row)"
               />
             </div>
@@ -95,6 +97,7 @@ import useReport from "../../../composables/system/Requests/useReport";
 import { useReportStore } from "src/stores/report";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
+import useCase from "src/composables/system/useCase";
 
 export default defineComponent({
   name: "ListreportLayout",
@@ -106,6 +109,7 @@ export default defineComponent({
     const router = useRouter();
     const delData = ref();
     const confirm = ref(false);
+    const { dateFormatBr } = useCase();
     const rows = [];
     const columns = [
       {
@@ -128,6 +132,7 @@ export default defineComponent({
         name: "display_date_at",
         label: "Data de exibição",
         field: "display_date_at",
+        format: (val) => dateFormatBr(val),
         align: "center",
         sortable: true,
       },
@@ -144,7 +149,7 @@ export default defineComponent({
     const editReport = (value) => {
       console.log("id do value", value.id);
       storeReport.setEditaData(value);
-      router.push({
+      router.replace({
         name: "relatorio",
         params: { id: value.id },
         path: `controlReports/${value.id}`,
