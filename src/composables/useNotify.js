@@ -32,10 +32,19 @@ export default function useNotify() {
       timeout: getTime
     });
   };
+  const multError = (obj) => {
+    let qua = 1
+    for (const key in obj) {
+      qua++
+      let formatInt = parseInt(`${qua}000`)
+      errorNotify(obj[key], formatInt)
+    }
+  }
 
   return {
     errorNotify,
     successNotify,
     infoNotify,
+    multError
   };
 }

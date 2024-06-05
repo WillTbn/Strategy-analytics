@@ -7,7 +7,7 @@ export default function useAdm() {
 
   const usersAdm = ref([])
   const loading = ref()
-  const { errorNotify, successNotify } = useNotify()
+  const { errorNotify, successNotify, multError } = useNotify()
 
   const getAllAdm = async () => {
     loading.value = true
@@ -36,7 +36,8 @@ export default function useAdm() {
       }, 1500)
     } catch (e) {
       console.log(e)
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
+      // errorNotify(e.response.data.message);
     } finally {
       loading.value = false
     }

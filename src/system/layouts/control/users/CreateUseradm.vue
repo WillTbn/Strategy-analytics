@@ -22,7 +22,7 @@
         </div>
       </div>
       <!-- Campos essenciais table User -->
-      <div class="row q-gutter-lg">
+      <div class="row q-px-sm q-col-gutter-lg">
         <div class="col-12">
           <span class="text-grey-5">Dados pessoais</span>
         </div>
@@ -34,7 +34,7 @@
           hint="obrigatório"
           lazy-rules
           :rules="emptyRule"
-          class="col-3"
+          class="col-11 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -46,7 +46,7 @@
           label="Sobrenome*"
           lazy-rules
           :rules="emptyRule"
-          class="col-3"
+          class="col-11 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -58,7 +58,7 @@
           lazy-rules
           :rules="emptyRule"
           hint="obrigatório"
-          class="col-4"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
           type="email"
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Campo Essenvial table Account -->
-      <div class="row q-gutter-lg q-my-sm">
+      <div class="row q-col-gutter-lg q-my-sm q-px-sm">
         <q-input
           ref="personRef"
           filled
@@ -75,7 +75,7 @@
           hint="obrigatório"
           lazy-rules
           :rules="emptyRule"
-          class="col-4"
+          class="col-11 col-md-4"
           mask="###.###.###-##"
           :loading="loading"
           :disable="loading"
@@ -84,38 +84,23 @@
           ref="birthdayRef"
           filled
           v-model="newUser.birthday"
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
           type="date"
         >
-          <!-- <template v-slot:append>
-            <q-icon name="event" class="cursor-pointer">
-              <q-popup-proxy
-                cover
-                transition-show="scale"
-                transition-hide="scale"
-              >
-                <q-date v-model="newUser.birthday">
-                  <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
-                  </div>
-                </q-date>
-              </q-popup-proxy>
-            </q-icon>
-          </template> -->
         </q-input>
-        <q-input
+        <!-- <q-input
           ref="telephoneRef"
           filled
           v-model="newUser.telephone"
           label="Telefone"
           lazy-rules
-          class="col-3"
+          class="col-11 col-md-3"
           mask="(##) ####-####"
           :loading="loading"
           :disable="loading"
-        />
+        /> -->
         <q-input
           ref="phoneRef"
           filled
@@ -124,7 +109,7 @@
           label="Celular de contato*"
           lazy-rules
           :rules="emptyRule"
-          class="col-3"
+          class="col-11 col-md-3"
           mask="(##) # ####-####"
           :loading="loading"
           :disable="loading"
@@ -143,7 +128,7 @@
           map-options
           label="Qual genero se identificar?"
           lazy-rules
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -168,7 +153,7 @@
           option-label="label"
           emit-value
           map-options
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -186,7 +171,7 @@
           option-label="label"
           emit-value
           map-options
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -201,7 +186,7 @@
           filled
           v-model="newUser.address_street"
           label="Rua"
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -210,7 +195,7 @@
           filled
           v-model="newUser.address_numbers"
           label="Numero"
-          class="col-3"
+          class="col-5 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -219,7 +204,7 @@
           filled
           v-model="newUser.address_district"
           label="Bairro"
-          class="col-3"
+          class="col-5 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -228,7 +213,7 @@
           filled
           v-model="newUser.address_zip_code"
           label="CEP"
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -237,7 +222,7 @@
           filled
           v-model="newUser.address_city"
           label="Cidade"
-          class="col-3"
+          class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
         />
@@ -246,7 +231,7 @@
           filled
           v-model="newUser.address_state"
           label="Estado"
-          class="col-3"
+          class="col-5 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -255,7 +240,7 @@
           filled
           v-model="newUser.address_country"
           label="Pais"
-          class="col-3"
+          class="col-5 col-md-3"
           :loading="loading"
           :disable="loading"
         />
@@ -268,7 +253,7 @@
             verificação de e-mail e fazer o primeiro acesso.
           </span>
         </div>
-        <div class="col-3 col-lg-4 col-sm-6 self-end">
+        <div class="col-5 col-lg-4 col-sm-6 self-end">
           <q-btn
             type="submit"
             color="green-14"
@@ -279,14 +264,14 @@
           ></q-btn>
         </div>
       </div>
-      <q-btn
+      <!-- <q-btn
         @click.prevent="onTest"
         color="indigo-14"
         label="Dados de teste"
         icon-right="send"
         :loading="loading"
         :disable="loading"
-      ></q-btn>
+      ></q-btn> -->
     </form>
   </div>
 </template>
@@ -339,7 +324,7 @@ export default defineComponent({
       address_district: "",
       address_zip_code: "",
       address_city: "",
-      address_number: "",
+      address_numbers: "",
       address_country: "",
       role_id: "",
     });
@@ -349,7 +334,7 @@ export default defineComponent({
         (newUser.value.email = "teste@live.com"),
         (newUser.value.person = "111.000.123-12"),
         (newUser.value.birthday = "1990/12/20"),
-        (newUser.value.notifications = "accepetd"),
+        (newUser.value.notifications = "aceitar"),
         (newUser.value.telephone = "21 2323-3232"),
         (newUser.value.phone = "21 9 93232-2314"),
         (newUser.value.genre = "O"),
@@ -359,11 +344,11 @@ export default defineComponent({
         (newUser.value.address_zip_code = "Teste"),
         (newUser.value.address_city = "Teste"),
         (newUser.value.address_country = "Teste"),
-        (newUser.value.address_number = 123),
+        (newUser.value.address_numbers = 123),
         (newUser.value.role_id = "Teste");
       console.log(newUser.value);
     };
-    const onSubmit = () => {
+    const onSubmit = async () => {
       validateInput();
       if (validateErrorMsg()) {
         infoNotify("Esta esquecendo de preenche algum campo");
@@ -372,12 +357,7 @@ export default defineComponent({
       newUser.value.name =
         newUser.value.firstname + " " + newUser.value.lastname;
 
-      createAdm(newUser.value);
-      // if (titleRef.value.hasError || documentRef.value.hasError) {
-      //   infoNotify("Verifique os campos, esta esquecendo de algo!!");
-      //   // loading.value = false;
-      //   return;
-      // }
+      await createAdm(newUser.value);
     };
     return {
       newUser,
