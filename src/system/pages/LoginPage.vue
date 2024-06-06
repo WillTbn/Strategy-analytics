@@ -24,6 +24,7 @@
       label-class="text-teal"
       label-style="font-size: 1.1em"
     />
+    <footer-system />
   </q-layout>
 </template>
 <script setup>
@@ -34,6 +35,7 @@ import ValidatetokenLayout from "../layouts/auth/ValidatetokenLayout.vue";
 import ForgotpasswordLayout from "../layouts/auth/ForgotpasswordLayout.vue";
 import ResetpasswordLayout from "../layouts/auth/ResetpasswordLayout.vue";
 import useAuth from "../../composables/system/useAuth";
+import FooterSystem from "../components/FooterSystem.vue";
 
 const route = useRoute();
 const stateLogin = ref("login");

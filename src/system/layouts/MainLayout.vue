@@ -25,6 +25,7 @@
         <code-email />
       </q-card>
     </q-dialog>
+    <footer-system />
   </q-layout>
 </template>
 
@@ -42,12 +43,13 @@ import { useLayoutStore } from "src/stores/layout";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
 import CodeEmail from "./auth/CodeEmail.vue";
+import FooterSystem from "../components/FooterSystem.vue";
 
 // import NavbarLayout from "../layouts/NavbarLayout.vue";
 // import { ref } from 'vue'
 
 export default defineComponent({
-  components: { NavbarLayout, CodeEmail },
+  components: { NavbarLayout, CodeEmail, FooterSystem },
   setup() {
     const route = useRoute();
     const router = useRouter();

@@ -3,29 +3,13 @@
     <transition name="fade" mode="out-in">
       <component :is="Component" :key="route.name" />
     </transition>
-    <footer class="fixed-bottom text-caption text-weight-thin text-grey-13">
-      V{{ mode }}
-    </footer>
   </router-view>
 </template>
 
-<script>
-import { defineComponent, onMounted, onBeforeMount } from "vue";
+<script setup>
+import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
-export default defineComponent({
-  name: "App",
-  setup() {
-    const route = useRoute;
-    const mode = process.env.VERSION_APP;
-    onBeforeMount(() => {
-      console.log("Essa é a versão ->", process.env.VERSION_APP);
-    });
-    return {
-      mode,
-      route,
-    };
-  },
-});
+const route = useRoute;
 </script>
 <style>
 .fade-enter-active,

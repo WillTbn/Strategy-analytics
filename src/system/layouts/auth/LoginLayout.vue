@@ -54,7 +54,7 @@
           color="secondary"
           padding="0.5rem 3rem"
           text-color="white"
-          label="continuar"
+          label="Entrar"
           type="submit"
           :disabled="loading"
           :loading="loading"
@@ -63,9 +63,6 @@
             <q-spinner-pie size="3em" />
           </template>
         </q-btn>
-      </div>
-      <div class="col-12 copy">
-        <register-data />
       </div>
     </div>
   </q-form>
@@ -93,7 +90,6 @@ export default defineComponent({
   name: "LoginLayout",
   components: {
     HeaderAuth,
-    RegisterData,
   },
   emits: ["status-login"],
   setup(props, ctx) {
