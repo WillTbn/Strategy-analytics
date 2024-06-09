@@ -49,6 +49,12 @@
         <template v-slot:body-cell-actions="props">
           <q-td :props="props">
             <div class="row justify-end q-gutter-sm">
+              <q-btn
+                v-bind="{ ...$btnTable }"
+                color="green"
+                @click="editRole(props.row)"
+                icon="fa-solid fa-user-lock"
+              />
               <resend-email
                 v-if="!props.row.email_verified_at"
                 :token="props.row.access_token.id"
@@ -59,6 +65,9 @@
       </q-table>
     </div>
     <create-useradm v-else @step-view="(v) => (step = v)" />
+    <q-dialog v-model="roleControl" v-bind="{ ...$dialogCard }">
+      <roleuser-layout :user="userPermisson" />
+    </q-dialog>
   </div>
 </template>
 
@@ -67,17 +76,21 @@ import useAdm from "src/composables/system/Requests/useAdm";
 import { defineComponent, onMounted, ref } from "vue";
 import ResendEmail from "src/system/components/ResendEmail.vue";
 import CreateUseradm from "./CreateUseradm.vue";
+import RoleuserLayout from "./RoleuserLayout.vue";
 export default defineComponent({
   name: "ListuserLayout",
   components: {
     ResendEmail,
     CreateUseradm,
+    RoleuserLayout,
   },
   setup() {
     const rows = [];
     const filter = ref("");
     const step = ref("list");
     const { loading, usersAdm, getAllAdm } = useAdm();
+    const roleControl = ref(false);
+    const userPermisson = ref();
     const columnsAdm = [
       {
         name: "id",
@@ -135,6 +148,11 @@ export default defineComponent({
     const addUser = () => {
       step.value = "createUser";
     };
+    const editRole = (user) => {
+      roleControl.value = true;
+      userPermisson.value = user;
+      console.log("vamos ver o user -> ", user);
+    };
 
     return {
       usersAdm,
@@ -142,6 +160,9 @@ export default defineComponent({
       step,
       loading,
       filter,
+      roleControl,
+      userPermisson,
+      editRole,
       resendEmail,
       addUser,
     };

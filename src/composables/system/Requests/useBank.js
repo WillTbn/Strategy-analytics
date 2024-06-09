@@ -5,7 +5,7 @@ import { ref } from 'vue'
 export default function useBank() {
   const loading = ref(false)
   const buttonSubmit = ref(false)
-  const { errorNotify, successNotify } = useNotify()
+  const { multError, successNotify } = useNotify()
   const updateOrCreate = async (data) => {
     loading.value = true
     const method = data.id ? 'put' : 'post'
@@ -19,7 +19,7 @@ export default function useBank() {
         window.location.reload()
       }, 2000)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       // buttonSubmit.value = false
       loading.value = false
@@ -35,7 +35,8 @@ export default function useBank() {
         window.location.reload()
       }, 2000)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
+
     } finally {
       // buttonSubmit.value = false
       loading.value = false

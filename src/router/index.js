@@ -45,7 +45,7 @@ export default route(function (/* { store, ssrContext } */) {
         ? `Strategy Analytics -  ${home}`
         : "Strategy Analytics";
     if (to.meta?.auth) {
-      console.log(to);
+
       if (!hasTokenCookie) {
         next({ name: 'login' })
         return
@@ -55,6 +55,15 @@ export default route(function (/* { store, ssrContext } */) {
       }
       verifyLogged()
     }
+
+    //verificando se o usuário esta logado evitar logar duplicado
+    if (to.name == "login") {
+      if (hasTokenCookie) {
+        next({ name: 'config' })
+      }
+    }
+
+
     next()
   });
 

@@ -33,7 +33,7 @@ export default function useNotify() {
     });
   };
   const multError = (obj) => {
-    let qua = 1
+    let qua = 2
     for (const key in obj) {
       qua++
       let formatInt = parseInt(`${qua}000`)

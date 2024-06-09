@@ -6,7 +6,7 @@ import { ref } from 'vue'
 export default function useAccount() {
   const loading = ref(false)
   const buttonSubmit = ref(false)
-  const { errorNotify, successNotify } = useNotify()
+  const { errorNotify, successNotify, multError } = useNotify()
   const { updateCookieAccount, updateNameByAccount } = useCookies()
   const updateData = async (data) => {
     loading.value = true
@@ -16,7 +16,7 @@ export default function useAccount() {
       console.log(res)
       successNotify(res.data.message)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       // buttonSubmit.value = false
       loading.value = false
@@ -32,7 +32,7 @@ export default function useAccount() {
       await updateCookieAccount(res.data.account)
       successNotify(res.data.message)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       buttonSubmit.value = false
       loading.value = false

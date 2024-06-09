@@ -8,7 +8,7 @@ import useStates from 'src/composables/useStates';
 import { storeToRefs } from 'pinia';
 import useCase from '../useCase';
 export default function useReport() {
-  const { errorNotify, successNotify } = useNotify()
+  const { errorNotify, successNotify, multError } = useNotify()
   const { tokenCookie } = useCookies()
   const storeReport = useReportStore()
   const { showLoading, hideLoading } = useStates()
@@ -98,7 +98,7 @@ export default function useReport() {
       }, 500)
     } catch (e) {
       console.log(e.response.data.message)
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       loading.value = false
     }
@@ -154,7 +154,7 @@ export default function useReport() {
       }, 2000)
     } catch (e) {
       console.log(e.response.data.message)
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       hideLoading()
       loading.value = false
@@ -175,7 +175,8 @@ export default function useReport() {
         window.location.reload()
       }, 2000)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      // errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       hideLoading()
     }
@@ -192,7 +193,7 @@ export default function useReport() {
         window.location.reload()
       }, 2000)
     } catch (e) {
-      errorNotify(e.response.data.message);
+      multError(e.response.data.errors)
     } finally {
       hideLoading()
     }

@@ -7,7 +7,7 @@ export default function useRegister() {
   const loading = ref(false)
   const statusPerson = ref(false)
   const registrationStatus = ref(false)
-  const { infoNotify, errorNotify, successNotify } = useNotify()
+  const { infoNotify, errorNotify, successNotify, multError } = useNotify()
   const { showLoading, hideLoading } = useStates()
   const validateCPF = async (person, email, birthday) => {
     loading.value = true
@@ -17,24 +17,19 @@ export default function useRegister() {
     }
     // try{
     await api.get(process.env.API_URL_CORS).then(response => {
-    }).catch(() => { infoNotify('Solicitão suspeita recarregue sua pagina.') }).finally(() => loading.value = false)
+    }).catch(() => { infoNotify('Falha na solicitação, recarregue sua pagina.') }).finally(() => loading.value = false)
     await api.post('validator-cpf', { ...dataInput }).then((res) => {
-      console.log('resposta validator -> ', res.data)
       if (!res.data.valid) {
         infoNotify('CPF não é valido!')
       }
       statusPerson.value = res.data.valid
     }).catch((e) => {
-      errorNotify(e.response.data.message, 3000)
-      console.log('error validator', e)
+      multError(e.response.data.errors)
     })
     setTimeout(() => {
       hideLoading()
 
     }, 2000)
-    // }catch(e){
-    //   console.log(e)
-    // }
   }
   const viaCEP = async (cep) => {
     try {
@@ -44,7 +39,7 @@ export default function useRegister() {
 
     } catch (e) {
       console.log(e)
-      errorNotify('Erro ao consumir via cep API.')
+      errorNotify('Cpf não pode ser consultado, tente novamente.')
 
     } finally {
       loading.value = false
@@ -61,7 +56,7 @@ export default function useRegister() {
         registrationStatus.value = true
     } catch (e) {
       console.log(e)
-      errorNotify(e.response.data.message, 3000)
+      multError(e.response.data.errors)
 
     } finally {
       loading.value = false
