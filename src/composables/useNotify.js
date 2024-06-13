@@ -3,12 +3,21 @@ import { useQuasar } from "quasar";
 export default function useNotify() {
   const $q = useQuasar();
   const time = 2500;
-  const actions = { icon: 'close', 'aria-label': 'Dismiss' }
+  const actions = { icon: 'close', 'aria-label': 'Dismiss', color: "dark" }
   const successNotify = (message, getTime = time) => {
     $q.notify({
       type: "positive",
       position: "top",
       message: message || "Tudo certo!",
+      actions: [actions],
+      timeout: getTime
+    });
+  };
+  const alternativeNotify = (message, getTime = time) => {
+    $q.notify({
+      color: "primary",
+      position: "top",
+      message: message || "Ops... precisamos recomeça.",
       actions: [actions],
       timeout: getTime
     });
@@ -45,6 +54,7 @@ export default function useNotify() {
     errorNotify,
     successNotify,
     infoNotify,
+    alternativeNotify,
     multError
   };
 }

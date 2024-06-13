@@ -21,27 +21,40 @@ export default function useAuth() {
   } = useCookies()
 
   const router = useRouter();
-  const { errorNotify, infoNotify } = useNotify();
+  const { errorNotify, infoNotify, alternativeNotify } = useNotify();
   const loading = ref(false);
   const errors = ref({
     person: "",
     password: "",
   });
   const role = ref(null)
+  const interceptorsRequest = async () => {
+    const success = res => res
+    const error = err => {
 
+      if (401 === err.response.status) {
+        console.log('estou com erro 401, tem que inválida esse token');
+        deleteTokenCookie()
+        alternativeNotify('Sessão expirou , refaça login para prosseguir', 3000)
+        router.replace({ path: "/login" });
+      } else {
+        console.log('Não tenho status 401')
+        return Promise.reject(err)
+      }
+    }
+    api.interceptors.response.use(success, error);
+  }
   const auth = async (value) => {
     loading.value = true;
     axios.defaults.headers.common['Accept'] = 'application/json';
     axios.defaults.withCredentials = true;
     axios.defaults.withXSRFToken = true;
     const urlCors = process.env.API_URL_CORS
-    console.log('ESSE é o cors url ->', urlCors)
+
     axios.get(urlCors).then(response => {
-      console.log('essa é a resposta do cors ->', response)
       api
         .post("login", value)
         .then((resp) => {
-          console.log('resposta do login -> ', resp)
           if (resp.data.token) {
             setTokenCookie(resp.data)
             useStore.setAbilities(resp.data.abilities)
@@ -59,12 +72,14 @@ export default function useAuth() {
     }).finally(() => loading.value = false);
   };
   const verifyLogged = async () => {
+    await interceptorsRequest();
+
     loading.value = true
     console.log('Estou na verificação de cookie', hasUserCookie)
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
     if (hasUserCookie) {
-      console.log('estou aqui getuserCookie', getuserCookie),
+      console.log('has usercookie'),
         setUserCookie(getuserCookie)
       return;
     }
