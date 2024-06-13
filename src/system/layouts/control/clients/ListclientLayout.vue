@@ -13,22 +13,41 @@
         :loading="loading"
         v-bind="{ ...$tableStyle }"
       >
+        <template v-slot:body-cell-avatar="props">
+          <q-td :props="props">
+            <q-avatar size="sm">
+              <img :src="props.row.avatar" />
+            </q-avatar>
+          </q-td>
+        </template>
         <template v-slot:body-cell-actions="props">
           <q-td :props="props">
             <div class="row justify-end q-gutter-sm">
               <q-btn
+                v-for="item in btnActions"
+                :key="item"
                 v-bind="{ ...$btnTable }"
-                color="green"
-                @click="editRole(props.row)"
-                icon="fa-solid fa-user-lock"
-              />
+                :color="item.color"
+                :icon="item.icon"
+                @click.prevent="handlerAction(item.action, props.row)"
+              >
+                <q-tooltip class="bg-indigo-14" :offset="[10, 10]">
+                  {{ item.tooltipText }}
+                </q-tooltip>
+              </q-btn>
             </div>
           </q-td>
         </template>
       </q-table>
     </div>
     <q-dialog v-model="roleControl" v-bind="{ ...$dialogCard }">
-      <roleuser-layout :user="userPermisson" />
+      <roleuser-layout :user="userEdit" />
+    </q-dialog>
+    <q-dialog v-model="controlIncome" v-bind="{ ...$dialogCard }">
+      <income-layout :user="userEdit" />
+    </q-dialog>
+    <q-dialog v-model="viewExtract" v-bind="{ ...$dialogCard }">
+      <extract-layout :user="userEdit" />
     </q-dialog>
   </div>
 </template>
@@ -37,22 +56,30 @@
 import { defineComponent, ref, onMounted } from "vue";
 import useClient from "src/composables/system/Requests/useClient";
 import RoleuserLayout from "../users/RoleuserLayout.vue";
+import IncomeLayout from "./IncomeLayout.vue";
+import ExtractLayout from "./ExtractLayout.vue";
+import useClientHelpers from "src/composables/system/Helpers/useClientHelpers";
 
 export default defineComponent({
   name: "ListclientLayout",
   components: {
     RoleuserLayout,
+    IncomeLayout,
+    ExtractLayout,
   },
   setup() {
     const filter = ref("");
-    const { loading, getAllClient, columnsClient, usersClient } = useClient();
-    const editRole = (user) => {
-      roleControl.value = true;
-      userPermisson.value = user;
-      console.log("vamos ver o user -> ", user);
-    };
-    const roleControl = ref(false);
-    const userPermisson = ref();
+    const { loading, getAllClient, usersClient } = useClient();
+    const {
+      columnsClient,
+      btnActions,
+      actions,
+      roleControl,
+      controlIncome,
+      userEdit,
+      viewExtract,
+      handlerAction,
+    } = useClientHelpers();
     onMounted(async () => {
       await getAllClient();
     });
@@ -62,8 +89,11 @@ export default defineComponent({
       columnsClient,
       usersClient,
       roleControl,
-      userPermisson,
-      editRole,
+      controlIncome,
+      userEdit,
+      btnActions,
+      viewExtract,
+      handlerAction,
     };
   },
   // Outras configurações do componente aqui

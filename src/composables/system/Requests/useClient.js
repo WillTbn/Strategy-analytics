@@ -4,75 +4,26 @@ import { ref } from 'vue'
 import { date } from 'quasar'
 
 export default function useClient() {
-  const columnsClient = [
-    {
-      name: "id",
-      required: true,
-      label: "ID",
-      align: "left",
-      field: (row) => row.id,
-      format: (val) => `#${val}`,
-      sortable: true,
-      required: true
-    },
-    {
-      name: "name",
-      align: "left",
-      label: "Nome",
-      field: "name",
-      sortable: true,
-    },
-    {
-      name: "email",
-      align: "left",
-      label: "Email",
-      field: "email",
-      sortable: true,
-    },
-    {
-      name: "balance",
-      align: "left",
-      label: "Saldo",
-      field: "balance",
-      sortable: true,
-    },
-    {
-      name: "loan",
-      align: "left",
-      label: "Saldo devedor",
-      field: "loan",
-      sortable: true,
-    },
-    {
-      name: "investment",
-      align: "left",
-      label: "Saldo investido",
-      field: "investment",
-      sortable: true,
-    },
-    {
-      name: "birthday",
-      align: "left",
-      label: "Data nascimento",
-      field: "birthday",
-      sortable: true,
-    },
-    // {
-    //   name: "audio",
-    //   label: "Audio",
-    //   field: (row) => row.audio,
-    //   format: (val) => {
-    //     return val == null ? "X" : val;
-    //   },
-    // },
-    {
-      name: "actions",
-      label: "Ações",
-      align: "center",
-      field: "action",
-    },
-  ];
+
   const usersClient = ref([])
+  // const extractClient = ref([{
+  //   "id": 5,
+  //   "user_id": 6,
+  //   "transaction_name": "pix",
+  //   "transaction_date": "2024-06-11 21:48:36",
+  //   "transaction_data": {
+  //     "value": 632.1,
+  //     "data": {
+  //       "transaction_id": "#0011",
+  //       "investment": true,
+  //       "trans_name": "pix"
+  //     }
+  //   },
+  //   "transaction_value": "632.10",
+  //   "created_at": "2024-06-12T00:48:36.000000Z",
+  //   "updated_at": "2024-06-12T00:48:36.000000Z"
+  // }])
+  const extractClient = ref([])
   const loading = ref()
   const { errorNotify, successNotify } = useNotify()
 
@@ -90,10 +41,33 @@ export default function useClient() {
       loading.value = false
     }
   }
+  const getExtract = async (user_id) => {
+    loading.value = true
+    await api.get(`extract/${user_id}`).then((e) => {
+      e.data.extract
+      extractClient.value = e.data.extract
+    }).catch((e) => {
+      console.log(e)
+      errorNotify('Erro ao pegar o extrato do usuário');
+    }).finally(() => {
+      loading.value = false
+    })
+    // try {
+    //   const reponse = await api.get(`extract/${user_id}`)
+    //   extractClient.value = reponse.data.extract
+    //   console.log(extractClient.value)
+    // } catch (e) {
+    //   console.log(e)
+    //   errorNotify('Erro ao pegar o extrato do usuário');
+    // } finally {
+    //   loading.value = false
+    // }
+  }
   return {
     getAllClient,
-    columnsClient,
+    getExtract,
     usersClient,
-    loading
+    loading,
+    extractClient
   }
 }
