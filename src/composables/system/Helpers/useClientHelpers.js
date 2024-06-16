@@ -48,35 +48,27 @@ export default function useClientHelpers() {
       field: "balance",
       sortable: true,
     },
-    {
-      name: "loan",
-      align: "left",
-      label: "Saldo devedor",
-      field: "loan",
-      sortable: true,
-    },
+    // {
+    //   name: "loan",
+    //   align: "left",
+    //   label: "Saldo devedor",
+    //   field: "loan",
+    //   sortable: true,
+    // },
     {
       name: "investment",
       align: "left",
       label: "Saldo investido",
-      field: "investment",
+      field: "current_investment",
       sortable: true,
     },
     {
-      name: "birthday",
+      name: "Rendimento",
       align: "left",
-      label: "Data nascimento",
-      field: "birthday",
+      label: "Rendimento",
+      field: "investment",
       sortable: true,
     },
-    // {
-    //   name: "audio",
-    //   label: "Audio",
-    //   field: (row) => row.audio,
-    //   format: (val) => {
-    //     return val == null ? "X" : val;
-    //   },
-    // },
     {
       name: "actions",
       label: "Ações",
@@ -120,7 +112,7 @@ export default function useClientHelpers() {
     },
     {
       color: "green",
-      icon: "fa-solid fa-pushed",
+      icon: "fa-solid fa-money-bill-trend-up",
       tooltipText: "Editar rendimentos",
       action: "editIncome",
     },

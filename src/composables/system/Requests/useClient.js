@@ -6,26 +6,10 @@ import { date } from 'quasar'
 export default function useClient() {
 
   const usersClient = ref([])
-  // const extractClient = ref([{
-  //   "id": 5,
-  //   "user_id": 6,
-  //   "transaction_name": "pix",
-  //   "transaction_date": "2024-06-11 21:48:36",
-  //   "transaction_data": {
-  //     "value": 632.1,
-  //     "data": {
-  //       "transaction_id": "#0011",
-  //       "investment": true,
-  //       "trans_name": "pix"
-  //     }
-  //   },
-  //   "transaction_value": "632.10",
-  //   "created_at": "2024-06-12T00:48:36.000000Z",
-  //   "updated_at": "2024-06-12T00:48:36.000000Z"
-  // }])
+
   const extractClient = ref([])
   const loading = ref()
-  const { errorNotify, successNotify } = useNotify()
+  const { errorNotify, successNotify, multError } = useNotify()
 
   const getAllClient = async () => {
     loading.value = true
@@ -47,25 +31,32 @@ export default function useClient() {
       e.data.extract
       extractClient.value = e.data.extract
     }).catch((e) => {
+      multError(e.response.data.errors)
       console.log(e)
       errorNotify('Erro ao pegar o extrato do usuário');
     }).finally(() => {
       loading.value = false
     })
-    // try {
-    //   const reponse = await api.get(`extract/${user_id}`)
-    //   extractClient.value = reponse.data.extract
-    //   console.log(extractClient.value)
-    // } catch (e) {
-    //   console.log(e)
-    //   errorNotify('Erro ao pegar o extrato do usuário');
-    // } finally {
-    //   loading.value = false
-    // }
+  }
+  const setIncome = async (data) => {
+    loading.value = true
+    await api.put(`clients/investment`, data).then((e) => {
+      successNotify(e.data.message, 18000)
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
+    }).catch((e) => {
+      multError(e.response.data.errors)
+      console.log(e)
+      errorNotify('Erro ao pegar o adionar rendimento para o usuário');
+    }).finally(() => {
+      loading.value = false
+    })
   }
   return {
     getAllClient,
     getExtract,
+    setIncome,
     usersClient,
     loading,
     extractClient
