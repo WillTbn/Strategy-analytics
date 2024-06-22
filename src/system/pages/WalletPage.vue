@@ -26,7 +26,7 @@
     </div>
     <div class="row q-pa-xl">
       <div
-        class="col-md q-my-md col-xl-10 card-border"
+        class="col-md q-my-md card-border"
         v-for="item in optionsLinks"
         :key="item"
       >

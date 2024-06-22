@@ -16,6 +16,7 @@
         <q-tooltip> Em desenvolvimento </q-tooltip>
       </q-btn>
       <apexchart
+        :key="walletChart"
         type="area"
         height="250"
         ref="chart"
@@ -30,6 +31,7 @@
 import { defineComponent, computed, ref, onMounted } from "vue";
 import useCharts from "../../composables/useCharts";
 import { useUserStore } from "../../stores/user";
+import { storeToRefs } from "pinia";
 export default defineComponent({
   name: "ChartWallet",
   setup() {
@@ -37,6 +39,7 @@ export default defineComponent({
     const { walletOption, walletOptionCurrent } = useCharts();
     const options = ref();
     const useStore = useUserStore();
+    const { walletChart } = storeToRefs(useStore);
     const currencyOrPercentage = ref(false);
     const toggleValue = () => {
       // console.log(chart.value);
@@ -69,14 +72,18 @@ export default defineComponent({
     const series = [
       {
         name: "Carteira",
-        data: [10, 20, 30, 40, 40, 45, 50],
+        data: [0.014, 0.02, 0.03, 0.04, 0.04, 0.045, 0.05],
       },
     ];
     const dataCarteira = computed(() =>
       useStore.currentInvestimentSeries(series[0].data)
     );
     const showTime = () => {
-      setTimeout((series[0].data = dataCarteira.value), 2000);
+      setTimeout(() => {
+        series[0].data = dataCarteira.value;
+        chart.value.updateOptions(walletOption.value);
+      }, 2000);
+      // setTimeout((), 1000);
     };
     onMounted(() => {
       showTime();
@@ -90,6 +97,7 @@ export default defineComponent({
       chart,
       toggleValue,
       currencyOrPercentage,
+      walletChart,
     };
   },
   // Outras configurações do componente aqui

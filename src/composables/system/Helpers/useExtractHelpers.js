@@ -16,7 +16,7 @@ export default function useExtractHelpers() {
   }
   const dateFormatHMS = (value) => {
     let dateCurrent = new Date(value)
-    return date.formatDate(dateCurrent, "hh:mm:ss")
+    return date.formatDate(dateCurrent, "hh:mm")
   }
   return {
     dateFormatDMY,

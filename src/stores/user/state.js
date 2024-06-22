@@ -22,7 +22,8 @@ const state = () => {
     routeHome: "",
     NavbarMenu: "adm",
     isDirty: {},
-    isDirtyData: {}
+    isDirtyData: {},
+    walletChart: []
   };
 };
 

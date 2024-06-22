@@ -2,31 +2,35 @@ import { computed, ref } from "vue";
 import { Dark } from "quasar";
 import { useRouter } from "vue-router";
 import { useLayoutStore } from "src/stores/layout";
+import { useUserStore } from "src/stores/user";
+import { storeToRefs } from "pinia";
 
 export default function useCharts() {
   const dashboard = useLayoutStore().dashboard;
+  const useStore = useUserStore()
+  const { walletChart } = storeToRefs(useStore)
   const optionsTheme = () => {
     return Dark.isActive
       ? {
-          mode: "dark",
-          palette: "palette1",
-          monochrome: {
-            enabled: false,
-            color: "#255aee",
-            shadeTo: "light",
-            shadeIntensity: 0.65,
-          },
-        }
+        mode: "dark",
+        palette: "palette1",
+        monochrome: {
+          enabled: false,
+          color: "#255aee",
+          shadeTo: "light",
+          shadeIntensity: 0.65,
+        },
+      }
       : {
-          mode: "light",
-          palette: "palette2",
-          monochrome: {
-            enabled: false,
-            color: "#255aee",
-            shadeTo: "light",
-            shadeIntensity: 0.65,
-          },
-        };
+        mode: "light",
+        palette: "palette2",
+        monochrome: {
+          enabled: false,
+          color: "#255aee",
+          shadeTo: "light",
+          shadeIntensity: 0.65,
+        },
+      };
   };
 
   const arrayWhite = ["gray", "gray", "gray", "gray", "gray", "gray", "gray"];
@@ -289,6 +293,7 @@ export default function useCharts() {
     for (var i = numberString.length; i > 0; i -= 3) {
       group.unshift(numberString.substring(Math.max(0, i - 3), i));
     }
+    // console.log('Aqui o addPoints', group.join("."));
     return group.join(".");
   };
   //no title
@@ -334,24 +339,16 @@ export default function useCharts() {
           fontWeight: 600,
         },
       },
-      categories: [
-        "-       -2023-Q3",
-        "2023-Q2",
-        "2023-Q1",
-        "2023-Q0",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
-      ],
+      categories: walletChart.value.days,
     },
     yaxis: {
       opposite: true,
-      min: -10,
-      // max: 50,
+      min: 0,
+      max: 0.50,
       labels: {
         align: "left",
         formatter: (value) => {
-          let numberNew = addPoints(value);
+          let numberNew = value.toFixed(2);
           return `${numberNew}%`;
         },
         style: {
@@ -413,12 +410,14 @@ export default function useCharts() {
     },
     yaxis: {
       opposite: true,
-      min: -10,
+      min: 0,
       // max: 50,
       labels: {
         align: "left",
         formatter: (value) => {
-          return `R$ ${value},00`;
+          let numberNew = value.toFixed(2);
+          // let numberNew = addPoints(value);
+          return `R$ ${numberNew}`;
         },
         style: {
           colors: colorArray,

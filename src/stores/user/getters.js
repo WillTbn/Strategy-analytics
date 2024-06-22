@@ -6,17 +6,19 @@ const getters = {
     return state.data.user_wallet.current_investment;
   },
   currentInvestimentSeries: (state) => (arraySeries) => {
-    console.log("Estou aqui", arraySeries);
+    // console.log("Estou aqui", arraySeries);
     let investmentInitial = state.data.user_wallet.current_investment;
     const arrayReturn = [];
     for (let i = 0; i < arraySeries.length; i++) {
       let valueNew;
       let addValue;
-      addValue = investmentInitial * (arraySeries[i] / 100);
+      // console.log('valueinvestment', investmentInitial)
+      addValue = arraySeries[i] * investmentInitial / 100;
       valueNew = investmentInitial + addValue;
-      arrayReturn.push(valueNew);
+      // console.log('addValue sem toFixed -> ', valueNew);
+      arrayReturn.push(addValue.toFixed(2));
     }
-    console.log("array return -> ", arrayReturn);
+    // console.log("array return -> ", arrayReturn);
     return arrayReturn;
   },
 

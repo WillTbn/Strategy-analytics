@@ -1,5 +1,5 @@
 <template>
-  <q-card class="ExtractLayout relative-position" flat bordered dense>
+  <q-card class="ExtractLayout" flat bordered dense>
     <q-card-section class="q-pb-none">
       <header-card :titleCard="'Extrato de ' + user.name" />
     </q-card-section>
@@ -10,25 +10,27 @@
         leave-active-class="animated fadeOut"
       >
         <q-list
-          class="row no-wrap items-center q-mt-md q-pa-sm bg-grey-9 text-white rounded-borders"
+          class="row items-center q-mt-md q-pa-sm bg-grey-9 text-white rounded-borders"
           v-show="extractClient"
           separator
         >
-          <q-item v-for="item in extractClient" :key="item">
-            <q-item-section avatar>
+          <q-item v-for="item in extractClient" :key="item" v-ripple>
+            <q-item-section top class="col-3 text-center gt-sm">
               <!-- <q-icon color="positive" name="fa-solid fa-circle-plus" /> -->
-              {{ dateFormatDMY(item.transaction_date) }}
+              {{ dateFormatDMY(item.transaction_date) }}<br />
+              <span>
+                {{ dateFormatHMS(item.transaction_date) }}
+              </span>
             </q-item-section>
-            <q-space />
-            <q-item-section>
+
+            <q-item-section class="col-6">
               <q-item-label capton lines="2">
-                {{ getByCode(item.transaction_data.data.investment) }} -
-                {{ getByCode(item.transaction_data.data.transaction_id) }}
+                {{ item.transaction_data.data.trans_description }}
               </q-item-label>
             </q-item-section>
-            <q-space />
-            <q-item-section side bottom>
-              <q-item-label class="text-positive text-center">
+
+            <q-item-section class="col-3 self-end text-end">
+              <q-item-label class="text-positive" style="text-align-last: end">
                 R$ {{ item.transaction_value }} <br />
                 <q-badge color="teal" :label="item.transaction_name" />
                 <!-- {{ item.transaction_name }} -->
@@ -42,6 +44,11 @@
           </q-item>
         </q-list>
       </transition>
+    </q-card-section>
+    <q-separator />
+    <q-card-section class="row justify-between">
+      <div class="col">TOTAL CARTEIRA DE INVESTIMENTO</div>
+      <div class="col-2">R$ {{ user.current_investment }}</div>
     </q-card-section>
     <q-inner-loading
       :showing="loading"

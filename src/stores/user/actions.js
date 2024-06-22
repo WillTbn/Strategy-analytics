@@ -46,7 +46,11 @@ const actions = {
   },
   setEmailVerified(payload) {
     this.data.email_verified_at = payload
+  },
+  setWalletChart(payload) {
+    this.walletChart = payload
   }
+
 };
 
 export default { ...actions };
