@@ -198,6 +198,17 @@ export default function useStates() {
       spinnerColor: spinnerColor
     })
   }
+  /*
+   * verificar se passou 5minutos
+   * @param {string} date_at 
+   * @return boolean
+  */
+  const compareMinutes = (date_at) => {
+    const dateNow = new Date();
+    const dateParse = new Date(date_at);
+    const calcTime = dateNow.getTime() - dateParse.getTime()
+    return calcTime > 300000
+  }
   const hideLoading = () => {
     $q.loading.hide()
   }
@@ -207,6 +218,7 @@ export default function useStates() {
     dimension,
     dimensionHeight,
     viewport,
+    compareMinutes,
     detectTablet,
     showLoading,
     hideLoading

@@ -34,7 +34,7 @@
             </q-item-section>
 
             <q-item-section side avatar top>
-              <q-icon name="img:icons/iconeconfiguraes.svg" />
+              <q-icon name="fa-solid fa-gear" color="secondary" />
             </q-item-section>
           </q-item>
         </div>
@@ -65,7 +65,6 @@
           :key="list"
           :active-class="dark ? 'bg-dark rounded' : 'bg-primary rounded'"
           clickable
-          exact
           v-ripple
           :to="list.toName"
         >

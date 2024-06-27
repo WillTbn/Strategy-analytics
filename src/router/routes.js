@@ -2,6 +2,7 @@ const routes = [
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
+    //lading-page
     children: [
       {
         path: "/",
@@ -60,6 +61,7 @@ const routes = [
       },
     ],
   },
+  //system
   {
     path: "/login",
     name: "login",
@@ -83,10 +85,30 @@ const routes = [
         name: "perfomance",
         component: () => import("../system/pages/PerfomancePage.vue"),
       },
+      // {
+      //   path: "wallet",
+      //   name: "wallet",
+      //   component: () => import("../system/pages/WalletPage.vue"),
+      // },
       {
         path: "wallet",
-        name: "wallet",
-        component: () => import("../system/pages/WalletPage.vue"),
+        component: () => import("../system/views/WalletView.vue"),
+        props: true,
+        meta: { admin: true },
+        children: [
+          {
+            path: "",
+            name: "wallet",
+            component: () => import("../system/pages/WalletPage.vue"),
+            props: true,
+          },
+          {
+            path: "deposit",
+            name: "deposit",
+            component: () => import("../system/pages/DepositPage.vue"),
+            props: true,
+          }
+        ]
       },
       {
         path: "config",

@@ -30,9 +30,7 @@
         v-for="item in optionsLinks"
         :key="item"
       >
-        <q-icon :name="item.icon" class="q-pa-sm" size="2rem" />
-        <br />
-        <span class="text-h5">{{ item.name }}</span>
+        <links-wallet :title="item.name" :link="item.link" :icon="item.icon" />
       </div>
     </div>
     <div class="row q-pa-xl">
@@ -50,14 +48,19 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
-import { onMounted, ref } from "vue";
+// import { onMounted, ref } from "vue";
 import BalanceItems from "../components/wallet/BalanceItems.vue";
+import LinksWallet from "../components/wallet/LinksWallet.vue";
 const userStore = useUserStore();
 const { data, wallet, investment } = storeToRefs(userStore);
 const optionsLinks = [
-  { name: "Depósito", icon: "fa-solid fa-money-bill-transfer" },
-  { name: "Câmbio", icon: "fa-solid fa-arrow-right-arrow-left" },
-  { name: "Retirada", icon: "fa-solid fa-arrow-down" },
+  {
+    name: "Depósito",
+    icon: "fa-solid fa-money-bill-transfer",
+    link: "wallet/deposit",
+  },
+  { name: "Câmbio", icon: "fa-solid fa-arrow-right-arrow-left", link: "" },
+  { name: "Retirada", icon: "fa-solid fa-arrow-down", link: "" },
 ];
 const optionsBalance = [
   { name: "Brasil", icon: "img:../../system/icons/bandeira-do-brasil.png" },
@@ -66,12 +69,10 @@ const optionsBalance = [
 ];
 </script>
 
-<style scoped>
-.card-border {
-  border-radius: 18px;
-  border: solid 1px gray;
-  padding: 1rem;
-  margin-right: 12px;
-}
-/* Estilos específicos do componente aqui */
+<style scoped lang="sass">
+.card-border
+  border-radius: 18px
+  border: solid 1px gray
+  padding: 1rem
+  margin-right: 12px
 </style>
