@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh lpR lFf" :class="statusDark">
     <navbar-layout :key="route.name" :dark="Dark.isActive" v-if="!loading" />
-    <q-page-container padding>
+    <q-page-container padding style="min-height: 95vh">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.name"></component>

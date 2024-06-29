@@ -30,7 +30,12 @@
         v-for="item in optionsLinks"
         :key="item"
       >
-        <links-wallet :title="item.name" :link="item.link" :icon="item.icon" />
+        <links-wallet
+          :title="item.name"
+          :link="item.link"
+          :icon="item.icon"
+          :linkDisabled="item.disabled"
+        />
       </div>
     </div>
     <div class="row q-pa-xl">
@@ -55,12 +60,23 @@ const userStore = useUserStore();
 const { data, wallet, investment } = storeToRefs(userStore);
 const optionsLinks = [
   {
-    name: "Depósito",
+    name: "Depósita",
     icon: "fa-solid fa-money-bill-transfer",
     link: "wallet/deposit",
+    disabled: false,
   },
-  { name: "Câmbio", icon: "fa-solid fa-arrow-right-arrow-left", link: "" },
-  { name: "Retirada", icon: "fa-solid fa-arrow-down", link: "" },
+  {
+    name: "Câmbio",
+    icon: "fa-solid fa-arrow-right-arrow-left",
+    link: "#",
+    disabled: true,
+  },
+  {
+    name: "Retirada",
+    icon: "fa-solid fa-arrow-down",
+    link: "#",
+    disabled: true,
+  },
 ];
 const optionsBalance = [
   { name: "Brasil", icon: "img:../../system/icons/bandeira-do-brasil.png" },

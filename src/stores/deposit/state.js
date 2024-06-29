@@ -4,11 +4,16 @@ const state = () => {
       value: 50,
     },
     step: "first",
+    sendReceipt: false,
     editData: {
       id: "",
     },
     isDirtyReport: {},
-    qrcode: ""
+    qrcode: "",
+    receipt: {
+      transaction: null,
+      upload: null,
+    }
   };
 };
 

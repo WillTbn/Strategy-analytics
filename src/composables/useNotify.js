@@ -41,11 +41,16 @@ export default function useNotify() {
       timeout: getTime
     });
   };
-  const multError = (obj) => {
-    let qua = 2
+  /**
+   * 
+   * @param {Array|object} obj erros que seram ixibidos um apos o outros
+   * @param {number} getTime quantos segundos vai aparece a notificações
+   */
+  const multError = (obj, getTime = 1) => {
+    // let qua = 2
     for (const key in obj) {
-      qua++
-      let formatInt = parseInt(`${qua}000`)
+      getTime++
+      let formatInt = parseInt(`${getTime}000`)
       errorNotify(obj[key], formatInt)
     }
   }

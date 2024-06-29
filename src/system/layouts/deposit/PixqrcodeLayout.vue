@@ -58,13 +58,12 @@ export default defineComponent({
   components: { QrcodeVue, UploadreceiptLayout },
   setup() {
     const depositStore = useDepositStore();
-    const { step, qrcode, data } = storeToRefs(depositStore);
-    const {deleteDeposit} = useDeposit();
-    const sendReceipt = ref(false);
+    const { step, qrcode, data, sendReceipt } = storeToRefs(depositStore);
+    const { deleteDeposit } = useDeposit();
     const copyCode = () => {
       navigator.clipboard.writeText(qrcode.value);
     };
-    return { qrcode, copyCode, deposit: data, sendReceipt,deleteDeposit };
+    return { qrcode, copyCode, deposit: data, sendReceipt, deleteDeposit };
   },
   // Outras configurações do componente aquifirst
 });

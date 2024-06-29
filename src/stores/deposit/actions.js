@@ -24,6 +24,9 @@ const actions = {
   },
   setQrcode(payload) {
     this.qrcode = payload
+  },
+  setSendReceipt(payload) {
+    this.sendReceipt = payload
   }
 };
 

@@ -17,6 +17,8 @@ export default function useRefForm() {
   const cityRef = ref(null);
   const countryRef = ref(null);
   const statestreetRef = ref(null)
+  const uploadRef = ref(null);
+  const transactionRef = ref(null);
 
   const validateInput = () => {
     nameRef.value.validate();
@@ -74,6 +76,13 @@ export default function useRefForm() {
       roleRef.value.hasError
     );
   };
+  const validateInitialReceipt = () => {
+    transactionRef.value.validate();
+    uploadRef.value.validate();
+  }
+  const validateReceipt = () => {
+    return (uploadRef.value.hasError || transactionRef.value.hasError)
+  }
   const optionGenre = [
     { label: "Homem", value: "M", id: 0 },
     { label: "Mulher", value: "W", id: 1 },
@@ -96,6 +105,8 @@ export default function useRefForm() {
     validateDataErrorMsg,
     validateRegisterAddress,
     validateDataAddresMsg,
+    validateReceipt,
+    validateInitialReceipt,
     nameRef,
     lastnameRef,
     emailRef,
@@ -113,6 +124,8 @@ export default function useRefForm() {
     zipcodeRef,
     cityRef,
     countryRef,
-    statestreetRef
+    statestreetRef,
+    transactionRef,
+    uploadRef,
   }
 }

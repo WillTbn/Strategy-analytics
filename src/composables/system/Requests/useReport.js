@@ -50,7 +50,6 @@ export default function useReport() {
     }
   }
   const setDocument = async (id, file) => {
-    console.log('SET DOCUMENTO', file)
     step.value = 'Enviando documentos ....'
     loading.value = true
     let formData = new FormData();

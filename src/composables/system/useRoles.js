@@ -19,6 +19,13 @@ export default function useRoles() {
     { id: 5, name: "Contém tamanho superior a 8", status: false },
   ]);
 
+  const patternsRules = {
+    length20: (val) => val.length < 20 || 'Tem que ser maior que 20 caracetres',
+  }
+  const verifyExist = (value) => {
+    return value != null && value != undefined && value != ""
+  }
+
   const personRule =
     [
       (val) => !!val || "Campo é obrigatorio.",
@@ -45,13 +52,24 @@ export default function useRoles() {
     (val) => !!val || "Campo é obrigatorio.",
     (val) => val.length == 9 || "Campo incompleto",
   ]
+  const lengthRule = () => {
+
+  }
+  const validateID = (e) => {
+    if (verifyExist(e)) {
+      if (patternsRules['length20'](e)) {
+        return false;
+      }
+    }
+    return true;
+  };
   return {
     personRef,
     passwordRef,
     passwordConfirmRef,
     personRule,
     fiedValidate, requiredRole,
-    nameRule, emailRule, phoneRole, zipCodeRule, stringSerialize
-
+    nameRule, emailRule, phoneRole, zipCodeRule, stringSerialize,
+    validateID
   }
 }

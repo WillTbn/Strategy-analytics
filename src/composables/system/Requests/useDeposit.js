@@ -1,3 +1,4 @@
+import { storeToRefs } from 'pinia';
 import { api } from 'src/boot/axios';
 import useNotify from 'src/composables/useNotify'
 import useStates from 'src/composables/useStates'
@@ -5,8 +6,9 @@ import { useDepositStore } from "src/stores/deposit";
 import { ref } from 'vue'
 
 export default function useDeposit() {
-  const { errorNotify, alternativeNotify } = useNotify()
+  const { errorNotify, alternativeNotify, multError, successNotify } = useNotify()
   const useDeposit = useDepositStore()
+  const { receipt, data } = storeToRefs(useDeposit)
   const loading = ref(false)
   const dataLoader = ref(false);
   const { showLoading, hideLoading } = useStates()
@@ -41,8 +43,12 @@ export default function useDeposit() {
         let dataPayment = response.data.payment;
         useDeposit.setQrcode(dataPayment.qrcode)
         useDeposit.setData(dataPayment)
-        console.info('Aqui-->>', dataPayment.qrcode)
+        console.info('Aqui-->>', dataPayment)
         dataLoader.value = true
+        if (dataPayment.image || dataPayment.transaction_id) {
+          useDeposit.setStep('finally')
+          return
+        }
         useDeposit.setStep('qrcode');
       }
     })
@@ -54,6 +60,30 @@ export default function useDeposit() {
         loading.value = false
         hideLoading()
       })
+  }
+  const sendUploadReceipt = async () => {
+    showLoading('Analisando as informações.. ');
+    let formatData = new FormData()
+    if (receipt.value.upload) {
+      formatData.append('file', receipt.value.upload, receipt.value.upload.name);
+    }
+    formatData.append('transaction_id', receipt.value.transaction);
+    formatData.append('id', data.value.id);
+
+    api.defaults.headers.common['Accept'] = 'form-data';
+    api.defaults.headers.common['Accept'] = 'application/json';
+    await api.post('payment/receipt', formatData).then((response) => {
+      console.log(response.data)
+      successNotify(response.data.message, 3000)
+      useDeposit.setStep('finally')
+      useDeposit.setSendReceipt(false)
+    }).catch((e) => {
+      console.log(e)
+      multError(e.response.data.errors, 1)
+    }).finally(() => {
+      loading.value = false
+      hideLoading()
+    })
   }
   const deleteDeposit = async (id) => {
     console.log('iddd -> ', id);
@@ -77,6 +107,7 @@ export default function useDeposit() {
   }
   return {
     getCodePix, verifyInitial, deleteDeposit,
+    sendUploadReceipt,
     loading,
     dataLoader
   }

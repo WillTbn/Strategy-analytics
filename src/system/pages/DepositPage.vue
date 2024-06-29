@@ -1,13 +1,16 @@
 <template>
   <div class="DepositPage">
     <q-page class="DepositPage">
-      <titlebody-layout :textTitle="textNow" />
+      <titlebody-layout :textTitle="textNow" v-if="step != 'finally'" />
       <q-tab-panels animated class="bg-transparent" v-model="step">
         <q-tab-panel name="first">
           <valuedeposit-layout />
         </q-tab-panel>
         <q-tab-panel name="qrcode">
           <pixqrcode-layout />
+        </q-tab-panel>
+        <q-tab-panel name="finally">
+          <finallydeposit-layout />
         </q-tab-panel>
       </q-tab-panels>
     </q-page>
@@ -22,6 +25,8 @@ import useDeposit from "../../composables/system/Requests/useDeposit";
 import TitlebodyLayout from "../layouts/TitlebodyLayout.vue";
 import ValuedepositLayout from "../layouts/deposit/ValuedepositLayout.vue";
 import PixqrcodeLayout from "../layouts/deposit/PixqrcodeLayout.vue";
+import FinallydepositLayout from "../layouts/deposit/FinallydepositLayout.vue";
+
 const depositStore = useDepositStore();
 const { step, already } = storeToRefs(depositStore);
 const { verifyInitial } = useDeposit();

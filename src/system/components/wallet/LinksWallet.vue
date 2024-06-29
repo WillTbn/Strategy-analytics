@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable tag="a" :href="link">
+  <q-item clickable tag="a" :href="link" :disable="linkDisabled">
     <q-icon :name="icon" class="q-pa-sm" size="2rem" />
     <br />
     <span class="text-h5">{{ title }}</span>
@@ -34,6 +34,10 @@ export default defineComponent({
     icon: {
       type: String,
       default: "",
+    },
+    linkDisabled: {
+      type: Boolean,
+      default: true,
     },
   },
 });

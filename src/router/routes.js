@@ -149,6 +149,21 @@ const routes = [
         meta: { admin: true },
       },
       {
+        path: "controlDeposit",
+        component: () => import("../system/views/DepositView.vue"),
+        props: true,
+        meta: { admin: true },
+        children: [
+          {
+            path: "",
+            name: "controlDeposit",
+            component: () => import("../system/pages/control/ControlDepositPage.vue"),
+            props: true,
+          },
+
+        ]
+      },
+      {
         path: "controlReports",
         component: () => import("../system/views/ReportView.vue"),
         props: true,
