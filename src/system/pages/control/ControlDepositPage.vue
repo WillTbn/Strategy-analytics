@@ -1,11 +1,12 @@
 <template>
   <q-page class="ControlDepositPage">
     <titlebody-layout textTitle="Controle de depositos/investimentos" />
-    aqui vira os depositos pendentes de confirmaçao
+    <listwainting-layout />
   </q-page>
 </template>
 
 <script setup>
+import ListwaintingLayout from "src/system/layouts/control/deposit/ListwaintingLayout.vue";
 import TitlebodyLayout from "../../layouts/TitlebodyLayout.vue";
 </script>
 

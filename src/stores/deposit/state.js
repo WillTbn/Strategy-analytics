@@ -13,7 +13,8 @@ const state = () => {
     receipt: {
       transaction: null,
       upload: null,
-    }
+    },
+    waintings: []
   };
 };
 

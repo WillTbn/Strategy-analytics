@@ -8,7 +8,7 @@ import { ref } from 'vue'
 export default function useDeposit() {
   const { errorNotify, alternativeNotify, multError, successNotify } = useNotify()
   const useDeposit = useDepositStore()
-  const { receipt, data } = storeToRefs(useDeposit)
+  const { receipt, data, waintings } = storeToRefs(useDeposit)
   const loading = ref(false)
   const dataLoader = ref(false);
   const { showLoading, hideLoading } = useStates()
@@ -105,9 +105,28 @@ export default function useDeposit() {
         hideLoading()
       })
   }
+
+  //ADM's
+  const getWaintings = async () => {
+    loading.value = true
+    showLoading('Pegando os dados ....');
+    await api.get('payment/wainting')
+      .then((response) => {
+        useDeposit.setWainting(response.data.deposits)
+      })
+      .catch((e) => {
+        console.log(e);
+        errorNotify('Erro ao pegar os Depositos waintings');
+      })
+      .finally(() => {
+        loading.value = false
+        hideLoading()
+      })
+  }
+
   return {
     getCodePix, verifyInitial, deleteDeposit,
-    sendUploadReceipt,
+    sendUploadReceipt, getWaintings,
     loading,
     dataLoader
   }

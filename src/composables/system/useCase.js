@@ -21,11 +21,18 @@ export default function useCase() {
   const dateFormatUTC = (value) => {
     return date.formatDate(value, "YYYY/MM/DD")
   }
+  /**
+   * @param {date} dateNow data no formato US completa YYYY-MM-DD HH:MM:ss
+   */
+  const dateUSFromBr = (dateNow) => {
+    return date.formatDate(dateNow, "DD/MM/YYYY hh:mm");
+  }
   return {
     serializeString,
     same,
     dateFormatBr,
     sameDate,
-    dateFormatUTC
+    dateFormatUTC,
+    dateUSFromBr
   }
 } 

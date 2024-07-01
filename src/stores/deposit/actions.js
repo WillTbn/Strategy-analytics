@@ -27,6 +27,9 @@ const actions = {
   },
   setSendReceipt(payload) {
     this.sendReceipt = payload
+  },
+  setWainting(payload) {
+    this.waintings = payload
   }
 };
 
