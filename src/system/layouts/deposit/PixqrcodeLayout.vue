@@ -3,10 +3,14 @@
     <!-- Seu conteúdo HTML aqui -->
     <div class="col-8 q-mb-lg">Valor R$ {{ deposit.value }}</div>
     <div class="col-12">
-      <qrcode-vue :value="qrcode" :size="200" level="H" />
+      <q-card class="force-white">
+        <q-card-section>
+          <qrcode-vue :value="qrcode" :size="200" level="H" class="q-ma-lg" />
+        </q-card-section>
+      </q-card>
     </div>
     <div class="col-8">
-      <q-card class="my-card" flat bordered>
+      <q-card class="my-card q-mt-lg" flat bordered>
         <q-card-section horizontal>
           {{ qrcode }}
 
@@ -69,6 +73,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-/* Estilos específicos do componente aqui */
+<style scoped lang="sass">
+.force-white
+  background: white !important
 </style>
