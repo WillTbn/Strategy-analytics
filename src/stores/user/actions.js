@@ -49,6 +49,9 @@ const actions = {
   },
   setWalletChart(payload) {
     this.walletChart = payload
+  },
+  setWallet(payload) {
+    this.wallet = payload
   }
 
 };

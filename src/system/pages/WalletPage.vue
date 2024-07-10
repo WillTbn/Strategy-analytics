@@ -2,7 +2,7 @@
   <div class="WalletPage">
     <!-- Seu conteúdo HTML aqui col-12 col-md q-mb-md-lg  q-mb-xs-md-->
 
-    <div class="q-pa-md row justify-between q-pa-xl">
+    <!-- <div class="q-pa-md row justify-between q-pa-xl">
       <div class="col-12 col-md-6 q-pa-xl q-mb-md-lg q-mb-xs-md" height="10rem">
         <div class="text-subtitle2">Patrimônio nos EUA</div>
         <span class="text-h2 text-weight-bolder text-grey-7">
@@ -23,7 +23,8 @@
           {{ $filters.currentValue(wallet.current_investment) }}
         </span>
       </div>
-    </div>
+    </div> -->
+    <balancecurrent-layout />
     <div class="row q-pa-xl">
       <div
         class="col-md q-my-md card-border"
@@ -56,6 +57,8 @@ import { useUserStore } from "src/stores/user";
 // import { onMounted, ref } from "vue";
 import BalanceItems from "../components/wallet/BalanceItems.vue";
 import LinksWallet from "../components/wallet/LinksWallet.vue";
+import BalancecurrentLayout from "../layouts/wallet/BalancecurrentLayout.vue";
+
 const userStore = useUserStore();
 const { data, wallet, investment } = storeToRefs(userStore);
 const optionsLinks = [
