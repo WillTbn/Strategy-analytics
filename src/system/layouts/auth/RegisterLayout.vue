@@ -1,6 +1,6 @@
 <template>
   <div class="RegisterLayout">
-    <header-auth text="Preencha com seus dados para registra-se" />
+    <header-auth :text="textStep" />
     <div class="q-pa-md" color="transparent">
       <q-stepper
         v-model="step"
@@ -38,7 +38,7 @@
 
         <q-step
           :name="2"
-          title="Dados complementares"
+          title="Informe seu endereço completo para registro"
           caption="personalizando a plataforma para você"
           icon="fa-solid fa-tachograph-digital"
           :done="step > 2"
@@ -57,7 +57,7 @@
 
 <script>
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import FirstStep from "./StepsFromRegister/FirstStep.vue";
 import SecondStep from "./StepsFromRegister/SecondStep.vue";
 import FinallyStep from "./StepsFromRegister/FinallyStep.vue";
@@ -70,7 +70,16 @@ export default defineComponent({
     FinallyStep,
   },
   setup() {
-    return { step: ref(1) };
+    const step = ref(1);
+    const textPatterns = {
+      1: "Cadastre-se preenchendo seus dados abaixo",
+      2: "Informe seu endereço completo para registro",
+      3: "Defina sua senha de acesso",
+    };
+    const textStep = computed(() => {
+      return textPatterns[step.value];
+    });
+    return { step, textStep };
   },
   // Outras configurações do componente aqui
 });

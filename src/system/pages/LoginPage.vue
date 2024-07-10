@@ -1,6 +1,6 @@
 <template>
   <q-layout class="bg-simulator">
-    <q-page-container>
+    <q-page-container style="min-height: 96vh">
       <login-layout
         v-if="stateLogin == 'login'"
         @status-login="stateLogin = $event"
@@ -24,7 +24,7 @@
       label-class="text-teal"
       label-style="font-size: 1.1em"
     />
-    <footer-system />
+    <footer-system class="text-white" />
   </q-layout>
 </template>
 <script setup>

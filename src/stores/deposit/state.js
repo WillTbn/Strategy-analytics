@@ -14,7 +14,7 @@ const state = () => {
       transaction: null,
       upload: null,
     },
-    waintings: []
+    waintings: [],
   };
 };
 

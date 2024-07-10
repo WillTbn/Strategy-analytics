@@ -25,7 +25,9 @@ export default function useCase() {
    * @param {date} dateNow data no formato US completa YYYY-MM-DD HH:MM:ss
    */
   const dateUSFromBr = (dateNow) => {
-    return date.formatDate(dateNow, "DD/MM/YYYY hh:mm");
+    let getDate = date.formatDate(dateNow, "DD/MM/YYYY hh:mm");
+    date.subtractFromDate(getDate, { hours: 24, milliseconds: 10000 })
+    return getDate
   }
   return {
     serializeString,

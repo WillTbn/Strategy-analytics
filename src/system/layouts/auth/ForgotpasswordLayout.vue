@@ -99,9 +99,6 @@
       <div class="col-12">
         <header-auth text="" styleNew="height: 10vh" />
       </div>
-      <div class="copy">
-        <register-data />
-      </div>
     </div>
   </div>
 </template>
@@ -109,7 +106,7 @@
 <script>
 import useToken from "src/composables/system/Requests/useToken";
 import useRoles from "src/composables/system/useRoles";
-import RegisterData from "src/system/components/RegisterData.vue";
+// import RegisterData from "src/system/components/RegisterData.vue";
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import { defineComponent, ref } from "vue";
 
@@ -117,7 +114,7 @@ export default defineComponent({
   name: "ForgotpasswordLayout",
   components: {
     HeaderAuth,
-    RegisterData,
+    // RegisterData,
   },
   emits: ["status-login"],
   setup(props, ctx) {
@@ -130,8 +127,7 @@ export default defineComponent({
     const onSubmit = async () => {
       try {
         await forgotPassword(user.value);
-        if(forgot.value)
-          statusAction.value = "finally";
+        if (forgot.value) statusAction.value = "finally";
       } catch (e) {
         console.log(e);
       }

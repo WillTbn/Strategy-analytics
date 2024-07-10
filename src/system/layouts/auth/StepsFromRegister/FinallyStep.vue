@@ -69,17 +69,18 @@
             />
           </template>
         </q-input>
-
-        <q-btn
-          class="self-end q-mt-lg"
-          color="secondary"
-          padding="0.5rem 3rem"
-          text-color="white"
-          label="continuar"
-          type="submit"
-          :disabled="loading"
-          :loading="loading"
-        />
+        <div class="col text-center">
+          <q-btn
+            class="self-end q-mt-lg"
+            color="secondary"
+            padding="0.5rem 3rem"
+            text-color="white"
+            label="continuar"
+            type="submit"
+            :disabled="loading"
+            :loading="loading"
+          />
+        </div>
       </q-form>
     </div>
     <q-dialog

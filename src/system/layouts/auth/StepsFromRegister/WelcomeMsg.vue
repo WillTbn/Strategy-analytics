@@ -1,15 +1,15 @@
 <template>
   <div class="WelcomeMsg">
-    <div class="row justify-center text-white">
+    <div class="row justify-center text-white text-center">
       <header-auth :text="text" />
       <div class="col-10 col-sm-12 col-md-10">
         <p class="text-h6 text-white">
-          Você sera redirecionado em {{ counter }} para tela de login
+          Você sera redirecionado em {{ counter }}s
         </p>
       </div>
     </div>
-    <div class="row justify-center">
-      <div class="col-3 self-center">
+    <div class="row justify-center text-center">
+      <div class="col-3">
         <q-btn
           no-wrap
           color="indigo-14"
@@ -35,7 +35,8 @@ export default defineComponent({
     const userStore = useUserStore();
     const { register } = storeToRefs(userStore);
     const counter = ref(30);
-    const text = `Seja muito bem vindo, ${register.value.FirstName}!!!`;
+    // const text = `Bem vindo, ${register.value.FirstName}!!!`;
+    const text = `Bem vindo`;
     const router = useRouter();
     let timer;
     watch(counter, (n, o) => {

@@ -18,9 +18,18 @@ export default function useExtractHelpers() {
     let dateCurrent = new Date(value)
     return date.formatDate(dateCurrent, "hh:mm")
   }
+  const someValues = (initial, current) => {
+    let one = parseFloat(initial)
+    let two = parseFloat(current)
+    let some = one + two
+    let someString = some.toFixed(2)
+
+    return `R$:${someString}`
+  }
   return {
     dateFormatDMY,
     dateFormatHMS,
-    getByCode
+    getByCode,
+    someValues
   }
 }

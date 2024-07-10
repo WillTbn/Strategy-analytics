@@ -13,11 +13,6 @@
         ref="uploadRef"
         accept=""
       >
-        <!-- :rules="[
-          (val) =>
-            (!!val && !!receipt.transaction) ||
-            'Um dos campos devem se preeenchido',
-        ]" -->
         <template v-slot:prepend>
           <q-icon name="cloud_upload" @click.stop.prevent />
         </template>
@@ -28,33 +23,18 @@
             class="cursor-pointer"
           />
         </template>
-
-        <!-- <template v-slot:hint>
-          Field hint
-        </template> -->
       </q-file>
     </q-card-section>
     <q-card-section>
       <q-input
-        v-bind="{ ...$inputStyle }"
+        standout="bg-primary text-white"
         v-model.lazy="receipt.transaction"
         label="ID da transação"
         :rules="[(val) => validateID(val) || 'No mínimo 20 caracters.']"
         ref="transactionRef"
         class="col-6 col-md-3 col-sm-6"
       />
-      <!-- :loading="loading"
-        :disable="loading" -->
     </q-card-section>
-    <!-- <q-card-section class="q-pt-none">
-      <q-input
-        dense
-        v-model="address"
-        autofocus
-        @keyup.enter="prompt = false"
-      />
-    </q-card-section> -->
-
     <q-card-actions align="between">
       <q-btn flat label="Cancel" v-close-popup class="text-negative" />
       <q-btn
@@ -94,7 +74,7 @@ export default defineComponent({
       }
       return true;
     };
-    const {sendUploadReceipt} = useDeposit()
+    const { sendUploadReceipt } = useDeposit();
     // uploadReceipt
     const uploadReceipt = async () => {
       validateInitialReceipt();
@@ -107,7 +87,7 @@ export default defineComponent({
       }
       if (!validateReceipt() && validateID()) {
         console.log(receipt.value);
-        await sendUploadReceipt()
+        await sendUploadReceipt();
       }
     };
 

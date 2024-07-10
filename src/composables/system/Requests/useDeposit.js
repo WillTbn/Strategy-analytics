@@ -6,7 +6,7 @@ import { useDepositStore } from "src/stores/deposit";
 import { ref } from 'vue'
 
 export default function useDeposit() {
-  const { errorNotify, alternativeNotify, multError, successNotify } = useNotify()
+  const { errorNotify, alternativeNotify, multError, successNotify, infoNotify } = useNotify()
   const useDeposit = useDepositStore()
   const { receipt, data, waintings } = storeToRefs(useDeposit)
   const loading = ref(false)
@@ -45,6 +45,11 @@ export default function useDeposit() {
         useDeposit.setData(dataPayment)
         console.info('Aqui-->>', dataPayment)
         dataLoader.value = true
+        if (dataPayment.status == 'rejected') {
+          useDeposit.setStep('qrcode')
+          infoNotify('Nós envie novamente o comprovante.')
+          return
+        }
         if (dataPayment.image || dataPayment.transaction_id) {
           useDeposit.setStep('finally')
           return
@@ -123,11 +128,59 @@ export default function useDeposit() {
         hideLoading()
       })
   }
-
+  const setConfirmDeposit = async (deposit) => {
+    showLoading('Montando o novo estado');
+    deposit.status = 'confirmed'
+    await api.post('deposit', { ...deposit })
+      .then((response) => {
+        successNotify(response.data.message)
+        dataLoader.value = true
+        showLoading('recebido!');
+        setTimeout(() => {
+          hideLoading()
+          window.location.reload()
+        }, 2000)
+      })
+      .catch((e) => {
+        console.log(e);
+        multError(e.response.data.errors, 3000)
+        errorNotify('Erro ao atualizar status do deposito');
+      })
+      .finally(() => {
+        loading.value = false
+        hideLoading()
+      })
+  }
+  const setRecusedDeposit = async (deposit, note) => {
+    deposit.status = 'rejected'
+    deposit.note = note
+    showLoading('Enviando o novo estado.');
+    await api.post('deposit', { ...deposit })
+      .then((response) => {
+        successNotify(response.data.message)
+        dataLoader.value = true
+        showLoading('recebido!');
+        showLoading('Atualizando dados do cliente.');
+        setTimeout(() => {
+          hideLoading()
+          window.location.reload()
+        }, 2000)
+      })
+      .catch((e) => {
+        console.log(e);
+        multError(e.response.data.errors, 3000)
+        errorNotify('Erro ao atualizar status do deposito');
+      })
+      .finally(() => {
+        loading.value = false
+        hideLoading()
+      })
+  }
   return {
     getCodePix, verifyInitial, deleteDeposit,
     sendUploadReceipt, getWaintings,
     loading,
-    dataLoader
+    dataLoader,
+    setConfirmDeposit, setRecusedDeposit
   }
 }

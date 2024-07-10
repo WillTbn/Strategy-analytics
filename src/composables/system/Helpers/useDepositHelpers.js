@@ -47,16 +47,20 @@ export default function useDepositHelpers() {
       field: "action",
     },
   ];
+  const viewDeposit = ref(false)
+  const depositEdit = ref()
   const btnActions = [
     {
       color: "green",
-      icon: "fa-solid fa-user-lock",
-      tooltipText: "Mudar permissão do usuário",
-      action: "editRole",
+      icon: "fa-solid fa-clipboard-list",
+      tooltipText: "Avaliar",
+      action: "updateDeposit",
     },
   ];
   const actions = {
-    editIncome: (e) => {
+    updateDeposit: (e) => {
+      viewDeposit.value = true
+      depositEdit.value = e
       console.log('Estou dentro da actions!!!')
     },
   };
@@ -65,6 +69,9 @@ export default function useDepositHelpers() {
   };
   return {
     columnsWainting,
-    btnActions
+    btnActions,
+    viewDeposit,
+    handlerAction,
+    depositEdit
   }
 }
