@@ -13,6 +13,7 @@
           label="CPF ou CNPJ"
           :rules="personRule"
           ref="personRef"
+          autofocus
         />
         <q-input
           v-model="login.password"
