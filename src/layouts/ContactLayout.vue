@@ -264,33 +264,33 @@ export default defineComponent({
   -webkit-text-size-adjust: 10%;
   margin-right: 0.4rem;
 }
-.control-calendar {
-  padding: 0.4rem;
-  max-width: 2rem;
-  height: 3rem;
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  /* align-content: center; */
-  align-items: center;
-}
+</style>
+<style lang="sass">
+.control-calendar
+  padding: 0.4rem
+  max-width: 2rem
+  height: 3rem
+  margin-top: 1.5rem
+  display: flex
+  justify-content: center
+  /* align-content: center */
+  align-items: center
+
 .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 2s;
-}
+.fade-leave-active
+  transition: opacity 2s
+
 .fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-.container-form {
-  padding-inline: 4rem;
-}
-.mb-telephone {
-  margin-bottom: 1.3rem;
-}
-body:not(.mobile) {
-  .container-form {
-    padding-inline: 280px;
-  }
-}
+.fade-leave-to
+  opacity: 0
+
+.container-form
+  padding-inline: 4rem
+
+.mb-telephone
+  margin-bottom: 1.3rem
+
+body:not(.mobile)
+  .container-form
+    padding-inline: 280px
 </style>
