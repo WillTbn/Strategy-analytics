@@ -1,33 +1,35 @@
 <template>
   <div class="ReportclassicLayout">
-    <div class="row justify-center q-gutter-sm">
+    <div class="row justify-center q-gutter-sm" v-if="last.classic">
       <div class="col-12">
         <q-card style="max-height: 35rem" square flat>
           <pdf-pattern
-            documentPDF="doc/report/classic/Relatorio_20.01.2024.pdf"
+            :documentPDF="last.classic.document"
             title="Premium Classic"
           />
         </q-card>
-        <!-- <q-scroll-area style="height: 35rem">
-        </q-scroll-area> -->
       </div>
     </div>
+    <not-report typeReport="classic" v-else />
   </div>
 </template>
 
 <script>
-// import { VuePDF, usePDF } from "@tato30/vue-pdf";
+import { useReportStore } from "src/stores/report";
+import { defineComponent, ref } from "vue";
+import { storeToRefs } from "pinia";
 
 import PdfPattern from "../../components/PdfPattern.vue";
-import { defineComponent, ref } from "vue";
+import NotReport from "src/system/components/report/NotReport.vue";
 
 export default defineComponent({
   name: "ReportclassicLayout",
-  components: { PdfPattern },
+  components: { PdfPattern, NotReport },
   setup() {
-    return {};
+    const reportStore = useReportStore();
+    const { last } = storeToRefs(reportStore);
+    return { last };
   },
-  // Outras configurações do componente aqui
 });
 </script>
 

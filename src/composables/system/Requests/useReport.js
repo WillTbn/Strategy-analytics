@@ -49,6 +49,18 @@ export default function useReport() {
       loading.value = false
     }
   }
+  const getLastreport = async () => {
+    loading.value = true
+    try {
+      const reports = await api.get('reports/last');
+      storeReport.setlast(reports.data)
+      console.log('last -> ', reports.data)
+    } catch (e) {
+      errorNotify('Erro ao pegar os ralatorios');
+    } finally {
+      loading.value = false
+    }
+  }
   const setDocument = async (id, file) => {
     step.value = 'Enviando documentos ....'
     loading.value = true
@@ -207,6 +219,7 @@ export default function useReport() {
     verifySame,
     setDocument,
     getOne,
+    getLastreport,
     getAllreport,
     setReport,
     setDataReport,

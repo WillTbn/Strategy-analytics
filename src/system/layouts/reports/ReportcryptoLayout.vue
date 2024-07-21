@@ -1,33 +1,33 @@
 <template>
   <div class="ReportcryptoLayout">
-    <div class="row justify-center q-gutter-sm">
+    <div class="row justify-center q-gutter-sm" v-if="last.crypto">
       <div class="col-12">
-        <!-- <q-scroll-area style="height: 35rem"> -->
         <q-card style="max-height: 35rem" square flat>
           <pdf-pattern
-            documentPDF="doc/report/crypto/Relatorio_06.01.2024.pdf"
+            :documentPDF="last.crypto.document"
             title="Crypto Premiumm"
           />
         </q-card>
-        <!-- </q-scroll-area> -->
       </div>
     </div>
+    <not-report typeReport="crypto" v-else />
   </div>
 </template>
-
 <script>
 import { defineComponent, onMounted, ref } from "vue";
+import { useReportStore } from "src/stores/report";
+import { storeToRefs } from "pinia";
+
 import PdfPattern from "../../components/PdfPattern.vue";
+import NotReport from "../../components/report/NotReport.vue";
 export default defineComponent({
   name: "ReportcryptoLayout",
-  components: { PdfPattern },
+  components: { PdfPattern, NotReport },
   setup() {
-    onMounted(() => {
-      console.log("ESTOU DENTRO DO Crypto");
-    });
-    return {};
+    const reportStore = useReportStore();
+    const { last } = storeToRefs(reportStore);
+    return { last };
   },
-  // Outras configurações do componente aqui
 });
 </script>
 

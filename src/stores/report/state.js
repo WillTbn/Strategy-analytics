@@ -4,7 +4,8 @@ const state = () => {
     editData: {
       id: "",
     },
-    isDirtyReport: {}
+    isDirtyReport: {},
+    last: {}
   };
 };
 

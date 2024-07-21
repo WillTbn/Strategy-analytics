@@ -344,7 +344,7 @@ export default function useCharts() {
     yaxis: {
       opposite: true,
       min: 0,
-      max: 0.50,
+      max: 50,
       labels: {
         align: "left",
         formatter: (value) => {

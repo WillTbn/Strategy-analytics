@@ -6,6 +6,9 @@ const actions = {
   setEditaData(payload) {
     this.editData = payload
     this.isDirtyReport = Object.freeze({ ...payload })
+  },
+  setlast(payload) {
+    this.last = payload
   }
 };
 

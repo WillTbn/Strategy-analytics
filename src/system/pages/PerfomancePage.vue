@@ -6,13 +6,18 @@
 </template>
 
 <script setup>
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import PerfomanceLayout from "../layouts/PerfomanceLayout.vue";
 import { useUserStore } from "../../stores/user";
+import useReport from "src/composables/system/Requests/useReport";
 
 const userStore = useUserStore();
 const { data, isClient } = storeToRefs(userStore);
+const { getLastreport } = useReport();
+onMounted(async () => {
+  await getLastreport();
+});
 </script>
 
 <style scoped>
