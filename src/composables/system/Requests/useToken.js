@@ -128,7 +128,7 @@ export default function useToken() {
 
       successNotify(res.data.message, 10000)
       userStore.setEmailVerified(res.data.user.email_verified_at)
-      deleteCookieUser()
+      await deleteCookieUser()
       window.location.reload()
     } catch (e) {
       // console.log(e)
