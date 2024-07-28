@@ -122,7 +122,6 @@ export default defineComponent({
       (value) => !!value || "Campo é obrigatorio",
       (value) => value == register.value.password || "Senhas não conferem",
     ];
-    // const verifyLength = computed(() => authentication.value.password.length);
     const verifyValue = computed(() => register.value.password);
 
     watch(verifyValue, (n, o) => {

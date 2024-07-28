@@ -9,7 +9,9 @@ const inputStyle = {
   "autocorrect": "off",
   "autocapitalize": "off",
   "spellcheck": false,
-  "dark": true
+  "dark": true,
+  "outlined": true,
+  "lazy-rules": true
 }
 
 export {

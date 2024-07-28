@@ -1,69 +1,70 @@
 <template>
-  <header-auth text="Acesse sua conta" />
   <q-form @submit.prevent.stop="onSubmit">
     <div class="row justify-center text-white">
-      <div class="col-md-4 col-sm-10 self-center">
-        <q-input
-          v-model="login.person"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
-          mask="###.###.###-##"
-          label="CPF ou CNPJ"
-          :rules="personRule"
-          ref="personRef"
-          autofocus
-        />
-        <q-input
-          v-model="login.password"
-          label="Senha"
-          input-class="text-white"
-          label-color="white"
-          color="white"
-          item-aligned
-          :type="isPwd ? 'password' : 'text'"
-          :rules="[(val) => !!val || 'Campo obrigatório']"
-          ref="passwordRef"
-        >
-          <template v-slot:append>
-            <q-icon
-              color="secondary"
-              :name="isPwd ? 'visibility_off' : 'visibility'"
-              class="cursor-pointer"
-              @click="isPwd = !isPwd"
-            />
-          </template>
-        </q-input>
-        <p class="text-hover text-weight-bolder q-pa-lg forgot" @click="forgot">
-          Esqueceu sua senha?
-        </p>
-        <div class="text-center">
-          <p
-            class="text-hover text-weight-bolder q-pa-lg forgot"
-            @click="goRegister"
-          >
-            Registre-se
-          </p>
+      <div class="col-md-3 col-sm-8 self-center">
+        <div class="column">
+          <header-auth text="Acesse sua conta" class="col" />
+          <span class="text-muted-register">
+            Ainda não é membro da Strategy?
+            <b
+              class="text-hover text-weight-bolder forgot text-white"
+              @click="goRegister"
+            >
+              Crie sua conta aqui!.
+            </b>
+          </span>
         </div>
-      </div>
-    </div>
-
-    <div class="row justify-center text-white text-center text-bolder">
-      <div class="col-md-12 self-center q-mt-lg">
-        <q-btn
-          color="secondary"
-          padding="0.5rem 3rem"
-          text-color="white"
-          label="Entrar"
-          type="submit"
-          :disabled="loading"
-          :loading="loading"
-        >
-          <template v-slot:loading>
-            <q-spinner-pie size="3em" />
-          </template>
-        </q-btn>
+        <div class="column">
+          <span class="text-label q-mt-lg">CPF ou CNPJ</span>
+          <q-input
+            v-bind="{ ...$inputStyle }"
+            v-model="login.person"
+            mask="###.###.###-##"
+            placeholder="000.000.000-00 | 000.000.000/0001-00"
+            :rules="personRule"
+            ref="personRef"
+          />
+          <span class="text-label q-mt-lg">Confirmar Senha</span>
+          <q-input
+            v-model="login.password"
+            v-bind="{ ...$inputStyle }"
+            :type="isPwd ? 'password' : 'text'"
+            :rules="[(val) => !!val || 'Campo obrigatório']"
+            ref="passwordRef"
+            placeholder="Confirme sua senha"
+          >
+            <template v-slot:append>
+              <q-icon
+                color="secondary"
+                :name="isPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="isPwd = !isPwd"
+              />
+            </template>
+          </q-input>
+          <p
+            class="text-hover text-weight-bolder forgot q-my-lg"
+            @click="forgot"
+          >
+            Esqueci minha senha.
+          </p>
+          <q-btn
+            color="primary"
+            padding="14.9px 179.23px 15.5px 179.22px"
+            text-color="white"
+            label="Continuar"
+            type="submit"
+            :disabled="loading"
+            :loading="loading"
+            class="col-12 text-weight-bolder"
+            no-caps
+            style="border-radius: 8px"
+          >
+            <template v-slot:loading>
+              <q-spinner-pie size="3em" />
+            </template>
+          </q-btn>
+        </div>
       </div>
     </div>
   </q-form>
@@ -95,10 +96,10 @@ export default defineComponent({
   emits: ["status-login"],
   setup(props, ctx) {
     const useStore = useUserStore();
-    // const personRef = ref(null);
+    const personRef = ref(null);
     const passwordRef = ref(null);
     const { auth, errors, loading } = useAuth();
-    const { personRef, personRule } = useRoles();
+    const { personRule } = useRoles();
     // const isValidperson = computed(() => errors.person.length > 0);
     const { login } = storeToRefs(useStore);
     const route = useRoute();
@@ -135,6 +136,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-/* Estilos específicos do componente aqui */
-</style>
+<style lang="sass" scoped></style>

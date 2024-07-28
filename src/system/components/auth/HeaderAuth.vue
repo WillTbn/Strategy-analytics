@@ -1,23 +1,19 @@
 <template>
-  <div
-    class="HeaderAuth justify-center text-white row items-center content-center text-center"
-    :style="styleNew"
-  >
-    <div class="col-md-12 self-center">
-      <logo-small />
+  <div class="HeaderAuth" :style="styleNew">
+    <div class="">
+      <logo-small-right />
+      <p class="text-segoe q-mt-lg">{{ text }}</p>
     </div>
-    <div class="col-md-12 col-sm-6 self-center">
-      <span class="text-h3 text-weight-bold">{{ text }}</span>
-    </div>
+    <div class=""></div>
   </div>
 </template>
 <script>
 import { defineComponent } from "vue";
-import LogoSmall from "../LogoSmall.vue";
+import LogoSmallRight from "../LogoSmallRight.vue";
 export default defineComponent({
   name: "HeaderAuth",
   components: {
-    LogoSmall,
+    LogoSmallRight,
   },
   props: {
     text: { type: String },
@@ -28,3 +24,12 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="sass">
+.text-segoe
+  font-family: "Segoe UI"
+  font-size: 2rem
+  font-style: normal
+  font-weight: 400
+  line-height: 2.5rem
+  letter-spacing: -1.6px
+</style>

@@ -46,21 +46,18 @@ export default function useRegister() {
     }
   }
   const registration = async (data) => {
-    try {
-      data.genre = "O"
-      loading.value = true
-      const res = await api.post('register', { ...data })
-      console.log('resposta -> ', res.data)
+    data.genre = "O"
+    loading.value = true
+    api.post('register', { ...data }).then((res) => {
       successNotify(res.data.message, 40000)
       if (res.data.status == 200)
         registrationStatus.value = true
-    } catch (e) {
+    }).catch((e) => {
       console.log(e)
       multError(e.response.data.errors)
-
-    } finally {
+    }).finally(() => {
       loading.value = false
-    }
+    })
   }
   return {
     validateCPF,

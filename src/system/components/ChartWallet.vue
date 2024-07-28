@@ -61,7 +61,7 @@ export default defineComponent({
         // chart.value.toggleSeries("Carteira Strategy Anaytics");
         chart.value.updateSeries([
           {
-            name: "Carteira",
+            name: "Carteira teste",
             data: dataCarteira.value,
           },
         ]);

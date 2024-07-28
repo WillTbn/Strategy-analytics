@@ -1,56 +1,15 @@
 <template>
-  <div class="RegisterLayout">
-    <header-auth :text="textStep" />
-    <div class="q-pa-md" color="transparent">
-      <q-stepper
-        v-model="step"
-        ref="stepper"
-        alternative-labels
-        animated
-        flat
-        class="bg-transparent"
-        color="6"
-        contracted
-      >
-        <template v-slot:navigation>
-          <q-stepper-navigation>
-            <q-btn
-              v-if="step > 1"
-              icon="fa-solid fa-arrow-left"
-              push
-              align="around"
-              color="primary"
-              @click="$refs.stepper.previous()"
-              label="Back"
-              class="q-ml-sm"
-            />
-          </q-stepper-navigation>
-        </template>
-        <!-- color="primary" -->
-        <q-step
-          :name="1"
-          title="Dados principais"
-          icon="settings"
-          :done="step > 1"
-        >
-          <first-step @step-current="step = $event" />
-        </q-step>
+  <div class="RegisterLayout column justify-center">
+    <div class="q-pa-md row justify-center text-white" color="transparent">
+      <div class="col-md-3 col-sm-8">
+        <div class="column">
+          <header-auth :text="textStep" class="col" />
+        </div>
 
-        <q-step
-          :name="2"
-          title="Informe seu endereço completo para registro"
-          caption="personalizando a plataforma para você"
-          icon="fa-solid fa-tachograph-digital"
-          :done="step > 2"
-        >
-          <!-- SecondStep -->
-          <second-step @step-current="step = $event" />
-        </q-step>
-
-        <q-step :name="3" title="Cria senha" icon="fa-solid fa-lock">
-          <finally-step />
-        </q-step>
-      </q-stepper>
+        <first-step @step-current="step = $event" v-if="step == 1" />
+        <second-step @step-current="step = $event" v-if="step == 2" />
+        <finally-step v-if="step == 3" />
+      </div>
     </div>
   </div>
 </template>
@@ -61,6 +20,7 @@ import { computed, defineComponent, ref } from "vue";
 import FirstStep from "./StepsFromRegister/FirstStep.vue";
 import SecondStep from "./StepsFromRegister/SecondStep.vue";
 import FinallyStep from "./StepsFromRegister/FinallyStep.vue";
+import { useRouter } from "vue-router";
 export default defineComponent({
   name: "RegisterLayout",
   components: {
@@ -72,14 +32,18 @@ export default defineComponent({
   setup() {
     const step = ref(1);
     const textPatterns = {
-      1: "Cadastre-se preenchendo seus dados abaixo",
-      2: "Informe seu endereço completo para registro",
-      3: "Defina sua senha de acesso",
+      1: "Cadastre-se",
+      2: "Só mais algumas informações",
+      3: "Finalizado",
     };
     const textStep = computed(() => {
       return textPatterns[step.value];
     });
-    return { step, textStep };
+    const router = useRouter();
+    const goLogin = () => {
+      router.replace({ name: "login" });
+    };
+    return { step, textStep, goLogin };
   },
   // Outras configurações do componente aqui
 });

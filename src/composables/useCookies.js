@@ -53,15 +53,32 @@ export default function useCookies() {
       ? booleanVerify(getValue("widget_report"))
       : true;
   };
+  /**
+   * Deletnando cookies local, isso vai deslogar usuário
+   */
   const deleteTokenCookie = () => {
     Cookies.remove(tokenName, setOptionsCookie);
     Cookies.remove(userCookie, setOptionsCookie);
     LocalStorage.remove(tokenCookie)
   }
+  /**
+   * Deletando cookie com os dados do usuário
+   */
+  const deleteCookieUser = async () => {
+    Cookies.remove(userCookie, setOptionsCookie);
+  }
+  /**
+   * Setando localmente token de acesso do usuário junto a suas permissões no sistema (roles.abilities)
+   * @param {string} value token do usuário
+   */
   const setTokenCookie = (value) => {
     Cookies.set(tokenName, value.token, setOptionsCookie);
     localStorage.setItem(value.token, JSON.stringify(value.abilities))
   };
+  /**
+   * Setando localmente os dados so usuário
+   * @param {object|string} value dados do usuário
+   */
   const setUserCookie = (value) => {
     setCookie(userCookie, value)
     storeUser.setUserData(getValue(userCookie))
@@ -92,6 +109,7 @@ export default function useCookies() {
     setUserCookie,
     updateCookieAccount,
     updateNameByAccount,
+    deleteCookieUser,
     getuserCookie,
     hasUserCookie,
     tokenName,

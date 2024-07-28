@@ -14,7 +14,7 @@
       label-style="font-size: 1.1em"
     />
     <q-dialog
-      v-if="piniaDataLoaded"
+      v-if="codeDialog"
       v-model="codeDialog"
       maximized
       transition-show="slide-up"
@@ -85,6 +85,7 @@ export default defineComponent({
         router.push({ name: routeHome.value });
         piniaDataLoaded.value = true;
       }
+      console.log("data->", data.value);
       // console.log("vendo", data.value.email_verified_at);
       // if (data.value.email_verified_at && userStore.authEmailCode == null) {
       //   codeDialog.value = true;

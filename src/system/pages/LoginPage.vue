@@ -1,6 +1,6 @@
 <template>
   <q-layout class="bg-simulator">
-    <q-page-container style="min-height: 96vh">
+    <q-page-container class="column justify-center" style="min-height: 96vh">
       <login-layout
         v-if="stateLogin == 'login'"
         @status-login="stateLogin = $event"
@@ -24,7 +24,7 @@
       label-class="text-teal"
       label-style="font-size: 1.1em"
     />
-    <footer-system class="text-white" />
+    <footer-system class="text-blue-grey-9" />
   </q-layout>
 </template>
 <script setup>
@@ -49,12 +49,4 @@ onMounted(() => {
   }
 });
 </script>
-<style>
-.forgot {
-  cursor: pointer;
-  transition: all 5s;
-}
-.forgot:hover {
-  text-decoration: underline;
-}
-</style>
+<style lang="sass"></style>

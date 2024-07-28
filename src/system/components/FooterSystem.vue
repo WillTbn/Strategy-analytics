@@ -1,7 +1,7 @@
 <template>
   <footer class="FooterSystem bg-transparent row">
     <!-- class="fixed-bottom text-caption text-weight-thin text-grey-13" -->
-    <div class="col">V{{ mode }}</div>
+    <div class="col"></div>
 
     <register-data class="col-10 text-center" />
     <div class="col"></div>

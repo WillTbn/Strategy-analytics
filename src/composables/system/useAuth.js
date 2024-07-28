@@ -75,12 +75,12 @@ export default function useAuth() {
     await interceptorsRequest();
 
     loading.value = true
-    console.log('Estou na verificação de cookie', hasUserCookie)
+    // console.log('Estou na verificação de cookie', hasUserCookie)
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
     if (hasUserCookie) {
-      console.log('has usercookie'),
-        setUserCookie(getuserCookie)
+      // console.log('has usercookie'),
+      setUserCookie(getuserCookie)
       return;
     }
 

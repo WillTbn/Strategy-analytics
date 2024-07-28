@@ -4,6 +4,7 @@ import { useUserStore } from 'src/stores/user';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import useStates from '../../useStates';
+import useCookies from 'src/composables/useCookies';
 
 export default function useToken() {
   const loading = ref(false)
@@ -12,17 +13,19 @@ export default function useToken() {
   const userStore = useUserStore()
   const { errorNotify, successNotify } = useNotify()
   const { showLoading, hideLoading } = useStates()
+  const { deleteCookieUser } = useCookies()
+
   const forgot = ref(false)
   const resendToken = async (token_id) => {
     loading.value = true
     try {
       const res = await api.put(`tokens/${token_id}`);
-      console.log(res)
+      // console.log(res)
       successNotify(res.data.message)
     } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
-      errorNotify(e.response.data.message);
+      // console.log(e)
+      // console.log(e.response.data.message)
+      // errorNotify(e.response.data.message);
     } finally {
       loading.value = false
     }
@@ -34,10 +37,10 @@ export default function useToken() {
       if (res.data.status == 200)
         successNotify('Sejá muito bem vindo, vamos finalizar seu cadastro e pode acessar nossa plataforma!', 10000)
 
-      console.log(res.data.message)
+      // console.log(res.data.message)
     } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(e)
+      // console.log(e.response.data.message)
       errorNotify(e.response.data.message);
     } finally {
       loading.value = false
@@ -54,10 +57,10 @@ export default function useToken() {
         router.push({ name: "login" });
       }
 
-      console.log(res.data.message)
+      // console.log(res.data.message)
     } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(e)
+      // console.log(e.response.data.message)
       errorNotify(e.response.data.message);
     } finally {
       loading.value = false
@@ -76,8 +79,8 @@ export default function useToken() {
       showLoading('Tudo certo ... ')
       // }
     }).catch((e) => {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(e)
+      // console.log(e.response.data.message)
       errorNotify(e.response.data.message);
     }).finally(() => {
       loading.value = false
@@ -94,10 +97,10 @@ export default function useToken() {
         router.push({ name: "login" });
       }
 
-      console.log(res.data.message)
+      // console.log(res.data.message)
     } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(e)
+      // console.log(e.response.data.message)
       errorNotify(e.response.data.message);
     } finally {
       loading.value = false
@@ -105,19 +108,18 @@ export default function useToken() {
   }
   const verifyEmail = async (email) => {
     loading.value = true
-    try {
-      const res = await api.post(`auth/verifyemail`);
+    api.post('auth/verifyemail').then((res) => {
 
-      successNotify(res.data.message, 10000)
+      successNotify(res.data.message, 20000)
 
-      console.log(res.data.message)
-    } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(res.data.message)
+    }).catch((e) => {
+      // console.log(e)
+      // console.log(e.response)
       errorNotify(e.response.data.message);
-    } finally {
+    }).finally(() => {
       loading.value = false
-    }
+    })
   }
   const authEmail = async () => {
     loading.value = true
@@ -126,10 +128,11 @@ export default function useToken() {
 
       successNotify(res.data.message, 10000)
       userStore.setEmailVerified(res.data.user.email_verified_at)
-      console.log(res.data.message)
+      deleteCookieUser()
+      window.location.reload()
     } catch (e) {
-      console.log(e)
-      console.log(e.response.data.message)
+      // console.log(e)
+      // console.log(e.response.data.message)
       errorNotify(e.response.data.message);
     } finally {
       loading.value = false

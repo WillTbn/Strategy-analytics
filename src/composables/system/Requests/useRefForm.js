@@ -19,7 +19,8 @@ export default function useRefForm() {
   const statestreetRef = ref(null)
   const uploadRef = ref(null);
   const transactionRef = ref(null);
-
+  const passwordRef = ref(null);
+  const passwordConfirmRef = ref(null);
   const validateInput = () => {
     nameRef.value.validate();
     lastnameRef.value.validate();
@@ -31,10 +32,11 @@ export default function useRefForm() {
   };
   const validateDataInitial = () => {
     nameRef.value.validate();
-    lastnameRef.value.validate();
+    personRef.value.validate();
     emailRef.value.validate();
     birthdayRef.value.validate();
-    personRef.value.validate();
+    passwordRef.value.validate()
+    passwordConfirmRef.value.validate();
     phoneRef.value.validate();
   }
   const validateRegisterAddress = () => {
@@ -58,10 +60,11 @@ export default function useRefForm() {
   const validateDataErrorMsg = () => {
     return (
       nameRef.value.hasError ||
-      lastnameRef.value.hasError ||
       emailRef.value.hasError ||
-      birthdayRef.value.hasError ||
       personRef.value.hasError ||
+      birthdayRef.value.hasError ||
+      passwordRef.value.hasError ||
+      passwordConfirmRef.value.hasError ||
       phoneRef.value.hasError
     );
   }
@@ -112,6 +115,8 @@ export default function useRefForm() {
     emailRef,
     birthdayRef,
     personRef,
+    passwordRef,
+    passwordConfirmRef,
     phoneRef,
     roleRef,
     optionGenre,

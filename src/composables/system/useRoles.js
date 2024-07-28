@@ -1,9 +1,8 @@
 import { ref } from 'vue'
+import useNotify from '../useNotify';
 
 export default function useRoles() {
-  const personRef = ref(null)
-  const passwordRef = ref(null);
-  const passwordConfirmRef = ref(null);
+  const { infoNotify, errorNotify } = useNotify()
   const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const stringSerialize = (string) => {
     return string.replace(
@@ -28,30 +27,31 @@ export default function useRoles() {
 
   const personRule =
     [
-      (val) => !!val || "Campo é obrigatorio.",
-      (val) => val.length == 14 || "Campo incompleto",
+      (val) => !!val || notificationRules("Campo é obrigatorio."),
+      (val) => val.length == 14 || notificationRules("Campo incompleto"),
     ];
   const nameRule =
     [
-      (val) => !!val || "Campo é obrigatorio.",
-      (val) => val.length >= 3 || "Campo não tem mímino",
-      (val) => !/\d/.test(val) || "Adicione um Nome válido!",
+      (val) => !!val || notificationRules('Campo é obrigatorio.'),
+      (val) => val.length >= 3 || notificationRules("Campo não tem mímino"),
+      (val) => !/\d/.test(val) || notificationRules("Adicione um Nome válido!"),
     ];
   const emailRule = [
-    (val) => !!val || "Campo é obrigatorio.",
-    (val) => emailRe.test(val) || "Campo invalido!"
+    (val) => !!val || notificationRules("Campo é obrigatorio."),
+    (val) => emailRe.test(val) || notificationRules("Campo invalido!")
   ]
   const requiredRole = [
-    (val) => !!val || "Campo é obrigatorio.",
+    (val) => !!val || notificationRules("Campo é obrigatorio.")
   ]
   const phoneRole = [
-    (val) => !!val || "Campo é obrigatorio.",
-    (val) => val.length == 16 || "Campo incompleto",
+    (val) => !!val || notificationRules("Campo é obrigatorio."),
+    (val) => val.length == 16 || notificationRules("Campo incompleto")
   ]
   const zipCodeRule = [
-    (val) => !!val || "Campo é obrigatorio.",
-    (val) => val.length == 9 || "Campo incompleto",
+    (val) => !!val || notificationRules("Campo é obrigatorio."),
+    (val) => val.length == 9 || notificationRules("Campo incompleto")
   ]
+
   const lengthRule = () => {
 
   }
@@ -63,13 +63,20 @@ export default function useRoles() {
     }
     return true;
   };
+  /**
+   * Metodo de tratativa de error em formulario
+   * @param {string} msg Mensagem de retorno que ficara abaixo do campo input
+   * @returns string
+   */
+  const notificationRules = (msg) => {
+    errorNotify('Verifique o campos.', 20000, 'bottom-right')
+    return msg;
+  }
   return {
-    personRef,
-    passwordRef,
-    passwordConfirmRef,
-    personRule,
-    fiedValidate, requiredRole,
-    nameRule, emailRule, phoneRole, zipCodeRule, stringSerialize,
+    fiedValidate, requiredRole, personRule,
+    nameRule, emailRule, phoneRole, zipCodeRule,
+    notificationRules,
+    stringSerialize,
     validateID
   }
 }

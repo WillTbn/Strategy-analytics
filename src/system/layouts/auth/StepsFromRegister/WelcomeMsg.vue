@@ -1,13 +1,19 @@
 <template>
-  <div class="WelcomeMsg">
-    <div class="row justify-center text-white text-center">
+  <div class="WelcomeMsg column q-my-lg">
+    <!-- <div class="row justify-center text-white text-center"> -->
+    <div class="col-10">
       <header-auth :text="text" />
-      <div class="col-10 col-sm-12 col-md-10">
-        <p class="text-h6 text-white">
-          Você sera redirecionado em {{ counter }}s
-        </p>
-      </div>
+      <p>
+        Enviamos um e-mail de com codigo de autentificação você precisara dele
+        no primeiro acesso, faça login!
+      </p>
     </div>
+    <div class="col-10 col-sm-12 col-md-10">
+      <p class="text-h6 text-white">
+        Você sera redirecionado em {{ counter }}s
+      </p>
+    </div>
+    <!-- </div> -->
     <div class="row justify-center text-center">
       <div class="col-3">
         <q-btn
@@ -35,8 +41,8 @@ export default defineComponent({
     const userStore = useUserStore();
     const { register } = storeToRefs(userStore);
     const counter = ref(30);
-    // const text = `Bem vindo, ${register.value.FirstName}!!!`;
-    const text = `Bem vindo`;
+    const text = `Bem vindo, ${register.value.name}!!!`;
+    // const text = `Bem vindo`;
     const router = useRouter();
     let timer;
     watch(counter, (n, o) => {

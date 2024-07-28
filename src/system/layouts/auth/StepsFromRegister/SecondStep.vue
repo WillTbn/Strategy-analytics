@@ -1,89 +1,146 @@
 <template>
   <div class="SecondStep">
-    <q-form class="" @submit.prevent.stop="onSubmit">
-      <div class="row justify-center text-white q-gutter-sm">
-        <q-input
-          ref="zipcodeRef"
-          v-model="register.address_zip_code"
-          label="CEP"
-          class="col-10 col-md-3"
-          mask="#####-###"
-          :loading="loading"
-          :disable="loading"
-          @blur="searchCep"
-          v-bind="{ ...$inputStyle }"
-          :rules="zipCodeRule"
-        />
-        <q-input
-          ref="streetRef"
-          v-model="register.address_street"
-          label="Rua"
-          class="col-10 col-md-3"
-          :loading="loading"
-          :disable="loading"
-          v-bind="{ ...$inputStyle }"
-        />
-        <q-input
-          ref="districtRef"
-          v-model="register.address_district"
-          label="Bairro"
-          class="col-10 col-md-3"
-          :loading="loading"
-          :disable="loading"
-          v-bind="{ ...$inputStyle }"
-        />
-      </div>
-      <div class="row text-white justify-center q-gutter-sm">
-        <q-input
-          ref="numberstreetRef"
-          v-model="register.address_numbers"
-          label="Numero *"
-          class="col-3"
-          :loading="loading"
-          :disable="loading"
-          v-bind="{ ...$inputStyle }"
-          :rules="[(val) => !!val || '']"
-        />
-        <q-input
-          ref="cityRef"
-          v-model="register.address_city"
-          label="Cidade"
-          class="col-7 col-md-3"
-          :loading="loading"
-          :disable="loading"
-          v-bind="{ ...$inputStyle }"
-        />
-        <q-input
-          ref="statestreetRef"
-          v-model="register.address_state"
-          label="Estado"
-          class="col-10 col-md-3"
-          :loading="loading"
-          :disable="loading"
-          v-bind="{ ...$inputStyle }"
-        />
-      </div>
-      <div class="row justify-end text-white text-bolder">
-        <div class="col-md-4 col q-mt-lg">
+    <span class="text-muted-register forgot">
+      Por que pedimos essas informações?
+      <!-- <b
+        class="text-hover text-weight-bolder forgot text-white"
+        @click="goLogin"
+      >
+        Entre aqui!
+      </b> -->
+    </span>
+    <q-form
+      @submit.prevent.stop="onSubmit"
+      class="row justify-center text-white"
+    >
+      <div class="col-md-12 col-sm-12 self-center">
+        <div class="column q-my-lg q-gutter-md">
+          <div class="">
+            <span class="text-label">CEP</span>
+            <q-input
+              ref="zipcodeRef"
+              placeholder="00000-000"
+              v-model="register.address_zip_code"
+              mask="#####-###"
+              :loading="loading"
+              :disable="loading"
+              @blur="searchCep"
+              v-bind="{ ...$inputStyle }"
+              :rules="zipCodeRule"
+            />
+          </div>
+          <div class="">
+            <span class="text-label">Endereço</span>
+            <q-input
+              ref="streetRef"
+              placeholder="Rua Strategy"
+              v-model="register.address_street"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+              :rules="requiredRole"
+            />
+          </div>
+          <div class="">
+            <span class="text-label">Bairro</span>
+            <q-input
+              ref="districtRef"
+              v-model="register.address_district"
+              placeholder="Dígite o bairro do endereço"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+              :rules="requiredRole"
+            />
+          </div>
+
+          <div class="">
+            <span class="text-label">Número</span>
+            <q-input
+              ref="numberstreetRef"
+              v-model="register.address_numbers"
+              placeholder="Dígite o número do endereço"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+              :rules="requiredRole"
+            />
+          </div>
+          <div class="">
+            <span class="text-label">Cidade</span>
+            <q-input
+              ref="cityRef"
+              v-model="register.address_city"
+              placeholder="Dígite a cidade"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+              :rules="requiredRole"
+            />
+          </div>
+          <div class="">
+            <span class="text-label">Estado</span>
+            <q-input
+              ref="statestreetRef"
+              v-model="register.address_state"
+              placeholder="Dígite o estado"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+              :rules="requiredRole"
+            />
+          </div>
+          <div class="">
+            <span class="text-label">Complemento</span>
+            <q-input
+              ref="statestreetRef"
+              v-model="register.address_complement"
+              placeholder="Ex: Apt. 112 Bl. A"
+              :loading="loading"
+              :disable="loading"
+              v-bind="{ ...$inputStyle }"
+            />
+          </div>
+          <div class="">
+            <q-checkbox
+              v-model="register.notifications"
+              color="primary"
+              label="Do you agree with the terms & conditions?"
+              true-value="accepted"
+              false-value="refused"
+            />
+          </div>
+          <div class="q-my-md text-muted-register">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+            nihil et quia fuga dolorum tenetur sed possimus reiciendis, at
+            similique dolore .
+          </div>
           <q-btn
-            color="secondary"
-            padding="0.5rem 3rem"
+            color="primary"
+            padding="14.9px 179.23px 15.5px 179.22px"
             text-color="white"
-            label="continuar"
+            label="Continuar"
             type="submit"
             :disabled="loading"
             :loading="loading"
+            class="col-12 text-weight-bolder"
+            no-caps
+            style="border-radius: 8px"
           >
             <template v-slot:loading>
               <q-spinner-pie size="3em" />
             </template>
           </q-btn>
         </div>
-        <!-- <div class="col-12 copy">
-          <register-data />
-        </div> -->
       </div>
     </q-form>
+    <q-dialog
+      v-model="dialogWelcome"
+      backdrop-filter="blur(10px) saturate(250%)"
+      class="row justify-center"
+    >
+      <welcome-msg class="col-12 self-center" />
+    </q-dialog>
   </div>
 </template>
 <script>
@@ -94,14 +151,17 @@ import useRegister from "src/composables/system/Requests/useRegister";
 import useRefForm from "src/composables/system/Requests/useRefForm";
 import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
+import WelcomeMsg from "./WelcomeMsg.vue";
+import { useRouter } from "vue-router";
 export default defineComponent({
   name: "SecondStep",
   emits: ["step-current"],
+  components: { WelcomeMsg },
   setup(props, ctx) {
-    const { viaCEP, loading } = useRegister();
+    const { viaCEP, loading, registration, registrationStatus } = useRegister();
     const userStore = useUserStore();
     const { register } = storeToRefs(userStore);
-    const { infoNotify } = useNotify();
+    const { infoNotify, successNotify } = useNotify();
     const {
       zipcodeRef,
       streetRef,
@@ -112,7 +172,7 @@ export default defineComponent({
       validateRegisterAddress,
       validateDataAddresMsg,
     } = useRefForm();
-    const { zipCodeRule, stringSerialize } = useRoles();
+    const { zipCodeRule, stringSerialize, requiredRole } = useRoles();
     const searchCep = async () => {
       zipcodeRef.value.validate();
       let cepSerialize = "";
@@ -129,7 +189,9 @@ export default defineComponent({
       }
       // await viaCEP(register.value.address_zip_code)
     };
-    const numberRole = [(val) => !!val || infoNotify("Estamos aqui")];
+
+    const dialogWelcome = ref(false);
+    const router = useRouter();
     const onSubmit = async () => {
       validateRegisterAddress();
       if (validateDataAddresMsg()) {
@@ -140,7 +202,23 @@ export default defineComponent({
         numberstreetRef.hasError = true;
         return;
       }
-      ctx.emit("step-current", 3);
+      try {
+        await registration(register.value);
+        // console.log("res aqui -> ", res);
+        // dialogWelcome.value = true;
+        router.replace({ name: "login" });
+        successNotify("Sejá bem vindo, faça login!", 2000);
+        infoNotify(
+          "Para garantir a segurança da sua conta, enviamos um código de verificação para o seu e-mail. Utilize este código ao realizar o primeiro acesso.",
+          40000,
+          "bottom-left"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+      console.log(register.value);
+
+      // ctx.emit("step-current", 3);
     };
     return {
       register,
@@ -153,9 +231,10 @@ export default defineComponent({
       cityRef,
       numberstreetRef,
       zipCodeRule,
-      numberRole,
       onSubmit,
       infoNotify,
+      requiredRole,
+      dialogWelcome,
     };
   },
 });
