@@ -185,7 +185,7 @@ export default defineComponent({
         register.value.address_state = res.uf;
         register.value.address_city = res.localidade;
         register.value.address_district = res.bairro;
-        console.log(res);
+        // console.log(res);
       }
       // await viaCEP(register.value.address_zip_code)
     };
@@ -204,19 +204,10 @@ export default defineComponent({
       }
       try {
         await registration(register.value);
-        // console.log("res aqui -> ", res);
-        // dialogWelcome.value = true;
-        router.replace({ name: "login" });
-        successNotify("Sejá bem vindo, faça login!", 2000);
-        infoNotify(
-          "Para garantir a segurança da sua conta, enviamos um código de verificação para o seu e-mail. Utilize este código ao realizar o primeiro acesso.",
-          40000,
-          "bottom-left"
-        );
       } catch (e) {
         console.log(e);
       }
-      console.log(register.value);
+      // console.log(register.value);
 
       // ctx.emit("step-current", 3);
     };

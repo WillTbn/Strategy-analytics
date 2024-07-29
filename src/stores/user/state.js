@@ -12,7 +12,9 @@ const state = () => {
       password_confirm: "",
       password_confirmation: "",
     },
-    register: {},
+    register: {
+      notifications: true
+    },
     accountEdit: {},
     data: {},
     loan: {},

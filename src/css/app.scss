@@ -13,6 +13,17 @@
   font-family: inter;
   src: url(./Inter-Regular.ttf);
 }
+$liniarBg: linear-gradient(
+  45deg,
+  #124e78 0%,
+  #124e78 5%,
+  #1a1e2d 28%,
+  #1a1e2d 30%,
+  #1a1e2d 33%,
+  #1a1e2d 53%,
+  #4e1723 94%,
+  #4e1723 100%
+);
 .transparant-bg {
   background: transparent !important;
 }
@@ -71,22 +82,9 @@ body {
     #4e1723 100%
   );
 }
+
 .bg-simulator {
-  background: linear-gradient(
-    45deg,
-    #124e78 0%,
-    #124e78 5%,
-    #1a1e2d 28%,
-    #1a1e2d 30%,
-    #1a1e2d 33%,
-    #1a1e2d 53%,
-    #4e1723 94%,
-    #4e1723 100%
-  );
-  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
-  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-  //   radial-gradient(circle at 10%, #4694d1, transparent);
+  background: $liniarBg;
 }
 
 .bg-simulator-draw {
@@ -219,13 +217,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active,
-input:-webkit-autofill:focus {
-  background-color: #ffffff !important;
-  color: #555 !important;
-  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
-  -webkit-text-fill-color: #555555 !important;
-}
-// background:
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:active,
+// input:-webkit-autofill:focus {
+//   background-color: transparent !important;
+//   color: #555 !important;
+//   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+//   -webkit-text-fill-color: #555555 !important;
+// }
+// // background:
