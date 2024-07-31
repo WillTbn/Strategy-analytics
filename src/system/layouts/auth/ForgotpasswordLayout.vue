@@ -15,26 +15,30 @@
           <q-icon color="yellow-14" name="fa-solid fa-face-smile-wink"></q-icon>
         </p>
       </div>
-      <div class="col-12">
-        <div class="row justify-center text-white">
-          <div class="col-md-4 col-sm-10 self-center">
+
+      <div class="col-md-3 col-10 self-center">
+        <div class="column">
+          <label-field labelInput="CPF ou CNPJ">
             <q-input
               v-model="user.person"
-              input-class="text-white"
-              label-color="white"
-              color="white"
-              item-aligned
               mask="###.###.###-##"
-              label="CPF ou CNPJ"
               :rules="personRule"
               ref="personRef"
+              v-bind="{ ...$inputStyle }"
             />
-          </div>
-        </div>
+          </label-field>
 
-        <div class="row justify-center text-white text-center text-bolder">
-          <div class="col-md-12 self-center q-mt-lg">
-            <q-btn
+          <q-btn
+            color="primary"
+            text-color="white"
+            label="Enviar"
+            type="submit"
+            :disabled="loading"
+            class="text-weight-bolder col-10 col-md-12 q-pa-md q-mt-lg"
+            no-caps
+            style="border-radius: 8px"
+          />
+          <!-- <q-btn
               color="secondary"
               padding="0.5rem 3rem"
               text-color="white"
@@ -46,8 +50,7 @@
               <template v-slot:loading>
                 <q-spinner-pie size="3em" />
               </template>
-            </q-btn>
-          </div>
+            </q-btn> -->
         </div>
       </div>
     </q-form>
@@ -104,17 +107,19 @@
 </template>
 
 <script>
+import { defineComponent, ref } from "vue";
 import useToken from "src/composables/system/Requests/useToken";
 import useRoles from "src/composables/system/useRoles";
 // import RegisterData from "src/system/components/RegisterData.vue";
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
-import { defineComponent, ref } from "vue";
+import LabelField from "src/system/components/form/LabelField.vue";
 
 export default defineComponent({
   name: "ForgotpasswordLayout",
   components: {
     HeaderAuth,
     // RegisterData,
+    LabelField,
   },
   emits: ["status-login"],
   setup(props, ctx) {

@@ -1,90 +1,83 @@
 <template>
-  <div class="ResetpasswordLayout">
-    <header-auth text="Confirme seu cpf e crie sua nova senha" />
-
+  <div class="ResetpasswordLayout text-white">
     <q-form @submit.prevent.stop="onSubmit">
       <div class="row justify-center text-white">
         <div class="col-md-4 col-sm-10 self-center">
-          <q-input
-            v-model="authentication.person"
-            input-class="text-white"
-            label-color="white"
-            color="white"
-            item-aligned
-            mask="###.###.###-##"
-            label="CPF ou CNPJ"
-            :rules="personRule"
-            ref="personRef"
-          />
-          <q-input
-            v-model="authentication.password"
-            label="Senha"
-            input-class="text-white"
-            label-color="white"
-            color="white"
-            item-aligned
-            :type="isPwd ? 'password' : 'text'"
-            :rules="[(val) => !!val || 'Campo não atende os requisitos.']"
-            ref="passwordRef"
-          >
-            <template v-slot:append>
-              <q-icon
-                color="secondary"
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
+          <div class="column q-gutter-sm">
+            <header-auth
+              text="Confirme seu cpf e crie sua nova senha"
+              styleNew="10vh"
+            />
+            <label-field labelInput="CPF ou CNPJ">
+              <q-input
+                v-model="authentication.person"
+                mask="###.###.###-##"
+                placeholder="000.000.000-00 | 000.000.000/0001-00"
+                :rules="personRule"
+                ref="personRef"
+                v-bind="{ ...$inputStyle }"
+                name="new-person"
               />
-            </template>
-          </q-input>
-          <div class="q-pa-sm q-mt-sm">
-            <itens-password
-              v-for="(item, index) in fiedValidate"
-              :text="item.name"
-              :status="item.status"
-              :key="index"
+            </label-field>
+            <label-field labelInput="Nova senha">
+              <q-input
+                v-model="authentication.password"
+                :type="isPwd ? 'password' : 'text'"
+                :rules="[(val) => !!val || 'Campo não atende os requisitos.']"
+                ref="passwordRef"
+                v-bind="{ ...$inputStyle }"
+                name="new-password"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    color="secondary"
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+            </label-field>
+            <div class="row">
+              <itens-password
+                v-for="(item, index) in fiedValidate"
+                :text="item.name"
+                :status="item.status"
+                :key="index"
+              />
+            </div>
+            <label-field labelInput="Confirma nova senha">
+              <q-input
+                v-model="authentication.password_confirmation"
+                :type="isPwd ? 'password' : 'text'"
+                :rules="passwordConfirmRule"
+                ref="passwordConfirmRef"
+                v-bind="{ ...$inputStyle }"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    color="secondary"
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+            </label-field>
+          </div>
+          <div class="row q-mt-lg">
+            <q-btn
+              color="primary"
+              text-color="white"
+              label="Continuar"
+              type="submit"
+              :disabled="loading"
+              :loading="loading"
+              class="text-weight-bolder col-12 q-pa-md"
+              no-caps
+              style="border-radius: 8px"
             />
           </div>
-          <q-input
-            v-model="authentication.password_confirmation"
-            label="Confirma senha"
-            input-class="text-white"
-            label-color="white"
-            color="white"
-            item-aligned
-            :type="isPwd ? 'password' : 'text'"
-            :rules="passwordConfirmRule"
-            ref="passwordConfirmRef"
-          >
-            <template v-slot:append>
-              <q-icon
-                color="secondary"
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-        </div>
-      </div>
-
-      <div class="row justify-center text-white text-center text-bolder">
-        <div class="col-md-12 self-center q-mt-lg">
-          <q-btn
-            color="secondary"
-            padding="0.5rem 3rem"
-            text-color="white"
-            label="continuar"
-            type="submit"
-            :disabled="loading"
-            :loading="loading"
-          >
-            <template v-slot:loading>
-              <q-spinner-pie size="3em" />
-            </template>
-          </q-btn>
-        </div>
-        <div class="col-12 copy">
-          <register-data />
         </div>
       </div>
     </q-form>
@@ -106,24 +99,26 @@ import useToken from "src/composables/system/Requests/useToken";
 import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
 import ItensPassword from "src/system/components/auth/ItensPassword.vue";
-import RegisterData from "src/system/components/RegisterData.vue";
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
+import LabelField from "src/system/components/form/LabelField.vue";
 export default defineComponent({
   name: "ResetpasswordLayout",
   components: {
     HeaderAuth,
-    RegisterData,
     ItensPassword,
+    LabelField,
   },
   emits: ["status-login"],
   setup(props, ctx) {
     const route = useRoute();
     const useStore = useUserStore();
+    const passwordRef = ref(null);
+    const passwordConfirmRef = ref(null);
+
     const { authentication } = storeToRefs(useStore);
     const { passwordReset, loading, tokenStatus } = useToken();
     const { errorNotify } = useNotify();
-    const { passwordRef, passwordConfirmRef, fiedValidate, personRule } =
-      useRoles();
+    const { fiedValidate, personRule } = useRoles();
     const isPwd = ref(true);
     const passwordConfirmRule = [
       (value) => !!value || "Campo é obrigatorio",

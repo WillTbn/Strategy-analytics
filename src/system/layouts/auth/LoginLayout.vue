@@ -6,7 +6,6 @@
     <div class="row justify-center text-white q-pa-md">
       <div class="col-md-3 col-sm-8 self-center">
         <div class="column">
-          <header-auth text="Acesse sua conta" class="col" />
           <div class="row">
             <div class="col-8 col-md-12">
               <span class="text-muted-register">
@@ -92,13 +91,13 @@ import { useRoute, useRouter } from "vue-router";
 // import useLogin from "../../composables/useLogin";
 import useAuth from "../../../composables/system/useAuth";
 import useRoles from "../../../composables/system/useRoles";
-import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
+// import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import RegisterData from "src/system/components/RegisterData.vue";
 
 export default defineComponent({
   name: "LoginLayout",
   components: {
-    HeaderAuth,
+    // HeaderAuth,
   },
   emits: ["status-login"],
   setup(props, ctx) {
