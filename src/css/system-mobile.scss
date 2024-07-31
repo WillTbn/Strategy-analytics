@@ -24,6 +24,9 @@
   .btn-update {
     margin-bottom: 1rem !important;
   }
+  .btn-auth {
+    padding: 14.9px 47.23px 15.5px 47.22px;
+  }
 }
 @media (max-width: 768px) {
   .card-container {
@@ -51,5 +54,8 @@
   }
   .col-chart {
     padding: 0 !important;
+  }
+  .btn-auth {
+    padding: 14.9px 47.23px 15.5px 47.22px;
   }
 }

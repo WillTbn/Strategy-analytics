@@ -14,9 +14,8 @@
       class="row justify-center text-white"
     >
       <div class="col-md-12 col-sm-12 self-center">
-        <div class="column q-my-lg q-gutter-md">
-          <div class="">
-            <span class="text-label">CEP</span>
+        <div class="column q-my-lg q-gutter-sm">
+          <label-field labelInput="CEP" colInput="col-10 col-md-12">
             <q-input
               ref="zipcodeRef"
               placeholder="00000-000"
@@ -28,9 +27,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="zipCodeRule"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Endereço</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Endereço">
             <q-input
               ref="streetRef"
               placeholder="Rua Strategy"
@@ -40,9 +38,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="requiredRole"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Bairro</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Bairro">
             <q-input
               ref="districtRef"
               v-model="register.address_district"
@@ -52,10 +49,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="requiredRole"
             />
-          </div>
-
-          <div class="">
-            <span class="text-label">Número</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Número">
             <q-input
               ref="numberstreetRef"
               v-model="register.address_numbers"
@@ -65,9 +60,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="requiredRole"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Cidade</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Cidade">
             <q-input
               ref="cityRef"
               v-model="register.address_city"
@@ -77,9 +71,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="requiredRole"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Estado</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Estado">
             <q-input
               ref="statestreetRef"
               v-model="register.address_state"
@@ -89,9 +82,8 @@
               v-bind="{ ...$inputStyle }"
               :rules="requiredRole"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Complemento</span>
+          </label-field>
+          <label-field colInput="col-10 col-md-12" labelInput="Complemento">
             <q-input
               ref="statestreetRef"
               v-model="register.address_complement"
@@ -100,37 +92,35 @@
               :disable="loading"
               v-bind="{ ...$inputStyle }"
             />
-          </div>
+          </label-field>
           <div class="">
             <q-checkbox
               v-model="register.notifications"
               color="primary"
-              label="Do you agree with the terms & conditions?"
+              label="Você concorda com os termos e condições?"
               true-value="accepted"
               false-value="refused"
             />
           </div>
-          <div class="q-my-md text-muted-register">
+          <!-- <div class="q-my-md text-muted-register">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
             nihil et quia fuga dolorum tenetur sed possimus reiciendis, at
             similique dolore .
+          </div> -->
+          <div class="row">
+            <q-btn
+              color="primary"
+              padding="14.9px 179.23px 15.5px 179.22px"
+              text-color="white"
+              label="Continuar"
+              type="submit"
+              :disabled="loading"
+              :loading="loading"
+              class="text-weight-bolder col-8 col-md-12 q-pa-md"
+              no-caps
+              style="border-radius: 8px"
+            />
           </div>
-          <q-btn
-            color="primary"
-            padding="14.9px 179.23px 15.5px 179.22px"
-            text-color="white"
-            label="Continuar"
-            type="submit"
-            :disabled="loading"
-            :loading="loading"
-            class="col-12 text-weight-bolder"
-            no-caps
-            style="border-radius: 8px"
-          >
-            <template v-slot:loading>
-              <q-spinner-pie size="3em" />
-            </template>
-          </q-btn>
         </div>
       </div>
     </q-form>
@@ -147,16 +137,18 @@
 import { defineComponent, ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
+import { useRouter } from "vue-router";
 import useRegister from "src/composables/system/Requests/useRegister";
 import useRefForm from "src/composables/system/Requests/useRefForm";
 import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
+
 import WelcomeMsg from "./WelcomeMsg.vue";
-import { useRouter } from "vue-router";
+import LabelField from "src/system/components/form/LabelField.vue";
 export default defineComponent({
   name: "SecondStep",
   emits: ["step-current"],
-  components: { WelcomeMsg },
+  components: { WelcomeMsg, LabelField },
   setup(props, ctx) {
     const { viaCEP, loading, registration, registrationStatus } = useRegister();
     const userStore = useUserStore();

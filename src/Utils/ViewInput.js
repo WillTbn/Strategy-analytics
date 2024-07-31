@@ -11,9 +11,16 @@ const inputStyle = {
   "spellcheck": false,
   "dark": true,
   "outlined": true,
-  "lazy-rules": true
+  "lazy-rules": true,
+  "no-error-icon": true
+}
+const inputStandardStyle = {
+  "letter-spacing": "1.3rem !important",
+  "margin-inline": " 0.5rem 0.1rem !important",
+  "text-align": "center !important",
 }
 
 export {
-  inputStyle
+  inputStyle,
+  inputStandardStyle
 }

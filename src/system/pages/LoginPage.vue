@@ -49,4 +49,10 @@ onMounted(() => {
   }
 });
 </script>
-<style lang="sass"></style>
+<style lang="sass">
+.q-field--outlined .q-field__control:before
+  border-bottom: solid 1px #fff !important
+
+.q-field--outlined .q-field__control
+  border-radius: 8px
+</style>

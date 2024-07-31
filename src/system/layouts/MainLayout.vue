@@ -64,9 +64,9 @@ export default defineComponent({
       return data.value.email_verified_at == null ? true : false;
     });
     watch(routeHome, (after, before) => {
-      console.log("estou o watch -> ", after);
+      // console.log("estou o watch -> ", after);
       if (routeHome.value) {
-        console.log("redirecionar para -> ", routeHome.value);
+        // console.log("redirecionar para -> ", routeHome.value);
         piniaDataLoaded.value = true;
         router.push({ name: routeHome.value });
       }
@@ -110,15 +110,13 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style lang="sass">
 /* Estilos específicos do componente aqui */
 .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 355ms;
-}
+.fade-leave-active
+  transition: opacity 355ms
 
 .fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+.fade-leave-to
+  opacity: 0
 </style>

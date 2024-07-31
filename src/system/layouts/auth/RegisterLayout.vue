@@ -1,7 +1,7 @@
 <template>
   <div class="RegisterLayout column justify-center">
     <div class="q-pa-md row justify-center text-white" color="transparent">
-      <div class="col-md-3 col-sm-8">
+      <div class="col-md-3 col-sm-10 self-center">
         <div class="column">
           <header-auth :text="textStep" class="col" />
         </div>
@@ -17,10 +17,10 @@
 <script>
 import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import { computed, defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import FirstStep from "./StepsFromRegister/FirstStep.vue";
 import SecondStep from "./StepsFromRegister/SecondStep.vue";
 import FinallyStep from "./StepsFromRegister/FinallyStep.vue";
-import { useRouter } from "vue-router";
 export default defineComponent({
   name: "RegisterLayout",
   components: {

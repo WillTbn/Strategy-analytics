@@ -4,7 +4,6 @@
       <logo-small-right />
       <p class="text-segoe q-mt-lg">{{ text }}</p>
     </div>
-    <div class=""></div>
   </div>
 </template>
 <script>
@@ -26,10 +25,11 @@ export default defineComponent({
 </script>
 <style lang="sass">
 .text-segoe
-  font-family: "Segoe UI"
+  font-family: Segoe
   font-size: 2rem
   font-style: normal
   font-weight: 400
   line-height: 2.5rem
   letter-spacing: -1.6px
+  max-width: 80%
 </style>

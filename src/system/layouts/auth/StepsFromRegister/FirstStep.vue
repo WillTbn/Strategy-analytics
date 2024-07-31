@@ -13,22 +13,21 @@
       @submit.prevent.stop="onSubmit"
       class="row justify-center text-white"
     >
-      <div class="col-md-12 col-sm-10 self-center">
-        <div class="column q-my-lg q-gutter-md">
-          <div class="">
-            <span class="text-label">Nome Completo</span>
+      <div class="col-md-12 col-sm-12 self-center">
+        <div class="column q-my-lg q-gutter-sm">
+          <label-field labelInput="Nome Completo">
             <q-input
               v-bind="{ ...$inputStyle }"
-              v-model.lazy="register.name"
+              v-model="register.name"
               placeholder="Digite o nome conforme seu documento"
               :rules="nameRule"
               ref="nameRef"
               :loading="loading"
               :disable="loading"
             />
-          </div>
-          <div class="">
-            <span class="text-label">CPF</span>
+          </label-field>
+
+          <label-field labelInput="CPF">
             <q-input
               v-model="register.person"
               v-bind="{ ...$inputStyle }"
@@ -39,9 +38,8 @@
               :loading="loading"
               :disable="loading"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Data nascimento</span>
+          </label-field>
+          <label-field labelInput="Data nascimento">
             <q-input
               v-bind="{ ...$inputStyle }"
               navigation-min-year-month="1990/07"
@@ -52,9 +50,8 @@
               type="date"
               :rules="requiredRole"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Email</span>
+          </label-field>
+          <label-field labelInput="Email">
             <q-input
               v-model="register.email"
               v-bind="{ ...$inputStyle }"
@@ -65,9 +62,9 @@
               :disable="loading"
               :rules="emailRule"
             />
-          </div>
-          <div class="">
-            <span class="text-label">Criar senha</span>
+          </label-field>
+          <label-field labelInput="Criar senha">
+            <span class="text-label"></span>
             <q-input
               v-model="register.password"
               placeholder="Digite sua senha"
@@ -87,14 +84,17 @@
                 />
               </template>
             </q-input>
-            <div class="q-pa-sm q-mt-sm">
-              <itens-password
-                v-for="(item, index) in fiedValidate"
-                :text="item.name"
-                :status="item.status"
-                :key="index"
-              />
-            </div>
+          </label-field>
+
+          <div class="row">
+            <itens-password
+              v-for="(item, index) in fiedValidate"
+              :text="item.name"
+              :status="item.status"
+              :key="index"
+            />
+          </div>
+          <label-field labelInput="Criar senha">
             <span class="text-label">Confirmar senha</span>
             <q-input
               v-model="register.password_confirmation"
@@ -115,9 +115,9 @@
                 />
               </template>
             </q-input>
-          </div>
+          </label-field>
 
-          <div class="">
+          <label-field labelInput="Criar senha">
             <span class="text-label">Número de celular</span>
             <q-input
               v-model="register.phone"
@@ -132,8 +132,10 @@
                 <q-select
                   v-model="countryNumber"
                   :options="options"
+                  dark
                   borderless
                   dense
+                  class="tentar-border"
                 >
                   <template v-slot:selected>
                     <q-chip
@@ -159,23 +161,20 @@
                 </q-select>
               </template>
             </q-input>
+          </label-field>
+          <div class="row">
+            <q-btn
+              color="primary"
+              text-color="white"
+              label="Continuar"
+              type="submit"
+              :disabled="loading"
+              :loading="loading"
+              class="text-weight-bolder col-12 q-pa-md"
+              no-caps
+              style="border-radius: 8px"
+            />
           </div>
-          <q-btn
-            color="primary"
-            padding="14.9px 179.23px 15.5px 179.22px"
-            text-color="white"
-            label="Continuar"
-            type="submit"
-            :disabled="loading"
-            :loading="loading"
-            class="col-12 text-weight-bolder"
-            no-caps
-            style="border-radius: 8px"
-          >
-            <template v-slot:loading>
-              <q-spinner-pie size="3em" />
-            </template>
-          </q-btn>
         </div>
         <!-- <q-btn
           color="secondary"
@@ -204,15 +203,17 @@
 import { defineComponent, ref, computed, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
+import { useRouter } from "vue-router";
 import useRoles from "src/composables/system/useRoles";
 import useRefForm from "src/composables/system/Requests/useRefForm";
 import useRegister from "src/composables/system/Requests/useRegister";
 import useNotify from "src/composables/useNotify";
 import ItensPassword from "src/system/components/auth/ItensPassword.vue";
+import LabelField from "src/system/components/form/LabelField.vue";
 export default defineComponent({
   name: "FirstStep",
   emits: ["step-current"],
-  components: { ItensPassword },
+  components: { ItensPassword, LabelField },
   setup(props, ctx) {
     const {
       nameRef,
@@ -239,7 +240,7 @@ export default defineComponent({
       notificationRules,
     } = useRoles();
     const passwordConfirmRule = [
-      (value) => !!value || notificationRules("Campo é obrigatorio"),
+      (value) => !!value || "Campo é obrigatorio",
       (value) =>
         value == register.value.password ||
         notificationRules("Senhas não conferem"),
@@ -299,6 +300,10 @@ export default defineComponent({
         icon: "img:../../system/icons/country/new-zealand.png",
       },
     ];
+    const router = useRouter();
+    const goLogin = () => {
+      router.replace({ name: "login" });
+    };
     const onSubmit = async () => {
       console.log("OLA");
       validateDataInitial();
@@ -354,20 +359,31 @@ export default defineComponent({
       fiedValidate,
       options,
       countryNumber,
+      goLogin,
     };
   },
 });
 </script>
-<style scoped>
-.q-chip {
-  vertical-align: middle;
-  outline: 0;
-  position: relative;
-  max-width: 100%;
-  margin: 4px;
-  background: transparent;
-  color: #fff;
-  font-size: 1rem;
-  padding: 0.5em 0.9em;
-}
+<style lang="sass">
+.q-chip
+  vertical-align: middle
+  outline: 0
+  position: relative
+  max-width: 100%
+  margin: 4px
+  background: transparent
+  color: #fff
+  font-size: 1rem
+  padding: 0.5em 0.9em
+.tentar-border> .q-field__inner .q-field__control:before
+  border: none !important
+  // border: solid 3px #042
+.tentar-border> .q-field__inner .q-field__control:before
+  border: none !important
+.tentar-border > .q-field--dark .q-field__marginal
+  color: none
+.tentar-border> .q-field--focused .q-field--highlighted
+  border: none !important
+
+// q-field row no-wrap items-start q-field--borderless q-select q-field--auto-height q-select--without-input q-select--without-chips q-select--single q-field--float q-field--dense q-field--dark tentar-border
 </style>

@@ -27,8 +27,8 @@
           <span class="text-grey-5">Dados pessoais</span>
         </div>
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="nameRef"
-          filled
           v-model="newUser.firstname"
           label="Nome*"
           hint="obrigatório"
@@ -39,8 +39,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="lastnameRef"
-          filled
           v-model="newUser.lastname"
           hint="obrigatório"
           label="Sobrenome*"
@@ -51,8 +51,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="emailRef"
-          filled
           v-model="newUser.email"
           label="Digite o e-mail*"
           lazy-rules
@@ -68,8 +68,8 @@
       <!-- Campo Essenvial table Account -->
       <div class="row q-col-gutter-lg q-my-sm q-px-sm">
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="personRef"
-          filled
           v-model="newUser.person"
           label="CPF*"
           hint="obrigatório"
@@ -81,18 +81,20 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="birthdayRef"
-          filled
           v-model="newUser.birthday"
           class="col-11 col-md-4"
           :loading="loading"
           :disable="loading"
           type="date"
-        >
-        </q-input>
+          mask="DD/MM/YYYY"
+        />
+
+        <!-- v-bind="{...$inputStyle}"> -->
         <!-- <q-input
+         v-bind="{...$inputStyle}"
           ref="telephoneRef"
-          filled
           v-model="newUser.telephone"
           label="Telefone"
           lazy-rules
@@ -102,8 +104,8 @@
           :disable="loading"
         /> -->
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="phoneRef"
-          filled
           hint="obrigatório"
           v-model="newUser.phone"
           label="Celular de contato*"
@@ -120,7 +122,6 @@
           transition-show="flip-up"
           transition-hide="flip-down"
           input-class="white"
-          filled
           :options="optionGenre"
           option-value="value"
           option-label="label"
@@ -145,7 +146,6 @@
           v-model="newUser.role_id"
           transition-show="flip-up"
           transition-hide="flip-down"
-          filled
           :options="optionRole"
           label="Permissões*"
           hint="obrigatório, papel do usuário"
@@ -160,7 +160,6 @@
         <q-select
           ref="notificationsRef"
           v-model="newUser.notifications"
-          filled
           transition-show="flip-up"
           transition-hide="flip-down"
           label="Receber notificações por e-mail*"
@@ -182,8 +181,8 @@
           <span class="text-grey-5">Dados Complementares</span>
         </div>
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="streetRef"
-          filled
           v-model="newUser.address_street"
           label="Rua"
           class="col-11 col-md-4"
@@ -191,8 +190,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="numberstreetRef"
-          filled
           v-model="newUser.address_numbers"
           label="Numero"
           class="col-5 col-md-3"
@@ -200,8 +199,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="districtRef"
-          filled
           v-model="newUser.address_district"
           label="Bairro"
           class="col-5 col-md-3"
@@ -209,8 +208,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="zipcodeRef"
-          filled
           v-model="newUser.address_zip_code"
           label="CEP"
           class="col-11 col-md-4"
@@ -218,8 +217,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="cityRef"
-          filled
           v-model="newUser.address_city"
           label="Cidade"
           class="col-11 col-md-4"
@@ -227,8 +226,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="statestreetRef"
-          filled
           v-model="newUser.address_state"
           label="Estado"
           class="col-5 col-md-3"
@@ -236,8 +235,8 @@
           :disable="loading"
         />
         <q-input
+          v-bind="{ ...$inputStyle }"
           ref="countryRef"
-          filled
           v-model="newUser.address_country"
           label="Pais"
           class="col-5 col-md-3"

@@ -13,6 +13,10 @@
   font-family: inter;
   src: url(./Inter-Regular.ttf);
 }
+@font-face {
+  font-family: Segoe;
+  src: url(./fonts/Segoe/segoeuigis.ttf);
+}
 $liniarBg: linear-gradient(
   45deg,
   #124e78 0%,
@@ -217,13 +221,3 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-// input:-webkit-autofill,
-// input:-webkit-autofill:hover,
-// input:-webkit-autofill:active,
-// input:-webkit-autofill:focus {
-//   background-color: transparent !important;
-//   color: #555 !important;
-//   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-//   -webkit-text-fill-color: #555555 !important;
-// }
-// // background:

@@ -27,29 +27,29 @@ export default function useRoles() {
 
   const personRule =
     [
-      (val) => !!val || notificationRules("Campo é obrigatorio."),
-      (val) => val.length == 14 || notificationRules("Campo incompleto"),
+      (val) => !!val || "Campo é obrigatorio.",
+      (val) => val.length == 14 || "Campo incompleto",
     ];
   const nameRule =
     [
-      (val) => !!val || notificationRules('Campo é obrigatorio.'),
-      (val) => val.length >= 3 || notificationRules("Campo não tem mímino"),
-      (val) => !/\d/.test(val) || notificationRules("Adicione um Nome válido!"),
+      (val) => !!val || 'Campo é obrigatorio.',
+      (val) => val.length >= 3 || "Campo não tem mímino",
+      (val) => !/\d/.test(val) || "Adicione um Nome válido!",
     ];
   const emailRule = [
-    (val) => !!val || notificationRules("Campo é obrigatorio."),
-    (val) => emailRe.test(val) || notificationRules("Campo invalido!")
+    (val) => !!val || "Campo é obrigatorio.",
+    (val) => emailRe.test(val) || "Campo invalido!"
   ]
   const requiredRole = [
-    (val) => !!val || notificationRules("Campo é obrigatorio.")
+    (val) => !!val || "Campo é obrigatorio."
   ]
   const phoneRole = [
-    (val) => !!val || notificationRules("Campo é obrigatorio."),
-    (val) => val.length == 16 || notificationRules("Campo incompleto")
+    (val) => !!val || "Campo é obrigatorio.",
+    (val) => val.length == 16 || "Campo incompleto"
   ]
   const zipCodeRule = [
-    (val) => !!val || notificationRules("Campo é obrigatorio."),
-    (val) => val.length == 9 || notificationRules("Campo incompleto")
+    (val) => !!val || "Campo é obrigatorio.",
+    (val) => val.length == 9 || "Campo incompleto"
   ]
 
   const lengthRule = () => {
