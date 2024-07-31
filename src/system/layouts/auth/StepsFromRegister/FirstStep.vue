@@ -64,7 +64,6 @@
             />
           </label-field>
           <label-field labelInput="Criar senha">
-            <span class="text-label"></span>
             <q-input
               v-model="register.password"
               placeholder="Digite sua senha"
@@ -94,8 +93,7 @@
               :key="index"
             />
           </div>
-          <label-field labelInput="Criar senha">
-            <span class="text-label">Confirmar senha</span>
+          <label-field labelInput="Confirmar senha">
             <q-input
               v-model="register.password_confirmation"
               placeholder="Confirme sua senha"
@@ -117,8 +115,7 @@
             </q-input>
           </label-field>
 
-          <label-field labelInput="Criar senha">
-            <span class="text-label">Número de celular</span>
+          <label-field labelInput="Número de celular">
             <q-input
               v-model="register.phone"
               v-bind="{ ...$inputStyle }"
