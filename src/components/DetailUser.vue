@@ -44,7 +44,7 @@
   <q-card class="transparant-bg q-px-lg" flat>
     <q-card-section horizontal class="flex flex-center">
       <q-card-section class="">
-        <q-avatar size="12rem">
+        <q-avatar size="12rem" v-if="image">
           <img :src="image" :srcset="image" />
         </q-avatar>
       </q-card-section>

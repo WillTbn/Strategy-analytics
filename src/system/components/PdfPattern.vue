@@ -4,21 +4,6 @@
       <audio-pattern :audio="audio" class="col-12" v-if="audio" />
     </div>
     <div class="pdf-control" style="height: 35rem">
-      <!-- 
-      <iframe
-        :src="documentPDF"
-        height="100%"
-        width="100%"
-        frameborder="0"
-      ></iframe>
-      <embed
-      :src="documentPDF"
-      width="100%"
-      height="100%"
-      type="application/pdf"
-      />
-    -->
-
       <object
         :data="documentPDF"
         type="application/pdf"
