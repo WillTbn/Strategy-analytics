@@ -50,9 +50,6 @@ export default route(function (/* { store, ssrContext } */) {
         next({ name: 'login' })
         return
       }
-      if (to.meta?.admin) {
-        console.log('Essa é uma rota com mais uma proteção!')
-      }
       verifyLogged()
     }
 

@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh lpR lFf" :class="statusDark">
-    <navbar-layout :key="route.name" :dark="Dark.isActive" v-if="!loading" />
+  <q-layout view="lHh lpR lFf" class="bg-simulator">
+    <navbar-layout :key="route.name" v-if="!loading" />
     <q-page-container padding style="min-height: 95vh">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -58,20 +58,11 @@ export default defineComponent({
     const { getValue, getDarkMode } = useCookies();
     const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
     const userStore = useUserStore();
-    const { routeHome, data } = storeToRefs(userStore);
+    const { data } = storeToRefs(userStore);
     const piniaDataLoaded = ref(false);
     const codeDialog = computed(() => {
       return data.value.email_verified_at == null ? true : false;
     });
-    watch(routeHome, (after, before) => {
-      // console.log("estou o watch -> ", after);
-      if (routeHome.value) {
-        // console.log("redirecionar para -> ", routeHome.value);
-        piniaDataLoaded.value = true;
-        router.push({ name: routeHome.value });
-      }
-    });
-    // const verify = computed(() => return data)
 
     onMounted(async () => {
       layout.updatePdfScale(dimension(window.innerWidth));
@@ -79,28 +70,13 @@ export default defineComponent({
       layout.setViewWidth(viewport().viewWidth);
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
-      if (route.fullPath == "/system/") {
-        // window.location.reload();
-        // console.log("esta uma merda ->", routeHome.value);
-        router.push({ name: routeHome.value });
-        piniaDataLoaded.value = true;
-      }
-      console.log("data->", data.value);
-      // console.log("vendo", data.value.email_verified_at);
-      // if (data.value.email_verified_at && userStore.authEmailCode == null) {
-      //   codeDialog.value = true;
-      //   console.log("VAMOS ABRE O DIALOG COM O CODIGO ");
-      // } else {
-      //   codeDialog.value = false;
-      // }
-
       getDarkMode();
     });
     return {
       piniaDataLoaded,
       route,
       loading,
-      routeHome,
+
       Dark,
       codeDialog,
       statusDark: computed(() =>
