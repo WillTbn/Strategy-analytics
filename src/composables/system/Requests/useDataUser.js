@@ -13,7 +13,7 @@ export default function useDataUser() {
     await api.get('users/wallet')
       .then((response) => {
         userStore.setWallet(response.data.wallet)
-        console.info('Aqui-->>', response.data)
+        // console.info('Aqui-->>', response.data)
       })
       .catch((e) => {
         console.log(e);

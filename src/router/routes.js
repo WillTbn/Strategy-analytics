@@ -81,24 +81,14 @@ const routes = [
     },
     children: [
       {
-        path: "perfomance",
-        name: "perfomance",
-        component: () => import("../system/pages/PerfomancePage.vue"),
-      },
-      // {
-      //   path: "wallet",
-      //   name: "wallet",
-      //   component: () => import("../system/pages/WalletPage.vue"),
-      // },
-      {
-        path: "wallet",
+        path: "",
         component: () => import("../system/views/WalletView.vue"),
         props: true,
         meta: { admin: true },
         children: [
           {
             path: "",
-            name: "wallet",
+            name: "inicio",
             component: () => import("../system/pages/WalletPage.vue"),
             props: true,
           },
@@ -109,6 +99,11 @@ const routes = [
             props: true,
           }
         ]
+      },
+      {
+        path: "perfomance",
+        name: "perfomance",
+        component: () => import("../system/pages/PerfomancePage.vue"),
       },
       {
         path: "config",

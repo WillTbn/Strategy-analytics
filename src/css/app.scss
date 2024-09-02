@@ -1,4 +1,5 @@
 // app global css in SCSS form
+@import "themes-new.scss";
 @import "_c-dropdown.scss";
 @import "system.scss";
 @font-face {
@@ -17,20 +18,7 @@
   font-family: Segoe;
   src: url(./fonts/Segoe/segoeuigis.ttf);
 }
-$liniarBg: linear-gradient(
-  45deg,
-  #124e78 0%,
-  #124e78 5%,
-  #1a1e2d 28%,
-  #1a1e2d 30%,
-  #1a1e2d 33%,
-  #1a1e2d 53%,
-  #4e1723 94%,
-  #4e1723 100%
-);
-.transparant-bg {
-  background: transparent !important;
-}
+
 .text-h8 {
   color: #fff;
   text-align: center;
@@ -70,50 +58,7 @@ body {
   border-radius: 20px; /* arredondamento do polegar de rolagem */
   border: 3px solid #100000; /* #100000 cria preenchimento em torno do polegar de rolagem #4694d1 */
 }
-.bg-all {
-  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
-  //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-  background: linear-gradient(
-    294deg,
-    #1a1e2d 0%,
-    #1b1f2e 7%,
-    #13476d 23%,
-    #11517c 28%,
-    #10517e 30%,
-    #124e78 33%,
-    #1a1e2d 53%,
-    #1a1e2d 84%,
-    #4e1723 100%
-  );
-}
 
-.bg-simulator {
-  background: $liniarBg;
-}
-
-.bg-simulator-draw {
-  background: radial-gradient(
-      circle at top right,
-      #1a1e2d,
-      #1a1e2d 90%,
-      #ff4242
-    ),
-    radial-gradient(circle at 100%, #ff4242, #1a1e2d, #ff4242);
-
-  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
-  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-  //   radial-gradient(circle at 10%, #4694d1, transparent);
-}
-.bg-draw {
-  background: radial-gradient(
-      circle at top right,
-      #1a1e2d,
-      #1a1e2d 90%,
-      #4694d1
-    ),
-    radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-}
 .btn-bg {
   background-color: rgba(217, 217, 217, 0.3);
 }
