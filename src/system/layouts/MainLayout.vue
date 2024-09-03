@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh lpR lFf" class="bg-simulator">
+  <q-layout view="lHh lpR lFf" class="bg-simulator text-white">
     <navbar-layout :key="route.name" v-if="!loading" />
     <q-page-container padding style="min-height: 95vh">
       <router-view v-slot="{ Component }">
@@ -58,12 +58,19 @@ export default defineComponent({
     const { getValue, getDarkMode } = useCookies();
     const { dimension, dimensionHeight, viewport, detectTablet } = useStates();
     const userStore = useUserStore();
-    const { data } = storeToRefs(userStore);
+    const { data, routeHome } = storeToRefs(userStore);
     const piniaDataLoaded = ref(false);
     const codeDialog = computed(() => {
       return data.value.email_verified_at == null ? true : false;
     });
-
+    watch(routeHome, (after, before) => {
+      // console.log("estou o watch -> ", after);
+      if (routeHome.value) {
+        // console.log("redirecionar para -> ", routeHome.value);
+        piniaDataLoaded.value = true;
+        router.push({ name: routeHome.value });
+      }
+    });
     onMounted(async () => {
       layout.updatePdfScale(dimension(window.innerWidth));
       layout.setScreenWidth(dimensionHeight(window.innerHeight));
@@ -71,6 +78,11 @@ export default defineComponent({
       layout.setViewHeight(viewport().viewHeight);
       layout.setDashboardTable(detectTablet());
       getDarkMode();
+      if (route.fullPath == "/system/") {
+        router.push({ name: routeHome.value });
+        piniaDataLoaded.value = true;
+      }
+      //console.log("data->", data.value);
     });
     return {
       piniaDataLoaded,

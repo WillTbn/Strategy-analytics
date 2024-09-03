@@ -7,11 +7,12 @@
       label-style="font-size: 1.1em"
     />
     <q-avatar
-      size="9rem"
+      size="12rem"
       @mouseover="setUpload()"
       @mouseleave="hoverImage = false"
-      class="avatar-control"
+      class="avatar-control q-ma-sm"
       v-if="data.account"
+      square
     >
       <img
         :src="data.account.avatar"

@@ -67,4 +67,5 @@ export default defineComponent({
 <style lang="sass">
 .avatar-custom>.q-avatar__content>img
   border: 2px solid #ddd
+  cursor: pointer
 </style>

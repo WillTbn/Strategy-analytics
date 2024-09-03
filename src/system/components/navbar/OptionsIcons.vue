@@ -88,5 +88,5 @@ export default defineComponent({
 </script>
 <style lang="sass" scoped>
 svg
-  cursor:pointer
+  cursor: pointer
 </style>

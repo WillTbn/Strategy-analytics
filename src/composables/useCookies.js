@@ -35,7 +35,7 @@ export default function useCookies() {
 
   const getDarkMode = async () => {
     // let valueDark = getValue("dark_mode") == "true" ? true : false;
-    Dark.set(booleanVerify(getValue("dark_mode")));
+    Dark.set(true);
   };
 
   const setDarkMode = (value) => {

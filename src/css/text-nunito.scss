@@ -1,0 +1,23 @@
+$font: Nunito;
+$fontStyle: normal;
+$lineHeight: calc(20.93 / 16) + rem;
+
+@mixin nunito-regular($size, $weight) {
+  font-family: $font;
+  line-height: $lineHeight;
+  font-style: $fontStyle;
+  font-size: $size + rem;
+  font-weight: $weight;
+}
+
+.text-nunito-15-600-white {
+  @include nunito-regular(calc(15 / 16), 600);
+  color: #fff;
+}
+.text-nunito-13-400-accent {
+  @include nunito-regular(calc(13 / 16), 400);
+  color: rgba(213, 122, 255, 0.75);
+}
+.text-nunito-13-400 {
+  @include nunito-regular(calc(13 / 16), 400);
+}
