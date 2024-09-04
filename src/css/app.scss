@@ -1,7 +1,4 @@
 // app global css in SCSS form
-@import "themes-new.scss";
-@import "_c-dropdown.scss";
-@import "system.scss";
 @font-face {
   font-family: instokWeb;
   src: url(./IstokWeb-Regular.ttf);
@@ -22,6 +19,9 @@
   font-family: Nunito;
   src: url(./fonts/Nunito/Nunito-VariableFont_wght.ttf);
 }
+@import "system.scss";
+@import "themes-new.scss";
+@import "_c-dropdown.scss";
 
 .text-h8 {
   color: #fff;

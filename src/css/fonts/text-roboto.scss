@@ -1,0 +1,30 @@
+// @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@font-face {
+  font-family: Roboto;
+  src: url("./Roboto/Roboto-Medium.ttf");
+}
+$fontStyle: normal;
+
+@mixin roboto-regular($size, $weight) {
+  font-family: Roboto;
+  font-style: $fontStyle;
+  font-size: $size + rem;
+  font-weight: $weight;
+}
+.text-roboto-15-500 {
+  @include roboto-regular(calc(15.625 / 16), 500);
+  $lineHeight: calc(22.4 / 16) + rem;
+}
+.text-roboto-24-500 {
+  @include roboto-regular(calc(24 / 16), 500);
+  $lineHeight: calc(26.4 / 16) + rem;
+}
+.text-roboto-23-500 {
+  @include roboto-regular(calc(23 / 16), 500);
+  $lineHeight: calc(26.4 / 16) + rem;
+}
+.text-roboto-23-400-shadow {
+  @include roboto-regular(calc(23 / 16), 400);
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  $lineHeight: calc(23.438 / 16) + rem;
+}
