@@ -81,7 +81,7 @@ const routes = [
     },
     children: [
       {
-        path: "",
+        path: "dashboard",
         component: () => import("../system/views/WalletView.vue"),
         props: true,
         meta: { admin: true },

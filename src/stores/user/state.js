@@ -21,7 +21,7 @@ const state = () => {
     wallet: {},
     investment: {},
     abilities: [],
-    routeHome: "",
+    routeHome: "inicio",
     NavbarMenu: "adm",
     isDirty: {},
     isDirtyData: {},

@@ -17,7 +17,7 @@
           >Saldo total</span
         >
         <p class="text-weight-bolder text-roboto-24-500 q-px-sm">
-          {{ $filters.currentValue("2.907.903,00", brCoin) }}
+          {{ $filters.currentValue(balance, brCoin) }}
         </p>
       </div>
       <p v-if="!objText" class="text-roboto-15-500">Mais Informações</p>
