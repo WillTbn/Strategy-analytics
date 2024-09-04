@@ -1,7 +1,9 @@
 <template>
   <q-header reveal class="q-ma-md q-pa-sm bg-transparent">
     <q-toolbar class="tool">
-      <svg-logo />
+      <q-btn flat :to="{ name: 'inicio' }">
+        <svg-logo />
+      </q-btn>
       <q-space />
       <q-item
         v-for="list in clientNavList"

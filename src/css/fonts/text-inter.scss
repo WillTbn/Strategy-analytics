@@ -1,0 +1,12 @@
+$fontStyle: normal;
+
+@mixin inter-medium($size, $weight) {
+  font-family: inter;
+  font-style: $fontStyle;
+  font-size: $size + rem;
+  font-weight: $weight;
+}
+.text-inter-15-400 {
+  @include inter-medium(calc(39.844 / 16), 400);
+  $lineHeight: calc(44 / 16) + rem;
+}

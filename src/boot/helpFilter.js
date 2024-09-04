@@ -7,7 +7,16 @@ const filters = {
     }
     return "$" + input.toFixed(2);
   },
-  currentValue(value) {
+  /**
+   * Converte para string de USA ou BR moeda
+   * @param {number|string} value 
+   * @param {Boolean} br
+   * @returns String
+   */
+  currentValue(value, br) {
+    if (br) {
+      return `R$ ${value}`;
+    }
     return `$ ${value}`;
   },
   dateFormatBr(value) {
