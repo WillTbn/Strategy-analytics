@@ -31,7 +31,7 @@
           <label-field colInput="col-10 col-md-12" labelInput="Endereço">
             <q-input
               ref="streetRef"
-              placeholder="Rua Strategy"
+              placeholder="Rua"
               v-model="register.address_street"
               :loading="loading"
               :disable="loading"
@@ -43,7 +43,7 @@
             <q-input
               ref="districtRef"
               v-model="register.address_district"
-              placeholder="Dígite o bairro do endereço"
+              placeholder="Digite o bairro do endereço"
               :loading="loading"
               :disable="loading"
               v-bind="{ ...$inputStyle }"
@@ -54,7 +54,7 @@
             <q-input
               ref="numberstreetRef"
               v-model="register.address_numbers"
-              placeholder="Dígite o número do endereço"
+              placeholder="Digite o número do endereço"
               :loading="loading"
               :disable="loading"
               v-bind="{ ...$inputStyle }"
@@ -65,7 +65,7 @@
             <q-input
               ref="cityRef"
               v-model="register.address_city"
-              placeholder="Dígite a cidade"
+              placeholder="Digite a cidade"
               :loading="loading"
               :disable="loading"
               v-bind="{ ...$inputStyle }"
@@ -76,7 +76,7 @@
             <q-input
               ref="statestreetRef"
               v-model="register.address_state"
-              placeholder="Dígite o estado"
+              placeholder="Digite o estado"
               :loading="loading"
               :disable="loading"
               v-bind="{ ...$inputStyle }"

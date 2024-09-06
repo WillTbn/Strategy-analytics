@@ -83,17 +83,15 @@ export default function useAuth() {
     await interceptorsRequest();
 
     loading.value = true
-    // console.log('Estou na verificação de cookie', hasUserCookie)
+
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
     if (hasUserCookie) {
-      // console.log('has usercookie'),
       setUserCookie(getuserCookie)
-      // console.log('ESTOU AQUI!', getuserCookie)
       return;
     }
     await validatetoken(useTokenData)
-    // await redirectRouteForUser(data.role_id)
+
   };
   const validatetoken = async (token) => {
     loading.value = true

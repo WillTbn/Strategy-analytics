@@ -81,6 +81,11 @@ const routes = [
     },
     children: [
       {
+        path: "confirm-email",
+        name: "Confirma e-mail",
+        component: () => import('../system/pages/ConfirmEmailPage.vue')
+      },
+      {
         path: "dashboard",
         component: () => import("../system/views/WalletView.vue"),
         props: true,

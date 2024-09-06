@@ -4,10 +4,10 @@
       <div class="row justify-center text-white">
         <div class="col-md-4 col-sm-10 self-center">
           <div class="column q-gutter-sm">
-            <header-auth
+            <!-- <header-auth
               text="Confirme seu cpf e crie sua nova senha"
               styleNew="10vh"
-            />
+            /> -->
             <label-field labelInput="CPF ou CNPJ">
               <q-input
                 v-model="authentication.person"
@@ -99,12 +99,12 @@ import useToken from "src/composables/system/Requests/useToken";
 import useRoles from "src/composables/system/useRoles";
 import useNotify from "src/composables/useNotify";
 import ItensPassword from "src/system/components/auth/ItensPassword.vue";
-import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
+// import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import LabelField from "src/system/components/form/LabelField.vue";
 export default defineComponent({
   name: "ResetpasswordLayout",
   components: {
-    HeaderAuth,
+    // HeaderAuth,
     ItensPassword,
     LabelField,
   },
