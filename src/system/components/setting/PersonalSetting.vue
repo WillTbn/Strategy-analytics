@@ -20,9 +20,19 @@
         />
       </div>
     </div>
-    <div class="q-mb-lg">
-      <span class="text-primary text-weight-bold">E-mail:</span><br />
-      <input type="text" name="name" v-model="data.email" id="email" disabled />
+    <div class="q-mb-lg row">
+      <div class="col-4">
+        <span class="text-primary text-weight-bold">E-mail:</span><br />
+        <q-input
+          type="text"
+          standout
+          dense
+          name="name"
+          v-model="data.email"
+          id="email"
+          disable
+        />
+      </div>
     </div>
     <div class="q-mb-lg row" v-if="data.account">
       <div class="col-4">

@@ -17,9 +17,10 @@
         <q-item-section> {{ list.name }} </q-item-section>
       </q-item>
       <q-space />
-      <options-icons />
+      <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
       <avatar-menu :avatar="data.account.avatar" />
-      <hours-banner />
+      <!-- {{ navbar.clock }} -->
+      <hours-banner v-if="navbar.clock" />
     </q-toolbar>
   </q-header>
 </template>
@@ -28,6 +29,8 @@
 import { computed, defineComponent, ref } from "vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
+import { useStoreLayout } from "src/stores/layoutStore";
+
 import SvgLogo from "../components/svgs/SvgLogo.vue";
 // import SvgSign from "../components/svgs/SvgSign.vue";
 import useCookies from "src/composables/useCookies";
@@ -63,14 +66,16 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
+    const storeLayout = useStoreLayout();
     const userStore = useUserStore();
     const { data, canAccess, menuAccess } = storeToRefs(userStore);
+    const { navbar } = storeToRefs(storeLayout);
 
     return {
       menuAccess,
       canAccess,
       clientNavList,
-
+      navbar,
       jsonState,
       barState,
       miniState,

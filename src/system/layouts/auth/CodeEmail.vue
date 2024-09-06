@@ -1,42 +1,31 @@
 <template>
-  <div class="CodeEmail column justify-center text-center" style="height: 100%">
+  <div
+    class="CodeEmail row justify-center items-center content-center"
+    style="min-height: 96vh"
+  >
     <q-inner-loading
       :showing="!data"
       label-class="text-teal"
       label-style="font-size: 1.1em"
       v-if="loading"
     />
-    <div class="row justify-center align-center text-white">
+    <div class="col-md-3 col-10 self-center">
       <div class="col-md-6 col-sm-8 self-center">
         <div class="column">
-          <div class="row">
-            <div class="col text-center">
-              <header-auth styleNew="height:18vh" />
-              <p class="text-h5">
-                {{ text }}
-              </p>
-              <p class="text-h5">
-                Seja bem-vindo à nossa plataforma!
-                <!-- Olá, seja bem vindo
-                <span class="text-weight-bolder"> {{ data.name }}!</span> -->
-              </p>
-              <p class="text-subtitle2">
-                Falta um passo para está utilizando nossa plataforma. Enviamos
-                para seu email ( <b>{{ data.email }}</b> ) código de primeiro
-                acesso, digite-o abaixo:
-              </p>
-              <p class="text-weight-light text-caption text-secondary">
-                Por favor, verifique também a caixa de spam, caso não o encontre
-                na caixa de entrada.
-                <q-icon
-                  color="yellow-14"
-                  name="fa-solid fa-face-smile-wink"
-                ></q-icon>
-              </p>
-            </div>
+          <!-- <div class="row self-center"> -->
+          <div class="col">
+            <header-auth styleNew="height:15vh" text="Código de segurança" />
+            <p class="text-caption text-secondary">
+              <!-- Falta um passo para está utilizando nossa plataforma. Enviamos para
+            seu email ( <b>{{ data.email }}</b> ) código de primeiro acesso,
+            digite-o abaixo: -->
+              Um código foi enviado ao seu e-mail cadastrado, informe-o para
+              confirmar a redefinição de senha.
+            </p>
           </div>
-          <div class="row text-center justify-center text-center">
-            <div class="col-6 col-md-4">
+          <!-- </div> -->
+          <div class="row">
+            <div class="col-7">
               <!-- <input
                 type="text"
                 name="code"
@@ -55,19 +44,20 @@
             </div>
             <div class="col-12"></div>
             <q-btn
-              class="q-mt-lg"
-              color="green-14"
+              color="primary"
+              text-color="white"
+              label="Confirmar"
+              class="text-weight-bolder col-6 q-pa-md q-mt-lg"
+              no-caps
+              style="border-radius: 8px"
               @click.prevent="onEmail"
-              label="enviar codigo"
+              s
             />
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="row justify-center text-center q-mt-lg">
-      <div class="col-12">
-        <resendauth-email :email="data.email" />
+        <div class="col-12 q-mt-lg">
+          <resendauth-email :email="data.email" />
+        </div>
       </div>
     </div>
     <div class="absolute-right q-ma-lg">

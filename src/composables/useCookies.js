@@ -73,7 +73,7 @@ export default function useCookies() {
    */
   const setTokenCookie = (value) => {
     Cookies.set(tokenName, value.token, setOptionsCookie);
-    localStorage.setItem(value.token, JSON.stringify(value.abilities))
+    // localStorage.setItem(value.token, JSON.stringify(value.abilities))
   };
   /**
    * Setando localmente os dados so usuário

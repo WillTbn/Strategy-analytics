@@ -3,7 +3,7 @@
     @submit.prevent.stop="onSubmit"
     class="column justify-center LoginLayout"
   >
-    <div class="row justify-center text-white q-pa-md">
+    <div class="row justify-center text-white">
       <div class="col-md-3 col-sm-8 self-center">
         <div class="column">
           <div class="row">

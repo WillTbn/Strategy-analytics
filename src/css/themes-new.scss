@@ -1,4 +1,9 @@
 @import "./themes/pattern.scss";
+@mixin backgroundTheme() {
+  background-position-x: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 $liniarBg: linear-gradient(
   45deg,
   #124e78 0%,
@@ -31,6 +36,7 @@ $two-bg: lineaer-gradient(#ffffff 20%, #00ff66 20%, #ffffff 10%, #24ff00 10%);
     #4e1723 100%
   );
 }
+
 .bg-simulator {
   background: $liniarBg;
 }
@@ -59,4 +65,33 @@ $two-bg: lineaer-gradient(#ffffff 20%, #00ff66 20%, #ffffff 10%, #24ff00 10%);
       #4694d1
     ),
     radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+}
+.bg-theme-1 {
+  background-image: url(/system/background/1jpg);
+  @include backgroundTheme;
+}
+
+.bg-theme-2 {
+  background-image: url(/system/background/2.jpg);
+  @include backgroundTheme;
+}
+.bg-theme-3 {
+  background-image: url(/system/background/3.jpg);
+  @include backgroundTheme;
+}
+.bg-theme-5 {
+  background-image: url(/system/background/5.jpg);
+  @include backgroundTheme;
+}
+.bg-theme-4 {
+  background-image: url(/system/background/4.jpg);
+  @include backgroundTheme;
+}
+.bg-theme-6 {
+  background-image: url(/system/background/6.jpg);
+  @include backgroundTheme;
+}
+.bg-theme-7 {
+  background-image: url(/system/background/7.jpg);
+  @include backgroundTheme;
 }

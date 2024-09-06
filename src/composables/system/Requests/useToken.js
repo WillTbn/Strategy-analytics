@@ -112,7 +112,7 @@ export default function useToken() {
 
       successNotify(res.data.message, 20000)
 
-      // console.log(res.data.message)
+      router.push({ name: "inicio" })
     }).catch((e) => {
       // console.log(e)
       // console.log(e.response)
