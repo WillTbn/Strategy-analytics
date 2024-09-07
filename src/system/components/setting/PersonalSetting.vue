@@ -49,11 +49,13 @@
     </div>
     <p class="text-muted" v-if="sameInput">{{ sameInput }}</p>
     <q-btn
-      label="atualizar"
+      label="Atualizar dados"
       type="submit"
-      color="indigo-14"
+      color="primary"
+      rounded
       :disabled="loading"
       :loading="loading"
+      no-caps
     />
   </q-form>
 </template>
@@ -61,6 +63,7 @@
 import { defineComponent, ref } from "vue";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
+import useCase from "src/composables/system/useCase";
 import useAccount from "src/composables/system/Requests/useAccount";
 export default defineComponent({
   name: "PersonalSetting",
@@ -69,7 +72,7 @@ export default defineComponent({
     const store = useUserStore();
     const { data, isDirty, isDirtyData } = storeToRefs(store);
     const { updateData, loading } = useAccount();
-
+    const { same } = useCase();
     const onSubmitData = async () => {
       if (
         same(isDirty.value.name, data.value.name) &&

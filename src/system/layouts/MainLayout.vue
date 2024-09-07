@@ -1,7 +1,11 @@
 <template>
-  <q-layout view="lHh lpR lFf" class="text-white" :class="system.theme">
+  <q-layout view="hHr lpR fFf" class="text-white" :class="system.theme">
     <navbar-layout :key="route.name" v-if="!loading && !codeDialog" />
-    <q-page-container padding style="min-height: 95vh">
+    <q-page-container
+      padding
+      style="min-height: 95vh"
+      @click.prevent="drawerThemeAction(false)"
+    >
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.name"></component>
@@ -79,7 +83,7 @@ export default defineComponent({
         router.push({ name: routeHome.value });
         piniaDataLoaded.value = true;
       }
-      if (data.value.email_verified_at == null) {
+      if (data.value && data.value.email_verified_at == null) {
         router.push({ name: "Confirma e-mail" });
       }
       //console.log("data->", data.value);
@@ -94,6 +98,7 @@ export default defineComponent({
       statusDark: computed(() =>
         Dark.isActive ? "bg-system-dark" : "bg-system"
       ),
+      drawerThemeAction: storeLayout.setDrawerTheme,
     };
   },
 });

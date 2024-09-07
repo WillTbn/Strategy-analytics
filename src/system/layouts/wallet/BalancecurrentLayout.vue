@@ -12,7 +12,8 @@
         />
       </q-card-section>
       <q-card-section
-        class="col-12 col-md-6 q-pl-xl q-py-lg q-mb-md-lg q-mb-xs-md tool badge-invest"
+        class="col-12 col-md-6 q-pl-xl q-py-lg q-mb-md-lg q-mb-xs-md"
+        :class="classBadge"
         height="10rem"
         style="border-radius: 24px"
       >
@@ -21,7 +22,7 @@
           :current="wallet.current_investment"
           :loading="loading"
           subTitleClass="text-white"
-          containerClass="badge-invest"
+          :containerClass="classBadge"
           :brCoin="true"
         >
           <q-btn
@@ -47,17 +48,22 @@
       :cipher="balance.cipher"
       :objText="balance.objText"
       :brCoin="balance.brCoin"
+      :colorItem="colorItem"
+      :btnBgColor="bgBtn"
+      :bgBadgeBank="bgBadgeBank"
     />
   </div>
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useUserStore } from "src/stores/user";
+import { useStoreLayout } from "src/stores/layoutStore";
 import useDataUser from "src/composables/system/Requests/useDataUser";
 import CurrentBalance from "src/system/components/wallet/CurrentBalance.vue";
 import BalanceItems from "src/system/components/wallet/BalanceItems.vue";
+
 export default defineComponent({
   name: "BalancecurrentLayout",
   components: { CurrentBalance, BalanceItems },
@@ -116,10 +122,34 @@ export default defineComponent({
     const userStore = useUserStore();
     const { wallet } = storeToRefs(userStore);
     const { getWallet, loading } = useDataUser();
+    const storeLayout = useStoreLayout();
+    const { system } = storeToRefs(storeLayout);
+    const classBadge = computed(() => {
+      return `${system.value.theme}-invest`;
+    });
+    const colorItem = computed(() => {
+      return `${system.value.theme}-color-bank`;
+    });
+    const bgBtn = computed(() => {
+      return `${system.value.theme}-btn-bank`;
+    });
+    const bgBadgeBank = computed(() => {
+      return `${system.value.theme}-badge-bank`;
+    });
     onMounted(async () => {
       await getWallet();
     });
-    return { wallet, loading, teste, optionsLinks, optionsBalance };
+    return {
+      wallet,
+      loading,
+      teste,
+      optionsLinks,
+      optionsBalance,
+      classBadge,
+      colorItem,
+      bgBadgeBank,
+      bgBtn,
+    };
   },
   // Outras configurações do componente aqui
 });

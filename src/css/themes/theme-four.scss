@@ -1,0 +1,25 @@
+$theme-name: "bg-theme-4";
+.#{$theme-name} {
+  background-image: url(/system/background/4.jpg);
+  @include backgroundTheme;
+  &-invest {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(23, 23, 23, 0.2) 100%
+    );
+  }
+  &-color-bank {
+    color: white;
+  }
+  &-btn-bank {
+    background: rgba(193, 193, 193, 0.2);
+  }
+  &-badge-bank {
+    background: linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.2) 0.42%,
+      rgba(255, 255, 255, 0.2) 97.68%
+    );
+  }
+}

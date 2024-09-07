@@ -11,7 +11,7 @@
       :name="data.name"
       :phone="data.account.phone"
       :mail="data.email"
-      :address="`${data.account.address_state} - ${data.account.address_country}`"
+      :address="`${data.account.address_state} - ${data.account.address_district}`"
     />
     <q-tabs
       v-model="tab"
