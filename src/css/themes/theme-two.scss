@@ -1,0 +1,22 @@
+$theme-name: "bg-theme-2";
+.#{$theme-name} {
+  background-image: url(/system/background/2.jpg);
+  @include backgroundTheme;
+  &-invest {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(23, 23, 23, 0.2) 100%
+    );
+  }
+  &-color-bank {
+    color: $primary;
+  }
+  &-btn-bank {
+    background: linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.2) 0.42%,
+      rgba(255, 255, 255, 0.2) 97.68%
+    );
+  }
+}

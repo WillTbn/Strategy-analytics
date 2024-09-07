@@ -22,6 +22,7 @@
       <!-- {{ navbar.clock }} -->
       <hours-banner v-if="navbar.clock" />
     </q-toolbar>
+    <drawer-theme />
   </q-header>
 </template>
 
@@ -38,6 +39,7 @@ import useMode from "../../composables/system/useMode";
 import OptionsIcons from "../components/navbar/OptionsIcons.vue";
 import HoursBanner from "../components/navbar/HoursBanner.vue";
 import AvatarMenu from "../components/navbar/AvatarMenu.vue";
+import DrawerTheme from "src/system/components/navbar/DrawerTheme.vue";
 
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
@@ -47,6 +49,7 @@ export default defineComponent({
     OptionsIcons,
     HoursBanner,
     AvatarMenu,
+    DrawerTheme,
   },
   setup() {
     // const {setDarkMode} = useCookies()

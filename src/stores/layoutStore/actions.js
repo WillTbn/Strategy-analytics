@@ -10,6 +10,9 @@ const actions = {
   },
   setSystemTheme(payload) {
     this.system.theme = payload;
+  },
+  setDrawerTheme(payload) {
+    this.drawerTheme = payload;
   }
 };
 
