@@ -1,11 +1,8 @@
 <template>
   <q-layout view="hHr lpR fFf" class="text-white" :class="system.theme">
     <navbar-layout :key="route.name" v-if="!loading && !codeDialog" />
-    <q-page-container
-      padding
-      style="min-height: 95vh"
-      @click.prevent="drawerThemeAction(false)"
-    >
+    <q-page-container padding style="min-height: 95vh">
+      <!-- @click.prevent="drawerThemeAction(false)" -->
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" :key="route.name"></component>

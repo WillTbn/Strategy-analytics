@@ -1,7 +1,7 @@
 <template lang="">
   <q-drawer
     v-model="drawerTheme"
-    :width="200"
+    :width="300"
     :breakpoint="500"
     overlay
     bordered
@@ -12,6 +12,15 @@
         <theme-options toggleClass="col self-center" />
       </div>
     </q-scroll-area>
+    <div class="absolute" style="top: 15px; left: 20px">
+      <q-icon
+        class="cursor-pointer"
+        name="closed"
+        size="1.4rem"
+        @click="closeDrawer(false)"
+      />
+      <!-- <q-btn flat round icon="closed" @click="closeDrawer(false)" /> -->
+    </div>
   </q-drawer>
 </template>
 <script>
@@ -27,7 +36,7 @@ export default defineComponent({
     const storeLayout = useStoreLayout();
     const { drawerTheme } = storeToRefs(storeLayout);
 
-    return { drawerTheme };
+    return { drawerTheme, closeDrawer: storeLayout.setDrawerTheme };
   },
 });
 </script>
