@@ -18,7 +18,7 @@
       </q-item>
       <q-space />
       <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
-      <avatar-menu :avatar="data.account.avatar" />
+      <avatar-menu v-if="data.account" :avatar="data.account.avatar" />
       <!-- {{ navbar.clock }} -->
       <hours-banner v-if="navbar.clock" />
     </q-toolbar>

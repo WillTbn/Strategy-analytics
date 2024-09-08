@@ -8,7 +8,8 @@ const state = () => {
     system: {
       theme: "bg-theme-2"
     },
-    drawerTheme: false
+    drawerTheme: false,
+    menuAdm: false
   };
 };
 

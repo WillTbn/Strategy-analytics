@@ -13,6 +13,9 @@ const actions = {
   },
   setDrawerTheme(payload) {
     this.drawerTheme = payload;
+  },
+  setMenuAdm(payload) {
+    this.menuAdm = payload
   }
 };
 
