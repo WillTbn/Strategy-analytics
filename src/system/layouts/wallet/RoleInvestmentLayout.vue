@@ -15,7 +15,15 @@
         <div class="text-roboto-23-400-shadow">
           {{ $filters.currentValue(item.current, item.brCoin) }}
         </div>
-        <div class="text-subtitle2">
+        <div v-if="item.current != '0,00'">
+          <span>No ultimo mês</span><br />
+          <span class="text-roboto-23-400-shadow">
+            <q-icon color="green" name="fa-solid fa-plus"></q-icon>
+            {{ $filters.currentValue(last, item.brCoin) }}
+          </span>
+        </div>
+
+        <div class="text-subtitle2" v-else>
           {{ item.description }},
           <b class="cursor-pointer text-underline"> clique aqui</b> e comece
           agora!
@@ -25,38 +33,62 @@
   </div>
 </template>
 <script>
-import { defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 export default defineComponent({
   name: "RoleInvestmentLayout",
-  setup() {
+  props: {
+    last: { type: String, default: "0,00" },
+    current: { type: String },
+  },
+  setup(props) {
+    // Função para converter strings no formato "100,00" para números
+    const convertToNumber = (value) => {
+      if (typeof value !== "string") return 0;
+      return parseFloat(value.replace(",", "."));
+    };
+
+    // Converter as propriedades last e current para números
+    const lastValue = convertToNumber(props.last);
+    const currentValue = convertToNumber(props.current);
+
+    // Somar os valores convertidos
+    const total = lastValue + currentValue;
+    // Função para formatar o número no formato desejado
+    const formatCurrency = (value) => {
+      return new Intl.NumberFormat("pt-BR", {
+        style: "decimal",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(value);
+    };
     const roles = [
       {
         title: "Expansão Patrimonial",
-        current: "00,00",
+        current: formatCurrency(total),
         brCoin: true,
         // description: false,
         description: "Vamos expandir seu patrimônio?",
       },
       {
         title: "Previdência Futura",
-        current: "00,00",
+        current: "0,00",
         brCoin: true,
         description: "Ainda não está investindo na sua aposentadoria?",
       },
       {
         title: "Expansão Patrimonial",
-        current: "00,00",
+        current: "0,00",
         brCoin: true,
         description: "Aproveite o mercado de criptomoedas!",
       },
       {
         title: "Expansão Patrimonial",
-        current: "00,00",
+        current: "0,00",
         brCoin: false,
         description: "Aproveite o mercado de criptomoedas!",
       },
     ];
-    return { roles };
+    return { roles, total, formatCurrency };
   },
 });
 </script>

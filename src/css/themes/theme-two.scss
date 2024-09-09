@@ -12,6 +12,13 @@ $theme-name: "bg-theme-2";
   &-color-bank {
     color: $primary;
   }
+  &-badge-bank {
+    background: linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.2) 0.42%,
+      rgba(255, 255, 255, 0.2) 97.68%
+    );
+  }
   &-btn-bank {
     background: linear-gradient(
       90deg,
@@ -19,4 +26,16 @@ $theme-name: "bg-theme-2";
       rgba(255, 255, 255, 0.2) 97.68%
     );
   }
+  &-navbar {
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.2) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+.text-bg-theme-2-color-bank {
+  color: $primary;
 }

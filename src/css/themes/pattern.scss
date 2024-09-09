@@ -22,7 +22,7 @@ $theme-name: "bg-simulator";
     ) !important;
   }
   &-color-bank {
-    color: rgba(0, 163, 255, 0.1);
+    color: $primary;
   }
   &-btn-bank {
     background: rgba(0, 163, 255, 0.2);
@@ -30,4 +30,12 @@ $theme-name: "bg-simulator";
   &-badge-bank {
     background: rgba(0, 163, 255, 0.1);
   }
+  &-navbar {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+.text-bg-simulator-color-bank {
+  color: $primary;
 }

@@ -31,7 +31,7 @@
       </q-avatar>
     </template>
   </q-btn-toggle>
-  <q-btn-toggle
+  <!-- <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
     push
@@ -44,7 +44,7 @@
         <img src="/system/background/3.jpg" srcset="/system/background/3.jpg" />
       </q-avatar>
     </template>
-  </q-btn-toggle>
+  </q-btn-toggle> -->
   <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
@@ -59,7 +59,7 @@
       </q-avatar>
     </template>
   </q-btn-toggle>
-  <q-btn-toggle
+  <!-- <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
     push
@@ -72,8 +72,8 @@
         <img src="/system/background/5.jpg" srcset="/system/background/5.jpg" />
       </q-avatar>
     </template>
-  </q-btn-toggle>
-  <q-btn-toggle
+  </q-btn-toggle> -->
+  <!-- <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
     push
@@ -86,7 +86,7 @@
         <img src="/system/background/6.jpg" srcset="/system/background/6.jpg" />
       </q-avatar>
     </template>
-  </q-btn-toggle>
+  </q-btn-toggle> -->
   <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
@@ -101,7 +101,7 @@
       </q-avatar>
     </template>
   </q-btn-toggle>
-  <q-btn-toggle
+  <!-- <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
     push
@@ -114,8 +114,8 @@
         <img src="/system/background/8.jpg" srcset="/system/background/8.jpg" />
       </q-avatar>
     </template>
-  </q-btn-toggle>
-  <q-btn-toggle
+  </q-btn-toggle> -->
+  <!-- <q-btn-toggle
     v-model="system.theme"
     toggle-color="grey-14"
     push
@@ -128,7 +128,7 @@
         <img src="/system/background/9.jpg" srcset="/system/background/9.jpg" />
       </q-avatar>
     </template>
-  </q-btn-toggle>
+  </q-btn-toggle> -->
   <!-- <q-btn-toggle
       v-model="system.theme"
       toggle-color="grey-14"
