@@ -6,7 +6,8 @@ const state = () => {
       theme: true
     },
     system: {
-      theme: "bg-theme-2"
+      theme: "bg-theme-2",
+      color: ""
     },
     drawerTheme: false,
     menuAdm: false

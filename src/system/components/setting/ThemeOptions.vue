@@ -8,8 +8,14 @@
     @click.prevent="setSystemTheme"
     :class="toggleClass"
   >
+    <q-icon
+      class="absolute-center"
+      name="fa-regular fa-circle-check"
+      v-if="system.theme == 'bg-simulator'"
+      size="2rem"
+    />
     <template v-slot:one>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img
           src="/system/background/patterns.png"
           srcset="/system/background/patterns.png"
@@ -25,8 +31,14 @@
     @click.prevent="setSystemTheme"
     :class="toggleClass"
   >
+    <q-icon
+      class="absolute-center"
+      name="fa-regular fa-circle-check"
+      v-if="system.theme == 'bg-theme-2'"
+      size="2rem"
+    />
     <template v-slot:two>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/2.jpg" srcset="/system/background/2.jpg" />
       </q-avatar>
     </template>
@@ -40,7 +52,7 @@
     :class="toggleClass"
   >
     <template v-slot:three>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/3.jpg" srcset="/system/background/3.jpg" />
       </q-avatar>
     </template>
@@ -53,8 +65,14 @@
     @click.prevent="setSystemTheme"
     :class="toggleClass"
   >
+    <q-icon
+      class="absolute-center"
+      name="fa-regular fa-circle-check"
+      v-if="system.theme == 'bg-theme-4'"
+      size="2rem"
+    />
     <template v-slot:four>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/4.jpg" srcset="/system/background/4.jpg" />
       </q-avatar>
     </template>
@@ -68,7 +86,7 @@
     :class="toggleClass"
   >
     <template v-slot:five>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/5.jpg" srcset="/system/background/5.jpg" />
       </q-avatar>
     </template>
@@ -82,7 +100,7 @@
     :class="toggleClass"
   >
     <template v-slot:six>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/6.jpg" srcset="/system/background/6.jpg" />
       </q-avatar>
     </template>
@@ -95,8 +113,14 @@
     @click.prevent="setSystemTheme"
     :class="toggleClass"
   >
+    <q-icon
+      class="absolute-center"
+      name="fa-regular fa-circle-check"
+      v-if="system.theme == 'bg-theme-7'"
+      size="2rem"
+    />
     <template v-slot:seven>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/7.jpg" srcset="/system/background/7.jpg" />
       </q-avatar>
     </template>
@@ -110,7 +134,7 @@
     :class="toggleClass"
   >
     <template v-slot:eight>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/8.jpg" srcset="/system/background/8.jpg" />
       </q-avatar>
     </template>
@@ -124,7 +148,7 @@
     :class="toggleClass"
   >
     <template v-slot:nine>
-      <q-avatar square size="100px" class="rounded-borders">
+      <q-avatar square size="200px" class="rounded-borders">
         <img src="/system/background/9.jpg" srcset="/system/background/9.jpg" />
       </q-avatar>
     </template>
@@ -142,7 +166,7 @@
       @click.prevent="setSystemTheme"
     >
       <template v-slot:four>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/4.jpg"
             srcset="/system/background/4.jpg"
@@ -150,7 +174,7 @@
         </q-avatar>
       </template>
       <template v-slot:one>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/patterns.png"
             srcset="/system/background/patterns.png"
@@ -159,7 +183,7 @@
       </template>
 
       <template v-slot:three>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/3.jpg"
             srcset="/system/background/3.jpg"
@@ -182,7 +206,7 @@
       @click.prevent="setSystemTheme"
     >
       <template v-slot:five>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/5.jpg"
             srcset="/system/background/5.jpg"
@@ -190,7 +214,7 @@
         </q-avatar>
       </template>
       <template v-slot:six>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/6.jpg"
             srcset="/system/background/6.jpg"
@@ -198,7 +222,7 @@
         </q-avatar>
       </template>
       <template v-slot:seven>
-        <q-avatar square size="100px" class="rounded-borders">
+        <q-avatar square size="200px" class="rounded-borders">
           <img
             src="/system/background/7.jpg"
             srcset="/system/background/7.jpg"
