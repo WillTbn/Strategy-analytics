@@ -6,7 +6,9 @@
           <div
             class="col-md-3 col-sm-8 self-center"
             :class="{
-              'col-md-4': stateLogin === 'resetPassword',
+              'col-md-4':
+                stateLogin === 'resetPassword' ||
+                stateLogin === 'validateToken',
             }"
           >
             <div class="column">
@@ -14,7 +16,7 @@
                 :text="textStep"
                 class="col"
                 :styleNew="{
-                  'margin-bottom:-5rem': stateLogin != 'resetPassword',
+                  'margin-bottom:-4rem': stateLogin != 'resetPassword',
                 }"
               />
             </div>
@@ -63,7 +65,7 @@ const stateLogin = ref("login");
 const { loading } = useAuth();
 const textPatterns = {
   login: "Acesse sua conta",
-  validateToken: "Cadastre-se",
+  validateToken: "Confirme seu dados e crie sua senha",
   ForgotPassword: "Recuperar senha",
   resetPassword: "Confirme seu cpf e crie sua nova senha",
 };

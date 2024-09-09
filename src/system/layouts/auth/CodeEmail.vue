@@ -79,6 +79,7 @@ import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
 import useToken from "src/composables/system/Requests/useToken";
 import useAuth from "src/composables/system/useAuth";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "CodeEmail",
@@ -87,6 +88,7 @@ export default defineComponent({
     ResendauthEmail,
   },
   setup(props, ctx) {
+    const router = useRouter();
     // verifyemail E aí, Teste Teste Teste!
     const AuthCode = ref({});
     const userStore = useUserStore();
@@ -97,6 +99,11 @@ export default defineComponent({
       await authEmail();
     };
     const text = ref(`E aí, ${data.value.name}`);
+    onMounted(() => {
+      if (data.value.email_verified_at) {
+        router.push({ name: "inicio" });
+      }
+    });
     return { text, AuthCode, data, onEmail, loading, setLogout };
   },
 });

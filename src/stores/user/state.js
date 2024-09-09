@@ -13,7 +13,7 @@ const state = () => {
       password_confirmation: "",
     },
     register: {
-      notifications: true
+      notifications: "refused"
     },
     accountEdit: {},
     data: {},

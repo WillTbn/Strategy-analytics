@@ -25,16 +25,21 @@
           :containerClass="classBadge"
           :brCoin="true"
         >
-          <q-btn
-            flat
-            round
-            color="white"
-            class="q-mx-xs"
+          <span
+            class="q-mx-sm cursor-pointer span-trans"
             v-for="(item, index) in optionsLinks"
             :key="index"
+            @mouseover.prevent="handleMouseOver(item)"
+            @mouseout.prevent="handleMouseOut"
           >
-            <q-icon :name="item.icon" color="white" />
-          </q-btn>
+            <span
+              v-if="detailsSpan.name == item.name"
+              :class="{ 'text-primary': detailsSpan.name == item.name }"
+            >
+              {{ detailsSpan.name }}
+            </span>
+            <q-icon :name="item.icon" size="1.4rem" color="teal-1-" />
+          </span>
         </current-balance>
       </q-card-section>
     </div>
@@ -139,6 +144,13 @@ export default defineComponent({
     onMounted(async () => {
       await getWallet();
     });
+    const detailsSpan = ref("");
+    const handleMouseOver = (item) => {
+      detailsSpan.value = item;
+    };
+    const handleMouseOut = () => {
+      detailsSpan.value = "";
+    };
     return {
       wallet,
       loading,
@@ -149,6 +161,9 @@ export default defineComponent({
       colorItem,
       bgBadgeBank,
       bgBtn,
+      detailsSpan,
+      handleMouseOver,
+      handleMouseOut,
     };
   },
   // Outras configurações do componente aqui
@@ -156,5 +171,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.span-trans:hover {
+  transform: scale(1.05); /* Efeito de aumento suave */
+}
 /* Estilos específicos do componente aqui */
 </style>

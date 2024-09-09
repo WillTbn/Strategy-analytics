@@ -1,6 +1,6 @@
 <template>
   <q-header reveal class="q-ma-md q-pa-sm bg-transparent">
-    <q-toolbar class="tool">
+    <q-toolbar :class="nav">
       <q-btn flat :to="{ name: 'inicio' }">
         <svg-logo />
       </q-btn>
@@ -40,7 +40,6 @@ import OptionsIcons from "../components/navbar/OptionsIcons.vue";
 import HoursBanner from "../components/navbar/HoursBanner.vue";
 import AvatarMenu from "../components/navbar/AvatarMenu.vue";
 import DrawerTheme from "src/system/components/navbar/DrawerTheme.vue";
-
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
@@ -72,8 +71,10 @@ export default defineComponent({
     const storeLayout = useStoreLayout();
     const userStore = useUserStore();
     const { data, canAccess, menuAccess } = storeToRefs(userStore);
-    const { navbar } = storeToRefs(storeLayout);
-
+    const { navbar, system } = storeToRefs(storeLayout);
+    const nav = computed(() => {
+      return `${system.value.theme}-navbar`;
+    });
     return {
       menuAccess,
       canAccess,
@@ -89,6 +90,7 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      nav,
     };
   },
   // Outras configurações do componente aqui

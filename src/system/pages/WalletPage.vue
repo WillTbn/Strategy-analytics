@@ -5,7 +5,10 @@
         <balancecurrent-layout />
       </div>
     </div>
-    <role-investment-layout />
+    <role-investment-layout
+      :last="wallet.last_month"
+      :current="wallet.current_balance"
+    />
   </q-page>
 </template>
 

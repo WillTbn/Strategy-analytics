@@ -6,7 +6,7 @@ $theme-name: "bg-theme-7";
     background: linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.2) 0%,
-      rgba(23, 23, 23, 0.2) 100%
+      rgba(0, 255, 102, 0.2) 100%
     );
   }
   &-color-bank {
@@ -17,9 +17,21 @@ $theme-name: "bg-theme-7";
   }
   &-badge-bank {
     background: linear-gradient(
-      90deg,
-      rgba(23, 23, 23, 0.2) 0.42%,
-      rgba(255, 255, 255, 0.2) 97.68%
+      270deg,
+      rgba(255, 255, 255, 0.1) -0.14%,
+      rgba(36, 255, 0, 0.1) 99.86%
     );
   }
+  &-navbar {
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      rgba(112, 255, 0, 0.2) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+.text-bg-theme-7-color-bank {
+  color: rgba(67, 0, 208, 0.45);
 }
