@@ -8,6 +8,50 @@ $theme-name: "bg-theme-7";
       rgba(255, 255, 255, 0.2) 0%,
       rgba(0, 255, 102, 0.2) 100%
     );
+    & .icon-three,
+    .icon-one,
+    .icon-two {
+      position: relative;
+    }
+    & .icon-two:hover,
+    .icon-one:hover {
+      @include icon-span-hover;
+    }
+    & .icon-one:hover:before,
+    .icon-two:hover:before {
+      @include icon-span-hover-before;
+    }
+
+    & .icon-two::before {
+      @include icon-span-before("Câmbio", $dark);
+    }
+    & .icon-one::before {
+      @include icon-span-before("Retirada", $dark);
+    }
+
+    & .icon-three::before {
+      content: "Depósito";
+      position: absolute;
+      opacity: 0;
+      top: 0em;
+      right: -20px;
+      transition: 1s;
+      color: $dark;
+    }
+    & .icon-three:hover {
+      padding-right: 74px;
+      padding-left: 8px;
+      color: $primary !important;
+    }
+    & .icon-three:hover:before {
+      opacity: 1;
+      right: 7px;
+    }
+    & span.icon-three:hover svg path,
+    span.icon-one:hover svg path,
+    span.icon-two:hover svg path {
+      stroke: $dark;
+    }
   }
   &-color-bank {
     color: rgba(67, 0, 208, 0.45);

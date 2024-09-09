@@ -24,6 +24,8 @@ export default defineComponent({
     loading: { type: Boolean },
     subTitleClass: { type: String, default: "text-grey-7" },
     brCoin: { type: Boolean, default: false },
+
+    containerClass: { type: String },
   },
   setup() {
     return {};
