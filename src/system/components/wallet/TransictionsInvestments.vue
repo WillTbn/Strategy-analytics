@@ -8,10 +8,6 @@
       :containerClass="classBadge"
       :brCoin="true"
     >
-      <!--
-      @mouseover.prevent="handleMouseOver(1)"
-        @mouseout.prevent="handleMouseOut"
-      -->
       <span class="q-mr-sm icon-one cursor-pointer">
         <q-icon :color="iconColor" size="1.5rem" class="">
           <svg
@@ -146,63 +142,5 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass">
-@mixin icon-span-before($name)
-  content: $name
-  position: absolute
-  opacity: 0
-  top: 0em
-  left: -20px
-  transition: 1s
-  color: $primary
-@mixin icon-span-hover
-  padding-left: 64px
-  padding-right:8px
-  color: $primary !important
-@mixin icon-span-hover-before
-  opacity: 1
-  left:7px
-// icones a serem alterados
-.icon-one
-  position: relative
-.icon-one:before
-  @include icon-span-before('Retirada')
-.icon-one:hover
-  @include icon-span-hover
-.icon-one:hover:before
-  @include icon-span-hover-before
-span.icon-one:hover svg path
-  stroke: $primary
-
-.icon-two
-  position: relative
-.icon-two:before
-  @include icon-span-before('Câmbio')
-.icon-two:hover
-  @include icon-span-hover
-.icon-two:hover:before
-  @include icon-span-hover-before
-span.icon-two:hover svg path
-  stroke: $primary
-
-.icon-three
-  position: relative
-.icon-three:before
-  content: 'Depósito'
-  position: absolute
-  opacity: 0
-  top: 0em
-  right: -20px
-  transition: 1s
-  color: $primary
-.icon-three:hover
-  padding-right: 74px
-  padding-left:8px
-  color: $primary !important
-.icon-three:hover:before
-  opacity: 1
-  right:7px
-span.icon-three:hover svg path
-  stroke: $primary
-</style>
+<style lang="sass"></style>
 <style lang=""></style>

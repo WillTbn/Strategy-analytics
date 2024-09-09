@@ -17,6 +17,7 @@
           v-model="data.name"
           :disabled="loading"
           :loading="loading"
+          dark
         />
       </div>
     </div>
@@ -31,6 +32,7 @@
           v-model="data.email"
           id="email"
           disable
+          dark
         />
       </div>
     </div>
@@ -44,6 +46,7 @@
           mask="(##) # ####-####"
           :disabled="loading"
           :loading="loading"
+          dark
         />
       </div>
     </div>
