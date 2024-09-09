@@ -17,30 +17,12 @@
         height="10rem"
         style="border-radius: 24px"
       >
-        <current-balance
-          name="Disponivel para investir"
-          :current="wallet.current_investment"
+        <transictions-investments
           :loading="loading"
-          subTitleClass="text-white"
-          :containerClass="classBadge"
-          :brCoin="true"
-        >
-          <span
-            class="q-mx-sm cursor-pointer span-trans"
-            v-for="(item, index) in optionsLinks"
-            :key="index"
-            @mouseover.prevent="handleMouseOver(item)"
-            @mouseout.prevent="handleMouseOut"
-          >
-            <span
-              v-if="detailsSpan.name == item.name"
-              :class="{ 'text-primary': detailsSpan.name == item.name }"
-            >
-              {{ detailsSpan.name }}
-            </span>
-            <q-icon :name="item.icon" size="1.4rem" color="teal-1-" />
-          </span>
-        </current-balance>
+          :current_investment="wallet.current_investment"
+          :classBadge="classBadge"
+          :iconColor="getColorTheme"
+        />
       </q-card-section>
     </div>
   </q-card>
@@ -68,10 +50,11 @@ import { useStoreLayout } from "src/stores/layoutStore";
 import useDataUser from "src/composables/system/Requests/useDataUser";
 import CurrentBalance from "src/system/components/wallet/CurrentBalance.vue";
 import BalanceItems from "src/system/components/wallet/BalanceItems.vue";
+import TransictionsInvestments from "src/system/components/wallet/TransictionsInvestments.vue";
 
 export default defineComponent({
   name: "BalancecurrentLayout",
-  components: { CurrentBalance, BalanceItems },
+  components: { CurrentBalance, BalanceItems, TransictionsInvestments },
   setup() {
     const optionsLinks = [
       {
@@ -128,7 +111,7 @@ export default defineComponent({
     const { wallet } = storeToRefs(userStore);
     const { getWallet, loading } = useDataUser();
     const storeLayout = useStoreLayout();
-    const { system } = storeToRefs(storeLayout);
+    const { system, getColorTheme } = storeToRefs(storeLayout);
     const classBadge = computed(() => {
       return `${system.value.theme}-invest`;
     });
@@ -144,13 +127,7 @@ export default defineComponent({
     onMounted(async () => {
       await getWallet();
     });
-    const detailsSpan = ref("");
-    const handleMouseOver = (item) => {
-      detailsSpan.value = item;
-    };
-    const handleMouseOut = () => {
-      detailsSpan.value = "";
-    };
+
     return {
       wallet,
       loading,
@@ -161,9 +138,7 @@ export default defineComponent({
       colorItem,
       bgBadgeBank,
       bgBtn,
-      detailsSpan,
-      handleMouseOver,
-      handleMouseOut,
+      getColorTheme,
     };
   },
   // Outras configurações do componente aqui
