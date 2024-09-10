@@ -75,11 +75,11 @@ module.exports = configure(function (ctx) {
           API_URL_CORS: "http://localhost:8085/sanctum/csrf-cookie"
         } : {
           VERSION_APP: 1.0,
-          API_URL: "https://testapi.strategyanalytics.com.br/api/",
+          API_URL: "https://sources.strategyanalytics.com.br/api/",
           COOKIE_TOKEN_NAME: "SA_token",
           COOKIE_USER_DATA: "SA_user",
           WEB_URL: process.env.WEB_URL,
-          API_URL_CORS: "https://testapi.strategyanalytics.com.br/sanctum/csrf-cookie"
+          API_URL_CORS: "https://sources.strategyanalytics.com.br/sanctum/csrf-cookie"
         }
       ,
       // rawDefine: {}
