@@ -42,7 +42,11 @@
       size="16px"
       @click.prevent="editBank(0)"
     />
-    <q-dialog v-model="cardStatus" persistent>
+    <q-dialog
+      v-model="cardStatus"
+      :persistent="verifyFieldAccountEdit"
+      class="tool"
+    >
       <editbank-layout :bankEdit="idEdit" :deleteAction="deleteAction" />
     </q-dialog>
   </div>
@@ -61,7 +65,7 @@ export default defineComponent({
     const cardStatus = ref(false);
     const edit = ref();
     const store = useUserStore();
-    const { data } = storeToRefs(store);
+    const { data, verifyFieldAccountEdit } = storeToRefs(store);
     const deleteAction = ref();
     const idEdit = ref();
 
@@ -80,6 +84,7 @@ export default defineComponent({
       editBank,
       deleteAction,
       idEdit,
+      verifyFieldAccountEdit,
     };
   },
   // Outras configurações do componente aqui

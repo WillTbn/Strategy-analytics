@@ -1,6 +1,9 @@
 <template>
   <div class="EditbankLayout">
-    <q-card style="min-width: 375px; border-radius: 16px" class="q-px-md">
+    <q-card
+      style="min-width: 375px; border-radius: 8px"
+      class="q-px-md bg-card-new"
+    >
       <q-card-section class="row text-center align-center">
         <div class="col-10" v-if="deleteAction">
           <span class="text-h5 text-weight-bolder">Remove conta bancária</span
@@ -25,8 +28,7 @@
           <div class="">
             <span class="text-primary text-weight-bold">Banco:</span><br />
             <q-input
-              dense
-              standout
+              v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.bank"
               :disabled="loading"
               :loading="loading"
@@ -36,8 +38,7 @@
           <div class="">
             <span class="text-primary text-weight-bold">Agencia:</span><br />
             <q-input
-              dense
-              standout
+              v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.agency"
               :disabled="loading"
               :loading="loading"
@@ -47,8 +48,7 @@
           <div class="">
             <span class="text-primary text-weight-bold">Conta:</span><br />
             <q-input
-              dense
-              standout
+              v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.number"
               :disabled="loading"
               :loading="loading"
@@ -59,8 +59,7 @@
             <span class="text-primary text-weight-bold">Apelido(opcional):</span
             ><br />
             <q-input
-              dense
-              standout
+              v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.nickname"
               :disabled="loading"
               :loading="loading"
@@ -165,6 +164,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.bg-card-new {
+  background-color: rgba(0, 0, 0, 0.778);
+}
 /* Estilos específicos do componente aqui */
 input[type="text"] {
   width: 100%;

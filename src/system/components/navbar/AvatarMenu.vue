@@ -1,9 +1,13 @@
 <template>
   <div class="AvatarMenu">
-    <q-avatar size="46px" class="q-my-sm avatar-custom">
-      <img :src="avatar" />
-    </q-avatar>
-    <q-menu
+    <!-- <q-item clickable v-ripple :to="{ name: 'config' }"> -->
+    <q-btn round :to="{ name: 'config' }" size="16px" unelevated>
+      <q-avatar class="q-my-sm avatar-custom">
+        <img :src="avatar" />
+      </q-avatar>
+    </q-btn>
+    <!-- </q-item> -->
+    <!-- <q-menu
       fit
       anchor="bottom left"
       self="top middle"
@@ -23,7 +27,7 @@
           <q-icon color="red" name="fa-solid fa-right-from-bracket" />
         </q-item-section>
       </q-item>
-    </q-menu>
+    </q-menu> -->
   </div>
 </template>
 <script>
@@ -47,5 +51,4 @@ export default defineComponent({
 <style lang="sass">
 .avatar-custom>.q-avatar__content>img
   border: 2px solid #ddd
-  cursor: pointer
 </style>

@@ -14,6 +14,8 @@
 }
 $theme-name: "bg-simulator";
 .#{$theme-name} {
+  background-image: url(/system/background/patterns.png);
+  @include backgroundTheme;
   &-invest {
     background: linear-gradient(
       90deg,

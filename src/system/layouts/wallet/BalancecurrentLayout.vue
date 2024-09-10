@@ -7,7 +7,7 @@
       >
         <current-balance
           name="Patrimônio investido"
-          :current="wallet.current_balance"
+          :current="wallet.current_investment"
           :loading="loading"
         />
       </q-card-section>
@@ -19,22 +19,50 @@
       >
         <transictions-investments
           :loading="loading"
-          :current_investment="wallet.current_investment"
+          :current_investment="getAvailableToInvest"
           :classBadge="classBadge"
           :iconColor="getColorTheme"
         />
       </q-card-section>
     </div>
   </q-card>
+  <!-- {{ setCurrentWallet }} -->
   <div class="row q-gutter-md">
     <balance-items
-      v-for="balance in optionsBalance"
-      :key="balance"
-      :icon="balance.icon"
-      :title="balance.name"
-      :cipher="balance.cipher"
-      :objText="balance.objText"
-      :brCoin="balance.brCoin"
+      :loading="loading"
+      icon="img:../../system/icons/wallet.svg"
+      title="Carteira"
+      :brCoin="true"
+      :objText="false"
+      :colorItem="colorItem"
+      :btnBgColor="bgBtn"
+      :bgBadgeBank="bgBadgeBank"
+      :balance="setCurrentWallet"
+    />
+    <balance-items
+      :loading="loading"
+      icon="img:/system/icons/investment.svg"
+      title="Investimentos"
+      cipher="$"
+      :brCoin="false"
+      :objText="false"
+      :colorItem="colorItem"
+      :balance="wallet.current_investment"
+      :btnBgColor="bgBtn"
+      :bgBadgeBank="bgBadgeBank"
+    />
+    <balance-items
+      :loading="loading"
+      icon="img:/system/icons/bank.svg"
+      title="Banking"
+      cipher="U$"
+      :objText="{
+        title: 'Internacionalize suas finanças',
+        btn: 'Abrir conta',
+        btnClass: 'btn-bank',
+        bgBadge: 'badge-bank',
+        moreInfoIcon: 'img:/system/icons/more-info.svg',
+      }"
       :colorItem="colorItem"
       :btnBgColor="bgBtn"
       :bgBadgeBank="bgBadgeBank"
@@ -56,6 +84,30 @@ export default defineComponent({
   name: "BalancecurrentLayout",
   components: { CurrentBalance, BalanceItems, TransictionsInvestments },
   setup() {
+    const getInve = computed(() => wallet.value.current_investment);
+
+    const teste = ref(true);
+    const userStore = useUserStore();
+    const { wallet, setCurrentWallet, getAvailableToInvest } =
+      storeToRefs(userStore);
+    const { getWallet, loading } = useDataUser();
+    const storeLayout = useStoreLayout();
+    const { system, getColorTheme } = storeToRefs(storeLayout);
+    const classBadge = computed(() => {
+      return `${system.value.theme}-invest`;
+    });
+    const colorItem = computed(() => {
+      return `${system.value.theme}-color-bank`;
+    });
+    const bgBtn = computed(() => {
+      return `${system.value.theme}-btn-bank`;
+    });
+    const bgBadgeBank = computed(() => {
+      return `${system.value.theme}-badge-bank`;
+    });
+    onMounted(async () => {
+      await getWallet();
+    });
     const optionsLinks = [
       {
         name: "Retirada",
@@ -77,10 +129,10 @@ export default defineComponent({
         disabled: false,
       },
     ];
-    const optionsBalance = [
+    const optionsBalance = ref([
       {
-        name: "Brasil",
-        icon: "img:../../system/icons/bandeira-do-brasil.png",
+        name: "Carteira",
+        icon: "img:../../system/icons/wallet.svg",
         brCoin: true,
         objText: false,
       },
@@ -91,6 +143,7 @@ export default defineComponent({
         cipher: "$",
         brCoin: false,
         objText: false,
+        balance: computed(() => wallet.value.current_investment),
       },
       {
         name: "Banking",
@@ -105,30 +158,9 @@ export default defineComponent({
           moreInfoIcon: "img:/system/icons/more-info.svg",
         },
       },
-    ];
-    const teste = ref(true);
-    const userStore = useUserStore();
-    const { wallet } = storeToRefs(userStore);
-    const { getWallet, loading } = useDataUser();
-    const storeLayout = useStoreLayout();
-    const { system, getColorTheme } = storeToRefs(storeLayout);
-    const classBadge = computed(() => {
-      return `${system.value.theme}-invest`;
-    });
-    const colorItem = computed(() => {
-      return `${system.value.theme}-color-bank`;
-    });
-    const bgBtn = computed(() => {
-      return `${system.value.theme}-btn-bank`;
-    });
-    const bgBadgeBank = computed(() => {
-      return `${system.value.theme}-badge-bank`;
-    });
-    onMounted(async () => {
-      await getWallet();
-    });
-
+    ]);
     return {
+      getInve,
       wallet,
       loading,
       teste,
@@ -139,6 +171,8 @@ export default defineComponent({
       bgBadgeBank,
       bgBtn,
       getColorTheme,
+      setCurrentWallet,
+      getAvailableToInvest,
     };
   },
   // Outras configurações do componente aqui

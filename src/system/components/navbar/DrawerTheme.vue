@@ -1,11 +1,11 @@
 <template lang="">
   <q-drawer
     v-model="drawerTheme"
-    :width="300"
-    :breakpoint="500"
+    :width="350"
+    :breakpoint="1500"
     overlay
-    bordered
     side="right"
+    dark
   >
     <q-scroll-area class="fit">
       <div class="column q-gutter-sm text-center justify-center align-center">

@@ -1,7 +1,7 @@
 <template>
   <div
     class="CodeEmail row justify-center items-center content-center"
-    style="min-height: 96vh"
+    style="min-height: 90vh"
   >
     <q-inner-loading
       :showing="!data"
@@ -16,9 +16,6 @@
           <div class="col">
             <header-auth styleNew="height:15vh" text="Código de segurança" />
             <p class="text-caption text-secondary">
-              <!-- Falta um passo para está utilizando nossa plataforma. Enviamos para
-            seu email ( <b>{{ data.email }}</b> ) código de primeiro acesso,
-            digite-o abaixo: -->
               Um código foi enviado ao seu e-mail cadastrado, informe-o para
               confirmar a redefinição de senha.
             </p>

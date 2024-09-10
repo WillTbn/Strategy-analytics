@@ -1,35 +1,36 @@
 <template>
-  <!-- <div :class="toggleClass"> -->
   <q-btn-toggle
     v-model="system.theme"
-    toggle-color="grey-14"
+    toggle-color="transparent"
     push
     :options="[{ value: 'bg-simulator', slot: 'one' }]"
     @click.prevent="setSystemTheme"
     :class="toggleClass"
+    dense
   >
     <q-icon
       class="absolute-center"
       name="fa-regular fa-circle-check"
       v-if="system.theme == 'bg-simulator'"
-      size="2rem"
+      size="2.5rem"
     />
     <template v-slot:one>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img
-          src="/system/background/patterns.png"
-          srcset="/system/background/patterns.png"
-        />
-      </q-avatar>
+      <img
+        src="/system/background/patterns.png"
+        srcset="/system/background/patterns.png"
+        :ratio="4 / 3"
+        width="250px"
+      />
     </template>
   </q-btn-toggle>
   <q-btn-toggle
     v-model="system.theme"
-    toggle-color="grey-14"
+    toggle-color="transparent"
     push
     :options="[{ value: 'bg-theme-2', slot: 'two' }]"
     @click.prevent="setSystemTheme"
     :class="toggleClass"
+    dense
   >
     <q-icon
       class="absolute-center"
@@ -38,32 +39,25 @@
       size="2rem"
     />
     <template v-slot:two>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/2.jpg" srcset="/system/background/2.jpg" />
-      </q-avatar>
+      <img
+        src="/system/background/2.jpg"
+        srcset="/system/background/2.jpg"
+        :ratio="4 / 3"
+        width="250px"
+        height="121px"
+      />
+      <!-- </q-avatar> -->
     </template>
   </q-btn-toggle>
-  <!-- <q-btn-toggle
-    v-model="system.theme"
-    toggle-color="grey-14"
-    push
-    :options="[{ value: 'bg-theme-3', slot: 'three' }]"
-    @click.prevent="setSystemTheme"
-    :class="toggleClass"
-  >
-    <template v-slot:three>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/3.jpg" srcset="/system/background/3.jpg" />
-      </q-avatar>
-    </template>
-  </q-btn-toggle> -->
+
   <q-btn-toggle
     v-model="system.theme"
-    toggle-color="grey-14"
+    toggle-color="transparent"
     push
     :options="[{ value: 'bg-theme-4', slot: 'four' }]"
     @click.prevent="setSystemTheme"
     :class="toggleClass"
+    dense
   >
     <q-icon
       class="absolute-center"
@@ -72,42 +66,18 @@
       size="2rem"
     />
     <template v-slot:four>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/4.jpg" srcset="/system/background/4.jpg" />
-      </q-avatar>
+      <img
+        src="/system/background/4.jpg"
+        srcset="/system/background/4.jpg"
+        :ratio="4 / 3"
+        width="250px"
+      />
     </template>
   </q-btn-toggle>
-  <!-- <q-btn-toggle
-    v-model="system.theme"
-    toggle-color="grey-14"
-    push
-    :options="[{ value: 'bg-theme-5', slot: 'five' }]"
-    @click.prevent="setSystemTheme"
-    :class="toggleClass"
-  >
-    <template v-slot:five>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/5.jpg" srcset="/system/background/5.jpg" />
-      </q-avatar>
-    </template>
-  </q-btn-toggle> -->
-  <!-- <q-btn-toggle
-    v-model="system.theme"
-    toggle-color="grey-14"
-    push
-    :options="[{ value: 'bg-theme-6', slot: 'six' }]"
-    @click.prevent="setSystemTheme"
-    :class="toggleClass"
-  >
-    <template v-slot:six>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/6.jpg" srcset="/system/background/6.jpg" />
-      </q-avatar>
-    </template>
-  </q-btn-toggle> -->
   <q-btn-toggle
+    dense
     v-model="system.theme"
-    toggle-color="grey-14"
+    toggle-color="transparent"
     push
     :options="[{ value: 'bg-theme-7', slot: 'seven' }]"
     @click.prevent="setSystemTheme"
@@ -120,117 +90,14 @@
       size="2rem"
     />
     <template v-slot:seven>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/7.jpg" srcset="/system/background/7.jpg" />
-      </q-avatar>
+      <img
+        src="/system/background/7.jpg"
+        srcset="/system/background/7.jpg"
+        :ratio="4 / 3"
+        width="250px"
+      />
     </template>
   </q-btn-toggle>
-  <!-- <q-btn-toggle
-    v-model="system.theme"
-    toggle-color="grey-14"
-    push
-    :options="[{ value: 'bg-theme-8', slot: 'eight' }]"
-    @click.prevent="setSystemTheme"
-    :class="toggleClass"
-  >
-    <template v-slot:eight>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/8.jpg" srcset="/system/background/8.jpg" />
-      </q-avatar>
-    </template>
-  </q-btn-toggle> -->
-  <!-- <q-btn-toggle
-    v-model="system.theme"
-    toggle-color="grey-14"
-    push
-    :options="[{ value: 'bg-theme-9', slot: 'nine' }]"
-    @click.prevent="setSystemTheme"
-    :class="toggleClass"
-  >
-    <template v-slot:nine>
-      <q-avatar square size="200px" class="rounded-borders">
-        <img src="/system/background/9.jpg" srcset="/system/background/9.jpg" />
-      </q-avatar>
-    </template>
-  </q-btn-toggle> -->
-  <!-- <q-btn-toggle
-      v-model="system.theme"
-      toggle-color="grey-14"
-      push
-      :options="[
-        // { value: 'bg-theme-2', slot: 'two' },
-        { value: 'bg-simulator', slot: 'one' },
-        { value: 'bg-theme-3', slot: 'three' },
-        { value: 'bg-theme-4', slot: 'four' },
-      ]"
-      @click.prevent="setSystemTheme"
-    >
-      <template v-slot:four>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/4.jpg"
-            srcset="/system/background/4.jpg"
-          />
-        </q-avatar>
-      </template>
-      <template v-slot:one>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/patterns.png"
-            srcset="/system/background/patterns.png"
-          />
-        </q-avatar>
-      </template>
-
-      <template v-slot:three>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/3.jpg"
-            srcset="/system/background/3.jpg"
-          />
-        </q-avatar>
-      </template>
-    </q-btn-toggle>
-  </div>
-  <div :class="toggleClass">
-    <q-btn-toggle
-      :class="toggleClass"
-      v-model="system.theme"
-      toggle-color="grey-14"
-      push
-      :options="[
-        { value: 'bg-theme-5', slot: 'five' },
-        { value: 'bg-theme-6', slot: 'six' },
-        { value: 'bg-theme-7', slot: 'seven' },
-      ]"
-      @click.prevent="setSystemTheme"
-    >
-      <template v-slot:five>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/5.jpg"
-            srcset="/system/background/5.jpg"
-          />
-        </q-avatar>
-      </template>
-      <template v-slot:six>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/6.jpg"
-            srcset="/system/background/6.jpg"
-          />
-        </q-avatar>
-      </template>
-      <template v-slot:seven>
-        <q-avatar square size="200px" class="rounded-borders">
-          <img
-            src="/system/background/7.jpg"
-            srcset="/system/background/7.jpg"
-          />
-        </q-avatar>
-      </template>
-    </q-btn-toggle> -->
-  <!-- </div> -->
 </template>
 <script>
 import { defineComponent, ref } from "vue";

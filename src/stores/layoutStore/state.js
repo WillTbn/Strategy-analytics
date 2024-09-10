@@ -3,7 +3,7 @@ const state = () => {
     table: {},
     navbar: {
       clock: true,
-      theme: true
+      theme: false
     },
     system: {
       theme: "bg-theme-2",

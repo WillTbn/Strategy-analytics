@@ -86,10 +86,10 @@ export default function useAuth() {
 
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
-    if (hasUserCookie) {
-      setUserCookie(getuserCookie)
-      return;
-    }
+    // if (hasUserCookie) {
+    //   setUserCookie(getuserCookie)
+    //   return;
+    // }
     await validatetoken(useTokenData)
 
   };
@@ -99,6 +99,10 @@ export default function useAuth() {
       const respData = resp.data.data
       setUserCookie(respData);
       useStore.setUserData(respData);
+
+      if (respData.email_verified_at == null) {
+        router.push({ name: "Confirma e-mail" });
+      }
     }).catch((e) => {
       infoNotify("Faça login!");
       deleteTokenCookie()
