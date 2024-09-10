@@ -13,7 +13,7 @@ const state = () => {
       password_confirmation: "",
     },
     register: {
-      notifications: true
+      notifications: "refused"
     },
     accountEdit: {},
     data: {},
@@ -21,7 +21,7 @@ const state = () => {
     wallet: {},
     investment: {},
     abilities: [],
-    routeHome: "",
+    routeHome: "inicio",
     NavbarMenu: "adm",
     isDirty: {},
     isDirtyData: {},

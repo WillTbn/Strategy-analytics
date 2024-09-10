@@ -12,6 +12,7 @@ export default function useDataUser() {
     loading.value = true
     await api.get('users/wallet')
       .then((response) => {
+        // console.log('response->', response)
         userStore.setWallet(response.data.wallet)
         // console.info('Aqui-->>', response.data)
       })

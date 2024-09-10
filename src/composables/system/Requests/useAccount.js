@@ -2,20 +2,24 @@ import { api } from 'src/boot/axios';
 import useCookies from 'src/composables/useCookies';
 import useNotify from 'src/composables/useNotify'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router';
 
 export default function useAccount() {
   const loading = ref(false)
   const buttonSubmit = ref(false)
   const { errorNotify, successNotify, multError } = useNotify()
-  const { updateCookieAccount, updateNameByAccount } = useCookies()
+  const { updateCookieAccount, updateNameByAccount, deleteCookieUser } = useCookies()
+  const route = useRoute()
   const updateData = async (data) => {
     loading.value = true
     try {
       const res = await api.post(`account/data`, { name: data.name, phone: data.account.phone });
-      await updateNameByAccount(res.data.user, res.data.account)
-      console.log(res)
       successNotify(res.data.message)
+      await deleteCookieUser()
+      route.redirectedFrom
+      // console.log(res):
     } catch (e) {
+      console.log(e)
       multError(e.response.data.errors)
     } finally {
       // buttonSubmit.value = false

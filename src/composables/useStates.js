@@ -175,13 +175,13 @@ export default function useStates() {
   const redirectRouteForUser = async (role_id) => {
     const nameRoute = {
       1: {
-        name: "users"
+        name: "inicio"
       },
       2: {
-        name: "controlReports"
+        name: "inicio"
       },
       3: {
-        name: "wallet"
+        name: "inicio"
       }
     }
     console.log('rediredRoute ->', nameRoute[role_id].name)

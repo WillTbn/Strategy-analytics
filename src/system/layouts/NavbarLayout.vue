@@ -1,7 +1,9 @@
 <template>
-  <q-header reveal class="q-ma-md q-pa-sm bg-transparent">
-    <q-toolbar class="tool">
-      <svg-logo />
+  <q-header class="q-ma-md q-pa-sm bg-transparent">
+    <q-toolbar :class="nav">
+      <q-btn flat :to="{ name: 'inicio' }">
+        <svg-logo />
+      </q-btn>
       <q-space />
       <q-item
         v-for="list in clientNavList"
@@ -15,10 +17,12 @@
         <q-item-section> {{ list.name }} </q-item-section>
       </q-item>
       <q-space />
-      <options-icons />
-      <avatar-menu :avatar="data.account.avatar" />
-      <hours-banner />
+      <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
+      <avatar-menu v-if="data.account" :avatar="data.account.avatar" />
+      <!-- {{ navbar.clock }} -->
+      <hours-banner v-if="navbar.clock" />
     </q-toolbar>
+    <drawer-theme />
   </q-header>
 </template>
 
@@ -26,6 +30,8 @@
 import { computed, defineComponent, ref } from "vue";
 import { useUserStore } from "../../stores/user";
 import { storeToRefs } from "pinia";
+import { useStoreLayout } from "src/stores/layoutStore";
+
 import SvgLogo from "../components/svgs/SvgLogo.vue";
 // import SvgSign from "../components/svgs/SvgSign.vue";
 import useCookies from "src/composables/useCookies";
@@ -33,7 +39,7 @@ import useMode from "../../composables/system/useMode";
 import OptionsIcons from "../components/navbar/OptionsIcons.vue";
 import HoursBanner from "../components/navbar/HoursBanner.vue";
 import AvatarMenu from "../components/navbar/AvatarMenu.vue";
-
+import DrawerTheme from "src/system/components/navbar/DrawerTheme.vue";
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
@@ -42,6 +48,7 @@ export default defineComponent({
     OptionsIcons,
     HoursBanner,
     AvatarMenu,
+    DrawerTheme,
   },
   setup() {
     // const {setDarkMode} = useCookies()
@@ -61,14 +68,18 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
+    const storeLayout = useStoreLayout();
     const userStore = useUserStore();
     const { data, canAccess, menuAccess } = storeToRefs(userStore);
-
+    const { navbar, system } = storeToRefs(storeLayout);
+    const nav = computed(() => {
+      return `${system.value.theme}-navbar`;
+    });
     return {
       menuAccess,
       canAccess,
       clientNavList,
-
+      navbar,
       jsonState,
       barState,
       miniState,
@@ -79,6 +90,7 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      nav,
     };
   },
   // Outras configurações do componente aqui

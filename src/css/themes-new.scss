@@ -1,3 +1,19 @@
+@mixin backgroundTheme() {
+  background-position-x: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 2s linear;
+}
+@import "./themes/pattern.scss";
+@import "./themes/theme-one.scss";
+@import "./themes/theme-two.scss";
+@import "./themes/theme-three.scss";
+@import "./themes/theme-four.scss";
+@import "./themes/theme-five.scss";
+@import "./themes/theme-six.scss";
+@import "./themes/theme-seven.scss";
+@import "./themes/theme-eight.scss";
+@import "./themes/theme-nine.scss";
 $liniarBg: linear-gradient(
   45deg,
   #124e78 0%,
@@ -30,12 +46,7 @@ $two-bg: lineaer-gradient(#ffffff 20%, #00ff66 20%, #ffffff 10%, #24ff00 10%);
     #4e1723 100%
   );
 }
-.bg-simulator {
-  background: $liniarBg;
-}
-.theme-two {
-  background: $two-bg;
-}
+
 .bg-simulator-draw {
   background: radial-gradient(
       circle at top right,
@@ -44,11 +55,6 @@ $two-bg: lineaer-gradient(#ffffff 20%, #00ff66 20%, #ffffff 10%, #24ff00 10%);
       #ff4242
     ),
     radial-gradient(circle at 100%, #ff4242, #1a1e2d, #ff4242);
-
-  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
-  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-  //   radial-gradient(circle at 10%, #4694d1, transparent);
 }
 .bg-draw {
   background: radial-gradient(

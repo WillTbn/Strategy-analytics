@@ -112,7 +112,7 @@ export default function useToken() {
 
       successNotify(res.data.message, 20000)
 
-      // console.log(res.data.message)
+      router.push({ name: "inicio" })
     }).catch((e) => {
       // console.log(e)
       // console.log(e.response)
@@ -129,7 +129,7 @@ export default function useToken() {
       successNotify(res.data.message, 10000)
       userStore.setEmailVerified(res.data.user.email_verified_at)
       await deleteCookieUser()
-      window.location.reload()
+      router.push({ name: "inicio" })
     } catch (e) {
       // console.log(e)
       // console.log(e.response.data.message)

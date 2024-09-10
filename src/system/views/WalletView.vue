@@ -1,6 +1,6 @@
 <template>
   <div class="WalletView">
-    <q-page-container padding>
+    <q-page-container>
       <router-view v-slot="{ Component }">
         <component :is="Component" :key="route.name"></component>
       </router-view>

@@ -1,5 +1,7 @@
 
 import { Cookies } from "quasar";
+import useExtractHelpers from "src/composables/system/Helpers/useExtractHelpers";
+const { addValues, formatCurrency } = useExtractHelpers()
 const getters = {
   // doubleCount: (state) => state.counter * 2,
   getInvestiment: (state) => {
@@ -45,6 +47,40 @@ const getters = {
   },
   authEmailCode: (state) => {
     return state.data.email_verified_at;
+  },
+  /** 
+   * Verificar se esta preenchido formulario para cria novo banco
+  */
+  verifyFieldAccountEdit: (state) => {
+    if (state.accountEdit.name || state.accountEdit.bank || state.accountEdit.agency || state.accountEdit.number || state.accountEdit.nickname)
+      return true
+    return false
+  },
+
+
+  /**
+   * soma disponivel para investir com o investido fazendo o saldo da carteira
+   */
+  setCurrentWallet: (state) => {
+    return addValues(state.wallet.current_investment, state.wallet.current_balance)
+  },
+  /**
+   * pegando valores formatado do valor de disponivel para investir
+   */
+  getAvailableToInvest: (state) => {
+    return formatCurrency(state.wallet.current_balance)
+  },
+  /**
+   * pegando valores formatado do valor de patrimônio investido
+   */
+  getCurrentInvest: (state) => {
+    return formatCurrency(state.wallet.current_investment)
+  },
+  /**
+   * pegando valores formatado do redimento do ultimo mês
+   */
+  getLastMonth: (state) => {
+    return formatCurrency(state.wallet.last_month)
   }
 };
 

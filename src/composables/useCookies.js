@@ -35,7 +35,7 @@ export default function useCookies() {
 
   const getDarkMode = async () => {
     // let valueDark = getValue("dark_mode") == "true" ? true : false;
-    Dark.set(booleanVerify(getValue("dark_mode")));
+    Dark.set(true);
   };
 
   const setDarkMode = (value) => {
@@ -73,7 +73,7 @@ export default function useCookies() {
    */
   const setTokenCookie = (value) => {
     Cookies.set(tokenName, value.token, setOptionsCookie);
-    localStorage.setItem(value.token, JSON.stringify(value.abilities))
+    // localStorage.setItem(value.token, JSON.stringify(value.abilities))
   };
   /**
    * Setando localmente os dados so usuário

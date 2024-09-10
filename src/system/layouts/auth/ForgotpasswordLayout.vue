@@ -2,21 +2,15 @@
   <div class="ForgotpasswordLayout text-white">
     <q-form
       @submit.prevent.stop="onSubmit"
-      class="row justify-center items-center content-center text-center"
-      style="height: 70vh"
+      class="row justify-center items-center content-center"
       v-if="statusAction == 'initial'"
     >
-      <div class="col-12 q-my-xl">
-        <span class="text-weight-bolder">
-          Iremos enviar instruições para seu e-mail, para recuperar sua senha.
-        </span>
-        <p class="text-weight-light text-caption text-secondary">
-          Lembra-se de verificar a caixa de SPAM.
-          <q-icon color="yellow-14" name="fa-solid fa-face-smile-wink"></q-icon>
-        </p>
-      </div>
-
       <div class="col-md-3 col-10 self-center">
+        <div class="col-12 q-my-lg">
+          <span class="text-muted-register">
+            Informe os dados da sua conta para redefir a senha.
+          </span>
+        </div>
         <div class="column">
           <label-field labelInput="CPF ou CNPJ">
             <q-input
@@ -27,30 +21,32 @@
               v-bind="{ ...$inputStyle }"
             />
           </label-field>
-
-          <q-btn
-            color="primary"
-            text-color="white"
-            label="Enviar"
-            type="submit"
-            :disabled="loading"
-            class="text-weight-bolder col-10 col-md-12 q-pa-md q-mt-lg"
-            no-caps
-            style="border-radius: 8px"
-          />
-          <!-- <q-btn
-              color="secondary"
-              padding="0.5rem 3rem"
+          <div class="row q-gutter-lg q-mt-lg">
+            <q-btn
+              text-color="white"
+              label="Voltar"
+              :disabled="loading"
+              class="text-weight-bolder col q-pa-md q-mt-lg"
+              no-caps
+              outline
+              style="
+                border-radius: 8px;
+                border: 1px solid #00a3ff;
+                background: rgba(0, 0, 0, 0.2) !important;
+              "
+              @click="backLogin"
+            />
+            <q-btn
+              color="primary"
               text-color="white"
               label="Enviar"
               type="submit"
               :disabled="loading"
-              :loading="loading"
-            >
-              <template v-slot:loading>
-                <q-spinner-pie size="3em" />
-              </template>
-            </q-btn> -->
+              class="text-weight-bolder col q-pa-md q-mt-lg"
+              no-caps
+              style="border-radius: 8px"
+            />
+          </div>
         </div>
       </div>
     </q-form>
@@ -86,23 +82,6 @@
         </p>
       </div>
     </div>
-    <div class="row justify-center text-center">
-      <div class="col-12">
-        <p
-          class="text-hover text-weight-bolder"
-          @click="backLogin"
-          v-if="statusAction == 'initial'"
-        >
-          <span class="text-primary forgot"> Clique aqui</span>
-          <span class="forgot"
-            >, se lembrou da senha ou quer volta para Tela de login.</span
-          >
-        </p>
-      </div>
-      <div class="col-12">
-        <header-auth text="" styleNew="height: 10vh" />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -111,17 +90,15 @@ import { defineComponent, ref } from "vue";
 import useToken from "src/composables/system/Requests/useToken";
 import useRoles from "src/composables/system/useRoles";
 // import RegisterData from "src/system/components/RegisterData.vue";
-import HeaderAuth from "src/system/components/auth/HeaderAuth.vue";
 import LabelField from "src/system/components/form/LabelField.vue";
 
 export default defineComponent({
   name: "ForgotpasswordLayout",
   components: {
-    HeaderAuth,
     // RegisterData,
     LabelField,
   },
-  emits: ["status-login"],
+  emits: ["status-login", "status-email"],
   setup(props, ctx) {
     const { personRef, personRule } = useRoles();
     const { forgotPassword, loading, forgot } = useToken();
@@ -133,6 +110,7 @@ export default defineComponent({
       try {
         await forgotPassword(user.value);
         if (forgot.value) statusAction.value = "finally";
+        ctx.emit("status-email",true);
       } catch (e) {
         console.log(e);
       }

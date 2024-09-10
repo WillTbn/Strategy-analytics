@@ -7,6 +7,7 @@ import { ref } from "vue";
 import { route } from "quasar/wrappers";
 import useCookies from "../useCookies";
 import useStates from "../useStates";
+import { storeToRefs } from "pinia";
 
 export default function useAuth() {
   const useStore = useUserStore();
@@ -16,9 +17,10 @@ export default function useAuth() {
     deleteTokenCookie,
     setUserCookie,
     tokenName, hasTokenCookie, tokenCookie,
-    getuserCookie, hasUserCookie
+    getuserCookie, hasUserCookie, deleteCookieUser
 
   } = useCookies()
+  const { data } = storeToRefs(useStore);
 
   const router = useRouter();
   const { errorNotify, infoNotify, alternativeNotify } = useNotify();
@@ -29,7 +31,13 @@ export default function useAuth() {
   });
   const role = ref(null)
   const interceptorsRequest = async () => {
-    const success = res => res
+    const success = res => {
+      if (res.config.method !== 'get') {
+        console.log('Revalidar os dados necessário!');
+        deleteCookieUser()
+      }
+      return Promise.resolve(res)
+    }
     const error = err => {
 
       if (401 === err.response.status) {
@@ -75,28 +83,33 @@ export default function useAuth() {
     await interceptorsRequest();
 
     loading.value = true
-    // console.log('Estou na verificação de cookie', hasUserCookie)
+
     const useTokenData = Cookies.get(tokenName);
     api.defaults.headers.common['Authorization'] = `Bearer ${useTokenData}`
-    if (hasUserCookie) {
-      // console.log('has usercookie'),
-      setUserCookie(getuserCookie)
-      return;
-    }
+    // if (hasUserCookie) {
+    //   setUserCookie(getuserCookie)
+    //   return;
+    // }
+    await validatetoken(useTokenData)
 
-    try {
-      const resp = await api.get("auth/validate", useTokenData)
-      const data = resp.data.data
-      setUserCookie(data);
-      useStore.setUserData(data);
-      await redirectRouteForUser(data.role_id)
-    } catch (e) {
+  };
+  const validatetoken = async (token) => {
+    loading.value = true
+    api.get("auth/validate", token).then((resp) => {
+      const respData = resp.data.data
+      setUserCookie(respData);
+      useStore.setUserData(respData);
+
+      if (respData.email_verified_at == null) {
+        router.push({ name: "Confirma e-mail" });
+      }
+    }).catch((e) => {
       infoNotify("Faça login!");
       deleteTokenCookie()
-    } finally {
+    }).finally(() => {
       loading.value = false
-    }
-  };
+    })
+  }
   const setLogout = async () => {
     loading.value = true
     const useTokenData = Cookies.get(tokenName);

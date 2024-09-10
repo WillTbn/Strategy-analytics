@@ -1,9 +1,13 @@
 <template>
   <div class="AvatarMenu">
-    <q-avatar size="46px" class="q-my-sm avatar-custom">
-      <img :src="avatar" />
-    </q-avatar>
-    <q-menu
+    <!-- <q-item clickable v-ripple :to="{ name: 'config' }"> -->
+    <q-btn round :to="{ name: 'config' }" size="16px" unelevated>
+      <q-avatar class="q-my-sm avatar-custom">
+        <img :src="avatar" />
+      </q-avatar>
+    </q-btn>
+    <!-- </q-item> -->
+    <!-- <q-menu
       fit
       anchor="bottom left"
       self="top middle"
@@ -23,28 +27,8 @@
           <q-icon color="red" name="fa-solid fa-right-from-bracket" />
         </q-item-section>
       </q-item>
-    </q-menu>
+    </q-menu> -->
   </div>
-
-  <!-- <q-item clickable v-ripple :to="{ name: 'config' }">
-    <q-item-section side class="text-dark">
-      <q-avatar size="46px">
-        <img :src="data.account.avatar" />
-      </q-avatar>
-    </q-item-section>
-    <q-item-section no-wrap>
-      <q-item-label class="text-weight-bold control-text">
-        {{ data.name }}
-      </q-item-label>
-      <q-item-label caption class="text-weight-bold control-text">
-        {{ data.email }}
-      </q-item-label>
-    </q-item-section>
-
-    <q-item-section side avatar top>
-      <q-icon name="fa-solid fa-gear" color="secondary" />
-    </q-item-section>
-  </q-item> -->
 </template>
 <script>
 import { defineComponent } from "vue";

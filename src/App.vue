@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute;
 </script>
