@@ -10,7 +10,7 @@
       <div class="text-roboto-23-400-shadow">
         {{ $filters.currentValue(currentValue, brCoin) }}
       </div>
-      <div v-if="lastValue != '0.00'">
+      <div v-if="lastValue != '0,00'">
         <span>No ultimo mês</span><br />
         <span class="text-roboto-23-400-shadow">
           <q-icon color="green" name="fa-solid fa-plus"></q-icon>
@@ -34,7 +34,7 @@ export default defineComponent({
     title: { type: String },
     currentValue: { type: String },
     brCoin: { type: String, default: "R$" },
-    lastValue: { type: String },
+    lastValue: { type: String, default: "0.00" },
     descriptionAction: { type: String },
   },
   setup(props) {

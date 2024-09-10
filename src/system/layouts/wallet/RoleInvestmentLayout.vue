@@ -4,23 +4,24 @@
       title="Expansão Patrimonial"
       :currentValue="getCurrentInvest"
       :lastValue="getLastMonth"
+      descriptionAction="Ainda não está expandindo seu patrimônio?"
     />
     <roles-investment-details
       title="Previdência Futura"
-      :currentValue="0.0"
-      :lastValue="0.0"
+      currentValue="0,00"
+      lastValue="0,00"
       descriptionAction="Ainda não está investindo na sua aposentadoria?"
     />
     <roles-investment-details
       title="Poupança"
-      :currentValue="0.0"
-      :lastValue="0.0"
+      currentValue="0,00"
+      lastValue="0,00"
       descriptionAction="Comece a usar a poupança para obter lucros!"
     />
     <roles-investment-details
       title="Blockchain"
-      :currentValue="0.0"
-      :lastValue="0.0"
+      currentValue="0,00"
+      lastValue="0,00"
       :brCoin="false"
       descriptionAction="Aproveite o mercado de criptomoedas!"
     />
