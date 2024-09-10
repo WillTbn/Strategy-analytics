@@ -1,4 +1,10 @@
 <template>
+  <q-inner-loading
+    :showing="loading"
+    label="Please wait..."
+    label-class="text-teal"
+    label-style="font-size: 1.1em"
+  />
   <div class="banlanceItems col-12 col-md q-mb-md-lg q-mb-xs-md">
     <div
       class="card-balance column"
@@ -178,6 +184,7 @@ export default defineComponent({
     colorItem: { type: String },
     btnBgColor: { type: String, default: "btn-bank" },
     bgBadgeBank: { type: String, default: "badge-bank" },
+    loading: { type: Boolean },
     // iconTheme: { type: String, default: "white" },
   },
   setup() {

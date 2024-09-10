@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHr lpR fFf" class="text-white" :class="system.theme">
-    <navbar-layout :key="route.name" v-if="!loading && !codeDialog" />
+    <navbar-layout :key="route.name" v-if="!loading" />
     <q-page-container padding style="min-height: 95vh">
       <!-- @click.prevent="drawerThemeAction(false)" -->
       <router-view v-slot="{ Component }">
@@ -80,9 +80,10 @@ export default defineComponent({
         router.push({ name: routeHome.value });
         piniaDataLoaded.value = true;
       }
-      if (data.value && data.value.email_verified_at == null) {
-        router.push({ name: "Confirma e-mail" });
-      }
+      // if (data.value && data.value.email_verified_at == null) {
+      //   console.log("AMIG OESTOU AQUi", data.value);
+      //   router.push({ name: "Confirma e-mail" });
+      // }
       //console.log("data->", data.value);
     });
     return {

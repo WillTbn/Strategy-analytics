@@ -19,8 +19,16 @@ const inputStandardStyle = {
   "margin-inline": " 0.5rem 0.1rem !important",
   "text-align": "center !important",
 }
-
+const inputBankStyle = {
+  dense: true,
+  standout: true,
+  spellcheck: false,
+  dark: true,
+  "lazy-rules": true,
+  "no-error-icon": true
+}
 export {
   inputStyle,
-  inputStandardStyle
+  inputStandardStyle,
+  inputBankStyle
 }
