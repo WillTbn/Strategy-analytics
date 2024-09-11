@@ -8,13 +8,15 @@
         {{ title }}
       </div>
       <div class="text-roboto-23-400-shadow">
-        {{ $filters.currentValue(currentValue, brCoin) }}
+        {{ brCoin }} {{ currentValue }}
+        <!-- {{ $filters.currentValue(currentValue, brCoin) }} -->
       </div>
       <div v-if="lastValue != '0,00'">
         <span>No ultimo mês</span><br />
         <span class="text-roboto-23-400-shadow">
           <q-icon color="green" name="fa-solid fa-plus"></q-icon>
-          {{ $filters.currentValue(lastValue, brCoin) }}
+          <!-- {{ $filters.currentValue(lastValue, brCoin) }} -->
+          {{ brCoin }} {{ lastValue }}
         </span>
       </div>
 

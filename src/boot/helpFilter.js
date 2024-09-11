@@ -22,6 +22,38 @@ const filters = {
   dateFormatBr(value) {
     let dateCurrent = new Date(value + " 00:00:00")
     return date.formatDate(dateCurrent, "DD/MM/YYYY")
+  },
+  /**
+   * Formata valores numericos
+   * @param {number|float} value numero para ser convertido para formato ex.:2.999,00
+   * @returns valor convertido para 2 casas decimais e pontuação de milhar
+   */
+  formatPartternCurrency(value) {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  },
+  /**
+   * converte para dolar data 11/09
+   * @param {String|Number} value valor que sera convertido para o cambio
+   * @param {Number|null} exchange valor do câmbio para ser dividido no calculo
+   */
+  convertCoin(value, exchange = 5.648103492525183) {
+    // Verifica se o valor é uma string e remove os pontos que representam os milhares
+    if (typeof value === 'string') {
+      value = value.replace(/\./g, '');
+    }
+    // Substitui a vírgula decimal por um ponto
+    let valorFinal = value.replace(',', '.');
+
+    // const converNumber = parseFloat(value)
+    console.log('converNumber', valorFinal)
+    let converExchange = valorFinal / exchange
+    console.log(converExchange.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
+    // return converExchange.toFixed(2)
+    return this.formatPartternCurrency(converExchange)
   }
 };
 export default filters;

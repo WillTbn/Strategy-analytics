@@ -7,7 +7,7 @@
       >
         <current-balance
           name="Patrimônio investido"
-          :current="getCurrentInvest"
+          :current="$filters.convertCoin(getCurrentInvest)"
           :loading="loading"
         />
       </q-card-section>
@@ -47,7 +47,7 @@
       :brCoin="false"
       :objText="false"
       :colorItem="colorItem"
-      :balance="getCurrentInvest"
+      :balance="$filters.convertCoin(getCurrentInvest)"
       :btnBgColor="bgBtn"
       :bgBadgeBank="bgBadgeBank"
     />

@@ -2,9 +2,10 @@
   <div class="RoleInvestmentLayout">
     <roles-investment-details
       title="Expansão Patrimonial"
-      :currentValue="getCurrentInvest"
-      :lastValue="getLastMonth"
+      :currentValue="$filters.convertCoin(getCurrentInvest)"
+      :lastValue="$filters.convertCoin(getLastMonth)"
       descriptionAction="Ainda não está expandindo seu patrimônio?"
+      brCoin="$"
     />
     <roles-investment-details
       title="Previdência Futura"
