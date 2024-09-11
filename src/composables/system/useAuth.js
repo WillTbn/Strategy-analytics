@@ -62,8 +62,8 @@ export default function useAuth() {
       console.log(e);
       infoNotify('Falha na solicitação, recarregue sua pagina.')
     }).finally(() => loading.value = false)
-    api
-      .post("login", value, { withCredentials: true })
+    await api
+      .post("login", value, { headers: { 'X-XSRF-TOKEN': Cookies.get('XSRF-TOKEN') }, withCredentials: true })
       .then((resp) => {
         if (resp.data.token) {
           setTokenCookie(resp.data)
