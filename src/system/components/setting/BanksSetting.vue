@@ -22,7 +22,7 @@
         size="6px"
         icon="fa-solid fa-pen"
       />
-      <q-btn
+      <!-- <q-btn
         @click="editBank(item, true)"
         flat
         round
@@ -30,7 +30,7 @@
         class="q-ml-sm"
         size="6px"
         icon="fa-solid fa-trash"
-      />
+      /> -->
     </p>
     <!-- :disabled="loading"
     :loading="loading" -->

@@ -12,12 +12,10 @@
         <span class="text-primary text-weight-bold">Nome completo:</span><br />
 
         <q-input
-          dense
-          standout
           v-model="data.name"
           :disabled="loading"
           :loading="loading"
-          dark
+          v-bind="{ ...$inputBankStyle }"
         />
       </div>
     </div>
@@ -40,13 +38,11 @@
       <div class="col-4">
         <span class="text-primary text-weight-bold">Celular :</span><br />
         <q-input
-          dense
-          standout
           v-model="data.account.phone"
           mask="(##) # ####-####"
           :disabled="loading"
           :loading="loading"
-          dark
+          v-bind="{ ...$inputBankStyle }"
         />
       </div>
     </div>
