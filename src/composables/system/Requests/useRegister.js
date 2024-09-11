@@ -18,7 +18,7 @@ export default function useRegister() {
       birthday: birthday, email: email, value: person, type: "cpf"
     }
     // try{
-    await api.get(process.env.API_URL_CORS).then(response => {
+    await api.get('sanctum/csrf-cookie').then(response => {
     }).catch(() => { infoNotify('Falha na solicitação, recarregue sua pagina.') }).finally(() => loading.value = false)
     await api.post('validator-cpf', { ...dataInput }).then((res) => {
       if (!res.data.valid) {

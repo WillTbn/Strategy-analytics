@@ -54,30 +54,28 @@ export default function useAuth() {
   }
   const auth = async (value) => {
     loading.value = true;
-    axios.defaults.headers.common['Accept'] = 'application/json';
-    axios.defaults.withCredentials = true;
-    axios.defaults.withXSRFToken = true;
+
     const urlCors = process.env.API_URL_CORS
 
-    axios.get(urlCors).then(response => {
-      api
-        .post("login", value)
-        .then((resp) => {
-          if (resp.data.token) {
-            setTokenCookie(resp.data)
-            useStore.setAbilities(resp.data.abilities)
-            router.replace({ path: "/system/" });
-          }
-        })
-        .catch((e) => {
-          errorNotify(e.response.data.message);
-          errors.value = e.response.data.errors;
-        })
-        .finally(() => (loading.value = false));
+    await api.get(process.env.API_URL_CORS).then(response => {
     }).catch((e) => {
-      errorNotify('Error ao authentificar csrf ');
-      console.log(e)
-    }).finally(() => loading.value = false);
+      console.log(e);
+      infoNotify('Falha na solicitação, recarregue sua pagina.')
+    }).finally(() => loading.value = false)
+    api
+      .post("login", value, { withCredentials: true })
+      .then((resp) => {
+        if (resp.data.token) {
+          setTokenCookie(resp.data)
+          useStore.setAbilities(resp.data.abilities)
+          router.replace({ path: "/system/" });
+        }
+      })
+      .catch((e) => {
+        errorNotify(e.response.data.message);
+        errors.value = e.response.data.errors;
+      })
+      .finally(() => (loading.value = false));
   };
   const verifyLogged = async () => {
     await interceptorsRequest();
