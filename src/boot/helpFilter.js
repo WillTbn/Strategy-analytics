@@ -54,6 +54,19 @@ const filters = {
     console.log(converExchange.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
     // return converExchange.toFixed(2)
     return this.formatPartternCurrency(converExchange)
+  },
+  /**
+   * conta principal verify
+   * @param {String|Boolean} value 
+   * @return "conta princapal" | ""
+   */
+  mainAccount(value) {
+    let stringAccount = ''
+    if (value) {
+      stringAccount = 'Conta principal'
+    }
+    return stringAccount
   }
+
 };
 export default filters;
