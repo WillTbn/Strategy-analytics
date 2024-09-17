@@ -36,11 +36,11 @@ const filters = {
     }).format(value);
   },
   /**
-   * converte para dolar data 11/09
+   * converte para dolar data 17/09 $exchange
    * @param {String|Number} value valor que sera convertido para o cambio
    * @param {Number|null} exchange valor do câmbio para ser dividido no calculo
    */
-  convertCoin(value, exchange = 5.648103492525183) {
+  convertCoin(value, exchange = 5.486001039794575) {
     // Verifica se o valor é uma string e remove os pontos que representam os milhares
     if (typeof value === 'string') {
       value = value.replace(/\./g, '');
@@ -49,9 +49,9 @@ const filters = {
     let valorFinal = value.replace(',', '.');
 
     // const converNumber = parseFloat(value)
-    console.log('converNumber', valorFinal)
+    // console.log('converNumber', valorFinal)
     let converExchange = valorFinal / exchange
-    console.log(converExchange.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
+    // console.log(converExchange.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
     // return converExchange.toFixed(2)
     return this.formatPartternCurrency(converExchange)
   },
