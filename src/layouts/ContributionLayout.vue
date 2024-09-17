@@ -44,7 +44,7 @@ export default defineComponent({
         title: "Valorização",
         image: "img/contribution-investion.png",
         description:
-          "Nós facilitamos os investimentos e os tornamos mais acessíveis.",
+          "Nos dedicamos a promover a expansão contínua do seu patrimônio. Através de um acompanhamento atento e da adaptação às tendências de mercado, garantimos que seus investimentos cresçam e se valorizem de forma eficaz. ",
         js: "center",
       },
       {
