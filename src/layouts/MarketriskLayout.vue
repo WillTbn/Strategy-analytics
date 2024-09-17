@@ -20,36 +20,35 @@
   </div>
   <div class="row justify-center text-center q-py-lg text-white control-py">
     <div class="col-9">
-      <title-secondary
-        text="Quanto menor o risco, maior é a probabilidade de se obter retornos"
-      />
+      <title-secondary text="Menos riscos, mais retornos" />
     </div>
     <div class="col-10 text-left q-my-lg q-py-lg text-body2">
       <p>
-        Na dinâmica do mercado de valores, os períodos caracterizados por baixos
-        riscos representam oportunidades cruciais que exigem identificação e
-        ação precisa. É nesses momentos que nossa metodologia se destaca,
-        aproveitando-se de um sistema meticulosamente desenvolvido para
-        maximizar o potencial de investimento. Esta abordagem reflete nossa
-        filosofia de não adotar uma postura estática diante das flutuações do
-        mercado, mas sim uma flexibilidade estratégica e adaptativa.
+        Na dinâmica do mercado de valores, períodos de baixo risco representam
+        oportunidades valiosas que exigem identificação precisa e ações
+        imediatas. São nesses momentos que nossa metodologia se destaca: ao
+        aproveitar de uma flexibilidade estratégica e adaptativa diante das
+        flutuações do mercado conseguimos maximizar o potencial de investimento.
+        Por meio de um sistema meticulosamente desenvolvido, demonstramos nossa
+        filosofia de não permanecer estáticos em um mercado complexo e em
+        constante mudança; ao contrário, nos adaptamos a ele.
       </p>
       <p>
-        Reconhecemos que o mercado apresenta fases distintas: períodos de
-        agressividade, onde é possível obter ganhos significativos com riscos
-        minimizados, e períodos de alta volatilidade, que exigem uma abordagem
-        mais cautelosa. Durante estes últimos, nossa estratégia se inclina para
-        a conservação de capital, evitando exposições desnecessárias ao risco,
-        até que uma nova janela de oportunidade se apresente.
+        Reconhecemos que o mercado demonstra fases distintas: períodos de
+        agressividade, nos quais ganhos significativos são possíveis com riscos
+        minimizados, e períodos de alta volatilidade que exigem uma abordagem
+        mais cautelosa. Durante os períodos voláteis, nossa estratégia foca na
+        conservação de capital, evitando exposições desnecessárias ao risco até
+        que uma nova janela de oportunidade se apresente.
       </p>
       <p>
-        O cerne de nossa estratégia reside no alinhamento preciso de quatro
-        variáveis chave, conforme indicado pelo nosso sistema de análise. A
-        intersecção desses fatores – valoração, sentimentos do mercado,
-        indicadores macroeconômicos e ação dos preços – nos fornece uma
-        compreensão aprofundada do nível de risco e da intensidade do mercado
-        atual. É esta sincronização estratégica que nos permite navegar pelo
-        mercado de valores com uma perspectiva clara, prudência e assertividade.
+        O cerne de nossa estratégia está no alinhamento preciso de quatro
+        variáveis-chave indicadas pelo nosso sistema de análise: valoração,
+        sentimento do mercado, indicadores macroeconômicos e ação dos preços. A
+        intersecção desses fatores nos proporciona uma compreensão aprofundada
+        do nível de risco e da intensidade do mercado atual. É com esta
+        sincronização estratégica que conseguimos navegar pelo mercado de
+        valores com uma perspectiva clara, prudente e assertiva.
       </p>
     </div>
   </div>

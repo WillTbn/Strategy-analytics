@@ -3,7 +3,7 @@
     class="row ustify-center text-center q-gutter-lg q-mt-xl padding-i-mobile"
   >
     <div class="col-md-4 col-sm-6">
-      <p class="text-h5 text-weight-bolder">Quem somos?</p>
+      <p class="text-h5 text-weight-bolder">O que oferecemos?</p>
     </div>
   </div>
   <div class="row justify-center text-center q-gutter-lg border-blue">
@@ -49,24 +49,24 @@ export default defineComponent({
   setup() {
     const products = [
       {
-        title: "Consolidada",
+        title: "Suporte",
         image: "img/consolidada.png",
         description:
-          "Entregando o serviço que mais se adapta ao interesse de todos perfil de investimento.",
+          "Fornecemos suporte contínuo com um assessor pessoal para cada cliente, assegurando clareza e orientação a qualquer momento.",
         js: "js-left",
       },
       {
-        title: "Serviços",
+        title: "Adaptação",
         image: "img/produtos.png",
         description:
-          "Entregando o serviço que mais se adapta ao interesse de todos perfil de investimento.",
+          "Oferecemos uma ampla gama de oportunidades de investimento alinhadas aos interesses de cada cliente, sempre garantindo estabilidade e segurança financeira.",
         js: "js-center",
       },
       {
-        title: "Produtos",
+        title: "Inovação",
         image: "img/produtos-2.png",
         description:
-          "A Strategy Analytics tem se comprometido a investir e atender clientes em toda a região",
+          "Oferecemos ferramentas para monitoria da performance de carteiras, relatórios detalhados sobre a economia global e um calendário de dividendos atualizado, assegurando que nossos clientes tenham acesso a informações precisas.",
         js: "js-right",
       },
     ];

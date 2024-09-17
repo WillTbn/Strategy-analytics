@@ -35,11 +35,11 @@ export default defineComponent({
     const paragraph = [
       {
         content:
-          "Na Strategy Analytics, adotamos a metodologia Quadrivium para navegar pelas complexidades do mercado financeiro. Esta abordagem nos permite focar em ação dos preços, valoração e indicadores macroeconômicos e de sentimento, fundamentais para a construção de carteiras resilientes e adaptativas.",
+          "Na Strategy Analytics, aderimos a metodologia Quadrivium para navegar pelas complexidades do mercado financeiro. Esta abordagem permite que foquemos na ação dos preços, valoração e indicadores macroeconômicos e de sentimento, fundamentais para a composição de carteiras resilientes e adaptativas.",
       },
       {
         content:
-          "Nossa estratégia é orientada pelo ciclo dos mercados, capitalizando em ativos de renda variável em períodos de baixo risco e favorecendo ativos de renda fixa em tempos de risco elevado. Esta metodologia baseada em risco é projetada para maximizar a performance da carteira: quando os riscos são mínimos, aumentamos a exposição em renda variável, potencializando os retornos",
+          "Nossa estratégia é orientada pelo ciclo dos mercados, capitalizando em ativos de renda variável em períodos de baixo risco e favorecendo ativos de renda fixa em tempos de risco elevado. Visando maximizar a performance da carteira, nossa metodologia baseada em análise de risco é projetada para aumentar a exposição em renda variável apenas quando os riscos são mínimos, assim potencializando os retornos.",
       },
       {
         content:
@@ -47,7 +47,11 @@ export default defineComponent({
       },
       {
         content:
-          "om uma gestão de risco rigorosa e uma estratégia de diversificação bem- estabelecida, mantemos um desempenho excepcional durante os mercados em alta e garantimos lucros consideráveis ao proteger os ativos durante os períodos de volatilidade. A Strategy Analytics está comprometida em sustentar a excelência operacional e em exceder as expectativas de performance, independentemente das condições de mercado.",
+          "Por meio de uma gestão de risco rigorosa e uma estratégia de diversificação determinada, mantemos uma performance excepcional durante os mercados em alta e garantimos lucros consideráveis protegendo os ativos ao decorrer de períodos voláteis. ",
+      },
+      {
+        content:
+          "A Strategy Analytics se compromete em sustentar a excelência operacional e em exceder as expectativas de desempenho, independente das condições de mercado.",
       },
     ];
     return { paragraph };

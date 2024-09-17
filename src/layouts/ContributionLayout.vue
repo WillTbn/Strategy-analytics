@@ -3,7 +3,7 @@
     class="row ustify-center text-center q-gutter-lg q-mt-xl padding-i-mobile"
   >
     <div class="col-md-4 col-sm-6">
-      <p class="text-h5 text-weight-bolder">Nossa Contribuição?</p>
+      <p class="text-h5 text-weight-bolder">Nossos compromissos:</p>
     </div>
   </div>
   <div class="row justify-center text-center q-gutter-lg">
@@ -34,24 +34,24 @@ export default defineComponent({
   setup() {
     const contributions = [
       {
-        title: "Segurança Financeira",
+        title: "Segurança",
         image: "img/contribution-segurancy.png",
         description:
-          "Garantia de Estabilidade Financeira Estamos comprometidos em orientar milhões de indivíduos a construir um patrimônio seguro e duradouro, assegurando seu bem-estar financeiro ao longo da vida..",
+          "A Strategy Analytics se compromete em garantir sua estabilidade financeira. Por meio de orientação constante e foco em construir um patrimônio estável, asseguramos seu bem-estar ao longo da vida.",
         js: "left",
       },
       {
-        title: "Acesso ao investimento",
+        title: "Valorização",
         image: "img/contribution-investion.png",
         description:
           "Nós facilitamos os investimentos e os tornamos mais acessíveis.",
         js: "center",
       },
       {
-        title: "Sem taxas desnecessarias",
+        title: "Soluções Financeiras",
         image: "img/contribution-nottax.png",
         description:
-          "Proporcionamos consultoria especializada e de excelência, harmonizada com uma estrutura de custos surpreendentemente acessível.",
+          "Oferecemos aos nossos clientes de alto nível, alavancagem através de empréstimos garantindo um fluxo de caixa saudável e a segurança necessária para o crescimento de suas empresas. Nosso compromisso é maximizar o aproveitamento das oportunidades de mercado e fornecer o suporte financeiro que atende às suas necessidades, promovendo um crescimento sustentável para o seu negócio.",
         js: "right",
       },
     ];
