@@ -3,7 +3,7 @@
     <header-layout class="main control-mb bg-header" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
-          textTop="perspectivas para 1° semestre de 2024"
+          textTop="perspectivas para 2° semestre de 2024"
           textTitle="Queda na taxa de juros e a ascensão das empresas de inteligência artificial "
           textDescription="O cenário econômico está otimista com o mercado precificando cada vez mais início nos cortes da taxa de juros, porém, ainda é necessário prosseguir com cautela. Com o afrouxamento inflacionário em vista, as empresas de inteligência artificial continuam sua ascensão. Entenda como as Big Techs estão se beneficiando desse cenário, aproveitando as novas oportunidades e o ambiente econômico potencialmente favorável."
         />
