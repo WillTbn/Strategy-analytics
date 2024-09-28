@@ -81,7 +81,28 @@ const getters = {
    */
   getLastMonth: (state) => {
     return formatCurrency(state.wallet.last_month)
+  },
+  /**
+   * pegando contrato personalizado
+   */
+  getPersonalite: (state) => {
+    if (state.data.user_incomes.length > 0) {
+      const income = state.data.user_incomes.filter((e) => e.origin_name == "Reserva de emergência")
+      return income[0]
+    }
+    return { value: "0,00", data_info: "", description: "Faça um reserva emergencial" }
+  },
+  /**
+   * pegando expansão patrimonial
+   */
+  getExpansive: (state) => {
+    if (state.data.user_incomes.length > 0) {
+      const income = state.data.user_incomes.filter((e) => e.origin_name == "Expansão Patrimonial")
+      return income[0]
+    }
+    return { value: "", data_info: "", description: "Ainda não está expandindo seu patrimônio?" }
   }
+
 };
 
 export default { ...getters };

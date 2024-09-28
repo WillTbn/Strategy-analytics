@@ -20,7 +20,7 @@
         </span>
       </div>
 
-      <div class="text-subtitle2" v-else>
+      <div class="text-subtitle2" v-if="descriptionAction">
         {{ descriptionAction }},
         <b class="cursor-pointer text-underline"> clique aqui</b> e comece
         agora!
@@ -38,6 +38,7 @@ export default defineComponent({
     brCoin: { type: String, default: "R$" },
     lastValue: { type: String, default: "0.00" },
     descriptionAction: { type: String },
+    notDescription: { type: Boolean, default: false },
   },
   setup(props) {
     return {};
