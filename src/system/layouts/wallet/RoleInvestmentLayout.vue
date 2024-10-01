@@ -9,7 +9,7 @@
     />
     <roles-investment-details
       title="Reserva de emergência"
-      :currentValue="getPersonalite.value"
+      :currentValue="$filters.formatPartternCurrency(getPersonalite.value)"
       lastValue="0,00"
       brCoin="$"
       :descriptionAction="getPersonalite.description"
