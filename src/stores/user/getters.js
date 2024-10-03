@@ -90,7 +90,7 @@ const getters = {
       const income = state.data.user_incomes.filter((e) => e.origin_name == "Reserva de emergência")
       return income[0]
     }
-    return { value: "0,00", data_info: "", description: "Faça um reserva emergencial," }
+    return { value: "0.00", data_info: "", description: "Faça um reserva emergencial," }
   },
   /**
    * pegando expansão patrimonial
