@@ -12,7 +12,7 @@
       v-if="getPersonalite"
       title="Reserva de emergência"
       :currentValue="$filters.formatPartternCurrency(getPersonalite.value)"
-      :lastValue="$filters.formatPartternCurrency(getExpansive.data_info)"
+      :lastValue="$filters.formatPartternCurrency(getPersonalite.data_info)"
       brCoin="$"
       :descriptionAction="getPersonalite.description"
     />
