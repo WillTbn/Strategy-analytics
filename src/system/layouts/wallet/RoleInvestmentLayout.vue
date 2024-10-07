@@ -1,6 +1,7 @@
 <template>
   <div class="RoleInvestmentLayout">
     <roles-investment-details
+      v-if="getExpansive"
       title="Expansão Patrimonial"
       :currentValue="$filters.formatPartternCurrency(getExpansive.value)"
       :lastValue="$filters.formatPartternCurrency(getExpansive.data_info)"
@@ -8,6 +9,7 @@
       brCoin="$"
     />
     <roles-investment-details
+      v-if="getPersonalite"
       title="Reserva de emergência"
       :currentValue="$filters.formatPartternCurrency(getPersonalite.value)"
       lastValue="0,00"

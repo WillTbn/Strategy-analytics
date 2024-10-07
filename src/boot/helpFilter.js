@@ -40,7 +40,7 @@ const filters = {
    * @param {String|Number} value valor que sera convertido para o cambio
    * @param {Number|null} exchange valor do câmbio para ser dividido no calculo
    */
-  convertCoin(value, exchange = 5.4347975108022375) {
+  convertCoin(value, exchange = 5.463070) {
     // Verifica se o valor é uma string e remove os pontos que representam os milhares
     if (typeof value === 'string') {
       value = value.replace(/\./g, '');
@@ -48,11 +48,9 @@ const filters = {
     // Substitui a vírgula decimal por um ponto
     let valorFinal = value.replace(',', '.');
 
-    // const converNumber = parseFloat(value)
-    // console.log('converNumber', valorFinal)
+
     let converExchange = valorFinal / exchange
-    // console.log(converExchange.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
-    // return converExchange.toFixed(2)
+
     return this.formatPartternCurrency(converExchange)
   },
   /**
