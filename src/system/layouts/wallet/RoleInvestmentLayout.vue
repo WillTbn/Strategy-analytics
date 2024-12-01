@@ -1,6 +1,14 @@
 <template>
   <div class="RoleInvestmentLayout">
     <roles-investment-details
+      v-if="getPersonalite"
+      title="Investimento Personalizado"
+      :currentValue="$filters.formatPartternCurrency(getPersonalite.value)"
+      :lastValue="$filters.formatPartternCurrency(getPersonalite.data_info)"
+      brCoin="$"
+      :descriptionAction="getPersonalite.description"
+    />
+    <roles-investment-details
       v-if="getExpansive"
       title="Expansão Patrimonial"
       :currentValue="$filters.formatPartternCurrency(getExpansive.value)"
@@ -9,12 +17,12 @@
       brCoin="$"
     />
     <roles-investment-details
-      v-if="getPersonalite"
+      v-if="getEmergency"
       title="Reserva de emergência"
-      :currentValue="$filters.formatPartternCurrency(getPersonalite.value)"
-      :lastValue="$filters.formatPartternCurrency(getPersonalite.data_info)"
+      :currentValue="$filters.formatPartternCurrency(getEmergency.value)"
+      :lastValue="$filters.formatPartternCurrency(getEmergency.data_info)"
       brCoin="$"
-      :descriptionAction="getPersonalite.description"
+      :descriptionAction="getEmergency.description"
     />
     <roles-investment-details
       title="Previdência Futura"
@@ -52,9 +60,20 @@ export default defineComponent({
   },
   setup() {
     const userStore = useUserStore();
-    const { getCurrentInvest, getLastMonth, getPersonalite, getExpansive } =
-      storeToRefs(userStore);
-    return { getCurrentInvest, getLastMonth, getPersonalite, getExpansive };
+    const {
+      getCurrentInvest,
+      getLastMonth,
+      getEmergency,
+      getPersonalite,
+      getExpansive,
+    } = storeToRefs(userStore);
+    return {
+      getCurrentInvest,
+      getLastMonth,
+      getEmergency,
+      getPersonalite,
+      getExpansive,
+    };
   },
 });
 </script>
