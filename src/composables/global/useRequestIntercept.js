@@ -8,7 +8,7 @@ export default function useRequestIntercept() {
                 infoNotify("Falha na solicitação, recarregue sua pagina.");
             })
             .finally(() => {
-                hideLoading();
+                // hideLoading();
             });
     };
 
