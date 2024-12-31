@@ -5,7 +5,7 @@ export default function useRequestIntercept() {
     const { errorNotify, alternativeNotify } = useNotify()
     const urlCors = process.env.API_URL_CORS
     const setCors = async () => {
-        await api.get(urlCors)
+        await api.get(urlCors, { withCredentials: true })
             .then((response) => {
                 console.log(response)
                 // infoNotify("Falha na solicitação, recarregue sua pagina.", 5000, 'bottom');
