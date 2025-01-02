@@ -36,11 +36,11 @@ const filters = {
     }).format(value);
   },
   /**
-   * converte para dolar data 21/12 $exchange
+   * converte para dolar data 02/01 $exchange
    * @param {String|Number} value valor que sera convertido para o cambio
    * @param {Number|null} exchange valor do câmbio para ser dividido no calculo
    */
-  convertCoin(value, exchange = 6.15) {
+  convertCoin(value, exchange = 6.18) {
     // Verifica se o valor é uma string e remove os pontos que representam os milhares
     if (typeof value === 'string') {
       value = value.replace(/\./g, '');
