@@ -56,9 +56,9 @@ export default function useAuth() {
   }
   const auth = async (value) => {
     loading.value = true;
-    if (!Cookies.has("XSRF-TOKEN")) {
-      await setCors()
-    };
+    // if (!Cookies.has("XSRF-TOKEN")) {
+    //   await setCors()
+    // };
     // const urlCors = process.env.API_URL_CORS
 
     // await api.get(process.env.API_URL_CORS).then(response => {
@@ -68,7 +68,13 @@ export default function useAuth() {
     // }).finally(() => loading.value = false)
     await api
       // .post("login", value, { headers: { 'X-XSRF-TOKEN': Cookies.get('XSRF-TOKEN') }, withCredentials: true })
-      .post("login", value)
+      .post("login", {
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
+        person: value.person,
+        password: value.password,
+        scope: ""
+      })
       .then((resp) => {
         if (resp.data.token) {
           setTokenCookie(resp.data)
