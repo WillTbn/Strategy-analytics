@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center" style="align-items: center">
+  <div class="row justify-center locat-team-layout" style="align-items: center">
     <detail-user
       v-for="item in primaryUsers"
       :key="item"
@@ -34,8 +34,8 @@ export default defineComponent({
     const primaryUsers = [
       {
         name: "Éric Vicente",
+        avatar: "img/localTeam/Erik.png",
         office: "Presidente Strategy Analytics ®",
-        avatar: "",
         history:
           "Fundador, presidente e CEO da Strategy Analytics ®. Estabeleceu a Strategy Analytics em 2018  e, sob sua liderança, a empresa evoluiu para nível global em soluções de investimento e tecnologia, destinadas a auxiliar investidores na construção de um futuro financeiro mais promissor.",
       },

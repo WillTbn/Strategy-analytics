@@ -56,9 +56,6 @@ export default function useAuth() {
   }
   const auth = async (value) => {
     loading.value = true;
-    // if (!Cookies.has("XSRF-TOKEN")) {
-    //   await setCors()
-    // };
     // const urlCors = process.env.API_URL_CORS
 
     // await api.get(process.env.API_URL_CORS).then(response => {
