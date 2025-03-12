@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* eslint-env node */
 
 /*
