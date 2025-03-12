@@ -1,5 +1,4 @@
 // app global css in SCSS form
-@import "_c-dropdown.scss";
 @font-face {
   font-family: instokWeb;
   src: url(./IstokWeb-Regular.ttf);
@@ -12,9 +11,18 @@
   font-family: inter;
   src: url(./Inter-Regular.ttf);
 }
-.transparant-bg {
-  background: transparent !important;
+@font-face {
+  font-family: Segoe;
+  src: url(./fonts/Segoe/segoeuigis.ttf);
 }
+@font-face {
+  font-family: Nunito;
+  src: url(./fonts/Nunito/Nunito-VariableFont_wght.ttf);
+}
+@import "system.scss";
+@import "themes-new.scss";
+@import "_c-dropdown.scss";
+
 .text-h8 {
   color: #fff;
   text-align: center;
@@ -54,63 +62,7 @@ body {
   border-radius: 20px; /* arredondamento do polegar de rolagem */
   border: 3px solid #100000; /* #100000 cria preenchimento em torno do polegar de rolagem #4694d1 */
 }
-.bg-all {
-  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
-  //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-  background: linear-gradient(
-    294deg,
-    #1a1e2d 0%,
-    #1b1f2e 7%,
-    #13476d 23%,
-    #11517c 28%,
-    #10517e 30%,
-    #124e78 33%,
-    #1a1e2d 53%,
-    #1a1e2d 84%,
-    #4e1723 100%
-  );
-}
-.bg-simulator {
-  background: linear-gradient(
-    45deg,
-    #124e78 0%,
-    #124e78 5%,
-    #1a1e2d 28%,
-    #1a1e2d 30%,
-    #1a1e2d 33%,
-    #1a1e2d 53%,
-    #4e1723 94%,
-    #4e1723 100%
-  );
-  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
-  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-  //   radial-gradient(circle at 10%, #4694d1, transparent);
-}
 
-.bg-simulator-draw {
-  background: radial-gradient(
-      circle at top right,
-      #1a1e2d,
-      #1a1e2d 90%,
-      #ff4242
-    ),
-    radial-gradient(circle at 100%, #ff4242, #1a1e2d, #ff4242);
-
-  // background: radial-gradient(ellipse at right 2550%, #ff4242, transparent),
-  //   radial-gradient(ellipse at top, #1a1e2d, transparent),
-  //   radial-gradient(ellipse at bottom, #1a1e2d, transparent),
-  //   radial-gradient(circle at 10%, #4694d1, transparent);
-}
-.bg-draw {
-  background: radial-gradient(
-      circle at top right,
-      #1a1e2d,
-      #1a1e2d 90%,
-      #4694d1
-    ),
-    radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
-}
 .btn-bg {
   background-color: rgba(217, 217, 217, 0.3);
 }
@@ -135,13 +87,6 @@ body {
   font-style: normal;
 }
 
-.q-field__native,
-.q-field__prefix,
-.q-field__suffix,
-.q-field__input {
-  color: white !important;
-  margin-left: 0.5rem !important;
-}
 .input-standard {
   background-color: #d9d9d94d;
 }
@@ -176,12 +121,7 @@ body {
   font-weight: 400;
   line-height: 102.945%;
 }
-.q-field__label,
-no-pointer-events,
-absolute,
-ellipsis {
-  color: #fff;
-}
+
 .control-py {
   padding-block: 6rem;
 }
@@ -223,4 +163,10 @@ ellipsis {
     display: block;
     text-align: center;
   }
+}
+.bg-who {
+  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-quemsomos-E-2700.jpg");
+  background-position-x: left;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

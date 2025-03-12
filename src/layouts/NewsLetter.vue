@@ -20,6 +20,7 @@
             outlined
             v-model="newsletter.name"
             bg-color="secondary"
+            color="white"
             dense
           />
         </div>
@@ -85,7 +86,7 @@
           <span>País: *</span>
 
           <q-select
-            v-model="valueCountry.name"
+            v-model="country"
             transition-show="flip-up"
             transition-hide="flip-down"
             input-class="white"
@@ -101,7 +102,7 @@
           <span>Estado: *</span>
 
           <q-select
-            v-model="newsletter.state"
+            v-model="state"
             transition-show="flip-up"
             transition-hide="flip-down"
             input-class="white"
@@ -131,7 +132,9 @@
         <div class="col-12 freak"></div>
         <div class="col-lg-10 col-sm-10 q-mt-sm">
           <span>Leia nossa</span>
-          <span> <b class="policy"> Politica de privacidade </b></span>
+          <span style="border-left: solid 2px; margin-left: 12px">
+            <b class="policy"> Politica de privacidade </b>
+          </span>
         </div>
       </div>
     </q-form>
@@ -176,15 +179,25 @@ export default defineComponent({
       company: "",
       office: "",
       state: "",
-      country: valueCountry.value.name.label,
+      country: "",
       email: "",
     });
-    watch(valueCountry.value, (n) => {
-      if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {
-        newsletter.value.country = n.name.label;
-        getStates(valueCountry.value.name.id);
-      }
+    const state = ref("");
+    const country = ref("");
+
+    watch(country, (newValue, oldValue) => {
+      // console.log("Valor original", oldValue);
+      // console.log("Valor novo", newValue);
+
+      if (oldValue.id && oldValue.id != newValue.id) state.value = "";
+      if (newValue) getStates(newValue.id);
     });
+    // watch(valueCountry.value, (n) => {
+    //   if (valueCountry.value.name || n.name.id != valueCountry.value.name.id) {
+    //     newsletter.value.country = n.name.label;
+    //     getStates(valueCountry.value.name.id);
+    //   }
+    // });
     const optionsOffice = [
       "Diretor Executivo (CEO)",
       "Diretor financeiro (CFO)",
@@ -223,6 +236,8 @@ export default defineComponent({
       statusState,
       valueCountry,
       loadingInput,
+      country,
+      state,
       getStates,
     };
   },

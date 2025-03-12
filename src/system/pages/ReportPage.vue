@@ -1,20 +1,23 @@
 <template>
-  <div class="ReportPage">
-    <div class="row justify-center text-center q-mt-xl">
+  <div class="ReportPage bg-transparent">
+    <div class="row justify-center text-center q-pt-lg">
       <div class="col-3" v-for="link in links" :key="link">
         <q-btn
           outline
           no-caps
           rounded
-          color="primary"
+          flat
+          class="border-btn"
           :label="link.name"
           @click.prevent="goStep(link.value)"
         />
       </div>
     </div>
 
-    <q-tab-panels v-model="reportSteps" animated>
-      <q-tab-panel name="all"> <reportall-layout /> </q-tab-panel>
+    <q-tab-panels v-model="reportSteps" animated class="bg-transparent">
+      <q-tab-panel name="all">
+        <reportall-layout />
+      </q-tab-panel>
 
       <q-tab-panel name="classic"> Classic </q-tab-panel>
       <q-tab-panel name="crypto"> Crypto </q-tab-panel>
@@ -26,8 +29,9 @@
 <script>
 import { storeToRefs } from "pinia";
 import { useLayoutStore } from "../../stores/layout";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import ReportallLayout from "../layouts/reports/ReportallLayout.vue";
+import useReport from "src/composables/system/Requests/useReport";
 
 export default defineComponent({
   name: "ReportPage",
@@ -44,7 +48,10 @@ export default defineComponent({
       { name: "Crypto", value: "crypto" },
       { name: "Selecionar data", value: "select" },
     ];
-
+    const { getAllreport } = useReport();
+    onMounted(async () => {
+      await getAllreport();
+    });
     return { tab: ref("mails"), links, reportSteps, goStep };
   },
   // Outras configurações do componente aqui

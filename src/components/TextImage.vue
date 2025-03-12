@@ -3,8 +3,8 @@
     <div class="col-sm-12 col-md-6">
       <slot />
     </div>
-    <div class="col-sm-12 col-md-6" :class="{ 'border-img': border }">
-      <q-img :src="image" :ratio="16 / 9" />
+    <div class="col col-md-6" :class="{ 'border-img': border }">
+      <q-img :src="image" :ratio="16 / 9" fit="fill" :srcset="image" />
     </div>
   </div>
 </template>

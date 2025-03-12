@@ -1,0 +1,133 @@
+.badge-invest {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 163, 255, 0.2) 0%,
+    rgba(255, 0, 0, 0.2) 100%
+  ) !important;
+}
+
+.badge-bank {
+  background: rgba(0, 163, 255, 0.1);
+}
+.btn-bank {
+  background: rgba(0, 163, 255, 0.2);
+}
+$theme-name: "bg-simulator";
+.#{$theme-name} {
+  background-image: url(/system/background/patterns.png);
+  @include backgroundTheme;
+  &-invest {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 163, 255, 0.2) 0%,
+      rgba(255, 0, 0, 0.2) 100%
+    ) !important;
+  }
+  &-color-bank {
+    color: $primary;
+  }
+  &-btn-bank {
+    background: rgba(0, 163, 255, 0.2);
+  }
+  &-badge-bank {
+    background: rgba(0, 163, 255, 0.1);
+  }
+  &-navbar {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+.text-bg-simulator-color-bank {
+  color: $primary;
+}
+@mixin icon-span-before($name, $color) {
+  content: $name;
+  position: absolute;
+  opacity: 0;
+  top: 0em;
+  left: -20px;
+  transition: 1s;
+  color: $color;
+}
+
+@mixin icon-span-hover {
+  padding-left: 64px;
+  padding-right: 8px;
+  color: $primary !important;
+}
+
+@mixin icon-span-hover-before {
+  opacity: 1;
+  left: 7px;
+}
+
+// icones a serem alterados
+.icon-one {
+  position: relative;
+}
+
+.icon-one:before {
+  @include icon-span-before("Retirada", $primary);
+}
+
+.icon-one:hover {
+  @include icon-span-hover;
+}
+
+.icon-one:hover:before {
+  @include icon-span-hover-before;
+}
+
+span.icon-one:hover svg path {
+  stroke: $primary;
+}
+
+.icon-two {
+  position: relative;
+}
+
+.icon-two:before {
+  @include icon-span-before("Câmbio", $primary);
+}
+
+.icon-two:hover {
+  @include icon-span-hover;
+}
+
+.icon-two:hover:before {
+  @include icon-span-hover-before;
+}
+
+span.icon-two:hover svg path {
+  stroke: $primary;
+}
+
+.icon-three {
+  position: relative;
+}
+
+.icon-three:before {
+  content: "Depósito";
+  position: absolute;
+  opacity: 0;
+  top: 0em;
+  right: -20px;
+  transition: 1s;
+  color: $primary;
+}
+
+.icon-three:hover {
+  padding-right: 74px;
+  padding-left: 8px;
+  color: $primary !important;
+}
+
+.icon-three:hover:before {
+  opacity: 1;
+  right: 7px;
+}
+
+span.icon-three:hover svg path {
+  stroke: $primary;
+}

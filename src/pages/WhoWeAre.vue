@@ -1,12 +1,12 @@
 <template>
   <q-page class="text-white control-bg items-center">
-    <header-layout class="main" :reverse="false">
+    <header-layout class="main bg-who" :reverse="false">
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Quem somos"
           textClass="text-primary"
           textTitle="Strategy Analytics"
-          textDescription="Com seis anos de atuação exclusivamente no Brasil, nosso compromisso permanece firme – buscamos facilitar o acesso ao bem-estar financeiro para um número crescente de pessoas. Com um enfoque local e uma profunda compreensão do mercado brasileiro e norte americano, estamos dedicados a orientar nossos clientes em suas jornadas financeiras, oferecendo soluções inovadoras e adaptadas às suas necessidades individuais."
+          textDescription="Com seis anos de experiência no mercado financeiro internacional, a Strategy Analytics se destaca como uma empresa de gestão de investimentos comprometida com um objetivo claro: promover o bem-estar financeiro de um número crescente de pessoas. Com uma equipe dedicada e uma abordagem baseada em um profundo entendimento dos mercados econômicos globais, oferecemos soluções exclusivas e personalizadas, ajustadas às necessidades e objetivos de cada perfil de investidor."
         />
       </div>
     </header-layout>
@@ -41,3 +41,4 @@ export default defineComponent({
   setup() {},
 });
 </script>
+<style></style>

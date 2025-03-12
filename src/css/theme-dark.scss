@@ -1,0 +1,7 @@
+@import "./quasar.variables.scss";
+
+body:not(body.body--theme-light) {
+  .border-btn {
+    border: solid 1px $white_two;
+  }
+}

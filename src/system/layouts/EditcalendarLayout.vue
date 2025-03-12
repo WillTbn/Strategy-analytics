@@ -1,19 +1,17 @@
 <template>
   <div class="EditcalendarPage">
     <div class="row justify-center text-center">
-      <div class="col-12">
+      <div class="col-12 q-mt-xs-lg q-mt-md-none">
         <titleinter-medium text="Data de distribuição de lucros" />
       </div>
       <div class="col-12 q-mt-xl">
         <p class="">Quando deseja receber sua distribuição de lucros?</p>
       </div>
-      <div class="col-3">
+      <div class="col-md-3 col-12">
         <q-select
           v-model="model"
           transition-show="flip-up"
           transition-hide="flip-down"
-          bg-color="blue-1"
-          color="primary"
           dense
           outlined
           :options="workingDays"
@@ -64,7 +62,7 @@
           outline
           no-caps
           rounded
-          color="primary"
+          class="border-btn"
           label="voltar"
           @click.prevent="goStep('home')"
         />
@@ -75,7 +73,7 @@
           outline
           no-caps
           rounded
-          color="primary"
+          class="border-btn"
           label="Confirmar"
           :disabled="terms != true && model.id != data.profit_date.id"
           @click.prevent="submit"
@@ -117,7 +115,7 @@ export default defineComponent({
     });
     const submit = () => {
       $q.notify("Inf");
-      storeLayout.updateCalendarsteps('finally');
+      storeLayout.updateCalendarsteps("finally");
     };
     const goStep = (value) => {
       storeLayout.updateCalendarsteps(value);
@@ -130,4 +128,11 @@ export default defineComponent({
 
 <style scoped>
 /* Estilos específicos do componente aqui */
+/* .q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+  color: black !important;
+  margin-left: 0.5rem !important;
+} */
 </style>

@@ -1,0 +1,61 @@
+@media (max-width: 580px) {
+  .card-container {
+    height: auto !important;
+    width: 320px !important;
+  }
+  .card-relatorio-row {
+    height: auto;
+    width: 99.3333%;
+  }
+  .col-chart {
+    margin: 0 0.4rem !important;
+  }
+  .card-report-view {
+    height: auto;
+    width: 99.3333% !important;
+  }
+  .control-value {
+    font-size: 33px !important;
+    line-height: 3 !important;
+    // font-style: bolder;
+    // font-weight: 800;
+    // line-height: 32.5px; /* 90.278% */
+  }
+  .btn-update {
+    margin-bottom: 1rem !important;
+  }
+  .btn-auth {
+    padding: 14.9px 47.23px 15.5px 47.22px;
+  }
+}
+@media (max-width: 768px) {
+  .card-container {
+    height: auto !important;
+    width: 100% !important;
+  }
+  .card-report-view {
+    height: auto !important;
+    width: 99.3333% !important;
+    padding-left: 0.5rem;
+  }
+  .ultra {
+    height: 100% !important;
+  }
+  .col-chart-one {
+    margin: auto !important;
+    padding-left: 0.5rem;
+  }
+  .align-text-personal:not(:nth-child(2), :nth-child(4)) {
+    text-align: right;
+  }
+  .control-m-mx {
+    margin-left: 8px !important;
+    margin-right: -8px !important;
+  }
+  .col-chart {
+    padding: 0 !important;
+  }
+  .btn-auth {
+    padding: 14.9px 47.23px 15.5px 47.22px;
+  }
+}

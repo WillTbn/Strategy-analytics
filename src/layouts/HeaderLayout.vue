@@ -3,25 +3,13 @@
     class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile padding-t-mobile"
     :class="{ reverse: reverse }"
   >
-    <!-- <div class="col-md-5 col-sm-4 q-ml-lg text-left">
-      <title-subtitle
-        textTop="perspectivas para 2° metade do ano de 2023"
-        textTitle="Novo regime, novas oportunidades"
-        textDescription="28 de Junho de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
-        Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
-      /> -->
     <slot />
-    <!-- </div> -->
+
     <div
-      class="col-sm-12 col-md-6 q-mt-xl q-px-xl control-height padding-t-mobile"
+      class="col-sm-12 col-md-6 q-mt-xl q-px-xl padding-t-mobile"
+      :class="{ 'control-height ': !image }"
     >
-      <!-- <div
-        :class="{ 'q-mt-xl q-pt-xl': heightScreen }"
-        style="max-width: 653px"
-        > -->
-      <!-- srcset="img/image 1.png" -->
-      <!-- <q-img src="img/image 1.png" :ratio="4 / 3" fit="scale-down" /> -->
-      <!-- </div> -->
+      <q-img :src="image" :ratio="4 / 3" fit="scale-down" />
     </div>
   </div>
 </template>
@@ -37,6 +25,7 @@ export default defineComponent({
     reverse: {
       type: Boolean,
     },
+    image: { type: String },
   },
   setup() {
     const statusMember = ref(false);
@@ -64,61 +53,59 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-.control-pa {
-  padding: 5px !important;
-  min-height: 2rem;
-  margin-top: 1.5rem;
-}
+<style scoped lang="sass">
+.control-pa
+  padding: 5px !important
+  min-height: 2rem
+  margin-top: 1.5rem
+
 .control-pa,
-span {
-  transition: all 10s linear;
-}
-.col-center {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-.col-card {
-  justify-content: center;
-  display: flex;
-  min-height: 250px;
-  background: transparent;
-}
-.q-card {
-  transition: all 8s ease;
-}
-.text-h8 {
-  font-size: 2.125rem;
-  font-weight: 400;
-  /* line-height: 2.5rem; */
-  letter-spacing: 0.00735em;
-}
-.t-height {
-  height: 14rem !important;
-}
-.control-height {
-  min-height: 35rem;
-}
-body:not(.desktop) {
-  .margin-mobile-right {
-    padding-right: 2rem;
-  }
-  .margin-mobile-left {
-    padding-left: 2rem;
-  }
-}
-body:is(.platform-android) {
-  .margin-top-android {
-    padding-top: 13rem !important;
-  }
-}
-@media (max-width: 768px) {
-  .control-height {
-    min-height: auto;
-  }
-  .padding-t-mobile {
-    padding-top: 3rem;
-  }
-}
+span
+  transition: all 10s linear
+
+.col-center
+  align-items: center
+  justify-content: center
+  display: flex
+
+.col-card
+  justify-content: center
+  display: flex
+  min-height: 250px
+  background: transparent
+
+.q-card
+  transition: all 8s ease
+
+.text-h8
+  font-size: 2.125rem
+  font-weight: 400
+  /* line-height: 2.5rem */
+  letter-spacing: 0.00735em
+
+.t-height
+  height: 14rem !important
+
+.control-height
+  min-height: 35rem
+
+body:not(.desktop)
+  .margin-mobile-right
+    padding-right: 2rem
+
+  .margin-mobile-left
+    padding-left: 2rem
+
+
+body:is(.platform-android)
+  .margin-top-android
+    padding-top: 13rem !important
+
+
+@media (max-width: 768px)
+  .control-height
+    min-height: auto
+
+  .padding-t-mobile
+    padding-top: 3rem
 </style>

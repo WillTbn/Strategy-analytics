@@ -3,10 +3,9 @@
     <header-layout class="main control-mb bg-header" :reverse="false">
       <div class="col-md-5 col-sm-10 q-ml-lg-lg text-left">
         <title-subtitle
-          textTop="perspectivas para 2° metade do ano de 2023"
-          textTitle="Novo regime, novas oportunidades"
-          textDescription="28 de Junho de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
-        Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
+          textTop="perspectivas para 2° semestre de 2024"
+          textTitle="Queda na taxa de juros e a ascensão das empresas de inteligência artificial "
+          textDescription="O cenário econômico está otimista com o mercado precificando cada vez mais início nos cortes da taxa de juros, porém, ainda é necessário prosseguir com cautela. Com o afrouxamento inflacionário em vista, as empresas de inteligência artificial continuam sua ascensão. Entenda como as Big Techs estão se beneficiando desse cenário, aproveitando as novas oportunidades e o ambiente econômico potencialmente favorável."
         />
         <q-btn
           color="primary"
@@ -70,49 +69,17 @@ export default defineComponent({
     #1a1e2d 53%,
     #1a1e2d 84%,
     #4e1723 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+  */
 }
 .main {
   position: relative;
   width: 100%;
-  /*
-  height: 120vh;
-   background: linear-gradient(
-    45deg,
-    #1a1e2d 0%,
-    #1b1f2e 7%,
-    #13476d 23%,
-    #11517c 28%,
-    #10517e 30%,
-    #124e78 33%,
-    #1a1e2d 53%,
-    #1a1e2d 84%,
-    #4e1723 100%
-  );
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  background-repeat: round; */
-  /* margin-top: -100px; */
-}
-/* .main::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: inherit;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  filter: blur(10px);
 }
 
-*/
 .bg-header {
-  background-image: url("img/landing-page/banner-home-right-darkblue.jpg");
-  background-position-x: center;
+  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-right-2700novo.jpg");
+  background-position-x: left;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

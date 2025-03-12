@@ -7,8 +7,8 @@
       secondTitle="Fundo de índice"
       sigla="LIL100"
       price="10.000"
-      current=" +1,41 (+1,78%)"
-      distri="7,49%"
+      current="0.08%"
+      distri="34,24%"
       taxa="0,15%"
     />
     <whyincome-layout title="Por que LEL100?">

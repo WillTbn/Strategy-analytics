@@ -18,14 +18,16 @@
       </div>
     </div>
     <div class="row justify-center text-center">
-      <div class="col-3">
+      <div class="col-md-3 col-sm-12">
         <q-btn
           outline
           no-caps
           rounded
-          color="primary"
           label="Solicitar agora"
           @click.prevent="goStep('finally')"
+          flat
+          class="border-btn"
+          no-wrap
         />
       </div>
     </div>

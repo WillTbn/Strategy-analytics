@@ -1,0 +1,6 @@
+@import "./quasar.variables.scss";
+body:not(body.body--theme-dark) {
+  .border-btn {
+    border: solid 1px $primary;
+  }
+}

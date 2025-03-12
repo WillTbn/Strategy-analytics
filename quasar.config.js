@@ -10,7 +10,7 @@
 
 const { configure } = require("quasar/wrappers");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -27,7 +27,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
-    boot: ["axios", "apexcharts", "calendar"],
+    boot: ["axios", "apexcharts", "calendar", "filters", "view"],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ["app.scss"],
@@ -48,11 +48,14 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      optimizeDeps: { esbuildOptions: { target: 'esnext', }, },
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
       },
-
+      extendViteConf(viteConf) {
+        viteConf.define.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
+      },
       vueRouterMode: "history", // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
@@ -62,7 +65,29 @@ module.exports = configure(function (/* ctx */) {
 
       publicPath: "/",
       // analyze: true,
-      // env: {},
+      env:
+        ctx.dev ? {
+          VERSION_APP: 2.0,
+          API_URL: "http://localhost:8000/api/",
+          COOKIE_TOKEN_NAME: "SA_token",
+          COOKIE_USER_DATA: "SA_user",
+          WEB_URL: process.env.WEB_URL,
+          API_URL_CORS: "http://localhost:8000/sanctum/csrf-cookie",
+          CLIENT_ID: 2,
+          CLIENT_SECRET: "BV2qcZjNuR3FSiaRqOb3BSVlt95bQSDGEQMuQ3Gs"
+
+        } : {
+          VERSION_APP: 2.1,
+          API_URL: "https://sources.strategyanalytics.com.br/api/",
+          COOKIE_TOKEN_NAME: "SA_token",
+          COOKIE_USER_DATA: "SA_user",
+          WEB_URL: process.env.WEB_URL,
+          API_URL_CORS: "https://sources.strategyanalytics.com.br/sanctum/csrf-cookie",
+          CLIENT_ID: 1,
+          CLIENT_SECRET: "l6v5MTt8M5IsfuVhLwwppJJjadubIPF2R8"
+
+        }
+      ,
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -74,14 +99,19 @@ module.exports = configure(function (/* ctx */) {
 
       // },
 
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [
+        ['vite-plugin-top-level-await', {
+          promiseExportName: "__tla",
+          // The function to generate import names of top-level await promise in each chunk module
+          promiseImportName: i => `__tla_${i}`
+        }]
+      ]
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
+      port: 9010,
       open: false, // opens browser window automatically
     },
 
@@ -98,9 +128,9 @@ module.exports = configure(function (/* ctx */) {
       //
       // components: [],
       // directives: [],
-
+      cssAddon: true,
       // Quasar plugins
-      plugins: ["Loading", "Notify", "Cookies", "Meta"],
+      plugins: ["Loading", "Notify", "LocalStorage", "Meta", "Cookies"],
     },
 
     // animations: 'all', // --- includes all animations

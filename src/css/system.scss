@@ -1,0 +1,125 @@
+@import "./quasar.variables.scss";
+@import "./theme-dark.scss";
+@import "./theme-white.scss";
+@import "./system-mobile.scss";
+@import "./ipad-9-portrait.scss";
+@import "./ios.scss";
+@import "./system-new.scss";
+@import "./text-nunito.scss";
+@import "./fonts/text-roboto.scss";
+@import "./fonts/text-inter.scss";
+// MENU SISTEMA
+.bar-xmark {
+  border-bottom-left-radius: 22px;
+}
+.barstate {
+  border-bottom-right-radius: 22px;
+}
+.NavbarLayout > .q-drawer-container > .q-drawer:not(body.body--dark) {
+  top: 20px !important;
+  bottom: 20px !important;
+
+  background: transparent !important;
+  backdrop-filter: blur(2.5px);
+  z-index: 3000 !important;
+}
+.icon-select {
+  transform: rotate(180deg);
+}
+
+.control-drawer {
+  // border: 2px solid rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 26px;
+  border-bottom-right-radius: 26px;
+  border-right: 1px solid #00000a14;
+  // border-bottom-right-color: 4px solid rgba(0, 0, 255, 0.5);
+  border-top: 1px solid #00000a14;
+  border-bottom: 1px solid #00000a14;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#020000+9,020000+50,2989d8+50,020000+50,207cca+51,7db9e8+100 */
+  // background: linear-gradient(to bottom,  #020000 9%,#020000 50%,#2989d8 50%,#020000 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+bg-navbar_dark > .position-absolute {
+  background: linear-gradient(
+    to right,
+    transparent 9%,
+    transparent 36%,
+    #69686883 38%,
+    transparent 40%,
+    transparent 100%
+  );
+}
+.bg-transparent > .position-absolute {
+  background: linear-gradient(
+    to right,
+    transparent 9%,
+    transparent 36%,
+    #d9d9d9 38%,
+    transparent 40%,
+    transparent 100%
+  );
+}
+.position-absolute::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: transparent;
+  border-right: 1px solid #999;
+  height: 33px;
+  width: 33px;
+  transform: translate(-10px);
+
+  /* box-shadow: 5px 3px 10px 2px #999; */
+}
+.position-absolute:not(body.mobile) {
+  cursor: pointer;
+  top: -30px;
+  left: 40px;
+  bottom: 0;
+  width: 50px;
+  z-index: 3001;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transform: translateX(40%);
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: red;
+}
+img {
+  fill: currentColor;
+}
+.dark q-icon svg path {
+  fill: white;
+}
+
+/* Aplicar a cor de texto padrão no modo Light */
+.light q-icon svg path {
+  fill: currentColor; /* Ou a cor desejada no modo Light */
+}
+
+.border-btn-red {
+  border: solid 1px $negative;
+}
+.btn-update {
+  cursor: pointer;
+  margin-bottom: 2.3rem;
+}
+
+// dashboard
+.col-chart {
+  padding-right: 0.5rem;
+}
+
+.card-report-not {
+  /* height: auto;
+  width: 99.3333%;
+  display: flex;
+  justify-content: flex-end; */
+  height: auto;
+  width: 5.3333%;
+  transform: translateX(25px);
+}
+.btn-auth {
+  padding: 14.9px 179.23px 15.5px 179.22px;
+}

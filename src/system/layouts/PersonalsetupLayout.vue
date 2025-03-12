@@ -1,118 +1,118 @@
 <template>
-  <div class="PersonalsetupLayout">
-    <q-card class="my-card bg-transparent" flat>
-      <q-item>
-        <q-item-section avatar>
-          <q-avatar size="9rem">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-          </q-avatar>
-        </q-item-section>
-
-        <q-item-section>
-          <q-item-label class="text-h4">{{ data.name }}</q-item-label>
-          <q-item-label caption class="q-ma-sm">
-            <q-icon name="fa-solid fa-user" size="1rem" />
-            {{ data.investidor }}
-          </q-item-label>
-          <q-item-label caption class="q-ma-sm">
-            <q-icon name="fa-solid fa-envelope" size="1rem" />
-            {{ data.email }}
-          </q-item-label>
-          <!-- <FontAwesomeIcon icon="fa-solid fa-earth-americas" /> -->
-          <q-item-label caption class="q-ma-sm">
-            <q-icon name="fa-solid fa-earth-americas" size="1rem" />
-            {{ data.state }} - {{ data.country }}
-          </q-item-label>
-        </q-item-section>
-      </q-item>
-    </q-card>
-    <div class="row q-mt-lg">
-      <div class="col-12">
-        <p>
-          <textarea-title text="informações pessoais" />
-        </p>
-      </div>
-    </div>
-    <q-form>
-      <div class="q-mb-lg">
-        <span class="text-primary text-weight-bold">Nome completo:</span><br />
-        <input type="text" name="name" v-model="data.name" id="name" />
-      </div>
-      <div class="q-mb-lg">
-        <span class="text-primary text-weight-bold">E-mail:</span><br />
-        <input type="text" name="name" v-model="data.email" id="name" />
-      </div>
-      <div class="q-mb-lg">
-        <span class="text-primary text-weight-bold">Telefone:</span><br />
-        <input type="text" name="name" v-model="data.phone" id="name" />
-      </div>
-    </q-form>
-    <p style="display: flex; align-content: center; align-items: center">
-      <textarea-title text="Conta bancária" />
-      <q-btn
-        flat
-        round
-        color="primary"
-        icon="fa-solid fa-plus"
-        size="16px"
-        @click.prevent="editBank(0)"
-      />
-    </p>
-
-    <p
-      v-for="item in data.account"
-      :key="item"
-      style="display: flex; align-content: center; align-items: center"
+  <div class="PersonalsetupLayout text-white column">
+    <q-inner-loading
+      :showing="!data.account"
+      label="Pegando seus dados..."
+      label-class="text-teal"
+      label-style="font-size: 1.1em"
+    />
+    <change-photo
+      v-if="data.account"
+      :name="data.name"
+      :phone="data.account.phone"
+      :mail="data.email"
+      :address="`${data.account.address_state} - ${data.account.address_district}`"
+    />
+    <q-tabs
+      v-model="tab"
+      indicator-color="transparent"
+      active-color="white"
+      class="tool q-my-sm"
+      align="left"
+      no-caps
     >
-      <span class="text-second text-weight-bold"> {{ item.bank }} </span>
-      <span class="text-weight-bold q-pl-sm">{{ item.number }}</span>
-      <q-btn
-        @click="editBank(item)"
-        flat
-        round
-        color="primary"
-        class="q-pl-sm"
-        size="6px"
-        icon="fa-solid fa-pen"
-      />
-    </p>
-
-    <q-dialog v-model="cardStatus">
-      <editbank-layout />
-    </q-dialog>
+      <q-tab name="personal" label="Dados pessoais" />
+      <q-tab name="bank" label="Dados bancários" />
+    </q-tabs>
+    <q-tab-panels
+      v-model="tab"
+      animated
+      swipeable
+      vertical
+      transition-prev="scale"
+      transition-next="scale"
+      class="tool col"
+    >
+      <q-tab-panel name="personal">
+        <personal-setting />
+      </q-tab-panel>
+      <q-tab-panel name="bank">
+        <banks-setting />
+      </q-tab-panel>
+    </q-tab-panels>
   </div>
 </template>
 
 <script>
-import EditbankLayout from "../layouts/EditbankLayout.vue";
 import { defineComponent, ref } from "vue";
-import TextareaTitle from "../components/TextareaTitle.vue";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
 
-// import InputSystem from "../components/InputSystem.vue";
+import useCase from "src/composables/system/useCase";
+import useNotify from "src/composables/useNotify";
+import useAccount from "src/composables/system/Requests/useAccount";
+
+import ChangePhoto from "src/system/components/setting/ChangePhoto.vue";
+import PersonalSetting from "src/system/components/setting/PersonalSetting.vue";
+import BanksSetting from "src/system/components/setting/BanksSetting.vue";
 
 export default defineComponent({
   name: "PersonalsetupLayout",
-  components: { TextareaTitle, EditbankLayout },
+  components: {
+    ChangePhoto,
+    PersonalSetting,
+    BanksSetting,
+  },
   setup() {
+    const sameInput = ref();
     const cardStatus = ref(false);
     const edit = ref();
     const store = useUserStore();
-    const { data } = storeToRefs(store);
+    const { data, isDirty, isDirtyData } = storeToRefs(store);
+    const { same } = useCase();
+    const { infoNotify } = useNotify();
+    const { updateData, loading } = useAccount();
+    const deleteAction = ref();
+    const idEdit = ref();
 
-    const editBank = (item) => {
+    const editBank = (item, action = false) => {
+      deleteAction.value = action;
       cardStatus.value = true;
+      idEdit.value = item != 0 ? item.id : item;
       store.getAccount(item.id);
       // edit.value = item.id;
       // console.log("edit vale ", edit.value);
     };
-    return { data, cardStatus, edit, editBank };
+    const tab = ref("personal");
+    const onSubmitData = async () => {
+      if (
+        same(isDirty.value.name, data.value.name) &&
+        same(isDirtyData.value.phone, data.value.account.phone)
+      ) {
+        sameInput.value = "Não houver alteração, verifique!!";
+        return;
+      }
+      sameInput.value = null;
+      await updateData(data.value);
+    };
+    return {
+      data,
+      tab,
+      cardStatus,
+      edit,
+      editBank,
+      onSubmitData,
+      sameInput,
+      loading,
+      deleteAction,
+      idEdit,
+    };
   },
   // Outras configurações do componente aqui
 });
 </script>
 
-<style scoped>
-/* Estilos específicos do componente aqui */
+<style lang="sass" scoped>
+.PersonalsetupLayout
+  min-height: 90%
 </style>

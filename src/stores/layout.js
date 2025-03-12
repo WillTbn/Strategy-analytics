@@ -9,6 +9,14 @@ export const useLayoutStore = defineStore("layout", {
     calendarSteps: "home",
     reportSteps: "all",
     loanSteps: "home",
+    dashboard: {
+      reporthome: true,
+      pdfScale: null,
+      screenWidth: "",
+      screenViewWdth: 0,
+      screenViewHeight: 0,
+      tablet: null,
+    },
   }),
   getters: {},
   actions: {
@@ -33,7 +41,6 @@ export const useLayoutStore = defineStore("layout", {
       //   sle[0].classList.remove("active");
       // }
     },
-
     updateCalendarsteps(payload) {
       this.calendarSteps = payload;
     },
@@ -43,6 +50,25 @@ export const useLayoutStore = defineStore("layout", {
     updateLoansteps(payload) {
       console.log(payload);
       this.loanSteps = payload;
+    },
+    updatedDashReport(payload) {
+      this.dashboard.reporthome = payload;
+    },
+    updatePdfScale(payload) {
+      console.log(payload);
+      this.dashboard.pdfScale = payload;
+    },
+    setScreenWidth(payload) {
+      this.dashboard.screenWidth = payload;
+    },
+    setViewWidth(payload) {
+      this.dashboard.screenViewWdth = payload;
+    },
+    setViewHeight(payload) {
+      this.dashboard.screenViewHeight = payload;
+    },
+    setDashboardTable(payload) {
+      this.dashboard.tablet = payload;
     },
   },
 });

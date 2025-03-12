@@ -1,6 +1,5 @@
 <template>
   <div class="control-author">
-    <!-- <div class=""> -->
     <q-avatar size="200px" font-size="52px" color="teal" text-color="white">
       <img :src="image" :alt="author" :srcset="image" />
     </q-avatar>
@@ -8,7 +7,6 @@
     <span class="text-5 text-weight-bolder">{{ author }}</span
     ><br />
     <span class="text-body2">{{ office }}</span>
-    <!-- </div> -->
   </div>
 </template>
 <script>
@@ -20,6 +18,9 @@ export default defineComponent({
     author: { type: String },
     image: { type: String },
     office: { type: String },
+  },
+  setup() {
+    return {};
   },
 });
 </script>

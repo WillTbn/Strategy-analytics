@@ -1,4 +1,15 @@
+import { Platform, useQuasar } from "quasar";
+import { useUserStore } from "src/stores/user";
+import { useRoute } from "vue-router";
 export default function useStates() {
+  const useStore = useUserStore()
+  const route = useRoute()
+  const $q = useQuasar()
+  const ParttensLoading = {
+    message: 'Doing something. Please Wait...',
+    boxClass: 'bg-transparent',
+    spinnerColor: 'primary'
+  }
   const get = async (country) => {
     const states = {
       1: [
@@ -124,8 +135,92 @@ export default function useStates() {
     // console.log(states[country]);
     return states[country];
   };
+  const dimension = (value) => {
+    const valueHeight = window.innerHeight;
+    let scaleValue;
 
+    if (value <= 599) {
+      scaleValue = 0.7;
+    } else if (value >= 600 && value <= 1023) {
+      scaleValue = valueHeight >= 1023 ? 1.6 : 0.8;
+    } else if (value >= 1024 && value <= 1439) {
+      scaleValue = valueHeight >= 700 ? 2 : 1.15;
+    } else if (value >= 1440 && value <= 1919) {
+      scaleValue = 1.17;
+    } else if (value >= 1920 && 2250) {
+      scaleValue = 1.8;
+    } else if (value > 2250) {
+      scaleValue = 1.6;
+    }
+    return scaleValue;
+  };
+
+  const dimensionHeight = (value) => {
+    // const height = window.innerHeight;
+    return value <= 800 ? "normal" : "ultra";
+  };
+  const viewport = () => {
+    const viewHeight = window.innerHeight;
+    const viewWidth = window.innerWidth;
+    return { viewWidth, viewHeight };
+  };
+  const detectTablet = () => {
+    let isTo = false;
+
+    if (Platform.has.touch) {
+      isTo = viewport().viewWidth >= 1080 ? true : false;
+    }
+    return isTo;
+  };
+  const redirectRouteForUser = async (role_id) => {
+    const nameRoute = {
+      1: {
+        name: "inicio"
+      },
+      2: {
+        name: "inicio"
+      },
+      3: {
+        name: "inicio"
+      }
+    }
+    console.log('rediredRoute ->', nameRoute[role_id].name)
+    useStore.setRouteHome(nameRoute[role_id].name)
+  }
+  const showLoading = (
+    message = ParttensLoading.message,
+    boxClass = ParttensLoading.boxClass,
+    spinnerColor = ParttensLoading.spinnerColor
+  ) => {
+    $q.loading.show({
+      message: message,
+      boxClass: boxClass,
+      spinnerColor: spinnerColor
+    })
+  }
+  /*
+   * verificar se passou 5minutos
+   * @param {string} date_at 
+   * @return boolean
+  */
+  const compareMinutes = (date_at) => {
+    const dateNow = new Date();
+    const dateParse = new Date(date_at);
+    const calcTime = dateNow.getTime() - dateParse.getTime()
+    return calcTime > 300000
+  }
+  const hideLoading = () => {
+    $q.loading.hide()
+  }
   return {
+    redirectRouteForUser,
     get,
+    dimension,
+    dimensionHeight,
+    viewport,
+    compareMinutes,
+    detectTablet,
+    showLoading,
+    hideLoading
   };
 }

@@ -3,33 +3,29 @@ const state = () => {
     login: {
       person: "",
       password: "",
+      expiration: null,
+    },
+    authentication: {
+      token: "",
+      person: "",
+      password: "",
+      password_confirm: "",
+      password_confirmation: "",
+    },
+    register: {
+      notifications: "refused"
     },
     accountEdit: {},
-    data: {
-      name: "Charles Leclerc",
-      email: "leclercchales@gmail.com",
-      state: "São pauulo",
-      country: "Brasil",
-      investidor: "investor Obsidian",
-      phone: "(12) 98897-6543",
-      account: [
-        {
-          id: 1,
-          bank: "C6 BANK",
-          agency: "0507",
-          number: "142085-2",
-          nickname: "bb",
-        },
-        {
-          id: 2,
-          bank: "Bradesco",
-          agency: "0507",
-          number: "1138605-3",
-          nickname: "bra",
-        },
-      ],
-      profit_date: { label: "1º dia útil do mês", value: "first", id: 0 },
-    },
+    data: {},
+    loan: {},
+    wallet: {},
+    investment: {},
+    abilities: [],
+    routeHome: "inicio",
+    NavbarMenu: "adm",
+    isDirty: {},
+    isDirtyData: {},
+    walletChart: []
   };
 };
 

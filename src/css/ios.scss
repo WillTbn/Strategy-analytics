@@ -1,0 +1,12 @@
+// mobile touch platform-ios
+body:has(.mobile, .touch, .platform-ios) {
+  .card-report-not {
+    /* height: auto;
+    width: 99.3333%;
+    justify-content: flex-end; */
+    display: flex;
+    height: auto;
+    width: 55.3333%;
+    transform: translateX(25px);
+  }
+}

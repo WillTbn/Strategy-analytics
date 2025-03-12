@@ -1,24 +1,26 @@
 <template>
   <div class="CalendaranticipateLayout">
     <div class="row justify-center text-center">
-      <div class="col-12">
+      <div class="col-12 q-mt-xs-lg q-mt-md-none">
         <titleinter-medium text="Antecipação de lucros" />
       </div>
 
       <div class="col-12 q-mt-xl">
         <p class="">Número de antecipações</p>
       </div>
-      <div class="col-3">
+      <div class="col-md-3 col-12">
         <q-select
           v-model="model"
           transition-show="flip-up"
           transition-hide="flip-down"
-          bg-color="blue-1"
-          color="primary"
           dense
           outlined
+          square
+          filled
           :options="quantity"
           label="Quantidade (1-24)"
+          class="border-btn system"
+          rounded
         />
       </div>
     </div>
@@ -38,7 +40,7 @@
       </div>
     </div>
     <div class="row justify-center text-center">
-      <div class="col-md-8 col-sm-12 q-mt-xl">
+      <div class="col-md-8 col-12 q-mt-xl">
         <q-item class="self-center">
           <q-item-section>
             <q-item-label>
@@ -59,12 +61,13 @@
           outline
           no-caps
           rounded
-          color="primary"
           label="solicitar"
           padding="sm xl"
           size="lg"
           @click.prevent="goStep('finally')"
           :disabled="!terms || !model"
+          flat
+          class="border-btn"
         />
       </div>
     </div>

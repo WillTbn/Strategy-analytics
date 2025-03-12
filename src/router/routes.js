@@ -2,6 +2,7 @@ const routes = [
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
+    //lading-page
     children: [
       {
         path: "/",
@@ -60,20 +61,54 @@ const routes = [
       },
     ],
   },
+  //system
   {
     path: "/login",
     name: "login",
     component: () => import("../system/pages/LoginPage.vue"),
   },
   {
+    path: "/register",
+    name: "register",
+    component: () => import("../system/pages/RegisterPage.vue"),
+  },
+  {
     path: "/system/",
     component: () => import("../system/layouts/MainLayout.vue"),
     props: true,
+    meta: {
+      auth: true,
+    },
     children: [
       {
-        path: "",
-        name: "dashboard",
-        component: () => import("../system/pages/DashboardPage.vue"),
+        path: "confirm-email",
+        name: "Confirma e-mail",
+        component: () => import('../system/pages/ConfirmEmailPage.vue')
+      },
+      {
+        path: "dashboard",
+        component: () => import("../system/views/WalletView.vue"),
+        props: true,
+        meta: { admin: true },
+        children: [
+          {
+            path: "",
+            name: "inicio",
+            component: () => import("../system/pages/WalletPage.vue"),
+            props: true,
+          },
+          {
+            path: "deposit",
+            name: "deposit",
+            component: () => import("../system/pages/DepositPage.vue"),
+            props: true,
+          }
+        ]
+      },
+      {
+        path: "perfomance",
+        name: "perfomance",
+        component: () => import("../system/pages/PerfomancePage.vue"),
       },
       {
         path: "config",
@@ -96,10 +131,59 @@ const routes = [
         component: () => import("../system/pages/ReportPage.vue"),
       },
       {
-        path: "perfomance",
-        name: "perfomance",
-        component: () => import("../system/pages/PerfomancePage.vue"),
+        path: "graphic",
+        name: "graphic",
+
+        component: () => import("../system/pages/GraphicPage.vue"),
       },
+      {
+        path: "users",
+        name: "users",
+        component: () => import("../system/pages/UsersPage.vue"),
+        meta: { admin: true },
+      },
+      {
+        path: "clients",
+        name: "clients",
+        component: () => import("../system/pages/ClientsPage.vue"),
+        meta: { admin: true },
+      },
+      {
+        path: "controlDeposit",
+        component: () => import("../system/views/DepositView.vue"),
+        props: true,
+        meta: { admin: true },
+        children: [
+          {
+            path: "",
+            name: "controlDeposit",
+            component: () => import("../system/pages/control/ControlDepositPage.vue"),
+            props: true,
+          },
+
+        ]
+      },
+      {
+        path: "controlReports",
+        component: () => import("../system/views/ReportView.vue"),
+        props: true,
+        meta: { admin: true },
+        children: [
+          {
+            path: "",
+            name: "controlReports",
+            component: () => import("../system/pages/ControlreportPage.vue"),
+            props: true,
+          },
+          {
+            path: ":id",
+            name: "relatorio",
+            component: () => import("../system/layouts/control/reports/ReadreportLayout.vue"),
+            meta: { admin: true },
+            props: true
+          }
+        ]
+      }
     ],
   },
 

@@ -1,0 +1,67 @@
+@mixin backgroundTheme() {
+  background-position-x: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.5s linear;
+}
+@import "./themes/pattern.scss";
+@import "./themes/theme-one.scss";
+@import "./themes/theme-two.scss";
+@import "./themes/theme-three.scss";
+@import "./themes/theme-four.scss";
+@import "./themes/theme-five.scss";
+@import "./themes/theme-six.scss";
+@import "./themes/theme-seven.scss";
+@import "./themes/theme-eight.scss";
+@import "./themes/theme-nine.scss";
+$liniarBg: linear-gradient(
+  45deg,
+  #124e78 0%,
+  #124e78 5%,
+  #1a1e2d 28%,
+  #1a1e2d 30%,
+  #1a1e2d 33%,
+  #1a1e2d 53%,
+  #4e1723 94%,
+  #4e1723 100%
+);
+
+$two-bg: lineaer-gradient(#ffffff 20%, #00ff66 20%, #ffffff 10%, #24ff00 10%);
+.transparant-bg {
+  background: transparent !important;
+}
+.bg-all {
+  // background: radial-gradient(circle at 0%, #4694d1, #1a1e2d 35%, #4694d1),
+  //   radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+  background: linear-gradient(
+    294deg,
+    #1a1e2d 0%,
+    #1b1f2e 7%,
+    #13476d 23%,
+    #11517c 28%,
+    #10517e 30%,
+    #124e78 33%,
+    #1a1e2d 53%,
+    #1a1e2d 84%,
+    #4e1723 100%
+  );
+}
+
+.bg-simulator-draw {
+  background: radial-gradient(
+      circle at top right,
+      #1a1e2d,
+      #1a1e2d 90%,
+      #ff4242
+    ),
+    radial-gradient(circle at 100%, #ff4242, #1a1e2d, #ff4242);
+}
+.bg-draw {
+  background: radial-gradient(
+      circle at top right,
+      #1a1e2d,
+      #1a1e2d 90%,
+      #4694d1
+    ),
+    radial-gradient(circle at 100%, #4694d1, #1a1e2d, #4694d1);
+}

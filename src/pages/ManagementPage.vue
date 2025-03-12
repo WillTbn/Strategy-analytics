@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-white control-bg items-center">
-    <header-layout class="main control-mb" :reverse="false">
+    <header-layout class="main bg-who" :reverse="false">
       <div class="col-md-5 col-sm-8 q-ml-lg-lg text-left">
         <title-subtitle
           textTopPersonal="Nossa gestão"

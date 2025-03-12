@@ -1,0 +1,32 @@
+$theme: "dark"; // Aqui você muda o tema atual
+
+$primary-color-dark: #333;
+$primary-color-light: #fff;
+$primary-color-colorful: #ff6347;
+$primary-color-minimalist: #cccccc;
+
+@mixin theme-styles {
+  @if $theme == "dark" {
+    .button {
+      background-color: $primary-color-dark;
+      color: #fff;
+    }
+  } @else if $theme == "light" {
+    .button {
+      background-color: $primary-color-light;
+      color: #000;
+    }
+  } @else if $theme == "colorful" {
+    .button {
+      background-color: $primary-color-colorful;
+      color: #fff;
+    }
+  } @else if $theme == "minimalist" {
+    .button {
+      background-color: $primary-color-minimalist;
+      color: #333;
+    }
+  }
+}
+
+@include theme-styles;

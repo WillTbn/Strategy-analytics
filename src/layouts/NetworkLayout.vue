@@ -34,10 +34,6 @@ export default defineComponent({
         name: "Youtube",
         icon: "icons/youtube.png",
       },
-      {
-        name: "Discord",
-        icon: "icons/discord.png",
-      },
     ];
 
     return {
@@ -49,7 +45,7 @@ export default defineComponent({
 <style scoped>
 .icon-control {
   height: 70px;
-  max-width: 90px;
+  max-width: 80px;
 }
 @media (max-width: 768px) {
   .icon-control {

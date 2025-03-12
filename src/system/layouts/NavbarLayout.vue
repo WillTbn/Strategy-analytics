@@ -1,141 +1,96 @@
 <template>
-  <div class="NavbarLayout">
-    <q-drawer
-      v-model="drawer"
-      show-if-above
-      :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
-      mini-to-overlay
-      :width="200"
-      :mini-width="80"
-      elevated
-      class="control-drawer"
-      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-white'"
-    >
-      <div class="bg-transparent q-mt-lg row justify-center text-center">
-        <div class="col-12">
-          <q-avatar size="56px" class="q-mb-sm">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-          </q-avatar>
-        </div>
-        <div class="col-12">
-          <div class="q-mx-sm q-px-sm">
-            <q-item
-              clickable
-              v-ripple
-              exact
-              :to="{ name: 'config' }"
-              active-class="bg-primary rounded"
-            >
-              <q-item-section avatar>
-                <q-icon name="img:icons/iconeconfiguraes.svg" />
-              </q-item-section>
-
-              <q-item-section> configuração </q-item-section>
-            </q-item>
-          </div>
-        </div>
-      </div>
-
-      <q-list class="q-mt-xl q-pt-xl q-mx-sm q-px-sm">
-        <q-item
-          v-for="list in listMenu"
-          :key="list"
-          :active-class="dark ? 'bg-dark rounded' : 'bg-primary rounded'"
-          clickable
-          exact
-          v-ripple
-          :to="list.toName"
-        >
-          <!-- active-class="bg-primary rounded" -->
-          <q-item-section avatar>
-            <q-icon :name="list.svgIcon" />
-          </q-item-section>
-
-          <q-item-section> {{ list.name }} </q-item-section>
-        </q-item>
-      </q-list>
-      <div
-        class="bg-transparent q-mt-xl q-pt-xl row justify-center text-center"
+  <q-header class="q-ma-md q-pa-sm bg-transparent">
+    <q-toolbar :class="nav">
+      <q-btn flat :to="{ name: 'inicio' }">
+        <svg-logo />
+      </q-btn>
+      <q-space />
+      <q-item
+        v-for="list in clientNavList"
+        :key="list"
+        :disable="list.inative"
+        v-ripple
+        :to="list.toName"
+        class="text-white"
       >
-        <div class="col-12">
-          <!-- <q-item>
-            <q-item-section avatar class="q-mb-sm">
-              <q-icon name="img:icons/logo.svg" />
-            </q-item-section>
-          </q-item> -->
-          <q-avatar size="36px" class="q-mb-sm">
-            <img src="icons/logo.svg" />
-          </q-avatar>
-        </div>
-      </div>
-    </q-drawer>
-
-    <!-- <div
-      class="q-mini-drawer-hide absolute"
-      style="top: 25px; left: 47px; z-index: 10000"
-    >
-      <q-btn
-        dense
-        round
-        unelevated
-        color="dark"
-        icon="chevron_right"
-        @click="miniState = false"
-      />
-    </div>
-    <q-page-sticky position="left" :offset="[18, 0]">
-      <q-btn round color="accent" icon="arrow_upward" class="rotate-90" />
-    </q-page-sticky> -->
-  </div>
+        <!-- :active-class="dark ? 'bg-dark' : 'bg-primary'" -->
+        <q-item-section> {{ list.name }} </q-item-section>
+      </q-item>
+      <q-space />
+      <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
+      <avatar-menu v-if="data.account" :avatar="data.account.avatar" />
+      <!-- {{ navbar.clock }} -->
+      <hours-banner v-if="navbar.clock" />
+    </q-toolbar>
+    <drawer-theme />
+  </q-header>
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
+import { useUserStore } from "../../stores/user";
+import { storeToRefs } from "pinia";
+import { useStoreLayout } from "src/stores/layoutStore";
+
+import SvgLogo from "../components/svgs/SvgLogo.vue";
+// import SvgSign from "../components/svgs/SvgSign.vue";
+import useCookies from "src/composables/useCookies";
+import useMode from "../../composables/system/useMode";
+import OptionsIcons from "../components/navbar/OptionsIcons.vue";
+import HoursBanner from "../components/navbar/HoursBanner.vue";
+import AvatarMenu from "../components/navbar/AvatarMenu.vue";
+import DrawerTheme from "src/system/components/navbar/DrawerTheme.vue";
 export default defineComponent({
   props: { dark: { type: Boolean, default: true } },
   name: "NavbarLayout",
+  components: {
+    SvgLogo,
+    OptionsIcons,
+    HoursBanner,
+    AvatarMenu,
+    DrawerTheme,
+  },
   setup() {
+    // const {setDarkMode} = useCookies()
+
+    const { clientNavList } = useMode();
+    const barState = computed(() =>
+      drawer.value ? "fixed-top-right" : "fixed-top-left"
+    );
+    const jsonState = computed(() =>
+      drawer.value
+        ? {
+            barstate: "fixed-top-right bar-xmark",
+            icon: "fa-solid fa-xmark",
+          }
+        : { barstate: "fixed-top-left barstate", icon: "fa-solid fa-bars" }
+    );
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
     const miniState = ref(true);
-    const listMenu = [
-      {
-        toName: { name: "dashboard" },
-        name: "Inicio",
-        svgIcon: "img:icons/icon-home-icon.svg",
-      },
-      {
-        toName: { name: "perfomance" },
-        name: "Perfomance",
-        svgIcon: "img:icons/icon-performance.svg",
-      },
-      {
-        toName: { name: "calendar" },
-        name: "Calendário",
-        svgIcon: "img:icons/icon-calendar.svg",
-      },
-      {
-        toName: { name: "report" },
-        name: "Relatório",
-        svgIcon: "img:icons/icon-alternate-file.svg",
-      },
-      {
-        toName: { name: "loan" },
-        name: "Emprestimo",
-        svgIcon: "img:icons/icon-money-withdrawal.svg",
-      },
-    ];
-
+    const storeLayout = useStoreLayout();
+    const userStore = useUserStore();
+    const { data, canAccess, menuAccess } = storeToRefs(userStore);
+    const { navbar, system } = storeToRefs(storeLayout);
+    const nav = computed(() => {
+      return `${system.value.theme}-navbar`;
+    });
     return {
+      menuAccess,
+      canAccess,
+      clientNavList,
+      navbar,
+      jsonState,
+      barState,
       miniState,
       drawer,
       leftDrawerOpen,
-      listMenu,
+      data,
+      activeMode: useCookies().toggleMod,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      nav,
     };
   },
   // Outras configurações do componente aqui
@@ -143,7 +98,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Estilos específicos do componente aqui */
+.control-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.bg-personal {
+  background: linear-gradient(#00000033, #0038584d, #0077ba6b, #00a3ff80);
+}
+.move-position {
+  transform: translateX(480%) !important;
+}
 .control-area {
   height: calc(100% - 150px);
   margin-top: 150px;
@@ -153,11 +117,14 @@ export default defineComponent({
 .fit {
   overflow: hidden !important;
 }
-.control-drawer {
-  top: 20px !important;
-  bottom: 20px !important;
-}
+
 .rounded {
   border-radius: 13px;
 }
+</style>
+<style lang="sass">
+.tool
+  border-radius: 8px
+  background: rgba(0, 0, 0, 0.20)
+  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.20)
 </style>

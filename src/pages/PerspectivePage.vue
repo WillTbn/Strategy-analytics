@@ -3,9 +3,9 @@
     <header-layout class="main bg-header-perpective" :reverse="true">
       <div class="col-md-5 col-sm-10 q-ml-lg text-left">
         <title-subtitle
-          textTop="perspectivas para 2° metade do ano de 2023"
+          textTop="perspectivas para 2° semestre de 2024"
           textTitle="Novo regime, novas oportunidades"
-          textDescription="28 de Junho de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
+          textDescription="18 de Setembro de 2023 | O novo e mais volátil regime econômico, oferece oportunidades de investimento diferentes, e ao mesmo tempo abrangentes. A persistência das restrições de produção está obrigando os principais bancos centrais a manter taxas de juros elevadas.
         Identificamos oportunidades nas classes de ativos e aproveitarmos as megaforças."
         />
         <q-btn
@@ -56,8 +56,9 @@ export default defineComponent({
 </script>
 <style>
 .bg-header-perpective {
-  background-image: url("img/landing-page/banner-home-left-darkblue.jpg");
-  background-position-x: center;
+  background-image: url("https://strategyanalytics.com.br/img/landing-page/banner-home-right-3000.jpg");
+  background-position-x: right;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
