@@ -3,7 +3,7 @@
     <!-- class="fixed-bottom text-caption text-weight-thin text-grey-13" -->
     <div class="col"></div>
 
-    <register-data class="col-10 text-center" />
+    <register-data class="col-10 text-center" :version="mode" />
     <div class="col"></div>
   </footer>
 </template>

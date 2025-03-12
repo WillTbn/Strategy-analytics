@@ -6,40 +6,43 @@
     >
       <textarea-title text="Conta cadastradas" />
     </p>
-    <p
-      v-for="item in data.user_bank_accounts"
-      :key="item"
-      style="display: flex; align-content: center; align-items: center"
-    >
-      <span class="text-second text-weight-bold"> {{ item.bank }} </span>
-      <span class="text-weight-bold q-pl-sm">{{ item.number }}</span>
-      <q-btn
-        @click="editBank(item)"
-        flat
-        round
-        color="primary"
-        class="q-ml-sm"
-        size="6px"
-        icon="fa-solid fa-pen"
-      />
-      <q-btn
-        @click="editBank(item, true)"
-        flat
-        round
-        color="red-14"
-        class="q-ml-sm"
-        size="6px"
-        icon="fa-solid fa-trash"
-      />
-    </p>
+    <div v-for="(item, index) in data.user_bank_accounts" :key="item">
+      <q-separator spaced="md" v-if="index != 0"></q-separator>
+      <span class="text-primary">
+        {{ $filters.mainAccount(item.main_account) }}
+      </span>
+      <div style="display: flex; align-content: center; align-items: center">
+        <span class="text-second text-weight-bold"> {{ item.bank }} </span>
+        <span class="text-weight-bold q-pl-sm">{{ item.number }}</span>
+        <q-btn
+          @click="editBank(item)"
+          flat
+          round
+          color="primary"
+          class="q-ml-sm"
+          size="6px"
+          icon="fa-solid fa-pen"
+        />
+        <q-btn
+          v-if="!item.main_account"
+          @click="editBank(item, true)"
+          flat
+          round
+          color="red-14"
+          class="q-ml-sm"
+          size="6px"
+          icon="fa-solid fa-trash"
+        />
+      </div>
+    </div>
     <!-- :disabled="loading"
     :loading="loading" -->
     <q-btn
-      flat
-      round
+      label="Adicionar nova conta"
+      rounded
+      no-caps
       color="primary"
-      icon="fa-solid fa-plus"
-      size="16px"
+      class="q-mt-lg"
       @click.prevent="editBank(0)"
     />
     <q-dialog

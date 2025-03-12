@@ -8,10 +8,12 @@ import { route } from "quasar/wrappers";
 import useCookies from "../useCookies";
 import useStates from "../useStates";
 import { storeToRefs } from "pinia";
+import useRequestIntercept from "../global/useRequestIntercept";
 
 export default function useAuth() {
   const useStore = useUserStore();
   const { redirectRouteForUser } = useStates()
+  const { setCors } = useRequestIntercept()
   const {
     setTokenCookie,
     deleteTokenCookie,
@@ -54,30 +56,34 @@ export default function useAuth() {
   }
   const auth = async (value) => {
     loading.value = true;
-    axios.defaults.headers.common['Accept'] = 'application/json';
-    axios.defaults.withCredentials = true;
-    axios.defaults.withXSRFToken = true;
-    const urlCors = process.env.API_URL_CORS
+    // const urlCors = process.env.API_URL_CORS
 
-    axios.get(urlCors).then(response => {
-      api
-        .post("login", value)
-        .then((resp) => {
-          if (resp.data.token) {
-            setTokenCookie(resp.data)
-            useStore.setAbilities(resp.data.abilities)
-            router.replace({ path: "/system/" });
-          }
-        })
-        .catch((e) => {
-          errorNotify(e.response.data.message);
-          errors.value = e.response.data.errors;
-        })
-        .finally(() => (loading.value = false));
-    }).catch((e) => {
-      errorNotify('Error ao authentificar csrf ');
-      console.log(e)
-    }).finally(() => loading.value = false);
+    // await api.get(process.env.API_URL_CORS).then(response => {
+    // }).catch((e) => {
+    //   console.log(e);
+    //   infoNotify('Falha na solicitação, recarregue sua pagina.')
+    // }).finally(() => loading.value = false)
+    await api
+      // .post("login", value, { headers: { 'X-XSRF-TOKEN': Cookies.get('XSRF-TOKEN') }, withCredentials: true })
+      .post("login", {
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
+        person: value.person,
+        password: value.password,
+        scope: ""
+      })
+      .then((resp) => {
+        if (resp.data.token) {
+          setTokenCookie(resp.data)
+          useStore.setAbilities(resp.data.abilities)
+          router.replace({ path: "/system/" });
+        }
+      })
+      .catch((e) => {
+        errorNotify(e.response.data.message);
+        errors.value = e.response.data.errors;
+      })
+      .finally(() => (loading.value = false));
   };
   const verifyLogged = async () => {
     await interceptorsRequest();

@@ -30,7 +30,7 @@
             <q-input
               v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.bank"
-              :disabled="loading"
+              :disable="loading || deleteAction"
               :loading="loading"
               :rules="emptyRule"
             />
@@ -40,7 +40,7 @@
             <q-input
               v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.agency"
-              :disabled="loading"
+              :disable="loading || deleteAction"
               :loading="loading"
               :rules="emptyRule"
             />
@@ -50,7 +50,7 @@
             <q-input
               v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.number"
-              :disabled="loading"
+              :disable="loading || deleteAction"
               :loading="loading"
               :rules="emptyRule"
             />
@@ -61,8 +61,17 @@
             <q-input
               v-bind="{ ...$inputBankStyle }"
               v-model="accountEdit.nickname"
-              :disabled="loading"
+              :disable="loading || deleteAction"
               :loading="loading"
+            />
+          </div>
+          <div class="q-mb-lg" v-if="itMainAccount != true">
+            <q-checkbox
+              v-model="accountEdit.main_account"
+              label="Torna essa conta como principal"
+              :true-value="1"
+              :false-value="null || false || 0"
+              :disable="deleteAction"
             />
           </div>
           <div class="row text-center">
@@ -134,19 +143,28 @@ export default defineComponent({
   setup() {
     const store = useUserStore();
     const { accountEdit } = storeToRefs(store);
-    const { loading, updateOrCreate, deleted } = useBank();
+    const { loading, updateOrCreate, deleted, updateBank } = useBank();
     const data = ref({});
     const bank = ref();
     const confirmDelete = ref(false);
+    const itMainAccount = ref(false);
+    onMounted(() => {
+      if (accountEdit.value) {
+        itMainAccount.value = accountEdit.value.main_account;
+      }
+    });
     onBeforeUnmount(() => {
-      if (accountEdit.length > 0) {
-        console.log("ESTOU DENTRO DO IF", accountEdit[0]);
+      if (accountEdit.value.length > 0) {
         data.value = accountEdit[0];
       }
     });
     const onSubmit = async () => {
-      await updateOrCreate(accountEdit.value);
-      console.log(accountEdit.value);
+      if (accountEdit.value.id) {
+        await updateBank(accountEdit.value);
+      } else {
+        await updateOrCreate(accountEdit.value);
+      }
+      // console.log(accountEdit.value);
     };
 
     return {
@@ -157,6 +175,7 @@ export default defineComponent({
       confirmDelete,
       deleted,
       emptyRule: [(val) => (val && val.length > 0) || "Por favor digite algo"],
+      itMainAccount,
     };
   },
   // Outras configurações do componente aqui

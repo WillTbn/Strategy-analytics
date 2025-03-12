@@ -68,18 +68,24 @@ module.exports = configure(function (ctx) {
       env:
         ctx.dev ? {
           VERSION_APP: 2.0,
-          API_URL: "http://localhost:8085/api/",
+          API_URL: "http://localhost:8000/api/",
           COOKIE_TOKEN_NAME: "SA_token",
           COOKIE_USER_DATA: "SA_user",
           WEB_URL: process.env.WEB_URL,
-          API_URL_CORS: "http://localhost:8085/sanctum/csrf-cookie"
+          API_URL_CORS: "http://localhost:8000/sanctum/csrf-cookie",
+          CLIENT_ID: 2,
+          CLIENT_SECRET: "BV2qcZjNuR3FSiaRqOb3BSVlt95bQSDGEQMuQ3Gs"
+
         } : {
-          VERSION_APP: 1.0,
-          API_URL: "https://testapi.strategyanalytics.com.br/api/",
+          VERSION_APP: 2.1,
+          API_URL: "https://sources.strategyanalytics.com.br/api/",
           COOKIE_TOKEN_NAME: "SA_token",
           COOKIE_USER_DATA: "SA_user",
           WEB_URL: process.env.WEB_URL,
-          API_URL_CORS: "https://testapi.strategyanalytics.com.br/sanctum/csrf-cookie"
+          API_URL_CORS: "https://sources.strategyanalytics.com.br/sanctum/csrf-cookie",
+          CLIENT_ID: 1,
+          CLIENT_SECRET: "l6v5MTt8M5IsfuVhLwwppJJjadubIPF2R8"
+
         }
       ,
       // rawDefine: {}

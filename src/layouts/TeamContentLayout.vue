@@ -1,11 +1,11 @@
 <template>
   <div class="row text-left q-py-xl">
     <div class="col-md-6 col-sm-10 q-ma-xl">
-      <p class="text-h4 text-weight-bolder">Strategy Analytics</p>
+      <p class="text-h4 text-weight-bolder">Uma equipe, um objetivo:</p>
       <span>
-        Nosso objetivo é claro e direto: ajudar um número cada vez maior de
-        pessoas a alcançar o bem-estar financeiro, conduzindo-as rumo à
-        estabilidade e prosperidade.
+        Nosso objetivo é claro e direto: ajudar cada vez mais pessoas a alcançar
+        o bem-estar financeiro, conduzindo-as rumo à estabilidade e
+        prosperidade.
       </span>
 
       <p class="text-h6 text-weight-bolder q-pt-xl">Quem somos</p>

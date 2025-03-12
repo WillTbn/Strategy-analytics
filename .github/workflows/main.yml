@@ -23,8 +23,8 @@ jobs:
       - name: Install Quasar CLI
         run: npm install -g @quasar/cli
 
-      - name: Build Homolog project in SPA
-        run: quasar build
+      - name: Build Strategy Analytics project in SPA
+        run: quasar build -m spa
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1

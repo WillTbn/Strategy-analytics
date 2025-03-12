@@ -7,7 +7,7 @@
       >
         <current-balance
           name="Patrimônio investido"
-          :current="wallet.current_investment"
+          :current="$filters.convertCoin(getCurrentInvest)"
           :loading="loading"
         />
       </q-card-section>
@@ -47,7 +47,7 @@
       :brCoin="false"
       :objText="false"
       :colorItem="colorItem"
-      :balance="wallet.current_investment"
+      :balance="$filters.convertCoin(getCurrentInvest)"
       :btnBgColor="bgBtn"
       :bgBadgeBank="bgBadgeBank"
     />
@@ -88,7 +88,7 @@ export default defineComponent({
 
     const teste = ref(true);
     const userStore = useUserStore();
-    const { wallet, setCurrentWallet, getAvailableToInvest } =
+    const { wallet, setCurrentWallet, getAvailableToInvest, getCurrentInvest } =
       storeToRefs(userStore);
     const { getWallet, loading } = useDataUser();
     const storeLayout = useStoreLayout();
@@ -173,6 +173,7 @@ export default defineComponent({
       getColorTheme,
       setCurrentWallet,
       getAvailableToInvest,
+      getCurrentInvest,
     };
   },
   // Outras configurações do componente aqui

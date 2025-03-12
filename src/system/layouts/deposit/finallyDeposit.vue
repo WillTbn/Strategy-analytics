@@ -1,11 +1,11 @@
 <template>
   <div class="FinallyDeposit row justify-center">
     <div class="col-12 text-center">
-      <q-icon name="fa-solid fa-check-to-slot" size="4rem" />
+      <q-icon name="fa-solid fa-checked" size="lg" />
     </div>
     <div class="col-12 text-center">
       Voce já confimou seu deposito estamos verificando e já retornamos com sua
-      solicitação... 2
+      solicitação...
     </div>
   </div>
 </template>

@@ -3,11 +3,8 @@
     <div class="col-lg-10 col-12">
       <title-subtitle
         class="q-mx-xl"
-        textTop="O que oferecemos?"
         :upText="false"
-        textTitle="Nós ajudamos a encontrar respostas para questões importantes."
-        textDescription="Como os investimentos podem ajudar cada vez mais pessoas? "
-        textDescription2="E como podemos tornar o mundo dos investimentos mais facil e acessível?"
+        textTitle="Pesquisa indices, titulos ou ações:"
       />
     </div>
     <div class="col-lg-10 col-12 q-pa-xl">
@@ -65,7 +62,7 @@ export default defineComponent({
         title: "Expansão Patrimonial",
         subTitle: "Investimento",
         description:
-          "Nossos programas de expansão patrimonial são idealizados para investidores que buscam crescimento substancial do capital ao longo de um curto período. Nosso enfoque está na construção de uma carteira sólida que vise grandes lucros ao término do ciclo de investimento.",
+          "Idealizados para investidores que buscam um crescimento expressivo de capital em curto prazo, nossos programas de expansão patrimonial focam na construção de uma carteira sólida, direcionada à maximização de retornos significativos ao final do ciclo de investimento. ",
         etfs: "",
         colorBorder: "border-blue",
         route: "rendavariavel",
@@ -74,7 +71,7 @@ export default defineComponent({
         title: "Previdência Futura",
         subTitle: "Aposentadoria",
         description:
-          "Projetos para clientes com capital já consolidado que desejam rendimentos regulares e seguros, nossos planos de aposentadoria enfatizam cartazes robustas que geram retornos mensais consistentes.",
+          "Nossos planos de aposentadoria são destinados a clientes com capital já consolidado que buscam rendimentos regulares e seguros. Oferecemos soluções para alcançar retornos mensais consistentes e satisfatórios.",
         etfs: "",
         colorBorder: "border-red",
         route: "rendafixa",
@@ -83,7 +80,7 @@ export default defineComponent({
         title: "Liquidez Elevada",
         subTitle: "Poupança",
         description:
-          "Para aqueles que priorizam a segurança e a flexibilidade, a nossa opção de Liquidez Elevada oferece um refúgio sem riscos com alta liquidez, oferecendo rendimentos estáveis e superiores aos encontrados no mercado convencional.",
+          "Para aqueles que priorizam segurança e flexibilidade, a Liquidez Elevada proporciona uma alternativa confiável e próspera, com rendimentos consistentes e competitivos, superiores aos padrões do mercado tradicional.",
         etfs: "",
         colorBorder: "border-yellow",
         route: "rendaflexivel",
@@ -92,7 +89,7 @@ export default defineComponent({
         title: "Blockchain",
         subTitle: "Altenativos",
         description:
-          "Destinado a explorar as fronteiras emergentes do mundo financeiro digital. Este fundo se concentra em uma seleção criteriosa de criptmoedas, tokens não fungíveis(NFTs), e outros ativos digitais, oferecendo aos investidores uma oportunidade única de participar do crescimento dinâmico dos mercados digitais.",
+          "Oferecemos aos investidores oportunidades em Blockchain, através de uma vasta seleção de criptomoedas, NFT’S, DeFi e Rollups garantimos opções diversas envolvendo o mundo financeiro digital.",
         etfs: "",
         colorBorder: "border-white",
         route: "perspective",

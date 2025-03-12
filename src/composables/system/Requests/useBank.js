@@ -25,6 +25,17 @@ export default function useBank() {
       loading.value = false
     }
   }
+  const updateBank = async (account) => {
+    console.log('estou no update', account)
+    api.put(`bank/${account.id}`, { ...account }).then((res) => {
+      successNotify(res.data.message)
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
+    }).catch((e) => {
+      multError(e.response.data.errors)
+    }).finally(() => loading.value = false)
+  }
   const deleted = async (id) => {
     loading.value = true
     try {
@@ -46,6 +57,7 @@ export default function useBank() {
   return {
     updateOrCreate,
     deleted,
+    updateBank,
     loading
   }
 
