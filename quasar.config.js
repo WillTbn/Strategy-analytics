@@ -77,7 +77,7 @@ module.exports = configure(function (ctx) {
           CLIENT_SECRET: "BV2qcZjNuR3FSiaRqOb3BSVlt95bQSDGEQMuQ3Gs"
 
         } : {
-          VERSION_APP: 1.0,
+          VERSION_APP: 2.1,
           API_URL: "https://sources.strategyanalytics.com.br/api/",
           COOKIE_TOKEN_NAME: "SA_token",
           COOKIE_USER_DATA: "SA_user",
