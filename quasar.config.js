@@ -68,11 +68,11 @@ module.exports = configure(function (ctx) {
       env:
         ctx.dev ? {
           VERSION_APP: 2.0,
-          API_URL: "http://localhost:8000/api/",
+          API_URL: "http://localhost:8085/api/",
           COOKIE_TOKEN_NAME: "SA_token",
           COOKIE_USER_DATA: "SA_user",
           WEB_URL: process.env.WEB_URL,
-          API_URL_CORS: "http://localhost:8000/sanctum/csrf-cookie",
+          API_URL_CORS: "http://localhost:8085/sanctum/csrf-cookie",
           CLIENT_ID: 2,
           CLIENT_SECRET: "BV2qcZjNuR3FSiaRqOb3BSVlt95bQSDGEQMuQ3Gs"
 
