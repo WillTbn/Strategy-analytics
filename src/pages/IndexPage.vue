@@ -16,6 +16,7 @@
           label="Veja os ETFS disponíveis"
           icon="fa-solid fa-chevron-right"
           to="/perspective"
+          data-home="button-etf"
         />
       </div>
     </header-layout>

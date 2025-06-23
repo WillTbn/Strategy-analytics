@@ -1,6 +1,7 @@
 <template>
   <div
     class="row text-white justify-center items-center content-center text-center border-header padding-i-mobile padding-t-mobile"
+    data-home="header"
     :class="{ reverse: reverse }"
   >
     <slot />

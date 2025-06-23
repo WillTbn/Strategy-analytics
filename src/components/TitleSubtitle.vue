@@ -1,15 +1,25 @@
 <template>
   <div :class="parentClass">
-    <span class="text-subtitle2" :class="{ 'text-up': upText }">{{
-      textTop
-    }}</span>
-    <span class="text-subtitle2 text-weight-bolder" :class="textClass">{{
-      textTopPersonal
-    }}</span>
-    <p class="text-h3 text-weight-bolder">{{ textTitle }}</p>
-    <span class="text-body2">{{ textDescription }}</span
-    ><br />
-    <span class="text-body2">{{ textDescription2 }}</span>
+    <span
+      class="text-subtitle2"
+      :class="{ 'text-up': upText }"
+      data-home="subtitle-top"
+    >
+      {{ textTop }}
+    </span>
+    <span class="text-subtitle2 text-weight-bolder" :class="textClass">
+      {{ textTopPersonal }}
+    </span>
+    <p class="text-h3 text-weight-bolder" data-home="title-principal">
+      {{ textTitle }}
+    </p>
+    <span class="text-body2" data-home="subtitle-one">
+      {{ textDescription }}
+    </span>
+    <br />
+    <span class="text-body2" data-home="subtitle-two">
+      {{ textDescription2 }}
+    </span>
   </div>
 </template>
 <script>
