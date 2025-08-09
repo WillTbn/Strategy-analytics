@@ -1,9 +1,9 @@
-name: Build and Production Strategy Analytics via FTP
+name: Build and homolog v2 Strategy Analytics via FTP
 
 on:
   push:
     branches:
-      - main
+      - v2
 
 jobs:
   build:
