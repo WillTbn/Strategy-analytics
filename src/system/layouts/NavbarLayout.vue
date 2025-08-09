@@ -14,13 +14,15 @@
         class="text-white"
       >
         <!-- :active-class="dark ? 'bg-dark' : 'bg-primary'" -->
-        <q-item-section> {{ list.name }} </q-item-section>
+        <component :is="list.icon" class="q-mr-sm" />
+        <!-- :class="{ 'text-white': !list.inative, 'text-grey-4': list.inative }" -->
+        <q-item-section> {{ list.name }}</q-item-section>
       </q-item>
       <q-space />
+      <hours-banner v-if="navbar.clock" />
       <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
       <avatar-menu v-if="data.account" :avatar="data.account.avatar" />
       <!-- {{ navbar.clock }} -->
-      <hours-banner v-if="navbar.clock" />
     </q-toolbar>
     <drawer-theme />
   </q-header>
@@ -55,7 +57,7 @@ export default defineComponent({
 
     const { clientNavList } = useMode();
     const barState = computed(() =>
-      drawer.value ? "fixed-top-right" : "fixed-top-left"
+      drawer.value ? "fixed-top-right" : "fixed-top-left",
     );
     const jsonState = computed(() =>
       drawer.value
@@ -63,7 +65,7 @@ export default defineComponent({
             barstate: "fixed-top-right bar-xmark",
             icon: "fa-solid fa-xmark",
           }
-        : { barstate: "fixed-top-left barstate", icon: "fa-solid fa-bars" }
+        : { barstate: "fixed-top-left barstate", icon: "fa-solid fa-bars" },
     );
     const leftDrawerOpen = ref(true);
     const drawer = ref(true);
@@ -125,6 +127,19 @@ export default defineComponent({
 <style lang="sass">
 .tool
   border-radius: 8px
-  background: rgba(0, 0, 0, 0.20)
+  border: 1px solid rgba(239, 239, 239, 0.16)
+  background: rgba(255, 255, 255, 0.08)
   box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.20)
+  // padding: 12px
+  angle: 0 deg
+  height: 51
 </style>
+
+<!-- width: 179;
+height: 51;
+gap: 8px;
+angle: 0 deg;
+opacity: 1;
+border-radius: 4px;
+padding: 12px;
+border-width: 1px; -->

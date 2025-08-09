@@ -1,6 +1,8 @@
 <template>
   <q-banner class="tool text-white q-ml-sm" dense>
-    <span class="text-h5"> {{ getHours }}:{{ getMinutes }}</span>
+    <span class="text-h5"
+      >{{ getNameDay }} {{ getHours }}:{{ getMinutes }}</span
+    >
   </q-banner>
 </template>
 <script>
@@ -12,13 +14,17 @@ export default defineComponent({
     setInterval(() => {
       time.value = new Date();
     }, 10000);
+    let days = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
+    const getNameDay = computed(() => {
+      return days[time.value.getDay() - 1];
+    });
     const getMinutes = computed(() => {
       return time.value.getMinutes().toString().padStart(2, "0");
     });
     const getHours = computed(() => {
       return time.value.getHours().toString().padStart(2, "0");
     });
-    return { getMinutes, getHours };
+    return { getMinutes, getHours, getNameDay };
   },
 });
 </script>

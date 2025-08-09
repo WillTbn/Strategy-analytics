@@ -8,25 +8,29 @@ export default function useMode() {
     {
       toName: { name: "inicio" },
       name: "Home",
-      inative: false
+      inative: false,
+      icon: 'IconHome'
     },
     {
       // toName: { name: "perfomance" },
       toName: { name: "inicio" },
       name: "Contratos",
-      inative: true
+      inative: true,
+      icon: 'IconFileDollar'
     },
     {
       // toName: { name: "graphic" },
       toName: { name: "inicio" },
       name: "Comunicação",
-      inative: true
+      inative: true,
+      icon: "IconSpeakerphone"
     },
     {
       // toName: { name: "calendar" },
       toName: { name: "inicio" },
       name: "Empréstimos",
-      inative: true
+      inative: true,
+      icon: 'IconReceipt2'
     }
   ]
 

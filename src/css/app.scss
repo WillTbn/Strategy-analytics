@@ -42,7 +42,10 @@
   max-width: 740px;
 }
 .heiding {
-  font: 32px/40px instokWeb, Arial, sans-serif;
+  font:
+    32px/40px instokWeb,
+    Arial,
+    sans-serif;
 }
 body {
   overflow-x: hidden;
@@ -169,4 +172,16 @@ body {
   background-position-x: left;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.q-item.q-router-link--active,
+.q-item--active {
+  background: linear-gradient(
+    202.99deg,
+    rgba(255, 255, 255, 0.16) 0.52%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 99.48%
+  );
+  border-bottom: solid 2px rgba(0, 163, 255, 1);
+  border-radius: 4px;
 }
