@@ -3,7 +3,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="156"
-      height="34"
+      height="48"
       viewBox="0 0 156 34"
       fill="none"
     >

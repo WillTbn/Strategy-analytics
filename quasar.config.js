@@ -1,16 +1,7 @@
-/* eslint-env node */
+import { defineConfig } from '#q-app/wrappers'
+import { fileURLToPath } from 'node:url'
 
-/*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
- */
-
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
-const { configure } = require("quasar/wrappers");
-
-module.exports = configure(function (ctx) {
+export default defineConfig((ctx) => {
   return {
     eslint: {
       // fix: true,
@@ -100,12 +91,34 @@ module.exports = configure(function (ctx) {
       // },
 
       vitePlugins: [
-        ['vite-plugin-top-level-await', {
-          promiseExportName: "__tla",
-          // The function to generate import names of top-level await promise in each chunk module
-          promiseImportName: i => `__tla_${i}`
-        }]
-      ]
+        [
+          '@intlify/unplugin-vue-i18n/vite',
+          {
+            // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
+            // compositionOnly: false,
+
+            // if you want to use named tokens in your Vue I18n messages, such as 'Hello {name}',
+            // you need to set `runtimeOnly: false`
+            // runtimeOnly: false,
+
+            ssr: ctx.modeName === 'ssr',
+
+            // you need to set i18n resource including paths !
+            include: [fileURLToPath(new URL('./src/i18n', import.meta.url))],
+          },
+        ],
+
+        [
+          'vite-plugin-checker',
+          {
+            eslint: {
+              lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
+              useFlatConfig: true,
+            },
+          },
+          { server: false },
+        ],
+      ],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer

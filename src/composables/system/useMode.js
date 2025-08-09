@@ -7,39 +7,27 @@ export default function useMode() {
   const clientNavList = [
     {
       toName: { name: "inicio" },
-      name: "Inicio",
+      name: "Home",
       inative: false
     },
     {
       // toName: { name: "perfomance" },
       toName: { name: "inicio" },
-      name: "Perfomance",
+      name: "Contratos",
       inative: true
     },
     {
       // toName: { name: "graphic" },
       toName: { name: "inicio" },
-      name: "Graficos",
+      name: "Comunicação",
       inative: true
     },
     {
       // toName: { name: "calendar" },
       toName: { name: "inicio" },
-      name: "Calendário",
+      name: "Empréstimos",
       inative: true
-    },
-    {
-      // toName: { name: "report" },
-      toName: { name: "inicio" },
-      name: "Relatório",
-      inative: true
-    },
-    {
-      // toName: { name: "loan" },
-      toName: { name: "inicio" },
-      name: "Emprestimo",
-      inative: true
-    },
+    }
   ]
 
 
