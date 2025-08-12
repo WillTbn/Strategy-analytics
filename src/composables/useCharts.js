@@ -9,6 +9,7 @@ export default function useCharts() {
   const dashboard = useLayoutStore().dashboard;
   const useStore = useUserStore()
   const { walletChart } = storeToRefs(useStore)
+  // const months = ["JAN", "FEV", "MAR", "ABRIL", "MAI", "JUN", "JUL", "AGO"];
   const optionsTheme = () => {
     return Dark.isActive
       ? {
@@ -298,7 +299,10 @@ export default function useCharts() {
   };
   //no title
   const walletOption = ref({
-    theme: themeOptions,
+    theme: {
+      mode: 'dark',
+      palette: 'palette1'
+    },
     chart: {
       background: "transparent",
       height: 250,
@@ -306,27 +310,35 @@ export default function useCharts() {
       zoom: {
         enabled: false,
       },
-      toolbar: toolbarOptions,
+      toolbar: {
+        show: false
+      },
     },
     dataLabels: {
       enabled: false,
     },
     stroke: {
       curve: "straight",
+      width: 4
     },
-    // title: {
-    //   text: "Product Trends by Month",
-    //   align: "center",
-    // },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0,
+        opacityTo: 0,
+      }
+    },
+    colors: ["#008FFB"],
     legend: {
       labels: {
-        colors: ["#000"],
+        colors: ["#eee"],
         useSeriesColors: false,
       },
     },
     grid: {
       row: {
-        colors: ["#fff", "transparent"], // takes an array which will be repeated on columns
+        colors: ["transparent"],
         opacity: 1,
       },
     },
@@ -334,28 +346,41 @@ export default function useCharts() {
       tickPlacement: "center",
       labels: {
         style: {
-          colors: colorArray,
+          colors: "#eee",
           fontSize: "8px",
           fontWeight: 600,
         },
       },
-      categories: walletChart.value.days,
+      categories: ["JAN", "FEV", "MAR", "ABRIL", "MAI", "JUN", "JUL", "AGO"],
     },
     yaxis: {
       opposite: true,
-      min: 0,
-      max: 50,
+      min: 40000, // Um pouco abaixo do valor inicial para melhor visualização
+      max: 80000, // Um pouco acima do valor final
       labels: {
         align: "left",
         formatter: (value) => {
-          let numberNew = value.toFixed(2);
-          return `${numberNew}%`;
+          return ` ${value}k`;
+          // return new Intl.NumberFormat('pt-BR', {
+          //   style: 'currency',
+          //   currency: 'BRL'
+          // }).format(value);
         },
         style: {
-          colors: colorArray,
+          colors: "#eee",
         },
       },
     },
+    tooltip: {
+      y: {
+        formatter: (value) => {
+          return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }).format(value);
+        }
+      }
+    }
   });
   const walletOptionCurrent = ref({
     theme: themeOptions,
@@ -399,13 +424,14 @@ export default function useCharts() {
         },
       },
       categories: [
-        "-       -2023-Q3",
-        "2023-Q2",
-        "2023-Q1",
-        "2023-Q0",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
+        "JAN",
+        "FEV",
+        "MAR",
+        "ABRIL",
+        "MAI",
+        "JUN",
+        "JUL",
+        "AGO",
       ],
     },
     yaxis: {
