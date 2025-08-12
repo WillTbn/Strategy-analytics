@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHr lpR fFf" class="text-white" :class="system.theme">
     <navbar-layout :key="route.name" v-if="!loading" />
-    <q-page-container padding style="min-height: 95vh">
+    <q-page-container style="min-height: 95vh">
       <!-- @click.prevent="drawerThemeAction(false)" -->
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -94,7 +94,7 @@ export default defineComponent({
       Dark,
       codeDialog,
       statusDark: computed(() =>
-        Dark.isActive ? "bg-system-dark" : "bg-system"
+        Dark.isActive ? "bg-system-dark" : "bg-system",
       ),
       drawerThemeAction: storeLayout.setDrawerTheme,
     };

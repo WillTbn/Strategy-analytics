@@ -1,11 +1,7 @@
 <template>
-  <q-page class="WalletPage">
-    <div class="row justify-center">
-      <div class="col-12 col-md-8">
-        <balancecurrent-layout />
-      </div>
-    </div>
-    <role-investment-layout />
+  <q-page class="WalletPage q-ma-lg">
+    <balancecurrent-layout />
+    <!-- <role-investment-layout /> -->
   </q-page>
 </template>
 

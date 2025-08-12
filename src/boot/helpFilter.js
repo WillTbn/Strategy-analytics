@@ -36,7 +36,7 @@ const filters = {
     }).format(value);
   },
   /**
-   * converte para dolar data 30/04/2025 $exchange
+   * converte para dolar (data last update 30/04/2025) $exchange
    * @param {String|Number} value valor que sera convertido para o cambio
    * @param {Number|null} exchange valor do câmbio para ser dividido no calculo
    */

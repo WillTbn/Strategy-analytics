@@ -1,8 +1,14 @@
 <template>
-  <q-banner class="tool text-white q-ml-sm" dense>
-    <span class="text-h5"
-      >{{ getNameDay }} {{ getHours }}:{{ getMinutes }}</span
-    >
+  <q-banner
+    class="tool text-white q-ml-sm q-py-md"
+    dense
+    style="text-wrap-mode: nowrap"
+  >
+    <span class="text-inter-20-400 q-pa-sm">
+      {{ getNameDay }}
+      <span style="color: gray">|</span>
+      {{ getHours }} : {{ getMinutes }}
+    </span>
   </q-banner>
 </template>
 <script>
@@ -28,4 +34,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="sass"></style>
