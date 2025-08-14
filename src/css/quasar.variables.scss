@@ -29,3 +29,9 @@ $white_two: #fff;
 .text-second {
   color: $second;
 }
+.border-primary {
+  border: 1px solid $primary !important;
+}
+.border-radius-pattern {
+  border-radius: 8px;
+}

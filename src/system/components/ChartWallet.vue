@@ -1,7 +1,7 @@
 <template>
   <div class="ChartWallet col-md-6 col-xs-12" id="chart">
     <apexchart
-      :key="walletChart"
+      :key="timeSelect"
       type="area"
       height="170"
       ref="chart"
@@ -25,21 +25,6 @@
             style="border-radius: 8px"
           />
         </q-btn-group>
-        <!-- <div class="col-2">
-          <q-btn label="2025" color="primary" style="border-radius: 8px" />
-        </div>
-        <div class="col-2">
-          <q-btn label="1M" color="primary" style="border-radius: 8px" />
-        </div>
-        <div class="col-2">
-          <q-btn label="6M" color="primary" style="border-radius: 8px" />
-        </div>
-        <div class="col-2">
-          <q-btn label="12M" color="primary" style="border-radius: 8px" />
-        </div>
-        <div class="col-2">
-          <q-btn label="Máximo" color="primary" style="border-radius: 8px" />
-        </div> -->
       </div>
     </div>
   </div>

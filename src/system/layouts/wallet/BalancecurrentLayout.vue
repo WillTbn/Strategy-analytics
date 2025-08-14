@@ -8,7 +8,7 @@
   <!-- {{ setCurrentWallet }} -->
   <div class="row justify-center">
     <div
-      class="col-xs-12 col-md-10 row q-gutter-md justify-center q-mt-xs-lg q-mt-md-none"
+      class="col-12 col-lg-10 row q-gutter-md justify-center q-mt-xs-lg q-mt-md-none"
     >
       <balance-items
         v-for="(item, index) in optionsBalance"

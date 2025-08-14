@@ -4,7 +4,7 @@
       <q-btn flat :to="{ name: 'inicio' }">
         <svg-logo />
       </q-btn>
-      <q-space />
+      <q-space class="gt-sm" />
       <q-item
         v-for="list in clientNavList"
         :key="list"
@@ -14,11 +14,11 @@
         class="text-white"
       >
         <!-- :active-class="dark ? 'bg-dark' : 'bg-primary'" -->
-        <component :is="list.icon" class="q-mr-sm" />
+        <component :is="list.icon" class="q-mr-lg-sm" />
         <!-- :class="{ 'text-white': !list.inative, 'text-grey-4': list.inative }" -->
-        <q-item-section> {{ list.name }}</q-item-section>
+        <q-item-section class="gt-md"> {{ list.name }}</q-item-section>
       </q-item>
-      <q-space />
+      <q-space class="gt-sm" />
       <hours-banner v-if="navbar.clock" />
       <options-icons :theme="navbar.theme" :adm="data.role_id !== 3" />
       <avatar-menu v-if="data.account" :avatar="data.account.avatar" />

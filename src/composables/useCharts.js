@@ -10,27 +10,36 @@ export default function useCharts() {
   const useStore = useUserStore()
   const { walletChart } = storeToRefs(useStore)
   // const months = ["JAN", "FEV", "MAR", "ABRIL", "MAI", "JUN", "JUL", "AGO"];
+  const convertNumber = (num) => {
+    if (num >= 1_000_000) {
+      return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+    } else if (num >= 1_000) {
+      return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
+    } else {
+      return num.toString();
+    }
+  }
   const optionsTheme = () => {
     return Dark.isActive
       ? {
         mode: "dark",
         palette: "palette1",
-        monochrome: {
-          enabled: false,
-          color: "#255aee",
-          shadeTo: "light",
-          shadeIntensity: 0.65,
-        },
+        // monochrome: {
+        //   enabled: false,
+        //   color: "#255aee",
+        //   shadeTo: "light",
+        //   shadeIntensity: 0.65,
+        // },
       }
       : {
         mode: "light",
         palette: "palette2",
-        monochrome: {
-          enabled: false,
-          color: "#255aee",
-          shadeTo: "light",
-          shadeIntensity: 0.65,
-        },
+        // monochrome: {
+        //   enabled: false,
+        //   color: "#255aee",
+        //   shadeTo: "light",
+        //   shadeIntensity: 0.65,
+        // },
       };
   };
 
@@ -88,6 +97,7 @@ export default function useCharts() {
   const optionsComparative = ref({
     theme: themeOptions,
     legend: {
+      show: false,
       position: legendPosition,
       fontFamily: "Inter",
     },
@@ -99,7 +109,9 @@ export default function useCharts() {
       zoom: {
         enabled: false,
       },
-      toolbar: toolbarOptions,
+      toolbar: {
+        show: false, // Remove download/export options
+      },
     },
     dataLabels: {
       enabled: false,
@@ -107,59 +119,67 @@ export default function useCharts() {
     stroke: {
       curve: "straight",
     },
-    title: {
-      text: "Carteira",
-      align: "center",
-      margin: titleStyle.value.margin,
-      style: titleStyle.value.style,
-    },
+    // title: {
+    //   text: "Carteira",
+    //   align: "center",
+    //   margin: titleStyle.value.margin,
+    //   style: titleStyle.value.style,
+    // },
     grid: {
+      show: false,
       row: {
-        colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+        colors: ["transparent"], // takes an array which will be repeated on columns
         opacity: 1,
+      },
+      yaxis: {
+        lines: {
+          show: true,
+        }
       },
     },
     xaxis: {
+      crosshairs: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
       tickPlacement: "center",
       labels: {
         style: {
-          colors: colorArray,
+          colors: "#989898",
           fontSize: "8px",
           fontFamily: "Inter",
           fontWeight: 600,
         },
       },
       categories: [
-        "--- 2023-Q3",
-        "2023-Q2",
-        "2023-Q1",
-        "2024-Q0",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
+        "jun.",
+        "jul.",
+        "ago.",
+        "set.",
+        "out.",
+        "nov.",
+        "dez.",
       ],
-      // categories: [
-      //   "--- 2022-Q1",
-      //   "2022-Q2",
-      //   "2022-Q3",
-      //   "2022-Q4",
-      //   "2023-Q1",
-      //   "2023-Q2",
-      //   "2023-Q3",
-      // ],
     },
     yaxis: {
       opposite: true,
-      min: -20,
-      max: 50,
+      min: 0,
+      max: 1100000,
       labels: {
         align: "left",
         formatter: (value) => {
-          return `${value}%`;
+          return `${convertNumber(value)}`;
         },
         style: {
+          colors: "#989898",
+          fontSize: "8px",
           fontFamily: "Inter",
-          colors: colorArray,
+          fontWeight: 600,
         },
       },
     },
@@ -360,7 +380,7 @@ export default function useCharts() {
       labels: {
         align: "left",
         formatter: (value) => {
-          return ` ${value}k`;
+          return ` ${convertNumber(value)}`;
           // return new Intl.NumberFormat('pt-BR', {
           //   style: 'currency',
           //   currency: 'BRL'

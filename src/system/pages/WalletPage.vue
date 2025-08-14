@@ -1,6 +1,7 @@
 <template>
   <q-page class="WalletPage q-ma-lg">
     <balancecurrent-layout />
+    <resume-contracts-layout />
     <!-- <role-investment-layout /> -->
   </q-page>
 </template>
@@ -8,7 +9,7 @@
 <script setup>
 // import { onMounted, ref } from "vue";
 import BalancecurrentLayout from "../layouts/wallet/BalancecurrentLayout.vue";
-import RoleInvestmentLayout from "../layouts/wallet/RoleInvestmentLayout.vue";
+import ResumeContractsLayout from "../layouts/wallet/ResumeContractsLayout.vue";
 </script>
 
 <style scoped lang="sass">
