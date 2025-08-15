@@ -98,11 +98,10 @@ export default function useCharts() {
     theme: themeOptions,
     legend: {
       show: false,
-      position: legendPosition,
-      fontFamily: "Inter",
     },
     colors: ["#2E93fA", "#66DA26", "#E91E63"],
     chart: {
+      width: "100%",
       height: 350,
       background: "transparent",
       type: "line",

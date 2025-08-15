@@ -1,10 +1,10 @@
 <template>
   <q-banner
-    class="tool text-white q-ml-md-sm q-py-md-md"
+    class="text-white q-py-md-md styleTool"
     dense
     style="text-wrap-mode: nowrap"
   >
-    <span class="text-inter-20-400 q-pa-md-sm">
+    <span class="text-inter-20-400">
       {{ getNameDay }}
       <span style="color: gray">|</span>
       {{ getHours }} : {{ getMinutes }}

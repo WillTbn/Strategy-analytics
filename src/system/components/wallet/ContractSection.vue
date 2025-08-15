@@ -109,7 +109,6 @@ const emit = defineEmits(["select", "edit", "closed"]);
 
 <style scoped lang="sass">
 .contract-section
-  gap:16px
   padding:16px
   border-radius: 8px
   background: linear-gradient(202.99deg, rgba(0, 0, 0, 0.24) 0.52%, rgba(0, 0, 0, 0.08) 51.12%, rgba(0, 0, 0, 0.04) 99.48%)

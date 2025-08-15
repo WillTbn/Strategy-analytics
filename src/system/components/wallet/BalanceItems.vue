@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="row justify-between items-center q-mt-lg">
-        <div class="col-lg-6 col-12" style="display: flex; align-items: end">
+        <div class="col-lg-auto col-12" style="display: flex; align-items: end">
           <div style="line-height: 1rem">
             <p class="text-roboto-32-700">
               {{ $filters.currentValue(balance, brCoin) }}
@@ -28,7 +28,7 @@
             </p>
           </div>
         </div>
-        <p class="text-roboto-16-400 text-muted col-lg-6 col-12">
+        <p class="text-roboto-16-400 text-muted col-lg-auto col-12">
           +2% vs. período anterior
         </p>
       </div>

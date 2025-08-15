@@ -1,6 +1,9 @@
 <template>
-  <div class="ChartComparative">
-    <q-btn-group class="row q-gutter-sm" style="box-shadow: none !important">
+  <div class="chart-comparative row justify-between">
+    <q-btn-group
+      class="row col-12 q-gutter-sm"
+      style="box-shadow: none !important"
+    >
       <q-btn
         v-for="(item, index) in optionsTime"
         :key="index"
@@ -12,23 +15,36 @@
       />
     </q-btn-group>
     <apexchart
+      class="col-7"
       :key="timeSelect"
       type="area"
-      :height="height"
       ref="chart"
+      width="100%"
       :options="optionsComparative"
       :series="series"
     ></apexchart>
+    <div class="col-auto q-pa-md">
+      <legend-chart
+        v-for="(item, index) in chartData"
+        :key="index"
+        :name="item.name"
+        :color="item.color"
+        :now="item.now"
+        :year="item.year"
+      />
+    </div>
     <!-- width="75%" -->
   </div>
 </template>
 
 <script>
 import useCharts from "src/composables/useCharts";
+import LegendChart from "./LegendChart.vue";
 import { defineComponent, ref, computed } from "vue";
 export default defineComponent({
   name: "ChartComparative",
-  props: { height: { type: String, default: "350" } },
+  props: { height: { type: String, default: "250" } },
+  components: { LegendChart },
   setup() {
     const chart = ref(null);
     const { optionsComparative } = useCharts();
@@ -40,7 +56,26 @@ export default defineComponent({
       { label: "Máximo", value: "Máximo" },
     ];
     const timeSelect = ref("2025");
-
+    const chartData = ref([
+      {
+        color: "#2E93fA",
+        name: "Contrato",
+        now: "27,8",
+        year: "147,84",
+      },
+      {
+        color: "#66DA26",
+        name: "S&P 500",
+        now: "27,8",
+        year: "147,84",
+      },
+      {
+        color: "#E91E63",
+        name: "Ibovespa",
+        now: "27,8",
+        year: "147,84",
+      },
+    ]);
     const series = [
       {
         name: "Carteira",
@@ -55,7 +90,14 @@ export default defineComponent({
         data: [100000, 200000, 50000, 50000, 90000, 20000, 50000],
       },
     ];
-    return { series, chart, optionsComparative, optionsTime, timeSelect };
+    return {
+      series,
+      chart,
+      optionsComparative,
+      optionsTime,
+      timeSelect,
+      chartData,
+    };
   },
   // Outras configurações do componente aqui
 });

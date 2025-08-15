@@ -25,12 +25,15 @@
         @select="contractSelect(contract.id)"
         @closed="contractSection = null"
       >
-        <div class="row">
-          <div class="col-8">
+        <div class="row q-gutter-md">
+          <div class="col-7 styleTool q-pa-md">
             <component
               :is="contract.chart"
               ref="contractSection{{ contract.id }}"
             />
+          </div>
+          <div class="col-auto styleTool q-pa-md flex flex-center">
+            <chart-sectors ref="contractSection{{ contract.id }}" />
           </div>
         </div>
       </contract-section>
@@ -42,6 +45,7 @@
 import { defineComponent, ref } from "vue";
 import ContractSection from "src/system/components/wallet/ContractSection.vue";
 import ChartComparative from "src/system/components/charts/ChartComparative.vue";
+import ChartSectors from "src/system/components/charts/ChartSectors.vue";
 
 defineComponent({
   name: "ResumeContractsLayout",

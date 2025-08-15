@@ -124,18 +124,6 @@ export default defineComponent({
   border-radius: 13px;
 }
 </style>
-<style lang="sass">
-.tool
-  gap: 8px
-  opacity: 1
-  border-radius: 8px
-  border-width: 1px
-  padding: 24px
-  background: linear-gradient(202.99deg, rgba(0, 0, 0, 0.24) 0.52%, rgba(0, 0, 0, 0.08) 51.12%, rgba(0, 0, 0, 0.04) 99.48%);
-  border: 1px solid #EFEFEF14
-  backdrop-filter: blur(32px)
-  box-shadow: 4px 4px 12px 0px #0000003D
-</style>
 
 <!-- width: 179;
 height: 51;

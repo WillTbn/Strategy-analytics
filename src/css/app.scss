@@ -202,3 +202,23 @@ body {
   backdrop-filter: blur(32px);
   box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.24);
 }
+
+.styleTool {
+  background: linear-gradient(
+    202.99deg,
+    rgba(0, 0, 0, 0.24) 0.52%,
+    rgba(0, 0, 0, 0.08) 51.12%,
+    rgba(0, 0, 0, 0.04) 99.48%
+  );
+  border: 1px solid #efefef14;
+  backdrop-filter: blur(32px);
+  box-shadow: 4px 4px 12px 0px #0000003d;
+  border-width: 1px;
+  @extend .border-radius-pattern;
+}
+.tool {
+  gap: 8px;
+  opacity: 1;
+  padding: 24px;
+  @extend .styleTool;
+}
