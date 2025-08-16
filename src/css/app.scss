@@ -52,7 +52,7 @@ body {
   font-family:
     "Roboto", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
 }
 *::-webkit-scrollbar {
   width: 12px; /* largura da barra de rolagem inteira */
@@ -221,4 +221,26 @@ body {
   opacity: 1;
   padding: 24px;
   @extend .styleTool;
+}
+.propaganda-tool {
+  gap: 24px;
+  padding: 28px;
+  background: linear-gradient(
+    202.99deg,
+    rgba(0, 163, 255, 0.64) 0.52%,
+    rgba(0, 0, 0, 0.08) 40.21%,
+    rgba(0, 163, 255, 0.12) 90.45%
+  );
+  border: 1px solid #efefef29;
+  backdrop-filter: blur(32px);
+  box-shadow: 4px 4px 12px 0px #0000003d;
+  @extend .border-radius-pattern;
+}
+
+@media (min-width: 0) {
+  .row > .col-2-2,
+  .row > .col-xs-2-2 {
+    height: auto;
+    width: 22.6667%;
+  }
 }

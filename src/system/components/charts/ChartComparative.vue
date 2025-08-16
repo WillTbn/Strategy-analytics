@@ -15,7 +15,7 @@
       />
     </q-btn-group>
     <apexchart
-      class="col-7"
+      class="col-6"
       :key="timeSelect"
       type="area"
       ref="chart"
