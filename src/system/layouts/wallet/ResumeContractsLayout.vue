@@ -1,5 +1,5 @@
 <template>
-  <div class="resume-contracts-layout row justify-between q-ma-md">
+  <div class="resume-contracts-layout row justify-between q-my-md">
     <q-card class="bg-transparent col-9 q-pa-md">
       <div class="col-12">
         <h2 class="text-h7">

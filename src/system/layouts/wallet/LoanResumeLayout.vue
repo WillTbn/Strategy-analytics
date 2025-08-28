@@ -1,0 +1,69 @@
+<template>
+  <div class="q-my-sm card-wallet">
+    <q-card class="loan-resume-layout bg-transparent row q-px-md q-mt-sm">
+      <div class="col-12">
+        <h2 class="text-h7">
+          Empréstimos
+          <q-btn color="primary" flat no-caps>
+            Ver mais
+            <IconArrowRight class="q-ml-xs" />
+          </q-btn>
+        </h2>
+      </div>
+      <resume-loans
+        v-for="(item, index) in loans"
+        :key="index"
+        :title="item.title"
+        :icon="item.icon"
+        :balance="item.balance"
+        :cipher="item.cipher"
+        :br-coin="item.brCoin"
+        :description="item.description"
+      />
+    </q-card>
+  </div>
+</template>
+
+<script setup>
+import { defineComponent } from "vue";
+import ResumeLoans from "src/system/components/loan/ResumeLoans.vue";
+// import BalanceItems from "src/system/components/wallet/BalanceItems.vue";
+defineComponent({
+  name: "LoanResumeLayout",
+});
+
+const loans = [
+  {
+    title: "Empréstimos Vigentes",
+    cipher: false,
+    balance: "02 ativos",
+  },
+  {
+    title: "Valor Total Vigente",
+    icon: "IconReceipt",
+    balance: "482791.00",
+    cipher: "R$",
+    brCoin: true,
+    description: "(USD 85,196.39)",
+  },
+  {
+    title: "Próxima Parcela",
+    icon: "calendarDollar",
+    balance: "2192.27",
+    cipher: "R$",
+    brCoin: true,
+    description: "Venc.: 05/11/25",
+  },
+  {
+    title: "Quitação",
+    icon: "ChatPie",
+    balance: "66%",
+    cipher: false,
+    description: "Fim: 02/06/28",
+  },
+];
+</script>
+
+<style scoped>
+/* Estilos específicos do componente aqui */
+</style>
