@@ -5,8 +5,8 @@
     label-class="text-teal"
     label-style="font-size: 1.1em"
   />
-  <div class="col-10 col-sm q-mt-md-lg q-mt-xs-md resume-loans q-px-lg">
-    <div class="tool">
+  <div class="col-10 col-sm q-my-md-lg q-my-xs-md card-resume-contract q-px-lg">
+    <div class="tool" style="min-height: 177px">
       <div class="q-mb-sm">
         <div class="row items-center q-gutter-sm">
           <component
@@ -31,7 +31,7 @@
             </p>
           </div>
         </div>
-        <p class="text-roboto-16-400 text-muted col-lg-auto col-12">
+        <p class="text-roboto-16-400 text-muted col-12">
           <!-- (USD {{ $filters.convertCoin(balance) }}) -->
           {{ description }}
         </p>
@@ -44,7 +44,7 @@
 import { comment } from "postcss";
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "ResumeLoans",
+  name: "CardResumeContract",
   props: {
     title: { type: String },
     description: { type: String },

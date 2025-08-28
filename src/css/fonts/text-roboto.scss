@@ -39,3 +39,7 @@ $fontStyle: normal;
   @include roboto-regular(calc(32 / 16), 700);
   // $lineHeight: calc(22.4 / 16) + rem;
 }
+.text-roboto-20-400 {
+  @include roboto-regular(calc(20 / 16), 400);
+  $lineHeight: calc(26.4 / 16) + rem;
+}

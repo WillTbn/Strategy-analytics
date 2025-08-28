@@ -106,6 +106,11 @@ const routes = [
         ]
       },
       {
+        path: "contratos",
+        name: "contracts",
+        component: () => import("../system/pages/ContractsPage.vue"),
+      },
+      {
         path: "perfomance",
         name: "perfomance",
         component: () => import("../system/pages/PerfomancePage.vue"),

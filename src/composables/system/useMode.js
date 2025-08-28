@@ -13,9 +13,9 @@ export default function useMode() {
     },
     {
       // toName: { name: "perfomance" },
-      toName: { name: "inicio" },
+      toName: { name: "contracts" },
       name: "Contratos",
-      inative: true,
+      inative: false,
       icon: 'IconFileDollar'
     },
     {

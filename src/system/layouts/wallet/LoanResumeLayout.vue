@@ -1,6 +1,8 @@
 <template>
-  <div class="q-my-sm card-wallet">
-    <q-card class="loan-resume-layout bg-transparent row q-px-md q-mt-sm">
+  <div class="q-my-md card-wallet">
+    <q-card
+      class="loan-resume-layout bg-transparent row q-px-md q-mt-md q-pb-md"
+    >
       <div class="col-12">
         <h2 class="text-h7">
           Empréstimos
@@ -48,7 +50,7 @@ const loans = [
   },
   {
     title: "Próxima Parcela",
-    icon: "calendarDollar",
+    icon: "IconCalendarDollar",
     balance: "2192.27",
     cipher: "R$",
     brCoin: true,
@@ -56,7 +58,7 @@ const loans = [
   },
   {
     title: "Quitação",
-    icon: "ChatPie",
+    icon: "IconChartPie",
     balance: "66%",
     cipher: false,
     description: "Fim: 02/06/28",

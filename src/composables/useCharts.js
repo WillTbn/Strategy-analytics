@@ -102,7 +102,95 @@ export default function useCharts() {
     colors: ["#2E93fA", "#66DA26", "#E91E63"],
     chart: {
       width: "100%",
-      height: 350,
+      height: 150,
+      background: "transparent",
+      type: "line",
+      zoom: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false, // Remove download/export options
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    // title: {
+    //   text: "Carteira",
+    //   align: "center",
+    //   margin: titleStyle.value.margin,
+    //   style: titleStyle.value.style,
+    // },
+    grid: {
+      show: false,
+      row: {
+        colors: ["transparent"], // takes an array which will be repeated on columns
+        opacity: 1,
+      },
+      yaxis: {
+        lines: {
+          show: true,
+        }
+      },
+    },
+    xaxis: {
+      crosshairs: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      tickPlacement: "center",
+      labels: {
+        style: {
+          colors: "#989898",
+          fontSize: "8px",
+          fontFamily: "Inter",
+          fontWeight: 600,
+        },
+      },
+      categories: [
+        "jun.",
+        "jul.",
+        "ago.",
+        "set.",
+        "out.",
+        "nov.",
+        "dez.",
+      ],
+    },
+    yaxis: {
+      opposite: true,
+      min: 0,
+      max: 1100000,
+      labels: {
+        align: "left",
+        formatter: (value) => {
+          return `${convertNumber(value)}`;
+        },
+        style: {
+          colors: "#989898",
+          fontSize: "8px",
+          fontFamily: "Inter",
+          fontWeight: 600,
+        },
+      },
+    },
+  });
+  const optionsContractComparative = ref({
+    legend: {
+      show: false,
+    },
+    colors: ["#2E93fA", "#66DA26", "#E91E63"],
+    chart: {
+      width: "100%",
+      height: 100,
       background: "transparent",
       type: "line",
       zoom: {
@@ -470,6 +558,157 @@ export default function useCharts() {
       },
     },
   });
+  const barComparative = ref({
+    theme: themeOptions,
+    colors: ["#00A3FF", "#00F5D9", "#7438FF"],
+    chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: '100%',
+      background: "transparent",
+      toolbar: {
+        show: false
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        columnWidth: '2%',
+      },
+    },
+    stroke: {
+      width: 0,
+    },
+    xaxis: {
+      categories: ["Renda Fixa", "Renda Variável", "Poupança", "Aposentadoria"],
+      // categories: [2008, 2009, 2010, 2011],
+    },
+    tooltip: {
+      show: false,
+      y: {
+        formatter: function (val) {
+          return val + "%"
+        }
+      }
+    },
+    fill: {
+      opacity: 1
+
+    },
+    grid: {
+      borderColor: "transparent",
+      strokeDashArray: 0.1,
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      offsetX: 80,
+      labels: {
+        colors: ["#a59b9bff", "#a59b9bff", "#a59b9bff"],
+        useSeriesColors: false,
+      }
+    },
+    yaxis: {
+      tooltip: {
+        enabled: false,
+      },
+      labels: {
+        style: {
+          align: "left",
+          colors: ["#a59b9bff", "#a59b9bff", "#a59b9bff"],
+        },
+      },
+    },
+  })
+  const barColumnComparative = ref({
+    theme: themeOptions,
+    colors: ["#00A3FF", "#00F5D9", "#7438FF"],
+    chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      background: "transparent",
+      toolbar: {
+        show: false
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '25%',
+      },
+    },
+    stroke: {
+      width: 0,
+    },
+    xaxis: {
+      categories: ["JAN. 25", "FEB. 25", "MAR. 25", "APR. 25", "MAY. 25", "JUN. 25", "JUL. 25", "AUG. 25", "SEP. 25", "OCT. 25", "NOV. 25", "DEC. 25",
+        "JAN. 26", "FEB. 26", "MAR. 26"],
+      // categories: [2008, 2009, 2010, 2011],
+    },
+    goals: {
+      me: 'Expected',
+      value: 50,
+      strokeHeight: 3,
+      strokeColor: '#ff0008'
+    },
+    grid: {
+      borderColor: "#f1f1f1",
+      strokeDashArray: 0.1,
+    },
+    tooltip: {
+      show: false,
+      y: {
+        formatter: function (val) {
+          return val + "%"
+        }
+      }
+    },
+    fill: {
+      opacity: 1
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      offsetX: 80,
+      labels: {
+        show: false,
+        colors: ["#a59b9bff", "#a59b9bff", "#a59b9bff"],
+        useSeriesColors: false,
+      }
+    },
+    yaxis: {
+      tooltip: {
+        enabled: false,
+      },
+      labels: {
+        style: {
+          align: "left",
+          colors: ["#a59b9bff", "#a59b9bff", "#a59b9bff"],
+        },
+      },
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: 50, // valor da média
+          borderColor: '#FF991F',
+          borderWidth: 3,
+          label: {
+            borderColor: '#ff0008',
+            style: {
+              color: '#fff',
+              background: '#ff0008'
+            },
+            text: 'Média'
+          }
+        }
+      ]
+    }
+
+  })
 
   return {
     walletOption,
@@ -478,5 +717,8 @@ export default function useCharts() {
     optionsAssetsClass,
     optionsAssetRisks,
     walletOptionCurrent,
+    optionsContractComparative,
+    barComparative,
+    barColumnComparative
   };
 }

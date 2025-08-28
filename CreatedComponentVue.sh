@@ -23,6 +23,7 @@ else
   echo "| →  0 - components (src/components)                          |"
   echo "| →  1 - layouts    (src/layouts)                             |"
   echo "| →  2 - pages      (src/pages)                               |"
+  echo "|      _______________  System   ______________               |"
   echo "| →  3 - sistema components (src/system/components)           |"
   echo "| →  4 - sistema layouts    (src/system/layouts)              |"
   echo "| →  5 - sistema pages      (src/system/pages)                |"
