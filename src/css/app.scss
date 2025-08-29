@@ -63,7 +63,8 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #4694d1; /* cor do polegar de rolagem */
+  // background-color: #4694d1; /* cor do polegar de rolagem */
+  background-color: #eee; /* cor do polegar de rolagem */
   border-radius: 20px; /* arredondamento do polegar de rolagem */
   border: 3px solid #100000; /* #100000 cria preenchimento em torno do polegar de rolagem #4694d1 */
 }
@@ -222,6 +223,40 @@ body {
   padding: 24px;
   @extend .styleTool;
 }
+.icon-tool {
+  background: linear-gradient(
+    202.99deg,
+    rgba(255, 255, 255, 0.06) 0.52%,
+    rgba(255, 255, 255, 0.01) 79.69%
+  );
+}
+.badge-publicity {
+  background: linear-gradient(
+    202.99deg,
+    rgba(255, 255, 255, 0.16) 0.52%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 99.48%
+  );
+
+  border-radius: 8px;
+  gap: 12px;
+
+  opacity: 1;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  border-top-width: 0.5px;
+  border-right-width: 0.5px;
+  border-bottom-width: 0.5px;
+  border-left-width: 4px;
+  border-width: 0.5px, 0.5px, 0.5px, 4px;
+
+  border-style: solid;
+
+  border-color: var(--Success-400, #74e239);
+  box-shadow: 0px 0px 16px 4px #74e2391f;
+}
 .propaganda-tool {
   gap: 24px;
   padding: 28px;
@@ -243,4 +278,12 @@ body {
     height: auto;
     width: 22.6667%;
   }
+}
+
+.scrollable {
+  max-height: 680px;
+  overflow-y: auto;
+}
+.line-height-1 {
+  line-height: 1px;
 }
