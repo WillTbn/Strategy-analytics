@@ -106,9 +106,14 @@ const routes = [
         ]
       },
       {
-        path: "contratos",
-        name: "contracts",
+        path: "contracts",
+        name: "Contratos",
         component: () => import("../system/pages/ContractsPage.vue"),
+      },
+      {
+        path:"communication",
+        name: "Comunicação",
+        component: () => import("../system/pages/CommunicationPage.vue"),
       },
       {
         path: "perfomance",

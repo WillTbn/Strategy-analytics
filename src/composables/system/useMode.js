@@ -13,16 +13,16 @@ export default function useMode() {
     },
     {
       // toName: { name: "perfomance" },
-      toName: { name: "contracts" },
+      toName: { name: "Contratos" },
       name: "Contratos",
       inative: false,
       icon: 'IconFileDollar'
     },
     {
       // toName: { name: "graphic" },
-      toName: { name: "inicio" },
+      toName: { name: "Comunicação" },
       name: "Comunicação",
-      inative: true,
+      inative: false,
       icon: "IconSpeakerphone"
     },
     {
