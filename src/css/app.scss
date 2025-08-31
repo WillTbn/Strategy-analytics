@@ -287,3 +287,17 @@ body {
 .line-height-1 {
   line-height: 1px;
 }
+
+.border-button-group {
+  border: 0.122px solid currentcolor;
+}
+.q-btn-group > .q-btn-item:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 8px;
+}
+.q-btn-group > .q-btn-item:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 8px;
+}

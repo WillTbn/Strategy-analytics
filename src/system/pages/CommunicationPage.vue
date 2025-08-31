@@ -18,6 +18,14 @@
         >
           <!-- <component :is="item.icon" class="tabler-icon-s14 q-mr-sm" /> -->
           {{ item.label }}
+          <q-badge
+            rounded
+            class="q-ml-sm"
+            color="grey"
+            v-if="item.size && item.size > 0"
+          >
+            {{ item.size ? `${item.size}` : "" }}
+          </q-badge>
         </q-tab>
       </q-tabs>
       <q-separator />
@@ -42,15 +50,18 @@
           </div>
         </q-tab-panel>
       </q-tab-panels>
-      <div class="col-auto">teste</div>
+      <div class="col-auto">
+        <communication-filter />
+      </div>
     </div>
   </q-page>
 </template>
 
 <script setup>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import TitlePage from "src/system/components/TitlePage.vue";
 import CommunicationResumeLayout from "src/system/layouts/communication/CommunicationResumeLayout.vue";
+import CommunicationFilter from "src/system/layouts/communication/CommunicationFilter.vue";
 defineComponent({
   name: "CommunicationPage",
 });
@@ -211,7 +222,21 @@ const content = ref({
   title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
   description: "Comunicação interna",
 });
+onMounted(() => {
+  tabList.value.forEach((tab) => {
+    if (tab.name !== "Todos") {
+      let count = tab.content.length;
 
+      tab.size = count;
+      // tab.content = tab.content.map((item) => {
+      //   console.log(item);
+      //   return { ...item, ...content.value };
+      // });
+    }
+  });
+  // tabList.value[0].content = att[0];
+  // tabList.value[1].content = att[1];
+});
 // const tabList = [
 //   {
 //     name: "carteiras",
