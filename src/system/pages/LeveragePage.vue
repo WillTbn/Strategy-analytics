@@ -35,7 +35,8 @@
       >
         <q-card-section class="col-12 self-center text-center text-h6">
           <!-- <q-icon :name="`img:${item}`" class="bank-img" /> -->
-          <q-icon name="img:/img/level-block.png" class="block-icon" />
+          <img src="/img/level-block.png" alt="bloqueio" class="block-icon" />
+          <!-- <q-icon name="img:/img/level-block.png" class="block-icon" /> -->
         </q-card-section>
 
         <q-card-section class="col-12 row justify-center text-center">
@@ -49,7 +50,7 @@
           </p>
         </q-card-section>
         <q-card-actions align="between">
-          <q-btn no-caps size="sm" color="grey" flat>
+          <q-btn no-caps size="sm" color="grey" flat @click="$router.back()">
             <IconArrowLeft class="q-mx-sm" /> Voltar
           </q-btn>
           <q-btn color="primary" size="sm" no-caps>
@@ -138,18 +139,11 @@ onMounted(() => {
 <style scoped>
 /* Estilos específicos do componente aqui */
 .block-icon {
-  width: 12rem;
-  height: 12rem;
+  width: 30rem;
+  height: 15rem;
 }
 .control-card-block {
-  width: 572;
-  height: 597;
   gap: 32px;
-  angle: 0 deg;
   opacity: 1;
-  padding-top: 24px;
-  padding-right: 32px;
-  padding-bottom: 24px;
-  padding-left: 32px;
 }
 </style>
