@@ -1,6 +1,6 @@
 <template>
-  <div class="title-page row q-ml-sm">
-    <div class="col-12 q-pa-lg">
+  <div class="title-page row justify-between q-mx-sm">
+    <div class="col-10 q-pa-lg">
       <div class="text-subtitle2 text-caption text-grey q-mb-md">
         {{ subtitle }}
         <slot name="subtitleAppend"></slot>
@@ -19,6 +19,9 @@
       </q-breadcrumbs>
       <div class="text-h3 text-bold">{{ title }}</div>
       <slot></slot>
+    </div>
+    <div class="col-auto self-center q-px-md">
+      <slot name="append"></slot>
     </div>
   </div>
 </template>

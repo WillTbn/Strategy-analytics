@@ -20,9 +20,9 @@ export default defineComponent({
     setInterval(() => {
       time.value = new Date();
     }, 10000);
-    let days = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
+    let days = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
     const getNameDay = computed(() => {
-      return days[time.value.getDay() - 1];
+      return days[time.value.getDay()];
     });
     const getMinutes = computed(() => {
       return time.value.getMinutes().toString().padStart(2, "0");

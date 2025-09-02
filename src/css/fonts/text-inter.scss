@@ -22,3 +22,7 @@ $fontStyle: normal;
   @include inter-medium(calc(14 / 16), 500);
   $lineHeight: calc(20 / 16) + rem;
 }
+.text-inter-24-700 {
+  @include inter-medium(calc(24 / 16), 700);
+  $lineHeight: calc(32 / 16) + rem;
+}

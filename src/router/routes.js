@@ -111,7 +111,7 @@ const routes = [
         component: () => import("../system/pages/ContractsPage.vue"),
       },
       {
-        path:"communication",
+        path: "communication",
         name: "Comunicação",
         component: () => import("../system/pages/CommunicationPage.vue"),
       },
@@ -119,6 +119,16 @@ const routes = [
         path: "perfomance",
         name: "perfomance",
         component: () => import("../system/pages/PerfomancePage.vue"),
+      },
+      {
+        path: "leverage",
+        name: "Alavancagem",
+        component: () => import("../system/pages/LeveragePage.vue"),
+      },
+      {
+        path: "loan",
+        name: "Empréstimos",
+        component: () => import("../system/pages/LoanPage.vue"),
       },
       {
         path: "config",
@@ -129,11 +139,6 @@ const routes = [
         name: "calendar",
         path: "calendar",
         component: () => import("../system/pages/CalendarPage.vue"),
-      },
-      {
-        path: "loan",
-        name: "loan",
-        component: () => import("../system/pages/LoanPage.vue"),
       },
       {
         path: "report",
