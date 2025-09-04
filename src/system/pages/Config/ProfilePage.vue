@@ -41,17 +41,21 @@ import TitlePage from "src/system/components/TitlePage.vue";
 import PersonalSettingLayout from "src/system/layouts/config/PersonalSettingLayout.vue";
 import DocumentationSettingLayout from "src/system/layouts/config/DocumentationSettingLayout.vue";
 import AccountBankSettingLayout from "src/system/layouts/config/AccountBankSettingLayout.vue";
+import RegisterAssetsLayout from "src/system/layouts/config/RegisterAssetsLayout.vue";
+import TermsContractLayouts from "src/system/layouts/config/TermsContractLayouts.vue";
 
 const componentsMap = {
   PersonalSettingLayout,
   DocumentationSettingLayout,
   AccountBankSettingLayout,
+  RegisterAssetsLayout,
+  TermsContractLayouts,
 };
 defineComponent({
   name: "ProfilePage",
 });
 
-const tab = ref("bank");
+const tab = ref("patrimonio");
 
 const options = [
   {
@@ -72,12 +76,12 @@ const options = [
   {
     label: "Registro de Patrimônios",
     value: "patrimonio",
-    component: "PersonalSettingLayout",
+    component: "RegisterAssetsLayout",
   },
   {
     label: "Contratos e Termos",
     value: "contracts",
-    component: "PersonalSettingLayout",
+    component: "TermsContractLayouts",
   },
 ];
 </script>

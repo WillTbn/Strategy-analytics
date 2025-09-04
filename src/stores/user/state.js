@@ -13,6 +13,7 @@ const state = () => {
       password_confirmation: "",
     },
     level: 1,
+    assets: 2,
     register: {
       notifications: "refused"
     },

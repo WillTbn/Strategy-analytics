@@ -184,21 +184,4 @@ const outrosDoc = [
 ];
 </script>
 
-<style lang="sass" scoped>
-
-.q-badge-document
-  width: 191
-  height: 20
-  gap: 4px
-  opacity: 1
-  border-radius: 4px
-  border-width: 1px
-  padding-top: 2px
-  padding-right: 8px
-  padding-bottom: 2px
-  padding-left: 8px
-  background: linear-gradient(202.99deg, rgba(255, 255, 255, 0.16) 0.52%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.01) 99.48%);
-  border: 1px solid var(--Neutral-600, #656565)
-.pr-5
-  padding-left: 5px
-</style>
+<style lang="sass" scoped></style>
