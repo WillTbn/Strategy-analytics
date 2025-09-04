@@ -1,5 +1,5 @@
 <template>
-  <div class="PersonalsetupLayout text-white column">
+  <div class="personal-setup-layout text-white column">
     <q-inner-loading
       :showing="!data.account"
       label="Pegando seus dados..."
@@ -13,33 +13,42 @@
       :mail="data.email"
       :address="`${data.account.address_state} - ${data.account.address_district}`"
     />
-    <q-tabs
-      v-model="tab"
-      indicator-color="transparent"
-      active-color="white"
-      class="tool q-my-sm"
-      align="left"
-      no-caps
-    >
-      <q-tab name="personal" label="Dados pessoais" />
-      <q-tab name="bank" label="Dados bancários" />
-    </q-tabs>
-    <q-tab-panels
-      v-model="tab"
-      animated
-      swipeable
-      vertical
-      transition-prev="scale"
-      transition-next="scale"
-      class="tool col"
-    >
-      <q-tab-panel name="personal">
-        <personal-setting />
-      </q-tab-panel>
-      <q-tab-panel name="bank">
-        <banks-setting />
-      </q-tab-panel>
-    </q-tab-panels>
+    <div class="tool q-mt-md">
+      <q-tabs
+        v-model="tab"
+        active-color="white"
+        class="q-my-sm"
+        align="left"
+        no-caps
+      >
+        <q-tab name="personal" label="Dados Pessoais" />
+        <q-tab name="bank" label="Dados Bancários" />
+      </q-tabs>
+      <q-tab-panels
+        v-model="tab"
+        animated
+        swipeable
+        vertical
+        transition-prev="scale"
+        transition-next="scale"
+        class="bg-transparent"
+      >
+        <q-tab-panel name="personal">
+          <personal-setting />
+        </q-tab-panel>
+        <q-tab-panel name="bank">
+          <banks-setting />
+        </q-tab-panel>
+      </q-tab-panels>
+      <q-btn
+        class="q-mt-md"
+        color="primary"
+        label="Ver Perfil Completo"
+        no-caps
+        style="border-radius: 8px; font-weight: 400"
+        :to="{ name: 'profile' }"
+      />
+    </div>
   </div>
 </template>
 
@@ -113,6 +122,6 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-.PersonalsetupLayout
+.personal-setup-layout
   min-height: 90%
 </style>

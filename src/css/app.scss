@@ -257,6 +257,25 @@ body {
   border-color: var(--Success-400, #74e239);
   box-shadow: 0px 0px 16px 4px #74e2391f;
 }
+.badge-lvl {
+  width: 1760;
+  height: 104;
+  gap: 12px;
+  opacity: 1;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  border-left-width: 2px;
+  background: linear-gradient(
+    202.99deg,
+    rgba(255, 255, 255, 0.16) 0.52%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 99.48%
+  );
+  border-left: 2px solid var(--active, #00a3ff);
+}
 .propaganda-tool {
   gap: 24px;
   padding: 28px;
@@ -300,4 +319,15 @@ body {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 8px;
+}
+.text-align {
+  line-height: 14px;
+}
+
+@media (min-width: 0) {
+  .row > .col-2-7,
+  .row > .col-xs-2-7 {
+    height: auto;
+    width: 17.6667%;
+  }
 }

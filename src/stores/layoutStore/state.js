@@ -7,10 +7,28 @@ const state = () => {
     },
     system: {
       theme: "bg-theme-2",
-      color: ""
+      color: "",
+      coin_primary: "BRL",
+      coin_secondary: "USD",
+      language: "pt",
+      time_zone: "America/Sao_Paulo"
     },
     drawerTheme: false,
-    menuAdm: false
+    menuAdm: false,
+    optionsCoin:[
+      { label: "Real(BRL)", value: "BRL" },
+      { label: "Dólar(USD)", value: "USD" },
+      { label: "Euro(EUR)", value: "EUR" }
+    ],
+    optionsLanguage: [
+      { label: "Português do Brasil (pt-BR)", value: "pt" },
+      { label: "Inglês (en-US)", value: "en" },
+      { label: "Espanhol (es-ES)", value: "es" }
+    ],
+    optionsTimeZone: [
+      { label: "Brasilia, D.F.", value: "America/Sao_Paulo" },
+      { label: "Nova Iorque, EUA", value: "America/New_York" }
+    ]
   };
 };
 

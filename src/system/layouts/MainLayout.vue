@@ -40,6 +40,7 @@ import FooterSystem from "../components/FooterSystem.vue";
 // import { ref } from 'vue'
 
 export default defineComponent({
+  name: "MainLayout",
   components: { NavbarLayout, FooterSystem },
   setup() {
     const route = useRoute();

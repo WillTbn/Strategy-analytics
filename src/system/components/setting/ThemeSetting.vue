@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row q-gutter-sm">
-      <theme-options toggleClass=" self-center" />
+      <theme-options class="col-2 self-center" />
     </div>
   </div>
 </template>

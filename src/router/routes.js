@@ -132,8 +132,21 @@ const routes = [
       },
       {
         path: "config",
-        name: "config",
-        component: () => import("../system/pages/ConfigPage.vue"),
+        props: true,
+        children: [
+          {
+            path: "",
+            name: "config",
+            component: () => import("../system/pages/Config/ConfigPage.vue"),
+            props: true,
+          },
+          {
+            path: "profile",
+            name: "profile",
+            component: () => import("../system/pages/Config/ProfilePage.vue"),
+            props: true,
+          }
+        ],
       },
       {
         name: "calendar",

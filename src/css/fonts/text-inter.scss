@@ -26,3 +26,10 @@ $fontStyle: normal;
   @include inter-medium(calc(24 / 16), 700);
   $lineHeight: calc(32 / 16) + rem;
 }
+.text-inter-17-700 {
+  @include inter-medium(calc(17 / 16), 700);
+  $lineHeight: calc(32 / 16) + rem;
+}
+.text-inte-12-400 {
+  @include inter-medium(calc(12 / 16), 700);
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="AvatarNew">
+  <div class="avatar-new q-px-sm" style="align-content: center">
     <q-inner-loading
       :showing="loading"
       label="Please wait..."
@@ -7,7 +7,7 @@
       label-style="font-size: 1.1em"
     />
     <q-avatar
-      size="12rem"
+      size="8rem"
       @mouseover="setUpload()"
       @mouseleave="hoverImage = false"
       class="avatar-control q-ma-sm"
@@ -17,8 +17,9 @@
       <img
         :src="data.account.avatar"
         :class="{ 'avatar-control-h': hoverImage }"
+        style="border-radius: 50% !important"
       />
-      <q-avatar color="black" class="absolute-top">
+      <!-- <q-avatar color="black" class="absolute-top">
         <q-icon color="white" size="sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +34,7 @@
             />
           </svg>
         </q-icon>
-      </q-avatar>
+      </q-avatar> -->
       <q-icon
         v-if="hoverImage"
         color="white"
@@ -169,6 +170,7 @@ export default defineComponent({
 }
 .avatar-control-h {
   opacity: 0.2;
+  border-radius: 50%;
 }
 .custom-file {
   width: 70%;
