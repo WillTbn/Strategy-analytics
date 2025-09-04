@@ -40,16 +40,18 @@ import { defineComponent, ref } from "vue";
 import TitlePage from "src/system/components/TitlePage.vue";
 import PersonalSettingLayout from "src/system/layouts/config/PersonalSettingLayout.vue";
 import DocumentationSettingLayout from "src/system/layouts/config/DocumentationSettingLayout.vue";
+import AccountBankSettingLayout from "src/system/layouts/config/AccountBankSettingLayout.vue";
 
 const componentsMap = {
   PersonalSettingLayout,
   DocumentationSettingLayout,
+  AccountBankSettingLayout,
 };
 defineComponent({
   name: "ProfilePage",
 });
 
-const tab = ref("documentation");
+const tab = ref("bank");
 
 const options = [
   {
@@ -65,7 +67,7 @@ const options = [
   {
     label: "Contas Bancárias",
     value: "bank",
-    component: "PersonalSettingLayout",
+    component: "AccountBankSettingLayout",
   },
   {
     label: "Registro de Patrimônios",
