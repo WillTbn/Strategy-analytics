@@ -3,6 +3,13 @@ import { Cookies } from "quasar";
 import useExtractHelpers from "src/composables/system/Helpers/useExtractHelpers";
 const { addValues, formatCurrency } = useExtractHelpers()
 const getters = {
+  getOptionsAccount: (state) => {
+    return state.data.user_bank_accounts.map((acc) => ({
+      label: acc.number,
+      value: acc.id,
+      description: acc.bank
+    }));
+  },
   // doubleCount: (state) => state.counter * 2,
   getInvestiment: (state) => {
     return state.data.user_wallet.current_investment;

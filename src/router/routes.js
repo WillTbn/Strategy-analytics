@@ -102,6 +102,12 @@ const routes = [
             name: "deposit",
             component: () => import("../system/pages/DepositPage.vue"),
             props: true,
+          },
+          {
+            path: "cash",
+            name: "Saque",
+            component: () => import("../system/pages/Wallet/CashWalletPage.vue"),
+            props: true,
           }
         ]
       },

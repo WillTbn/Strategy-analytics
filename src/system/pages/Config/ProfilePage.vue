@@ -1,6 +1,7 @@
 <template>
   <q-page class="profile-page">
-    <title-page title="Perfil Completo" subtitle="Área Perfil" />
+    <title-page title="Perfil Completo" subtitle="Área Perfil" :toBack="true">
+    </title-page>
     <q-tabs
       v-model="tab"
       active-color="white"
@@ -43,6 +44,7 @@ import DocumentationSettingLayout from "src/system/layouts/config/DocumentationS
 import AccountBankSettingLayout from "src/system/layouts/config/AccountBankSettingLayout.vue";
 import RegisterAssetsLayout from "src/system/layouts/config/RegisterAssetsLayout.vue";
 import TermsContractLayouts from "src/system/layouts/config/TermsContractLayouts.vue";
+import { IconArrowLeft } from "@tabler/icons-vue";
 
 const componentsMap = {
   PersonalSettingLayout,

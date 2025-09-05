@@ -17,7 +17,16 @@
           :icon="item.icon"
         />
       </q-breadcrumbs>
-      <div class="text-h3 text-bold">{{ title }}</div>
+      <div class="text-h3 text-bold">
+        <IconArrowLeft
+          v-if="toBack"
+          width="40"
+          height="40"
+          @click="$router.back()"
+          style="cursor: pointer"
+        />
+        {{ title }}
+      </div>
       <slot></slot>
     </div>
     <div class="col-auto self-center q-px-md">
@@ -40,6 +49,7 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    toBack: { type: Boolean, default: false },
   },
 });
 </script>

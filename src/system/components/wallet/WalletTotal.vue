@@ -33,7 +33,7 @@
       ></div>
     </div>
     <div class="actions row q-gutter-md q-mt-sm">
-      <q-btn class="btn-pattern-transparent" no-caps>
+      <q-btn class="btn-pattern-transparent" no-caps @click.prevent="deposit">
         <IconArrowDown
           width="24"
           height="24"
@@ -41,7 +41,11 @@
         />
         Depósito
       </q-btn>
-      <q-btn class="btn-pattern-transparent" no-caps>
+      <q-btn
+        class="btn-pattern-transparent"
+        no-caps
+        @click.prevent="dialogTransfer = true"
+      >
         <IconTransfer
           width="24"
           height="24"
@@ -49,7 +53,7 @@
         />
         Transferência
       </q-btn>
-      <q-btn class="btn-pattern-transparent" no-caps>
+      <q-btn class="btn-pattern-transparent" no-caps :to="{ name: 'Saque' }">
         <IconArrowUp
           width="24"
           height="24"
@@ -58,12 +62,21 @@
         Saque
       </q-btn>
     </div>
+
+    <q-dialog v-model="dialogDeposit" persistent>
+      <card-deposit />
+    </q-dialog>
+    <q-dialog v-model="dialogTransfer">
+      <card-transfer />
+    </q-dialog>
   </div>
 </template>
 
 <script setup>
 import { IconArrowDown, IconArrowUp, IconTransfer } from "@tabler/icons-vue";
-import { defineComponent, defineProps } from "vue";
+import { defineComponent, defineProps, ref } from "vue";
+import CardDeposit from "src/system/layouts/deposit/CardDeposit.vue";
+import CardTransfer from "src/system/layouts/deposit/CardTransfer.vue";
 
 defineComponent({
   name: "WalletTotal",
@@ -74,8 +87,12 @@ const props = defineProps({
     type: [Number, String],
   },
 });
-
-// Seu código aqui
+const dialogDeposit = ref(false);
+const dialogTransfer = ref(false);
+const deposit = () => {
+  console.log("OLA");
+  dialogDeposit.value = true;
+};
 </script>
 
 <style scoped lang="sass">

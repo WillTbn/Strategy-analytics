@@ -15,6 +15,12 @@
             :class="colorItem"
           ></div>
           <span class="text-roboto-15-500 text-weight-bolder">{{ title }}</span>
+          <q-btn flat>
+            <IconInfoCircle />
+            <q-tooltip persistent v-model="showing" class="bg-transparent">
+              <component :is="componentMaps[tooltip]" />
+            </q-tooltip>
+          </q-btn>
         </div>
       </div>
       <div class="row justify-between items-center q-mt-lg">
@@ -36,9 +42,13 @@
   </div>
 </template>
 <script>
-import { defineComponent } from "vue";
+import { IconInfoCircle } from "@tabler/icons-vue";
+import { defineComponent, ref } from "vue";
+import InvestmentTips from "src/system/layouts/wallet/tooltips/InvestmentTips.vue";
+
 export default defineComponent({
   name: "BalanceItems",
+  components: { InvestmentTips },
   props: {
     title: { type: String },
     icon: { type: String },
@@ -48,13 +58,18 @@ export default defineComponent({
     brCoin: { type: Boolean, default: true },
     objText: { type: [Object, Boolean], default: false },
     colorItem: { type: String },
+    tooltip: { type: String, default: "InvestmentTips" },
     btnBgColor: { type: String, default: "btn-bank" },
     bgBadgeBank: { type: String, default: "badge-bank" },
     loading: { type: Boolean },
     // iconTheme: { type: String, default: "white" },
   },
   setup() {
-    return {};
+    const componentMaps = {
+      InvestmentTips,
+    };
+
+    return { componentMaps, showing: ref(false) };
   },
 });
 </script>

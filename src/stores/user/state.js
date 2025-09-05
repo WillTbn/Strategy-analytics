@@ -27,7 +27,12 @@ const state = () => {
     NavbarMenu: "adm",
     isDirty: {},
     isDirtyData: {},
-    walletChart: []
+    walletChart: [],
+    stepCash: 1,
+    cash: {
+      ammount: "",
+      account: ""
+    }
   };
 };
 
