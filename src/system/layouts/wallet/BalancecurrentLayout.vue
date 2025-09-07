@@ -23,7 +23,7 @@
         :btnBgColor="item.btnBgColor"
         :bgBadgeBank="item.bgBadgeBank"
         :tooltip="item.tooltip"
-      ></balance-items>
+      />
     </div>
   </div>
 </template>
@@ -111,7 +111,7 @@ export default defineComponent({
         objText: false,
         balance: "34.454,15",
         colorItem: "bg-info",
-        tooltip: "InvestmentTips",
+        tooltip: "InvestableTips",
       },
       {
         name: "Banking",
@@ -119,7 +119,7 @@ export default defineComponent({
         objText: false,
         balance: "11.484,71",
         colorItem: "bg-accent",
-        tooltip: "InvestmentTips",
+        tooltip: "BaseBalance",
       },
     ]);
     return {

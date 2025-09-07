@@ -6,6 +6,24 @@
     label-style="font-size: 1.1em"
   />
   <div class="balance-items col-12 col-sm q-mt-md-lg q-mt-xs-md">
+    <div class="display-none">
+      <!--
+          :target="true"
+         no-parent-event -->
+      <q-tooltip
+        v-model="showing"
+        class="bg-transparent z-max"
+        :anchor="anchor"
+        :self="self"
+      >
+        <component
+          :is="componentMaps[tooltip]"
+          @closed="showing = false"
+          :color="colorItem"
+        />
+      </q-tooltip>
+    </div>
+
     <div class="tool">
       <div class="q-mb-sm">
         <div class="row items-center">
@@ -15,11 +33,8 @@
             :class="colorItem"
           ></div>
           <span class="text-roboto-15-500 text-weight-bolder">{{ title }}</span>
-          <q-btn flat>
+          <q-btn flat @click.prevent="showTooltip">
             <IconInfoCircle />
-            <q-tooltip persistent v-model="showing" class="bg-transparent">
-              <component :is="componentMaps[tooltip]" />
-            </q-tooltip>
           </q-btn>
         </div>
       </div>
@@ -45,10 +60,12 @@
 import { IconInfoCircle } from "@tabler/icons-vue";
 import { defineComponent, ref } from "vue";
 import InvestmentTips from "src/system/layouts/wallet/tooltips/InvestmentTips.vue";
+import InvestableTips from "src/system/layouts/wallet/tooltips/InvestableTips.vue";
+import BaseBalance from "src/system/layouts/wallet/tooltips/BaseBalance.vue";
 
 export default defineComponent({
   name: "BalanceItems",
-  components: { InvestmentTips },
+  components: { InvestmentTips, InvestableTips, BaseBalance },
   props: {
     title: { type: String },
     icon: { type: String },
@@ -62,14 +79,34 @@ export default defineComponent({
     btnBgColor: { type: String, default: "btn-bank" },
     bgBadgeBank: { type: String, default: "badge-bank" },
     loading: { type: Boolean },
+    anchor: {
+      type: String,
+      default: "top end",
+    },
+    self: {
+      type: String,
+      default: "bottom end",
+    },
     // iconTheme: { type: String, default: "white" },
   },
   setup() {
+    const showing = ref(false);
     const componentMaps = {
       InvestmentTips,
+      InvestableTips,
+      BaseBalance,
+    };
+    // Função para mostrar o tooltip
+    const showTooltip = () => {
+      showing.value = true;
     };
 
-    return { componentMaps, showing: ref(false) };
+    // Função para fechar o tooltip
+    const closeTooltip = () => {
+      showing.value = false;
+    };
+
+    return { componentMaps, showing, showTooltip, closeTooltip };
   },
 });
 </script>

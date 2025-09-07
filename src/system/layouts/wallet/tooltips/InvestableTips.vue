@@ -1,8 +1,5 @@
 <template>
-  <q-card
-    class="tooltip-control row z-max"
-    style="min-width: 250px; z-index: 10000"
-  >
+  <q-card class="tooltip-control row" style="min-width: 450px; z-index: 10000">
     <div class="col-12 row">
       <div class="col" style="display: flex; align-items: center">
         <div
@@ -11,7 +8,7 @@
           :class="color"
         ></div>
         <span class="text-roboto-15-500 text-weight-bolder">
-          Saldo Investido
+          Saldo Investível
         </span>
       </div>
       <div class="col-auto z-max" style="cursor: pointer">
@@ -20,43 +17,31 @@
         </q-btn>
       </div>
       <div class="col-12">
-        <span class="text-roboto-15-500 text-grey">
-          Soma de Saldos que estão alocadis em Contratos
+        <span class="text-roboto-15-500">
+          Carteira cujo saldo é autorizado à Strategy Analytics operar, mas com
+          ganhos mais enxutos. Ou, pode ser alocado em Contrato mediante
+          solicitação à um assessor.
         </span>
       </div>
     </div>
     <q-separator class="col-12" size="1px" />
-    <div class="col-12 row justiy-between">
-      <div class="col row items-center">
-        <IconFileDollar class="text-primary" />
-        <span class="text-roboto-15-500">Contrato XPTO 2024 - 2030</span>
-      </div>
-      <div class="col-auto row items-center">
-        <IconLock />
-        <span class="text-roboto-15-500 q-ml-sm">R$ 25.000,00</span>
-      </div>
-    </div>
-    <div class="col-12 row justiy-between">
-      <div class="col row items-center">
-        <IconFileDollar class="text-primary" />
-        <span class="text-roboto-15-500">Contrato XPTO 2024 - 2030</span>
-      </div>
-      <div class="col-auto row items-center">
-        <IconLock />
-        <span class="text-roboto-15-500 q-ml-sm">R$ 25.000,00</span>
-      </div>
-    </div>
     <div class="col-12 row styleTool q-pa-sm">
       <div class="col-12 row items-center">
-        <IconLock />
+        <IconClock />
         <span class="text-roboto-15-500 q-ml-sm text-grey">
-          Contrato vigente, sem liquidez até o seu vencimento.
+          Alocação em Contrato - Até 1 dia útil
+        </span>
+      </div>
+      <div class="col-12 row items-center">
+        <IconClock />
+        <span class="text-roboto-15-500 q-ml-sm text-grey">
+          Transferência para “Saldo Livre Não Aplicado” - 30 dias úteis.
         </span>
       </div>
       <div class="col-12 q-mt-sm">
         <span class="text-roboto-15-500 q-ml-sm text-grey">
-          *Após o vencimento do Contrato, o saldo alocado nele é automaticamente
-          transferido para “Saldo Investível”.
+          *Prazos: Alocação em Contrato leva até 1 dia útil. Transferência para
+          a carteira “Saldo Livre Não Aplicado” leva 30 dias úteis.
         </span>
       </div>
     </div>
