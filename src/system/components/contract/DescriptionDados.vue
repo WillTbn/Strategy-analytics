@@ -19,7 +19,7 @@ defineComponent({
 });
 
 defineProps({
-  amount: { type: Number },
+  amount: { type: [Number, String] },
   title: { type: String },
   conversion: { type: String },
 });

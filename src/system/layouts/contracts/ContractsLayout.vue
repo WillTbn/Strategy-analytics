@@ -32,7 +32,12 @@
             </div>
           </div>
           <div class="col-auto">
-            <q-btn flat color="primary" no-caps>
+            <q-btn
+              flat
+              color="primary"
+              no-caps
+              @click.prevent="dialogOpportunity = true"
+            >
               Quero Conhecer
               <IconExternalLink width="14" height="14" class="q-ml-sm" />
             </q-btn>
@@ -57,18 +62,23 @@
         />
       </div>
     </card-overview-layout>
+
+    <q-dialog v-model="dialogOpportunity" persistent>
+      <opportunity-investment @closed="dialogOpportunity = false" />
+    </q-dialog>
   </div>
 </template>
 
 <script setup>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import CardOverviewLayout from "../CardOverviewLayout.vue";
 import ResumeContract from "src/system/components/contract/ResumeContract.vue";
+import OpportunityInvestment from "./OpportunityInvestment.vue";
 
 defineComponent({
   name: "ContractsLayout",
 });
-
+const dialogOpportunity = ref(false);
 const listContracts = [
   {
     id: 1,
