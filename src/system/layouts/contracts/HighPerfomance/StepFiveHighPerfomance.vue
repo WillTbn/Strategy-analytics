@@ -1,5 +1,5 @@
 <template>
-  <q-card class="step-five-high-perfomance tool" bordered>
+  <q-card class="step-five-high-perfomance tool-padding" bordered>
     <q-card-section>
       <p class="text-inter-24-700 text-bolder-weight">Regiões</p>
       <p class="text-grey">Define a alocação geográfica do portfólio</p>

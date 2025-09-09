@@ -1,5 +1,5 @@
 <template>
-  <q-card class="step-r-one-high-perfomance tool" bordered>
+  <q-card class="step-r-one-high-perfomance tool-padding" bordered>
     <q-card-section>
       <p class="text-inter-24-700 text-bolder-weight">
         Objetivo de Investimento

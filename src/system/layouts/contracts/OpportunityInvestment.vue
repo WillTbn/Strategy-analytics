@@ -1,5 +1,5 @@
 <template>
-  <q-card class="opportunity-investment" bordered>
+  <div class="opportunity-investment" bordered>
     <loading-step
       :progress="1"
       :stepNumber="stepHighPerfomance"
@@ -36,7 +36,7 @@
         </q-btn>
       </div>
     </div>
-  </q-card>
+  </div>
 </template>
 
 <script setup>

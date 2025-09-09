@@ -439,3 +439,8 @@ body {
 .badge-perfomance:hover {
   border: 1px solid #0000003d;
 }
+@media (min-width: 600px) {
+  .q-dialog__inner--minimized > div {
+    max-width: 660px;
+  }
+}

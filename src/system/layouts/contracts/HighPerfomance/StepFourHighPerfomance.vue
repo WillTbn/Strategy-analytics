@@ -1,5 +1,5 @@
 <template>
-  <q-card class="step-four-high-perfomance tool" bordered>
+  <q-card class="step-four-high-perfomance tool-padding" bordered>
     <q-card-section>
       <p class="text-inter-24-700 text-bolder-weight">Tipos de Ativos</p>
       <p class="text-grey">Selecione os tipos de ativos que você deseja</p>

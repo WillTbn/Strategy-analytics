@@ -1,5 +1,5 @@
 <template>
-  <q-card
+  <div
     class="finish-high-perfomance row bg-transparent text-center justify-center"
   >
     <q-icon
@@ -15,7 +15,7 @@
         em contato.
       </p>
     </div>
-  </q-card>
+  </div>
 </template>
 
 <script setup>
