@@ -59,6 +59,7 @@
           :nextDistributionAmount="contract.nextDistributionAmount"
           :nextDistributionDate="contract.nextDistributionDate"
           :coin="contract.coin"
+          :link="`contracts/${contract.id}`"
         />
       </div>
     </card-overview-layout>

@@ -99,7 +99,6 @@ export default function useCharts() {
     legend: {
       show: false,
     },
-    colors: ["#2E93fA", "#66DA26", "#E91E63"],
     chart: {
       width: "100%",
       height: 150,
@@ -115,8 +114,20 @@ export default function useCharts() {
     dataLabels: {
       enabled: false,
     },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 0.1,
+        opacityFrom: 0.5,
+        opacityTo: 0.0,
+        stops: [0, 100, 0]
+      }
+    },
+    markers: {
+      size: 2,
+    },
     stroke: {
-      curve: "straight",
+      curve: "smooth",
     },
     // title: {
     //   text: "Carteira",
@@ -156,6 +167,11 @@ export default function useCharts() {
         },
       },
       categories: [
+        "jan.",
+        "fev.",
+        "mar.",
+        "abr.",
+        "mai.",
         "jun.",
         "jul.",
         "ago.",

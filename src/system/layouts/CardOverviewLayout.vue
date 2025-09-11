@@ -1,5 +1,5 @@
 <template>
-  <q-card class="card-overview-layout bg-transparent row" :class="classAdd">
+  <div class="card-overview-layout bg-transparent row" :class="classAdd">
     <div class="col-12">
       <h2 class="text-h6 text-weight-bolder q-ml-lg">
         {{ title }}
@@ -10,7 +10,7 @@
       </h2>
     </div>
     <slot></slot>
-  </q-card>
+  </div>
 </template>
 
 <script setup>
@@ -31,5 +31,12 @@ defineProps({
 </script>
 
 <style scoped>
+.card-overview-layout {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 1px 5px rgba(255, 255, 255, 0.2),
+    0 2px 2px rgba(255, 255, 255, 0.14),
+    0 3px 1px -2px rgba(255, 255, 255, 0.12);
+}
 /* Seus estilos aqui */
 </style>

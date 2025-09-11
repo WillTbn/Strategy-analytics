@@ -5,8 +5,8 @@
     style="text-wrap-mode: nowrap"
   >
     <span class="text-inter-20-400">
-      {{ getNameDay }}
-      <span style="color: gray">|</span>
+      <!-- {{ getNameDay }}
+      <span style="color: gray">|</span> -->
       {{ getHours }} : {{ getMinutes }}
     </span>
   </q-banner>

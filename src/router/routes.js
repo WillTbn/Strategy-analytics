@@ -113,8 +113,21 @@ const routes = [
       },
       {
         path: "contracts",
-        name: "Contratos",
-        component: () => import("../system/pages/ContractsPage.vue"),
+        props: true,
+        children: [
+          {
+            path: "",
+            name: "Contratos",
+            component: () => import("../system/pages/contract/ContractsPage.vue"),
+            props: true,
+          },
+          {
+            path: ":id",
+            name: "contract",
+            component: () => import('../system/pages/contract/ContractPage.vue')
+
+          }
+        ]
       },
       {
         path: "communication",
