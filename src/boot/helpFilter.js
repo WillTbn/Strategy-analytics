@@ -64,6 +64,16 @@ const filters = {
       stringAccount = 'Conta principal'
     }
     return stringAccount
+  },
+  /**
+  * Rertona porcentagem
+  */
+  percenteCalc(value, numberBase) {
+    let por = (value / numberBase) * 100;
+    return new Intl.NumberFormat('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(por);
   }
 
 };
