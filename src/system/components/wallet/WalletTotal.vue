@@ -74,7 +74,7 @@
 
 <script setup>
 import { IconArrowDown, IconArrowUp, IconTransfer } from "@tabler/icons-vue";
-import { defineComponent, defineProps, ref } from "vue";
+import { defineComponent, ref } from "vue";
 import CardDeposit from "src/system/layouts/deposit/CardDeposit.vue";
 import CardTransfer from "src/system/layouts/deposit/CardTransfer.vue";
 
