@@ -6,6 +6,8 @@
     />
     <over-view-contract-layout />
     <analyse-graphic-layout />
+    <operation-layout />
+    <dividend-layout />
   </q-page>
 </template>
 
@@ -14,6 +16,8 @@ import { defineComponent } from "vue";
 import TitlePage from "src/system/components/TitlePage.vue";
 import OverViewContractLayout from "src/system/layouts/contracts/OverViewContractLayout.vue";
 import AnalyseGraphicLayout from "src/system/layouts/contracts/AnalyseGraphicLayout.vue";
+import OperationLayout from "src/system/layouts/contracts/OperationLayout.vue";
+import DividendLayout from "src/system/layouts/contracts/DividendLayout.vue";
 defineComponent({
   name: "ContractPage",
 });

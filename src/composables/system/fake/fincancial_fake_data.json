@@ -1,0 +1,156 @@
+{
+  "dividend_yield": [
+    {
+      "month": "JAN 25",
+      "percentage": 0.55
+    },
+    {
+      "month": "JAN 25",
+      "percentage": 0.43
+    },
+    {
+      "month": "MAR 25",
+      "percentage": 0.49
+    },
+    {
+      "month": "APR 25",
+      "percentage": 0.6
+    },
+    {
+      "month": "MAY 25",
+      "percentage": 0.4
+    },
+    {
+      "month": "MAY 25",
+      "percentage": 0.3
+    },
+    {
+      "month": "JUN 25",
+      "percentage": 0.71
+    },
+    {
+      "month": "JUL 25",
+      "percentage": 0.82
+    },
+    {
+      "month": "AUG 25",
+      "percentage": 0.81
+    },
+    {
+      "month": "SEP 25",
+      "percentage": 0.65
+    },
+    {
+      "month": "OCT 25",
+      "percentage": 0.94
+    },
+    {
+      "month": "NOV 25",
+      "percentage": 0.78
+    },
+    {
+      "month": "DEC 25",
+      "percentage": 0.3
+    },
+    {
+      "month": "JAN 26",
+      "percentage": 0.44
+    },
+    {
+      "month": "FEB 26",
+      "percentage": 0.24
+    }
+  ],
+  "aportes": [
+    {
+      "usuario": "Ricardo Santos Luz",
+      "avatar": "ricardo.png",
+      "valor_aporte": "12.865,91",
+      "data": "21/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "13.950,63",
+      "data": "03/08/2025"
+    },
+    {
+      "usuario": "Ricardo Santos Luz",
+      "avatar": "ricardo.png",
+      "valor_aporte": "15.003,70",
+      "data": "17/08/2025"
+    },
+    {
+      "usuario": "Ricardo Santos Luz",
+      "avatar": "ricardo.png",
+      "valor_aporte": "10.535,90",
+      "data": "11/08/2025"
+    },
+    {
+      "usuario": "João Silva Machado",
+      "avatar": "joao.png",
+      "valor_aporte": "19.382,74",
+      "data": "05/08/2025"
+    },
+    {
+      "usuario": "Ricardo Santos Luz",
+      "avatar": "ricardo.png",
+      "valor_aporte": "13.343,87",
+      "data": "26/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "12.955,88",
+      "data": "06/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "15.533,07",
+      "data": "04/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "17.685,68",
+      "data": "11/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "10.030,60",
+      "data": "09/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "13.526,06",
+      "data": "31/08/2025"
+    },
+    {
+      "usuario": "João Silva Machado",
+      "avatar": "joao.png",
+      "valor_aporte": "13.792,10",
+      "data": "29/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "13.719,17",
+      "data": "18/08/2025"
+    },
+    {
+      "usuario": "Marcelo Fontes Pereira",
+      "avatar": "marcelo.png",
+      "valor_aporte": "10.879,94",
+      "data": "29/08/2025"
+    },
+    {
+      "usuario": "João Silva Machado",
+      "avatar": "joao.png",
+      "valor_aporte": "17.439,87",
+      "data": "15/08/2025"
+    }
+  ]
+}

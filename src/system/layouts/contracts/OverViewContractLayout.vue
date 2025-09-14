@@ -1,5 +1,5 @@
 <template>
-  <div class="over-view-contract-layout">
+  <div class="over-view-contract-layout q-mb-lg">
     <card-overview-layout
       title="Visão Geral"
       :btnLink="false"

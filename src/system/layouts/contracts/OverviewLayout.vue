@@ -3,7 +3,7 @@
     <card-overview-layout
       title="Visão Geral"
       :btnLink="false"
-      classAdd="q-px-md q-mt-md q-pb-md"
+      classAdd="q-px-md q-my-md q-pb-md"
     >
       <card-resume-contract
         v-for="(item, index) in contracts"
