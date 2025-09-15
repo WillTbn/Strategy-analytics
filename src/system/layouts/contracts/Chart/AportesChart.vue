@@ -58,6 +58,8 @@ import LegendChart from "src/system/components/charts/LegendChart.vue";
 
 const showHistory = ref(true);
 const aportesHistory = ref([]);
+const monthlyAportesGrouped = ref({});
+const chartCategories = ref([]);
 const colorUser = {
   222: "#00A3FF",
   221: "#00F5D9",
@@ -73,7 +75,47 @@ onMounted(() => {
     color: colorUser[item.hash],
     ...item,
   }));
+  processAportesData();
 });
+const processAportesData = () => {
+  const monthlyAportes = {};
+  aportesHistory.value.forEach((aporte) => {
+    const dateParts = aporte.data.split("/");
+    const date = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`);
+    const monthYear = `${date.getFullYear()}-${date.getMonth()}`;
+    if (!monthlyAportes[monthYear]) {
+      monthlyAportes[monthYear] = {};
+    }
+    if (!monthlyAportes[monthYear][aporte.usuario]) {
+      monthlyAportes[monthYear][aporte.usuario] = {
+        total: 0,
+        avatar: aporte.avatar,
+        latestDate: "",
+      };
+    }
+    monthlyAportes[monthYear][aporte.usuario].total += parseFloat(
+      aporte.valor_aporte.replace(".", "").replace(",", "."),
+    );
+    monthlyAportes[monthYear][aporte.usuario].latestDate = aporte.data; // Store the latest date for tooltip
+  });
+
+  const months = Object.keys(monthlyAportes).sort((a, b) => {
+    const [yearA, monthA] = a.split("-").map(Number);
+    const [yearB, monthB] = b.split("-").map(Number);
+    if (yearA !== yearB) return yearA - yearB;
+    return monthA - monthB;
+  });
+
+  chartCategories.value = months.map((month) => {
+    const [year, monthIndex] = month.split("-");
+    const date = new Date(year, monthIndex);
+    return date
+      .toLocaleString("pt-BR", { month: "short", year: "2-digit" })
+      .replace(".", "")
+      .toUpperCase();
+  });
+  monthlyAportesGrouped.value = monthlyAportes;
+};
 
 const monthlyAportes = {};
 const series = computed(() => {
@@ -175,11 +217,37 @@ const chartOptions = computed(() => {
       opacity: 1,
     },
     tooltip: {
-      theme: "dark",
-      y: {
-        formatter: function (val) {
-          return `R$ ${val.toFixed(2).replace(".", ",")}`;
-        },
+      theme: "transparent",
+      custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        const user = w.config.series[seriesIndex].name;
+        const monthYearKey = Object.keys(monthlyAportesGrouped.value).sort(
+          (a, b) => {
+            const [yearA, monthA] = a.split("-").map(Number);
+            const [yearB, monthB] = b.split("-").map(Number);
+            if (yearA !== yearB) return yearA - yearB;
+            return monthA - monthB;
+          },
+        )[dataPointIndex];
+
+        const userData = monthlyAportesGrouped.value[monthYearKey][user];
+        const avatar = userData
+          ? userData.avatar
+          : "https://sources.strategyanalytics.com.br/storage/users/joao_default.png"; // Fallback avatar
+        const value = userData ? userData.total : 0;
+        const date = userData ? userData.latestDate : "N/A";
+
+        return (
+          '<div class="apexcharts-tooltip-custom">' +
+          '<div class="row items-center q-gutter-sm">' +
+          `<q-avatar size="32px"><img src="${avatar}"></q-avatar>` +
+          "<div>" +
+          '<div class="text-caption text-grey-5">Aporte:</div>' +
+          `<div class="text-subtitle1 text-primary">R$ ${value.toFixed(2).replace(".", ",")}</div>` +
+          `<div class="text-caption text-grey-5">${date}</div>` +
+          "</div>" +
+          "</div>" +
+          "</div>"
+        );
       },
     },
     grid: {
@@ -196,3 +264,24 @@ const chartOptions = computed(() => {
   };
 });
 </script>
+<style lang="scss">
+.apexcharts-tooltip-custom {
+  width: 325px;
+  height: 102px;
+  gap: 16px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 24px;
+  background: linear-gradient(
+    202.99deg,
+    rgba(255, 255, 255, 0.16) 0.52%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 99.48%
+  );
+  border: 1px solid #efefef14;
+  backdrop-filter: blur(40px);
+
+  box-shadow: 4px 4px 12px 0px #0000003d;
+}
+</style>
