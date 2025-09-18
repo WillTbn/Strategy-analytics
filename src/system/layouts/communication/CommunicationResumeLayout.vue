@@ -1,5 +1,10 @@
 <template>
-  <q-card class="communication-resume-layout q-my-sm bg-transparent" flat>
+  <q-card
+    class="communication-resume-layout q-my-sm bg-transparent cursor-pointer"
+    flat
+    v-if="horizontal"
+    @click="emit('go')"
+  >
     <q-card-section horizontal>
       <q-img class="col-5" :src="image" width="20%" />
 
@@ -32,7 +37,39 @@
       </q-card-section>
     </q-card-section>
   </q-card>
-  <q-separator></q-separator>
+  <q-separator v-if="horizontal"></q-separator>
+  <q-card
+    class="bg-transparent q-ma-md cursor-pointer"
+    v-else
+    flat
+    @click="emit('go')"
+  >
+    <img :src="image" />
+
+    <q-card-section>
+      <div class="text-h6">
+        <q-badge
+          class="text-dark q-pa-xs"
+          :style="{ backgroundColor: typeColor }"
+          rounded
+        >
+          {{ typeNew }}
+        </q-badge>
+      </div>
+      <div class="text-subtitle2 content">{{ title }}</div>
+      <p class="content text-grey">{{ content }}</p>
+      <q-chip color="styleTool q-mx-sm" text-color="white">
+        <q-avatar size="sm" flat color="white" class="text-dark">
+          {{ author.charAt(0) }}
+        </q-avatar>
+        <span>{{ author }}</span>
+        <!-- <div class="ellipsis"> -->
+        <q-tooltip>{{ author }}</q-tooltip>
+        <!-- </div> -->
+      </q-chip>
+      <span class="text-grey">{{ create_at }}</span>
+    </q-card-section>
+  </q-card>
 </template>
 
 <script setup>
@@ -41,8 +78,14 @@ import { defineComponent } from "vue";
 defineComponent({
   name: "CommunicationResumeLayout",
 });
+
+const emit = defineEmits(["go"]);
+
 defineProps({
-  // Defina suas props aqui, se necessário
+  horizontal: {
+    type: Boolean,
+    default: true,
+  },
   title: {
     type: String,
   },

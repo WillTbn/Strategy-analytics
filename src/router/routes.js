@@ -131,8 +131,21 @@ const routes = [
       },
       {
         path: "communication",
-        name: "Comunicação",
-        component: () => import("../system/pages/CommunicationPage.vue"),
+        props: true,
+        children: [
+          {
+            name: "Comunicação",
+            path: "",
+            component: () => import("../system/pages/CommunicationPage.vue"),
+            props: true
+          },
+          {
+            name: "Comunicação Insight",
+            path: ":hash",
+            component: () => import("../system/pages/InsightPage.vue"),
+            props: true,
+          }
+        ]
       },
       {
         path: "perfomance",

@@ -35,8 +35,13 @@
           v-for="(item, index) in tabList"
           :key="index"
           :name="item.label"
+          :class="filters.layout == 'text-imagem' ? '' : 'row'"
         >
-          <div class="" v-for="(news, index) in item.content" :key="index">
+          <div
+            :class="filters.layout == 'text-imagem' ? '' : 'col-4'"
+            v-for="(news, index) in item.content"
+            :key="index"
+          >
             <component
               :is="componentsMaps[news.componentPanel]"
               :title="news.title"
@@ -46,6 +51,8 @@
               :typeNew="news.typeNew"
               :typeColor="news.typeColor"
               :author="news.author"
+              :horizontal="filters.layout == 'text-imagem'"
+              @go="goRouter(news.hash)"
             />
           </div>
         </q-tab-panel>
@@ -59,12 +66,22 @@
 
 <script setup>
 import { defineComponent, onMounted, ref } from "vue";
+import { useCommunicationStore } from "src/stores/communication";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 import TitlePage from "src/system/components/TitlePage.vue";
 import CommunicationResumeLayout from "src/system/layouts/communication/CommunicationResumeLayout.vue";
 import CommunicationFilter from "src/system/layouts/communication/CommunicationFilter.vue";
+const router = useRouter();
 defineComponent({
   name: "CommunicationPage",
 });
+const goRouter = (hash) => {
+  router.push({ path: `communication/${hash}` });
+  console.log("ola", `communication/${hash}`);
+};
+const storeCommunication = useCommunicationStore();
+const { filters } = storeToRefs(storeCommunication);
 const componentsMaps = {
   CommunicationResumeLayout,
 };
@@ -81,6 +98,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail.png",
+        hash: "insight",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -92,6 +110,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-1.png",
+        hash: "insight",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -103,6 +122,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-2.png",
+        hash: "insight",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -114,6 +134,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail.png",
+        hash: "insight",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -125,6 +146,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-1.png",
+        hash: "insight",
         componentPanel: "CommunicationResumeLayout",
       },
     ],
@@ -135,6 +157,7 @@ const tabList = ref([
     label: "Relatórios Econômicos",
     content: [
       {
+        hash: "insight",
         typeColor: "#C7F7FF",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -146,6 +169,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
+        hash: "insight",
         typeColor: "#C7F7FF",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -163,6 +187,7 @@ const tabList = ref([
     label: "Comunicados S.A",
     content: [
       {
+        hash: "insight",
         type: "Comunicados S.A",
         author: "Strategy Analytics",
         create_at: "27/02/2025 09:26",
@@ -173,6 +198,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
+        hash: "insight",
         type: "Comunicados S.A",
         author: "Strategy Analytics",
         create_at: "27/02/2025 09:26",
@@ -189,6 +215,7 @@ const tabList = ref([
     label: "Insights Relevantes",
     content: [
       {
+        hash: "insight",
         typeColor: "#FFCC9F",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -200,6 +227,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
+        hash: "insight",
         typeColor: "#FFCC9F",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",

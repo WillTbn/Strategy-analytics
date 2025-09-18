@@ -1,6 +1,7 @@
 const state = () => {
   return {
     filters: {
+      layout: "text-imagem",
       search: "",
       typeOptions: [
         { label: "", value: "Selecione um opção" },

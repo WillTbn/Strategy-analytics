@@ -89,7 +89,7 @@
 
 <script setup>
 import { is } from "quasar";
-import { defineComponent, defineEmits } from "vue";
+import { defineComponent } from "vue";
 
 defineComponent({
   name: "ContractSection",
