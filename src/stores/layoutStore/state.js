@@ -13,9 +13,13 @@ const state = () => {
       language: "pt",
       time_zone: "America/Sao_Paulo"
     },
+    dashboard: {
+      publicity_contract: true,
+      communication_position: "container"
+    },
     drawerTheme: false,
     menuAdm: false,
-    optionsCoin:[
+    optionsCoin: [
       { label: "Real(BRL)", value: "BRL" },
       { label: "Dólar(USD)", value: "USD" },
       { label: "Euro(EUR)", value: "EUR" }

@@ -1,6 +1,11 @@
 <template>
   <div class="publicity-card col-2-2 propaganda-tool column">
-    <div class="text-muted col-1">ocultar</div>
+    <div
+      class="text-muted col-1 cursor-pointer"
+      @click.prevent="emit('closed')"
+    >
+      ocultar
+    </div>
     <!-- <q-img :src="image" :ratio="4 / 3" fit="none" /> -->
     <q-img
       src="/img/contract.png"
@@ -40,5 +45,6 @@ import { defineComponent } from "vue";
 defineComponent({
   name: "PublicityCard",
 });
+const emit = defineEmits(["closed"]);
 </script>
 <style scoped></style>

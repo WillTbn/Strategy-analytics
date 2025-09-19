@@ -1,6 +1,9 @@
 <template>
   <div class="resume-contracts-layout row justify-between q-my-md">
-    <q-card class="bg-transparent col-9 q-pa-md">
+    <q-card
+      class="bg-transparent q-pa-md"
+      :class="dashboard.publicity_contract ? 'col-9' : ' col-12'"
+    >
       <div class="col-12">
         <h2 class="text-h7">
           Contratos
@@ -38,7 +41,10 @@
         </contract-section>
       </div>
     </q-card>
-    <publicity-card />
+    <publicity-card
+      v-if="dashboard.publicity_contract"
+      @closed="dashboard.publicity_contract = false"
+    />
   </div>
 </template>
 
@@ -48,10 +54,15 @@ import ContractSection from "src/system/components/wallet/ContractSection.vue";
 import ChartComparative from "src/system/components/charts/ChartComparative.vue";
 import ChartSectors from "src/system/components/charts/ChartSectors.vue";
 import PublicityCard from "src/system/components/PublicityCard.vue";
+import { useStoreLayout } from "src/stores/layoutStore";
+import { storeToRefs } from "pinia";
 
 defineComponent({
   name: "ResumeContractsLayout",
 });
+
+const storeLayout = useStoreLayout();
+const { dashboard } = storeToRefs(storeLayout);
 
 const contractSection = ref(null);
 

@@ -2,6 +2,7 @@
   <q-page class="WalletPage q-ma-lg">
     <balancecurrent-layout />
     <resume-contracts-layout />
+    <communication-preview-layout />
     <loan-resume-layout />
     <!-- <role-investment-layout /> -->
   </q-page>
@@ -12,6 +13,7 @@
 import BalancecurrentLayout from "../layouts/wallet/BalancecurrentLayout.vue";
 import ResumeContractsLayout from "../layouts/wallet/ResumeContractsLayout.vue";
 import LoanResumeLayout from "../layouts/wallet/LoanResumeLayout.vue";
+import CommunicationPreviewLayout from "../layouts/communication/CommunicationPreviewLayout.vue";
 </script>
 
 <style scoped lang="sass">
