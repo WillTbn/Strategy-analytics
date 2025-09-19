@@ -70,6 +70,17 @@ const getters = {
   getAvailableToInvest: (state) => {
     return formatCurrency(state.wallet.current_balance)
   },
+
+  /**
+   * Pegando cortação do dollar a parte do campo current_loan(isso provisoriamente)
+   * @param {*} state 
+   * @returns 
+   */
+  getconvertCoin: (state) => {
+    return formatCurrency(state.wallet.current_loan)
+  },
+
+
   /**
    * pegando valores formatado do valor de patrimônio investido
    */
