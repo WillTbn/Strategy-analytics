@@ -96,7 +96,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail.png",
-        hash: "insight",
+        hash: "comunicado",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -108,7 +108,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-1.png",
-        hash: "insight",
+        hash: "comunicado",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -120,7 +120,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-2.png",
-        hash: "insight",
+        hash: "comunicado",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -132,7 +132,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail.png",
-        hash: "insight",
+        hash: "comunicado",
         componentPanel: "CommunicationResumeLayout",
       },
       {
@@ -144,7 +144,7 @@ const tabList = ref([
         data: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fuga asperiores recusandae laborum consequuntur quas eligendi cum animi officia! Voluptatibus vitae et incidunt obcaecati magnam minus ullam reiciendis quasi itaque?",
         description: "Comunicação interna",
         img: "/img/thumbnail-1.png",
-        hash: "insight",
+        hash: "comunicado",
         componentPanel: "CommunicationResumeLayout",
       },
     ],
@@ -155,7 +155,7 @@ const tabList = ref([
     label: "Relatórios Econômicos",
     content: [
       {
-        hash: "insight",
+        hash: "comunicado",
         typeColor: "#C7F7FF",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -167,7 +167,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
-        hash: "insight",
+        hash: "comunicado",
         typeColor: "#C7F7FF",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -185,7 +185,7 @@ const tabList = ref([
     label: "Comunicados S.A",
     content: [
       {
-        hash: "insight",
+        hash: "comunicado",
         type: "Comunicados S.A",
         author: "Strategy Analytics",
         create_at: "27/02/2025 09:26",
@@ -196,7 +196,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
-        hash: "insight",
+        hash: "comunicado",
         type: "Comunicados S.A",
         author: "Strategy Analytics",
         create_at: "27/02/2025 09:26",
@@ -213,7 +213,7 @@ const tabList = ref([
     label: "Insights Relevantes",
     content: [
       {
-        hash: "insight",
+        hash: "comunicado",
         typeColor: "#FFCC9F",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
@@ -225,7 +225,7 @@ const tabList = ref([
         componentPanel: "CommunicationResumeLayout",
       },
       {
-        hash: "insight",
+        hash: "comunicado",
         typeColor: "#FFCC9F",
         typeNew: "Insights Relevantes",
         author: "Strategy Analytics",
