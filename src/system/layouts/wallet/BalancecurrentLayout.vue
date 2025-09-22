@@ -174,6 +174,7 @@ export default defineComponent({
       setCurrentWallet,
       getAvailableToInvest,
       getCurrentInvest,
+      getconvertCoin
     };
   },
   // Outras configurações do componente aqui

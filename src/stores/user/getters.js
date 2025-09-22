@@ -77,7 +77,8 @@ const getters = {
    * @returns 
    */
   getconvertCoin: (state) => {
-    return formatCurrency(state.wallet.current_loan)
+    console.log('aqui', state.wallet.current_loan)
+    return state.wallet.current_loan
   },
 
 
