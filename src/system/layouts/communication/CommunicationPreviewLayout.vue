@@ -4,10 +4,16 @@
       <div class="col-12">
         <h2 class="text-h7">
           Comunicação
-          <q-btn outline color="primary" dense no-caps>
+          <q-btn
+            outline
+            color="primary"
+            dense
+            no-caps
+            @click.prevent="$emit('left')"
+          >
             <IconWindowMaximize width="24" height="24" color="white" />
           </q-btn>
-          <q-btn color="primary" flat no-caps>
+          <q-btn color="primary" flat no-caps :to="{ path: 'communication' }">
             Ver mais
             <IconArrowRight class="q-ml-xs" />
           </q-btn>
@@ -27,6 +33,7 @@ import CommunicationLayout from "./CommunicationLayout.vue";
 defineComponent({
   name: "CommunicationPreviewLayout",
 });
+const emit = defineEmits(["left"]);
 // Seu código aqui
 </script>
 

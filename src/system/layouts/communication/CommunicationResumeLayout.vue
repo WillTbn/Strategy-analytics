@@ -39,7 +39,8 @@
   </q-card>
   <q-separator v-if="horizontal"></q-separator>
   <q-card
-    class="bg-transparent q-ma-md cursor-pointer"
+    class="bg-transparent cursor-pointer"
+    :class="classCard"
     v-else
     flat
     @click="emit('go')"
@@ -58,7 +59,7 @@
       </div>
       <div class="text-subtitle2 content">{{ title }}</div>
       <p class="content text-grey">{{ content }}</p>
-      <q-chip color="styleTool q-mx-sm" text-color="white">
+      <q-chip color="styleTool" text-color="white">
         <q-avatar size="sm" flat color="white" class="text-dark">
           {{ author.charAt(0) }}
         </q-avatar>
@@ -106,6 +107,10 @@ defineProps({
   },
   author: {
     type: String,
+  },
+  classCard: {
+    type: Sting,
+    default: "q-ma-md",
   },
 });
 // Seu código aqui

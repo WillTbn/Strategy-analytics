@@ -40,7 +40,7 @@
       :class="filters.layout == 'text-imagem' ? '' : 'row'"
     >
       <div
-        :class="filters.layout == 'text-imagem' ? '' : 'col-4'"
+        :class="filters.layout == 'text-imagem' ? '' : cardClass"
         v-for="(news, index) in item.content"
         :key="index"
       >
@@ -77,6 +77,7 @@ const goRouter = (hash) => {
 };
 const props = defineProps({
   preview: { type: Boolean, default: false },
+  cardClass: { type: String, default: "col-4" },
 });
 const storeCommunication = useCommunicationStore();
 const { filters } = storeToRefs(storeCommunication);

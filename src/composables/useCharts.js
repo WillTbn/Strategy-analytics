@@ -460,12 +460,36 @@ export default function useCharts() {
       },
     },
     grid: {
+      borderColor: '#3D3D3D',
       row: {
-        colors: ["transparent"],
-        opacity: 1,
+        colors: ["transparent"], // takes an array which will be repeated on columns
+        opacity: 0.4,
+      },
+      yaxis: {
+        lines: {
+          show: true,
+        }
       },
     },
     xaxis: {
+      crosshairs: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      tickPlacement: "center",
+      labels: {
+        style: {
+          colors: "#989898",
+          fontSize: "8px",
+          fontFamily: "Inter",
+          fontWeight: 600,
+        },
+      },
       tickPlacement: "center",
       labels: {
         style: {

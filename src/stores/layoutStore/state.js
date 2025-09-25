@@ -15,7 +15,8 @@ const state = () => {
     },
     dashboard: {
       publicity_contract: true,
-      communication_position: "container"
+      communication_position: "container",
+      communication_left: false
     },
     drawerTheme: false,
     menuAdm: false,

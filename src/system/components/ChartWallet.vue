@@ -39,7 +39,7 @@ defineComponent({
 const chart = ref(null);
 const { walletOption } = useCharts();
 // Dados da carteira
-const initialValue = 50000;
+const initialValue = 40000;
 const finalValue = 76564.78;
 const months = ["JAN", "FEV", "MAR", "ABRIL", "MAI", "JUN", "JUL", "AGO"];
 const optionsTime = [
@@ -57,7 +57,11 @@ const calculateMonthlyValues = () => {
   const values = [];
 
   for (let i = 0; i < monthCount; i++) {
-    values.push(initialValue + increment * i);
+    if (i == 2 || i == 3 || i == 5) {
+      values.push(initialValue + (increment - 3000) * i);
+    } else {
+      values.push(initialValue + increment * i);
+    }
   }
 
   return values;
@@ -68,79 +72,6 @@ const series = ref([
     data: calculateMonthlyValues(),
   },
 ]);
-// import useCharts from "../../composables/useCharts";
-// import { useUserStore } from "../../stores/user";
-// import { storeToRefs } from "pinia";
-// export default defineComponent({
-//   name: "ChartWallet",
-//   setup() {
-//     const chart = ref(null);
-//     const { walletOption, walletOptionCurrent } = useCharts();
-//     const options = ref();
-//     const useStore = useUserStore();
-//     const { walletChart } = storeToRefs(useStore);
-//     const currencyOrPercentage = ref(false);
-//     const toggleValue = () => {
-//       // console.log(chart.value);
-//       currencyOrPercentage.value = !currencyOrPercentage.value;
-//       // console.log("currencyOrPercentage.value ->", currencyOrPercentage.value);
-//       if (currencyOrPercentage.value) {
-//         // chart.value.toggleSeries("Carteira Strategy Anaytics");
-//         chart.value.updateSeries([
-//           {
-//             name: "Carteira",
-//             data: dataCarteira.value,
-//           },
-//         ]);
-//         // console.log(walletOptionCurrent.value);
-//         chart.value.updateOptions(walletOptionCurrent.value);
-
-//         chart.value.resetSeries();
-//       } else {
-//         // chart.value.toggleSeries("Carteira Strategy Anaytics");
-//         chart.value.updateSeries([
-//           {
-//             name: "Carteira teste",
-//             data: dataCarteira.value,
-//           },
-//         ]);
-//         chart.value.updateOptions(walletOption.value);
-//         chart.value.resetSeries();
-//       }
-//     };
-//     const series = [
-//       {
-//         name: "Carteira",
-//         data: [0.014, 0.02, 0.03, 0.04, 0.04, 0.045, 0.05],
-//       },
-//     ];
-//     const dataCarteira = computed(() =>
-//       useStore.currentInvestimentSeries(series[0].data),
-//     );
-//     const showTime = () => {
-//       setTimeout(() => {
-//         series[0].data = dataCarteira.value;
-//         chart.value.updateOptions(walletOption.value);
-//       }, 2000);
-//       // setTimeout((), 1000);
-//     };
-//     onMounted(() => {
-//       showTime();
-//     });
-
-//     return {
-//       options,
-//       series,
-//       walletOption,
-//       dataCarteira,
-//       chart,
-//       toggleValue,
-//       currencyOrPercentage,
-//       walletChart,
-//     };
-//   },
-//   // Outras configurações do componente aqui
-// });
 </script>
 
 <style scoped>
