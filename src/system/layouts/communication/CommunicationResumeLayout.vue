@@ -82,7 +82,7 @@ defineComponent({
 
 const emit = defineEmits(["go"]);
 
-defineProps({
+const props = defineProps({
   horizontal: {
     type: Boolean,
     default: true,
@@ -109,7 +109,7 @@ defineProps({
     type: String,
   },
   classCard: {
-    type: Sting,
+    type: String,
     default: "q-ma-md",
   },
 });
