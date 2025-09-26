@@ -46,7 +46,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useUserStore } from "src/stores/user";
 import { storeToRefs } from "pinia";
 import useCase from "src/composables/system/useCase";
@@ -60,26 +60,52 @@ export default defineComponent({
     const { data, isDirty, isDirtyData } = storeToRefs(store);
     const { updateData, loading } = useAccount();
     const { same } = useCase();
-    const birthday = data.value.account.birthday ?? new Date(now());
+    const birthday = computed(() => {
+      return data.value.account.birthday ?? new Date(now());
+    });
     let dateCurrent = new Date(birthday + " 00:00:00");
     let brDate = date.formatDate(dateCurrent, "DD/MM/YYYY");
 
-    const dadosBasicos = [
-      { title: "Nome Completo", value: data.value.name },
-      { title: "Gênero", value: data.value.gender ?? "Masculino" },
-      { title: "Estado Civil", value: data.value.maritalStatus ?? "Solteiro" },
-      { title: "Nacionalidade", value: data.value.nationality ?? "Brasileira" },
-      {
-        title: "Naturalidade (Cidade, UF)",
-        value: data.value.naturalidade ?? "São Paulo, SP",
-      },
-      {
-        title: "Data de Nascimento",
-        value: brDate,
-      },
-      { title: "CPF", value: data.value.account.person },
-      { title: "RG", value: data.value.account.rg ?? "00.000.000-00" },
-    ];
+    const dadosBasicos = computed(() => {
+      return [
+        { title: "Nome Completo", value: data.value.name },
+        { title: "Gênero", value: data.value.gender ?? "Masculino" },
+        {
+          title: "Estado Civil",
+          value: data.value.maritalStatus ?? "Solteiro",
+        },
+        {
+          title: "Nacionalidade",
+          value: data.value.nationality ?? "Brasileira",
+        },
+        {
+          title: "Naturalidade (Cidade, UF)",
+          value: data.value.naturalidade ?? "São Paulo, SP",
+        },
+        {
+          title: "Data de Nascimento",
+          value: brDate,
+        },
+        { title: "CPF", value: data.value.account.person ?? "000.000.000-00" },
+        { title: "RG", value: data.value.account.rg ?? "00.000.000-00" },
+      ];
+    });
+    // const dadosBasicos = [
+    //   { title: "Nome Completo", value: data.value.name },
+    //   { title: "Gênero", value: data.value.gender ?? "Masculino" },
+    //   { title: "Estado Civil", value: data.value.maritalStatus ?? "Solteiro" },
+    //   { title: "Nacionalidade", value: data.value.nationality ?? "Brasileira" },
+    //   {
+    //     title: "Naturalidade (Cidade, UF)",
+    //     value: data.value.naturalidade ?? "São Paulo, SP",
+    //   },
+    //   {
+    //     title: "Data de Nascimento",
+    //     value: brDate,
+    //   },
+    //   { title: "CPF", value: data.value.account.person ?? "000.000.000-00" },
+    //   { title: "RG", value: data.value.account.rg ?? "00.000.000-00" },
+    // ];
 
     const localization = [
       {
