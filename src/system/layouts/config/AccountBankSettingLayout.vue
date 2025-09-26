@@ -1,12 +1,11 @@
 <template>
   <div class="account-bank-setting-layout">
-    <q-card
-      class="tool"
-      v-for="(account, index) in data.user_bank_accounts"
-      :key="index"
-    >
+    <q-card class="tool" :key="index">
       <p>Contas Bancárias</p>
-      <q-card class="tool q-mt-lg row justify-between items-center">
+      <q-card
+        class="tool q-mt-lg row justify-between items-center"
+        v-for="(account, index) in data.user_bank_accounts"
+      >
         <div class="col">
           <IconBuildingBank class="text-primary" />
           <p>
