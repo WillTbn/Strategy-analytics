@@ -60,7 +60,8 @@ export default defineComponent({
     const { data, isDirty, isDirtyData } = storeToRefs(store);
     const { updateData, loading } = useAccount();
     const { same } = useCase();
-    let dateCurrent = new Date(data.value.account.birthday + " 00:00:00");
+    const birthday = data.value.account.birthday ?? new Date(now());
+    let dateCurrent = new Date(birthday + " 00:00:00");
     let brDate = date.formatDate(dateCurrent, "DD/MM/YYYY");
 
     const dadosBasicos = [
